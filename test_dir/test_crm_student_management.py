@@ -107,13 +107,8 @@ class TestStudentClassManagement:
         assert page.in_class_sign_status.text == "保存成功"
 
 
-class TestStudentOrderManagement:
-    """
-    学员订单管理
-    """
 
-    def test_student_refund(self, browser1, crm_url):
-        pass
+
 
 
 if __name__ == '__main__':

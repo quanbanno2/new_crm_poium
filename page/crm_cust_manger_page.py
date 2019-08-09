@@ -207,7 +207,8 @@ class GfyCustAddOrder(Page):
     order_sharing_object_select_btn = PageElement(
         css='tr.ng-scope:nth-child(2) > td:nth-child(5) > button:nth-child(1)',
         describe='创建订单-订单分成相关对象-对象名称-确定')
-    order_select_course = PageElement(css='button.pull-right:nth-child(2)', describe='创建订单-订单课程列表 -添加课程')
+    order_select_course = PageElement(
+        css='button.pull-right:nth-child(2)', describe='创建订单-订单课程列表 -添加课程')
     order_select_coursename = PageElement(
         xpath='//*[@id=\"stuOrderCourseSchDialog\"]/div/div/div[2]/form/div[3]/div[1]/div/input',
         describe='创建订单-订单课程列表 -添加课程-输入课程名称')
@@ -216,12 +217,18 @@ class GfyCustAddOrder(Page):
         xpath='//*[@id=\"stuOrderCourseSchDialog\"]/div/div/div[2]/div[2]/div[1]'
               '/div/table/tbody/tr[1]/td[2]/p[2]/button',
         describe='创建订单-订单课程列表 -添加课程-选择课程')
-    order_selected_course = PageElement(link_text='自动化专用语文智慧月课', describe='创建订单-订单课程列表-课程')
+    order_selected_course = PageElement(
+        link_text='自动化专用语文智慧月课', describe='创建订单-订单课程列表-课程')
     order_save_stu_order = PageElement(
         xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[1]/form/div[3]/div/button",
         describe='确认创建订单')
 
-    order_status = PageElement(xpath="/html/body/div[15]/div/div/div[1]/h4/h3", describe='订单创建状态')
+    order_status = PageElement(
+        xpath="/html/body/div[19]/div/div/div[2]/div/span", describe='订单创建状态')
+
+    order_status_confirm = PageElement(
+        css=".bootbox > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(1)",
+        describe="确认订单保存状态")
     """
     支付
     """
@@ -229,7 +236,7 @@ class GfyCustAddOrder(Page):
     add_order_discount_btn = PageElement(
         css='.box-info > div:nth-child(1) > table:nth-child(1) > '
             'tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(1) > button:nth-child(1)',
-        describe='学员订单管理-课程优惠列表-添加优惠')
+        describe='学员订单管理-课程优惠列表-添加优惠按钮')
     add_order_discount_fee = PageElement(
         css='.box-info > div:nth-child(1) > table:nth-child(1) >'
             ' tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(1)',
@@ -274,104 +281,124 @@ class GfyCustAddOrder(Page):
     pay_order_status = PageElement(
         css="body > div.bootbox.modal.fade.in > div > div > div.modal-body > div > span:nth-child(1)",
         describe='订单支付状态')
-    pay_order_calculation_status = PageElement(css='span.text-green:nth-child(3)', describe='业绩计算状态')
+    pay_order_calculation_status = PageElement(
+        css='span.text-green:nth-child(3)',
+        describe='业绩计算状态')
+
+    pay_order_stay = PageElement(
+        xpath="/html/body/div[19]/div/div/div[3]/button[1]",
+        describe="支付成功后留在当前页面按钮")
 
     # 退费
-    order_info_detail = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]"
-              "/div[4]/div/div/div[1]/div/div/div/div[1]/table/tbody"
-              "/tr[1]/td[7]/button[1]",
-        describe="客户综合信息-学员信息-订单详情")
     order_info_refund = PageElement(
-        css="button.btn:nth-child(5)", describe="订单详情-退费按钮")
+        xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[2]/div[2]/div/div/div[1]/table/tbody/tr/td[14]/button[5]",
+        describe="订单详情-退费按钮")
     application_for_refund = PageElement(
-        # xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[5]/td/input",
-        css="input.ng-valid-required",
+        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[6]/td/input",
         describe="退费申请-结算金额")
+    refund_pre_fee = PageElement(
+        xpath="/html/body/div[1]/div[1]/div[1]/div[2]/div/div/div[2]/form/div/table/tbody/tr[2]/td[2]",
+        describe="退费申请-预收金额")
+
+    refund_course_count = PageElement(
+        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[5]/td[1]/span",
+        describe="退费申请-订购数量")
+
+    refund_course_consume = PageElement(
+        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[5]/td[2]/span",
+        describe="退费申请-消耗数量")
+
+    refund_remark = PageElement(
+        css="textarea.ng-valid:nth-child(2)",
+        describe="退费申请-备注")
+
     save_order_refund = PageElement(
         xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[3]/button[2]",
-        describe="退费申请-保存退费")
+        describe="退费申请-保存退费按钮")
+
+    approval_confirm_account = PageElement(
+        xpath="//*[@id=\"approvalMatterDialog\"]/div/div/div[2]/table/tbody/tr[5]/td/span",
+        describe="审批事项确认-审批流程账号")
     save_approval_matter = PageElement(
         xpath="//*[@id=\"approvalMatterDialog\"]/div/div/div[3]/button[2]",
-        describe="审批事项确认")
-    assert_approval_matter = PageElement(
-        xpath="/html/body/div[19]/div/div/div[1]/div",
+        describe="审批事项确认按钮")
+    approval_matter_status = PageElement(
+        css=".bootbox-body",
         describe="断言审批申请")
-    approval_matter = PageElement(
+    approval_matter_confirm = PageElement(
         xpath="/html/body/div[19]/div/div/div[2]/button",
-        describe="审批申请确定")
+        describe="审批保存成功确认按钮")
 
-
-class CustRecruitStudents(Page):
-    """
-    辅导招生
-    """
-    # 邀约
-    cust_communicate_switch_tab = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/ul/li[3]/a/strong",
-        describe="我的客户-查看客户综合信息-沟通信息")
-    cust_communicate_add = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div/div[3]/form/div/div[5]/button[1]",
-        describe="我的客户-查看客户综合信息-沟通信息-新增")
-    cust_communicate_responsible_personal_name = PageElement(
-        xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[2]/form/table/tbody/tr[2]/td/input",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人")
-    cust_communicate_responsible_personal_department = PageElement(
-        xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[1]/form/div[2]/div/select",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-部门")
-    cust_communicate_responsible_personal_query = PageElement(
-        xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[1]/form/div[3]/button",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-查询")
-    cust_communicate_responsible_personal_selected = PageElement(
-        xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[2]/div/div[1]/table/tbody/tr[1]/td[8]/button",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-选中老师")
-    cust_communicate_select_file = PageElement(
-        link_text="插入文件",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-沟通内容-插入文件")
-    cust_communicate_content = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/div[7]/div/div/div[2]/form/table/tbody/tr[6]/td/div[1]/div[2]/div",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-沟通内容-内容框")
-    cust_communicate_visit_date = PageElement(
-        xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[2]/form/table/tbody/tr[9]/td/input",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-到访时间")
-    cust_communicate_remark = PageElement(
-        css="textarea.form-control:nth-child(1)",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-备注")
-    cust_communicate_enable = PageElement(
-        xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[3]/button[2]",
-        describe="我的客户-查看客户综合信息-沟通信息-新增-确定")
-    cust_communicate_status = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/"
-              "div/div/div[3]/div/div/div/div[1]/table/tbody/tr[1]/td[4]/a",
-        describe="我的客户-查看客户综合信息-沟通信息-备注信息")
-
-    # 到会
-
-    cust_meeting_swtich_tab = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/ul/li[4]/a",
-        describe="我的客户-查看客户综合信息-到会信息")
-    cust_meeting_add = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div/div[4]/form/div/div[3]/button[1]",
-        describe="我的客户-查看客户综合信息-到会信息-新增")
-    cust_meeting_user = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]"
-              "/div/div/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[5]/input",
-        describe="我的客户-查看客户综合信息-到会信息-新增-跟进人")
-    cust_meeting_parent_list = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]"
-              "/div/div/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[6]/select",
-        describe="我的客户-查看客户综合信息-到会信息-新增-陪同人")
-    cust_meeting_save = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div"
-              "/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[12]/button[1]",
-        describe="我的客户-查看客户综合信息-到会信息-新增-保存/确认到会")
-    cust_meeting_confirm_meeting = PageElement(
-        xpath="//*[@id=\"model-comfirm-meeting\"]/div/div/div[2]/div/div/select",
-        describe="我的客户-查看客户综合信息-到会信息-确认到会-陪同人")
-    cust_meeting_confirm_save = PageElement(
-        xpath="//*[@id=\"model-comfirm-meeting\"]/div/div/div[3]/button[2]",
-        describe="我的客户-查看客户综合信息-到会信息-确认到会-保存")
-    cust_meeting_confirm_person = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div"
-              "/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[8]/span[1]",
-        describe="我的客户-查看客户综合信息-到会信息-确认人")
+# class CustRecruitStudents(Page):
+#     """
+#     辅导招生
+#     """
+#     # 邀约
+#     cust_communicate_switch_tab = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/ul/li[3]/a/strong",
+#         describe="我的客户-查看客户综合信息-沟通信息")
+#     cust_communicate_add = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div/div[3]/form/div/div[5]/button[1]",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增")
+#     cust_communicate_responsible_personal_name = PageElement(
+#         xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[2]/form/table/tbody/tr[2]/td/input",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人")
+#     cust_communicate_responsible_personal_department = PageElement(
+#         xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[1]/form/div[2]/div/select",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-部门")
+#     cust_communicate_responsible_personal_query = PageElement(
+#         xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[1]/form/div[3]/button",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-查询")
+#     cust_communicate_responsible_personal_selected = PageElement(
+#         xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[2]/div/div[1]/table/tbody/tr[1]/td[8]/button",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-选中老师")
+#     cust_communicate_select_file = PageElement(
+#         link_text="插入文件",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-沟通内容-插入文件")
+#     cust_communicate_content = PageElement(
+#         xpath="/html/body/div[1]/div[1]/div[1]/div[7]/div/div/div[2]/form/table/tbody/tr[6]/td/div[1]/div[2]/div",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-沟通内容-内容框")
+#     cust_communicate_visit_date = PageElement(
+#         xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[2]/form/table/tbody/tr[9]/td/input",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-到访时间")
+#     cust_communicate_remark = PageElement(
+#         css="textarea.form-control:nth-child(1)",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-备注")
+#     cust_communicate_enable = PageElement(
+#         xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[3]/button[2]",
+#         describe="我的客户-查看客户综合信息-沟通信息-新增-确定")
+#     cust_communicate_status = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/"
+#               "div/div/div[3]/div/div/div/div[1]/table/tbody/tr[1]/td[4]/a",
+#         describe="我的客户-查看客户综合信息-沟通信息-备注信息")
+#
+#     # 到会
+#
+#     cust_meeting_swtich_tab = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/ul/li[4]/a",
+#         describe="我的客户-查看客户综合信息-到会信息")
+#     cust_meeting_add = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div/div[4]/form/div/div[3]/button[1]",
+#         describe="我的客户-查看客户综合信息-到会信息-新增")
+#     cust_meeting_user = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]"
+#               "/div/div/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[5]/input",
+#         describe="我的客户-查看客户综合信息-到会信息-新增-跟进人")
+#     cust_meeting_parent_list = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]"
+#               "/div/div/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[6]/select",
+#         describe="我的客户-查看客户综合信息-到会信息-新增-陪同人")
+#     cust_meeting_save = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div"
+#               "/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[12]/button[1]",
+#         describe="我的客户-查看客户综合信息-到会信息-新增-保存/确认到会")
+#     cust_meeting_confirm_meeting = PageElement(
+#         xpath="//*[@id=\"model-comfirm-meeting\"]/div/div/div[2]/div/div/select",
+#         describe="我的客户-查看客户综合信息-到会信息-确认到会-陪同人")
+#     cust_meeting_confirm_save = PageElement(
+#         xpath="//*[@id=\"model-comfirm-meeting\"]/div/div/div[3]/button[2]",
+#         describe="我的客户-查看客户综合信息-到会信息-确认到会-保存")
+#     cust_meeting_confirm_person = PageElement(
+#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div"
+#               "/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[8]/span[1]",
+#         describe="我的客户-查看客户综合信息-到会信息-确认人")

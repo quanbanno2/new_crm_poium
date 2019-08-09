@@ -91,7 +91,7 @@ class GfyCrmStudentInClassManagement(Page):
         xpath="/html/body/div[19]/div/div/div[2]/button",
         describe="新增课程上课记录-保存状态确认")
 
-    # 点名123
+    # 点名
     teacher_class_list = PageElement(
         xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
               "/div/div/div/div[1]/form/div[1]/div[4]/div/select",
@@ -111,12 +111,6 @@ class GfyCrmStudentInClassManagement(Page):
         xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
               "/div/div/div/div[1]/div/div/div/div[1]/table"
               "/tbody/tr[1]/td[8]/span[1]/button[1]",
-        # css="body > div.wrapper > div.content-wrapper > "
-        #     "div:nth-child(1) > section.content.no-padding > "
-        #     "div > div > div > div.tab-pane.active > div > div > "
-        #     "div > div.box-body.table-responsive.no-margin.no-padding > "
-        #     "table > tbody > tr:nth-child(1) > td:nth-child(8) > span:nth-child(1) > "
-        #     "button:nth-child(1)",
         describe="学员上课管理-点名")
     in_class_sign_save = PageElement(
         xpath="//*[@id=\"stuClassSign\"]/div/div/div[3]/button[3]",

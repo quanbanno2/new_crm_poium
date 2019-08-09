@@ -3,8 +3,10 @@ import os
 import pytest
 from time import sleep
 from os.path import dirname, abspath
-from page.crm_cust_manger_page import GfyCrmAddCustomer, GfyCustAddOrder, CustRecruitStudents
+from page.crm_cust_manger_page import GfyCrmAddCustomer, GfyCustAddOrder
+from page.crm_home_page import GfyHomePage
 from poium import PageWait, PageSelect
+from _pydecimal import Context, ROUND_HALF_UP
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
@@ -48,6 +50,22 @@ def cal_service_charge(charge):
     return service_charge
 
 
+def cal_refund_fee(pre_fee, course_count, course_consume):
+    """
+    计算退费结算金额
+    :param pre_fee:
+    :param course_count:
+    :param course_consume:
+    :return:
+    """
+    pre_fee = float(pre_fee)
+    course_count = float(course_count)
+    course_consume = float(course_consume)
+    refund_fee = pre_fee - (pre_fee / course_count * course_consume)
+    # 保留两位、四舍五入,以字符串格式返回
+    return str(Context(prec=6, rounding=ROUND_HALF_UP).create_decimal(refund_fee))
+
+
 # def audio_upload(driver, audio_dir):
 #     """
 #     上传沟通音频
@@ -71,7 +89,7 @@ def cal_service_charge(charge):
 #         os.system(cmd)
 
 
-def set_content(driver, content_id, text):
+def set_content_by_id(driver, content_id, text):
     """
     文本框输入
     :param driver:
@@ -80,6 +98,18 @@ def set_content(driver, content_id, text):
     :return:
     """
     js = 'document.getElementById("%s").innerHTML = "%s" ' % (content_id, text)
+    driver.execute_script(js)
+
+
+def set_content_by_name(driver, content_name, text):
+    """
+    文本框输入
+    :param driver:
+    :param content_name:
+    :param text:
+    :return:
+    """
+    js = 'document.getElementsByName("%s").innerHTML = "%s" ' % (content_name, text)
     driver.execute_script(js)
 
 
@@ -114,7 +144,7 @@ class TestCustomerAdd:
         :param phonenum:
         :return:
         """
-        login(crm_url, browser1, supervisor_account, pass_word)
+        # login(crm_url, browser1, supervisor_account, pass_word)
         page = GfyCrmAddCustomer(browser1)
         page.cust_manger.click()
         page.my_cust.click()
@@ -339,7 +369,7 @@ class TestCustomerAdd:
 
 class TestCustomerAddOrder:
     """
-    客户新建订单和支付订单
+    客户新建订单和支付订单、未上课退费
     """
 
     def test_add_new_order(self, crm_url, browser1, adviser_name, course, pass_word, supervisor_account):
@@ -362,20 +392,28 @@ class TestCustomerAddOrder:
         page2 = GfyCustAddOrder(browser1)
         PageWait(page2.cust_order_info)
         page2.cust_order_info.click()
+        sleep(1)
         page2.cust_order_add.click()
         PageWait(page2.order_sharing_object_select)
         PageSelect(page2.order_sharing_object_select, text=adviser_name)
+        sleep(1)
         page2.order_sharing_object_select_btn.click()
+        sleep(1)
         page2.order_select_course.click()
-        PageWait(page2.order_select_coursename)
+        sleep(1)
         page2.order_select_coursename.send_keys(course)
+        sleep(1)
         page2.order_select_coursename_query.click()
-        PageWait(page2.order_select_course_btn)
+        sleep(1)
         page2.order_select_course_btn.click()
-        PageWait(page2.order_save_stu_order)
+        sleep(1)
         page2.order_save_stu_order.click()
-        PageWait(page2.order_status)
-        assert page2.order_status.text == "订单保存成功"
+        sleep(1)
+        order_status_text = page2.order_status.text
+        sleep(1)
+        page2.order_status_confirm.click()
+        sleep(1)
+        assert order_status_text == "成功"
 
     def test_pay_new_order(self, crm_url, browser1, pass_word, supervisor_account):
         """
@@ -386,49 +424,89 @@ class TestCustomerAddOrder:
         :param supervisor_account:
         :return:
         """
-        page = GfyCrmAddCustomer(browser1)
+
         page2 = GfyCustAddOrder(browser1)
-        login(crm_url, browser1, supervisor_account, pass_word)
-        PageWait(page.cust_manger)
-        page.cust_manger.click()
-        page.my_cust.click()
-        PageWait(page.cust_name)
-        page.cust_name.click()
-        PageWait(page2.order_list_pay)
+        sleep(1)
         page2.order_list_pay.click()
+        sleep(1)
         # 优惠项
-        PageWait(page2.add_order_discount_btn)
         preferential_amount = cal_preferential_amount(page2.order_accounts_receivable.text)
+        sleep(1)
         page2.add_order_discount_btn.click()
-        PageWait(page2.add_order_discount_fee)
+        sleep(1)
         page2.add_order_discount_fee.send_keys(preferential_amount)
+        sleep(1)
         page2.add_order_discount_save.click()
-        sleep(5)
         # 支付项
-        PageWait(page2.add_order_pay_btn)
+        sleep(1)
         page2.add_order_pay_btn.click()
-        PageWait(page2.add_order_pay_fee)
+        sleep(1)
         page2.add_order_pay_fee.send_keys(page2.order_pre_fee.text)
+        sleep(1)
         page2.add_order_pay_save.click()
         # 其他费用
-        PageWait(page2.add_order_orther_btn)
+        sleep(1)
         service_charge = cal_service_charge(page2.order_pre_fee.text)
+        sleep(1)
         page2.add_order_orther_btn.click()
-        PageWait(page2.add_order_otrher_fee)
+        sleep(1)
         page2.add_order_otrher_fee.send_keys(service_charge)
+        sleep(1)
         page2.add_order_otrher_save.click()
-        PageWait(page2.pay_stu_order)
-        sleep(5)
+        sleep(1)
         # 支付
         browser1.execute_script("arguments[0].click();", page2.pay_stu_order)
         assert page2.pay_order_status.text == "成功"
         assert page2.pay_order_calculation_status.text == "成功"
+        sleep(1)
+        page2.pay_order_stay.click()
+
+    def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks):
+        """
+        未分班退费
+        :param browser1:
+        :param crm_url:
+        :return:TestCustomerAddOrder
+        """
+        page = GfyCustAddOrder(browser1)
+        sleep(1)
+        browser1.execute_script("arguments[0].click();", page.order_info_refund)
+        sleep(1)
+        refund_pre_fee_text = page.refund_pre_fee.text
+        refund_course_count_text = page.refund_course_count.text
+        refund_course_consume_text = page.refund_course_consume.text
+        sleep(1)
+        page.refund_remark.send_keys(remarks)
+        sleep(1)
+        page.save_order_refund.click()
+        sleep(1)
+        # 获取审批人账号
+        approval_confirm_account_text = page.approval_confirm_account.text
+        sleep(1)
+        page.save_approval_matter.click()
+        sleep(1)
+        assert cal_refund_fee(refund_pre_fee_text, refund_course_count_text,
+                              refund_course_consume_text) == page.application_for_refund.get_attribute("value")
+        assert page.approval_matter_status.text == "审批保存成功"
+        sleep(1)
+        login(crm_url, browser1, supervisor_account, pass_word)
+
+        # 登录审批人账号审批退费
+        home_page = GfyHomePage(browser1)
+        PageWait(home_page.more_home_remind)
+        home_page.more_home_remind.click()
+        sleep(1)
+        home_page.
+
+
+
 
 
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustAdd::test_create_account"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustAdd::test_login",
-    #              "test_crm_cust_manger.py::TestCustAdd::test_add_customer"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
+    #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
