@@ -514,6 +514,7 @@ class TestCustomerAddOrder:
         home_page.approval_status_confirm.click()
 
 
+
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
