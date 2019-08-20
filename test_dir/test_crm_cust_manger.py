@@ -53,9 +53,9 @@ def cal_service_charge(charge):
 def cal_refund_fee(pre_fee, course_count, course_consume):
     """
     计算退费结算金额
-    :param pre_fee:
-    :param course_count:
-    :param course_consume:
+    :param pre_fee:预收金额
+    :param course_count:课程总数量
+    :param course_consume:已消耗课程
     :return:
     """
     pre_fee = float(pre_fee)
@@ -475,31 +475,43 @@ class TestCustomerAddOrder:
         refund_pre_fee_text = page.refund_pre_fee.text
         refund_course_count_text = page.refund_course_count.text
         refund_course_consume_text = page.refund_course_consume.text
+        customer_name = page.order_customer_name.text
+        order_id_text = page.order_id.text
         sleep(1)
         page.refund_remark.send_keys(remarks)
         sleep(1)
         page.save_order_refund.click()
-        sleep(1)
-        # 获取审批人账号
-        approval_confirm_account_text = page.approval_confirm_account.text
-        sleep(1)
+        PageWait(page.save_approval_matter)
         page.save_approval_matter.click()
         sleep(1)
-        assert cal_refund_fee(refund_pre_fee_text, refund_course_count_text,
-                              refund_course_consume_text) == page.application_for_refund.get_attribute("value")
+        refund_fee_text = cal_refund_fee(refund_pre_fee_text, refund_course_count_text, refund_course_consume_text)
+        assert refund_fee_text == page.application_for_refund.get_attribute("value")
         assert page.approval_matter_status.text == "审批保存成功"
         sleep(1)
-        login(crm_url, browser1, supervisor_account, pass_word)
-
-        # 登录审批人账号审批退费
+        page.approval_matter_confirm.click()
+        sleep(1)
+        # 首页审批
         home_page = GfyHomePage(browser1)
-        PageWait(home_page.more_home_remind)
+        home_page.home_index_menu.click()
+        sleep(1)
         home_page.more_home_remind.click()
         sleep(1)
-        home_page.
-
-
-
+        home_page.search_object_name_input.send_keys("退费申请:待审批")
+        sleep(1)
+        home_page.remind_content_search_input.send_keys(customer_name)
+        sleep(1)
+        home_page.remind_center_approve_btn.click()
+        sleep(1)
+        PageSelect(home_page.approval_matter_type, value="A05")
+        sleep(1)
+        home_page.approval_matter_approval_detail.click()
+        sleep(1)
+        home_page.approval_result_input.click()
+        sleep(1)
+        home_page.save_approval_result.click()
+        sleep(1)
+        assert home_page.approval_status.text == "保存成功"
+        home_page.approval_status_confirm.click()
 
 
 if __name__ == '__main__':

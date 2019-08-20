@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="无">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20190809 增加未上课退费">
+      <change afterPath="$PROJECT_DIR$/page/crm_finance_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page/crm_menu_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2019_08_16_19_07_54/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2019_08_16_19_07_54/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2019_08_16_19_08_30/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2019_08_16_19_08_30/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2019_08_16_19_10_55/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2019_08_16_19_10_55/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2019_08_16_19_10_55/report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_student_management_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_student_management_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/data/data_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/data/data_file.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/crm_home_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_home_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,11 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/page/crm_cust_manger_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16">
-              <caret line="281" column="90" selection-start-line="281" selection-start-column="90" selection-end-line="281" selection-end-column="90" />
-              <folding>
-                <element signature="e#15965#15999#0" />
-              </folding>
+            <state relative-caret-position="146">
+              <caret line="302" column="4" selection-start-line="302" selection-start-column="4" selection-end-line="302" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -33,31 +37,56 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/venv/lib/python3.7/site-packages/poium/poium.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16">
-              <caret line="45" column="21" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_dir/test_crm_cust_manger.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="498" column="18" selection-start-line="498" selection-start-column="18" selection-end-line="498" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#1034#1072#0" />
-                <element signature="e#8283#8304#0" />
-              </folding>
+            <state relative-caret-position="-1423">
+              <caret line="89" column="45" lean-forward="true" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test_dir/test_crm_cust_manger.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="503" column="16" lean-forward="true" selection-start-line="503" selection-start-column="16" selection-end-line="503" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/page/crm_home_page.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-280">
+              <caret selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page/crm_finance_page.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/venv/lib/python3.7/site-packages/poium/page_objects.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="106" column="99" selection-start-line="106" selection-start-column="90" selection-end-line="106" selection-end-column="99" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page/crm_menu_page.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -65,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conftest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="663">
+              <caret line="324" column="42" lean-forward="true" selection-start-line="324" selection-start-column="42" selection-end-line="324" selection-end-column="42" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -93,6 +122,9 @@
       <find>add_order_discount_fee</find>
       <find>get</find>
       <find>审批</find>
+      <find>审批状态</find>
+      <find>save_approval_matter</find>
+      <find>text</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,16 +138,18 @@
         <option value="$PROJECT_DIR$/page/common/__init__.py" />
         <option value="$PROJECT_DIR$/run_tests.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/page/crm_home_page.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/test_dir/data/data_file.json" />
         <option value="$PROJECT_DIR$/test_dir/test_crm_student_management.py" />
         <option value="$PROJECT_DIR$/page/crm_student_management_page.py" />
-        <option value="$PROJECT_DIR$/conftest.py" />
         <option value="$PROJECT_DIR$/json_trans_list.py" />
+        <option value="$PROJECT_DIR$/page/crm_home_page.py" />
+        <option value="$PROJECT_DIR$/conftest.py" />
+        <option value="$PROJECT_DIR$/page/crm_menu_page.py" />
         <option value="$PROJECT_DIR$/page/crm_cust_manger_page.py" />
         <option value="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" />
+        <option value="$PROJECT_DIR$/page/crm_finance_page.py" />
       </list>
     </option>
   </component>
@@ -128,11 +162,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="153" />
-    <option name="y" value="71" />
-    <option name="width" value="1279" />
-    <option name="height" value="679" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="51" />
+    <option name="y" value="39" />
+    <option name="width" value="1387" />
+    <option name="height" value="767" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -160,12 +194,6 @@
               <item name="new_crm_poium" type="462c0819:PsiDirectoryNode" />
               <item name="test_dir" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="new_crm_poium" type="b2602c69:ProjectViewProjectNode" />
-              <item name="new_crm_poium" type="462c0819:PsiDirectoryNode" />
-              <item name="test_dir" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -178,7 +206,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -333,11 +362,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" />
+        <item itemvalue="Python.run_tests" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python tests.pytest for test_crm_student_management.TestStudentClassManagement.test_add_in_class_record" />
         <item itemvalue="Python tests.pytest for test_crm_student_management.TestStudentOrderManagement.test_student_refund" />
-        <item itemvalue="Python.run_tests" />
-        <item itemvalue="Python tests.pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" />
       </list>
     </recent_temporary>
   </component>
@@ -366,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563959355735</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="20190809 增加未上课退费">
+      <created>1565342095485</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1565342095485</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -382,22 +418,24 @@
     <history-entry file="pytest_for_test_crm_student_management_TestStudentClassManagement_test_add_in_class_record - 2019.08.06 at 18h 00m 46s.xml">
       <configuration name="pytest for test_crm_student_management.TestStudentClassManagement.test_add_in_class_record" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.08.20 at 11h 04m 34s.xml">
+      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="153" y="71" width="1279" height="679" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="810" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21144675" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18745595" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.15021929" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.7322695" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3007194" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39893618" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32946298" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3280142" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.32946298" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3280116" />
@@ -453,7 +491,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更新poium框架" />
     <MESSAGE value="无" />
-    <option name="LAST_COMMIT_MESSAGE" value="无" />
+    <MESSAGE value="20190809 增加未上课退费" />
+    <option name="LAST_COMMIT_MESSAGE" value="20190809 增加未上课退费" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/selenium_page_objects-0.1.3-py3.6.egg/page_objects/page_objects.py" />
@@ -504,13 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_dir/test_crm_student_management.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -518,13 +550,6 @@
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/venv/lib/python3.7/site-packages/poium/page_objects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
         </state>
       </provider>
     </entry>
@@ -542,44 +567,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conftest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2019.1/python_stubs/-1440125684/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="488" column="4" selection-start-line="488" selection-start-column="4" selection-end-line="488" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/venv/lib/python3.7/site-packages/poium/poium.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16">
-          <caret line="45" column="21" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2019.1/python_stubs/-1440125684/builtins.py" />
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/_pydecimal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="4089" column="8" selection-start-line="4089" selection-start-column="8" selection-end-line="4089" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/page/crm_cust_manger_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16">
-          <caret line="281" column="90" selection-start-line="281" selection-start-column="90" selection-end-line="281" selection-end-column="90" />
-          <folding>
-            <element signature="e#15965#15999#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -590,32 +582,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/json_trans_list.py">
+    <entry file="file://$PROJECT_DIR$/json_trans_list.py" />
+    <entry file="file://$PROJECT_DIR$/run_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="34">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conftest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="324" column="42" lean-forward="true" selection-start-line="324" selection-start-column="42" selection-end-line="324" selection-end-column="42" />
           <folding>
-            <element signature="e#521#575#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_dir/test_crm_cust_manger.py">
+    <entry file="file://$USER_HOME$/venv/lib/python3.7/site-packages/poium/poium.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="498" column="18" selection-start-line="498" selection-start-column="18" selection-end-line="498" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#1034#1072#0" />
-            <element signature="e#8283#8304#0" />
-          </folding>
+        <state relative-caret-position="-1423">
+          <caret line="89" column="45" lean-forward="true" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/crm_menu_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/crm_cust_manger_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="302" column="4" selection-start-line="302" selection-start-column="4" selection-end-line="302" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/lib/python3.7/site-packages/poium/page_objects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="106" column="99" selection-start-line="106" selection-start-column="90" selection-end-line="106" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/crm_finance_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/page/crm_home_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+        <state relative-caret-position="-280">
+          <caret selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_dir/test_crm_cust_manger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="503" column="16" lean-forward="true" selection-start-line="503" selection-start-column="16" selection-end-line="503" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

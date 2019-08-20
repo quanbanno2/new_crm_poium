@@ -322,7 +322,7 @@ def browser1():
     if driver_type == "chrome":
         # 本地chrome浏览器
         driver = webdriver.Chrome()
-        # driver.set_window_size(1920, 1080)
+        driver.set_window_size(1920, 1080)
 
     elif driver_type == "firefox":
         # 本地firefox浏览器
@@ -345,7 +345,7 @@ def browser1():
 
     elif driver_type == "grid":
         # 通过远程节点运行  command_executor远程节点地址
-        driver = Remote(command_executor='http://10.2.16.182:4444/wd/hub',
+        driver = Remote(command_executor='http://192.168.0.140:5555/wd/hub',
                         desired_capabilities={
                             "browserName": "chrome",
                         })

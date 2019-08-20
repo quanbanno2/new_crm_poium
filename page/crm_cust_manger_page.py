@@ -290,8 +290,15 @@ class GfyCustAddOrder(Page):
         describe="支付成功后留在当前页面按钮")
 
     # 退费
+    order_customer_name = PageElement(
+        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[1]/td[2]",
+        describe="订单详情-退费申请-学员名称")
+    order_id = PageElement(
+        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[1]/td[1]",
+        describe="订单详情-退费申请-订单编号")
     order_info_refund = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[2]/div[2]/div/div/div[1]/table/tbody/tr/td[14]/button[5]",
+        xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
+              "/div[2]/div[2]/div/div/div[1]/table/tbody/tr/td[14]/button[5]",
         describe="订单详情-退费按钮")
     application_for_refund = PageElement(
         xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[6]/td/input",

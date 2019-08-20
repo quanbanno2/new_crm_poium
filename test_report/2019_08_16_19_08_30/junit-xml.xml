@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="2" failures="0" name="pytest" skipped="0" tests="2" time="0.180"><testcase classname="" file="test_dir/test_crm_cust_manger.py" name="test_dir.test_crm_cust_manger" time="0.000"><error message="collection failure">../../venv/lib/python3.7/site-packages/_pytest/python.py:498: in _importtestmodule
+    mod = self.fspath.pyimport(ensuresyspath=importmode)
+../../venv/lib/python3.7/site-packages/py/_path/local.py:701: in pyimport
+    __import__(modname)
+&lt;frozen importlib._bootstrap&gt;:983: in _find_and_load
+    ???
+&lt;frozen importlib._bootstrap&gt;:967: in _find_and_load_unlocked
+    ???
+&lt;frozen importlib._bootstrap&gt;:677: in _load_unlocked
+    ???
+../../venv/lib/python3.7/site-packages/_pytest/assertion/rewrite.py:140: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+../../venv/lib/python3.7/site-packages/_pytest/assertion/rewrite.py:289: in _rewrite_test
+    tree = ast.parse(source, filename=fn)
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/ast.py:35: in parse
+    return compile(source, filename, mode, PyCF_ONLY_AST)
+E     File &quot;/Users/huishow/PycharmProjects/new_crm_poium/test_dir/test_crm_cust_manger.py&quot;, line 499
+E       home_page.
+E                ^
+E   SyntaxError: invalid syntax</error></testcase><testcase classname="pytest" name="internal" time="0.000"><error message="internal error">Traceback (most recent call last):
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/_pytest/main.py&quot;, line 213, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/_pytest/main.py&quot;, line 256, in _main
+    config.hook.pytest_collection(session=session)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/hooks.py&quot;, line 289, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/manager.py&quot;, line 87, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/manager.py&quot;, line 81, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get(&quot;firstresult&quot;) if hook.spec else False,
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 208, in _multicall
+    return outcome.get_result()
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 187, in _multicall
+    res = hook_impl.function(*args)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/_pytest/main.py&quot;, line 266, in pytest_collection
+    return session.perform_collect()
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/_pytest/main.py&quot;, line 459, in perform_collect
+    items = self._perform_collect(args, genitems)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/_pytest/main.py&quot;, line 498, in _perform_collect
+    self.items.extend(self.genitems(node))
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/_pytest/main.py&quot;, line 720, in genitems
+    yield from self.genitems(subnode)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/_pytest/main.py&quot;, line 721, in genitems
+    node.ihook.pytest_collectreport(report=rep)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/hooks.py&quot;, line 289, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/manager.py&quot;, line 87, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/manager.py&quot;, line 81, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get(&quot;firstresult&quot;) if hook.spec else False,
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 208, in _multicall
+    return outcome.get_result()
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 187, in _multicall
+    res = hook_impl.function(*args)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pytest_html/plugin.py&quot;, line 512, in pytest_collectreport
+    self.append_failed(report)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pytest_html/plugin.py&quot;, line 297, in append_failed
+    self._appendrow(&apos;Error&apos;, report)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pytest_html/plugin.py&quot;, line 266, in _appendrow
+    result = self.TestResult(outcome, report, self.logfile, self.config)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pytest_html/plugin.py&quot;, line 130, in __init__
+    report=report, cells=cells)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/hooks.py&quot;, line 289, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/manager.py&quot;, line 87, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/manager.py&quot;, line 81, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get(&quot;firstresult&quot;) if hook.spec else False,
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 208, in _multicall
+    return outcome.get_result()
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File &quot;/Users/huishow/venv/lib/python3.7/site-packages/pluggy/callers.py&quot;, line 187, in _multicall
+    res = hook_impl.function(*args)
+  File &quot;/Users/huishow/PycharmProjects/new_crm_poium/conftest.py&quot;, line 227, in pytest_html_results_table_row
+    cells.insert(2, html.td(report.description))
+AttributeError: &apos;CollectReport&apos; object has no attribute &apos;description&apos;</error></testcase></testsuite>
