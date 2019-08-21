@@ -21,4 +21,4 @@ class GfyRefundInfo(Page):
         xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
               "/div/div/div/div[1]/table/tbody/tr[1]/td[7]/span",
         describe="退费信息-退费状态")
-
+    

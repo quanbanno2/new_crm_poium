@@ -5,6 +5,8 @@ from time import sleep
 from os.path import dirname, abspath
 from page.crm_cust_manger_page import GfyCrmAddCustomer, GfyCustAddOrder
 from page.crm_home_page import GfyHomePage
+from page.crm_menu_page import GfyMenu
+from page.crm_finance_page import GfyRefundInfo
 from poium import PageWait, PageSelect
 from _pydecimal import Context, ROUND_HALF_UP
 
@@ -114,6 +116,9 @@ def set_content_by_name(driver, content_name, text):
 
 
 class TestCustomerAdd:
+    """
+    
+    """
 
     def test_login(self, crm_url, browser1, pass_word, supervisor_account):
         """
@@ -512,7 +517,24 @@ class TestCustomerAddOrder:
         sleep(1)
         assert home_page.approval_status.text == "保存成功"
         home_page.approval_status_confirm.click()
-
+        sleep(1)
+        menu_page = GfyMenu(browser1)
+        menu_page.finance_menu.click()
+        sleep(1)
+        menu_page.finance_fee_info.click()
+        sleep(1)
+        menu_page.finance_refund_info.click()
+        sleep(1)
+        refund_page = GfyRefundInfo(browser1)
+        refund_page.refund_order_id_input.send_keys(order_id_text)
+        sleep(1)
+        refund_page.query_refund_info_btn.click()
+        sleep(1)
+        refund_page.refund_check_confirm_btn.click()
+        sleep(1)
+        refund_page.refund_confirm_btn.click()
+        sleep(1)
+        assert refund_page.refund_status.text == "已退费"
 
 
 if __name__ == '__main__':

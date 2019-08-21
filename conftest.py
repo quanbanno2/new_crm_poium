@@ -362,7 +362,7 @@ def browser1():
 def browser_close():
     yield driver
     driver.quit()
-    print("test end!")
+    print("\n\ntest end!")
 
 
 if __name__ == "__main__":
