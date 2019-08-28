@@ -16,8 +16,8 @@ class GfyCrmAddCustomer(Page):
         css="body > div.wrapper > header > nav > div > ul > li.dropdown.user.user-menu > a > span",
         describe="左上角用户名称")
     # 新增客户
-    cust_manger = PageElement(link_text='客户管理', describe="客户管理")
-    my_cust = PageElement(link_text='我的客户', describe='我的客户')
+    # cust_manger = PageElement(link_text='客户管理', describe="客户管理")
+    # my_cust = PageElement(link_text='我的客户', describe='我的客户')
     add_cust = PageElement(css='button.pull-left:nth-child(2)', describe="新增客户")
     add_cust_name = PageElement(css='#custNewDialog > div > div > div.modal-body > form > div:nth-child(1) > input',
                                 describe='新增客户名称')
@@ -47,10 +47,10 @@ class GfyCrmAddCustomer(Page):
     ###
     phone = PageElement(css='div.input-group:nth-child(13) > div:nth-child(2) > '
                             'div:nth-child(1) > input:nth-child(5)', describe='联系方式')
-    add_cust_save = PageElement(
+    add_customer_save = PageElement(
         css='#custNewDialog > div:nth-child(1) > div:nth-child(1) > '
             'div:nth-child(3) > button:nth-child(2)',
-        describe='保存按钮')
+        describe='订单创建保存按钮')
     cust_name = PageElement(
         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/"
               "div/div/div[1]/div/div[2]/div/div[1]/table/tbody/tr[1]/td[3]/a",
@@ -88,26 +88,25 @@ class GfyCrmAddCustomer(Page):
     split_count = PageElement(
         css=".bg-active > td:nth-child(7)", describe="列表-分单次数")
     convert_to_student = PageElement(
-        # css=".bg-active > td:nth-child(12) > button:nth-child(3)",
-        xpath="//*[@id=\"custIndex\"]/section[2]/"
-              "div[1]/div/div/div[1]/div/div[2]/div/div[1]"
-              "/table/tbody/tr[1]/td[13]/button[3]",
-        describe="第一个客户转为学员按钮")
+        xpath="//button[@ng-click='changeToStu(item)']",
+        describe="客户管理列表-第一名客户转为学员按钮")
     confirm_convert = PageElement(
-        xpath="/html/body/div[15]/div/div/div[2]/button[2]",
+        xpath="//button[@data-bb-handler='confirm']",
         describe="确认转为学员按钮")
-    convert_success_tips = PageElement(
-        xpath="/html/body/div[15]/div/div/div[3]/button",
-        describe="转换成功提示按钮")
-    checkbox_student = PageElement(
-        xpath='//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[1]/div/div[1]/label[11]/input',
-        describe="勾选显示是否学员")
+    convert_success_button = PageElement(
+        xpath='//button[@data-bb-handler="ok"]',
+        describe="转换成功确认按钮")
+    convert_success_text = PageElement(
+        xpath="//span[@class='text-green']",
+        describe="转换成功提示文字")
     student_or_not = PageElement(
         css='.bg-active > td:nth-child(12) > span:nth-child(1)',
         describe="列表-是否学员")
-    student_name = PageElement(
-        css=".bg-active > td:nth-child(3) > a:nth-child(1)",
-        describe="第一位客户名称")
+    first_student_name = PageElement(
+        xpath="//a[@ng-click='selectCust(item)']",
+        # xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div"
+        #       "/div[1]/div/div[2]/div/div[1]/table/tbody/tr[1]/td[3]/a",
+        describe="客户管理列表-第一位客户名称")
     customer_add_order = PageElement(
         css="div.active:nth-child(2) > div:nth-child(4) > "
             "div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > "
@@ -117,33 +116,31 @@ class GfyCrmAddCustomer(Page):
 
     # 同步教学帐号
     customer_create_account = PageElement(
-        css="div.col-xs-12:nth-child(3) > table:nth-child(1) > "
-            "tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(2) >"
-            " span:nth-child(2)",
+        xpath="//button[@class='btn btn-primary btn-xs']",
         describe="我的客户-客户信息-同步教学帐号按钮")
     customer_create_account_btn = PageElement(
         xpath="//*[@id=\"stuBaseDialog\"]/div/div/div[2]/div[1]/form/div[2]/button[2]",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号")
     customer_create_account_name = PageElement(
-        xpath="//*[@id=\"userNewDialog\"]/div/div/div[2]/form/table/tbody/tr[1]/td/input",
+        xpath="//input[@ng-model='userStudentAccountInfo.loginName']",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-登录账号")
     customer_create_account_password = PageElement(
-        xpath="//*[@id=\"userNewDialog\"]/div/div/div[2]/form/table/tbody/tr[2]/td/input",
+        xpath="//input[@type='password']",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-密码")
     customer_create_account_repeat_password = PageElement(
-        xpath="//*[@id=\"userNewDialog\"]/div/div/div[2]/form/table/tbody/tr[3]/td/input",
+        xpath="//input[@ng-model='passwordNoTemp']",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-确认密码")
     customer_create_account_birthday = PageElement(
-        xpath="//*[@id=\"userNewDialog\"]/div/div/div[2]/form/table/tbody/tr[7]/td/input",
+        xpath="//input[@name='birthDate']",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-生日")
     customer_create_account_birthday_today = PageElement(
-        xpath="//*[@id=\"jedatebox\"]/div[4]/div[2]/span[2]",
+        xpath="//span[@class='jedatetodaymonth']",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-生日(今日)")
     customer_create_account_save = PageElement(
-        xpath="//*[@id=\"userNewDialog\"]/div/div/div[3]/button[2]",
+        xpath="//button[@ng-click='addStuInfo()']",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-保存")
     customer_create_account_save_status = PageElement(
-        xpath="/html/body/div[15]/div/div/div[1]/h4/h3",
+        xpath="/html/body/div[20]/div/div/div[1]/h4/h3",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-保存状态")
     # 导入客户
     import_customer_btn = PageElement(
@@ -335,77 +332,3 @@ class GfyCustAddOrder(Page):
     approval_matter_confirm = PageElement(
         xpath="/html/body/div[19]/div/div/div[2]/button",
         describe="审批保存成功确认按钮")
-
-# class CustRecruitStudents(Page):
-#     """
-#     辅导招生
-#     """
-#     # 邀约
-#     cust_communicate_switch_tab = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/ul/li[3]/a/strong",
-#         describe="我的客户-查看客户综合信息-沟通信息")
-#     cust_communicate_add = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div/div[3]/form/div/div[5]/button[1]",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增")
-#     cust_communicate_responsible_personal_name = PageElement(
-#         xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[2]/form/table/tbody/tr[2]/td/input",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人")
-#     cust_communicate_responsible_personal_department = PageElement(
-#         xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[1]/form/div[2]/div/select",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-部门")
-#     cust_communicate_responsible_personal_query = PageElement(
-#         xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[1]/form/div[3]/button",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-查询")
-#     cust_communicate_responsible_personal_selected = PageElement(
-#         xpath="//*[@id=\"custGuardianListDialog\"]/div/div/div[2]/div[2]/div/div[1]/table/tbody/tr[1]/td[8]/button",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-跟进人-选中老师")
-#     cust_communicate_select_file = PageElement(
-#         link_text="插入文件",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-沟通内容-插入文件")
-#     cust_communicate_content = PageElement(
-#         xpath="/html/body/div[1]/div[1]/div[1]/div[7]/div/div/div[2]/form/table/tbody/tr[6]/td/div[1]/div[2]/div",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-沟通内容-内容框")
-#     cust_communicate_visit_date = PageElement(
-#         xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[2]/form/table/tbody/tr[9]/td/input",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-到访时间")
-#     cust_communicate_remark = PageElement(
-#         css="textarea.form-control:nth-child(1)",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-备注")
-#     cust_communicate_enable = PageElement(
-#         xpath="//*[@id=\"custCommunicateDialog\"]/div/div/div[3]/button[2]",
-#         describe="我的客户-查看客户综合信息-沟通信息-新增-确定")
-#     cust_communicate_status = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/"
-#               "div/div/div[3]/div/div/div/div[1]/table/tbody/tr[1]/td[4]/a",
-#         describe="我的客户-查看客户综合信息-沟通信息-备注信息")
-#
-#     # 到会
-#
-#     cust_meeting_swtich_tab = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/ul/li[4]/a",
-#         describe="我的客户-查看客户综合信息-到会信息")
-#     cust_meeting_add = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div/div[4]/form/div/div[3]/button[1]",
-#         describe="我的客户-查看客户综合信息-到会信息-新增")
-#     cust_meeting_user = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]"
-#               "/div/div/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[5]/input",
-#         describe="我的客户-查看客户综合信息-到会信息-新增-跟进人")
-#     cust_meeting_parent_list = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]"
-#               "/div/div/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[6]/select",
-#         describe="我的客户-查看客户综合信息-到会信息-新增-陪同人")
-#     cust_meeting_save = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div"
-#               "/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[12]/button[1]",
-#         describe="我的客户-查看客户综合信息-到会信息-新增-保存/确认到会")
-#     cust_meeting_confirm_meeting = PageElement(
-#         xpath="//*[@id=\"model-comfirm-meeting\"]/div/div/div[2]/div/div/select",
-#         describe="我的客户-查看客户综合信息-到会信息-确认到会-陪同人")
-#     cust_meeting_confirm_save = PageElement(
-#         xpath="//*[@id=\"model-comfirm-meeting\"]/div/div/div[3]/button[2]",
-#         describe="我的客户-查看客户综合信息-到会信息-确认到会-保存")
-#     cust_meeting_confirm_person = PageElement(
-#         xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[2]/div/div"
-#               "/div[4]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[8]/span[1]",
-#         describe="我的客户-查看客户综合信息-到会信息-确认人")

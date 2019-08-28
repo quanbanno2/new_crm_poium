@@ -117,7 +117,7 @@ def questions():
 
 
 @pytest.fixture(scope='function')
-def phonenum():
+def phone_number():
     global phone_num
     return phone_num
 
