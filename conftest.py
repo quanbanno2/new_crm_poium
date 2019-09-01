@@ -66,6 +66,9 @@ c_name = "测试自动化专用班级"
 # 高分云校区
 s_name = "高分云"
 
+# 客户生日
+cust_birth = "1991/10/25"
+
 
 ############################
 
@@ -212,6 +215,13 @@ def school_name():
     return s_name
 
 
+# 客户生日
+@pytest.fixture(scope='function')
+def customer_birthday():
+    global cust_birth
+    return cust_birth
+
+
 #####################
 
 # 设置用例描述表头
@@ -322,7 +332,8 @@ def browser1():
     if driver_type == "chrome":
         # 本地chrome浏览器
         driver = webdriver.Chrome()
-        driver.set_window_size(1920, 1080)
+        # driver.set_window_size(1920, 1080)
+        driver.maximize_window()
 
     elif driver_type == "firefox":
         # 本地firefox浏览器

@@ -1,4 +1,4 @@
-# pyautoTest Web UI 自动化项目
+# 高分云CRM 基于 pyautoTest Web UI 的自动化项目
 
 #### 特点：
 

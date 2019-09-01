@@ -52,19 +52,14 @@ class GfyCrmAddCustomer(Page):
             'div:nth-child(3) > button:nth-child(2)',
         describe='订单创建保存按钮')
     cust_name = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/"
-              "div/div/div[1]/div/div[2]/div/div[1]/table/tbody/tr[1]/td[3]/a",
-        describe='客户管理列表排第一的客户名称')
-    cust_name2 = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/"
-              "div/div/div[1]/div/div[2]/div/div[1]/table/tbody/tr[4]/td[3]/a",
-        describe='客户管理列表排第二的客户名称')
-
+        xpath="//a[@ng-click='selectCust(item)'][1]",
+        describe='我的客户-客户管理列表排第一的客户名称')
     cust_check = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/"
-              "div/div[1]/div/div[2]/div/div[1]/table/tbody/tr[1]/td[1]/input",
-        describe="勾选第一个客户")
-    cust_split = PageElement(css="button.btn:nth-child(4)", describe="分单按钮")
+        xpath="//input[@ng-model='item.selectState']",
+        describe="我的客户-勾选第一个客户")
+    cust_split = PageElement(
+        css="button.btn:nth-child(4)",
+        describe="分单按钮")
     # 机构老师列表
     tech_attribution_department = PageElement(
         css="select.ng-touched", describe="归属部门")
@@ -90,7 +85,7 @@ class GfyCrmAddCustomer(Page):
     convert_to_student = PageElement(
         xpath="//button[@ng-click='changeToStu(item)']",
         describe="客户管理列表-第一名客户转为学员按钮")
-    confirm_convert = PageElement(
+    confirm_btn = PageElement(
         xpath="//button[@data-bb-handler='confirm']",
         describe="确认转为学员按钮")
     convert_success_button = PageElement(
@@ -129,6 +124,7 @@ class GfyCrmAddCustomer(Page):
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-密码")
     customer_create_account_repeat_password = PageElement(
         xpath="//input[@ng-model='passwordNoTemp']",
+
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-确认密码")
     customer_create_account_birthday = PageElement(
         xpath="//input[@name='birthDate']",
@@ -191,102 +187,99 @@ class GfyCustAddOrder(Page):
     新增订单（新建、支付）
     条件：新建客户
     """
-    # todo_list = PageElement(xpath="/html/body/div[15]/div/div/div[3]/button", describe="待办事项弹窗-确定")
     cust_order_info = PageElement(
-        xpath='//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[4]/div/ul/li[1]',
+        xpath="//a[@ng-click=\"switchTab('StuOrderInfo','student')\"]",
         describe='我的客户-查看客户综合信息-学员订单')
     cust_order_add = PageElement(
-        xpath='//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[4]/div/div/div[1]/form/div/div[4]/button[1]',
+        xpath="//button[@ng-click=\"toStuOrderDetail('orderNew')\"]",
         describe='我的客户-查看客户综合信息-学员订单-新增')
     order_sharing_object_select = PageElement(
-        css='tr.ng-scope:nth-child(2) > td:nth-child(4) > select:nth-child(1)',
+        xpath="//select[@title='分成对象']",
         describe='创建订单-订单分成相关对象-对象名称')
     order_sharing_object_select_btn = PageElement(
-        css='tr.ng-scope:nth-child(2) > td:nth-child(5) > button:nth-child(1)',
+        xpath="//button[@ng-click='stuOrderRelationObjectAdd(item,$index)']",
         describe='创建订单-订单分成相关对象-对象名称-确定')
     order_select_course = PageElement(
-        css='button.pull-right:nth-child(2)', describe='创建订单-订单课程列表 -添加课程')
+        xpath="//button[@ng-click='toStuSelectCourse()']",
+        describe='创建订单-订单课程列表 -添加课程')
     order_select_coursename = PageElement(
-        xpath='//*[@id=\"stuOrderCourseSchDialog\"]/div/div/div[2]/form/div[3]/div[1]/div/input',
-        describe='创建订单-订单课程列表 -添加课程-输入课程名称')
-    order_select_coursename_query = PageElement(css='.btn-md', describe='创建订单-订单课程列表 -添加课程-查询')
+        xpath="//input[@ng-model='stuSchCourseParam.courseName']",
+        describe='创建订单-订单课程列表 -添加课程-课程名称输入框')
+    order_select_coursename_query = PageElement(
+        xpath="//button[@ng-click='stuLoadSchCourseList()']",
+        describe='创建订单-订单课程列表 -添加课程-查询按钮')
     order_select_course_btn = PageElement(
-        xpath='//*[@id=\"stuOrderCourseSchDialog\"]/div/div/div[2]/div[2]/div[1]'
-              '/div/table/tbody/tr[1]/td[2]/p[2]/button',
+        xpath="//button[@ng-click='stuSelectCourse(item)']",
         describe='创建订单-订单课程列表 -添加课程-选择课程')
-    order_selected_course = PageElement(
-        link_text='自动化专用语文智慧月课', describe='创建订单-订单课程列表-课程')
     order_save_stu_order = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[1]/form/div[3]/div/button",
-        describe='确认创建订单')
-
+        xpath="//button[@ng-click='saveStuOrder()']",
+        describe='创建订单-确认创建订单按钮')
     order_status = PageElement(
-        xpath="/html/body/div[19]/div/div/div[2]/div/span", describe='订单创建状态')
-
+        xpath="//span[@class='text-green']",
+        describe='订单创建状态')
     order_status_confirm = PageElement(
-        css=".bootbox > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(1)",
-        describe="确认订单保存状态")
+        xpath="//button[@data-bb-handler='ok']",
+        describe="确认订单保存状态按钮")
     """
     支付
     """
-    order_list_pay = PageElement(css='.fa-cny', describe='学员信息-学员订单-操作-订单支付')
+    student_order_pay_btn = PageElement(
+        xpath="//button[@title='订单支付']",
+        describe="学员订单管理-列表第一个学员订单支付按钮")
     add_order_discount_btn = PageElement(
-        css='.box-info > div:nth-child(1) > table:nth-child(1) > '
-            'tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(1) > button:nth-child(1)',
+        xpath="//button[@ng-disabled='financeDiscountDetailEditingItem']",
         describe='学员订单管理-课程优惠列表-添加优惠按钮')
     add_order_discount_fee = PageElement(
-        css='.box-info > div:nth-child(1) > table:nth-child(1) >'
-            ' tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(1)',
-        describe='学员订单管理-课程优惠列表-添加优惠-金额')
+        xpath="//input[@placeholder='优惠金额']",
+        describe='学员订单管理-课程优惠列表-添加优惠-金额输入框')
+    add_order_discount_save = PageElement(
+        xpath="//button[@ng-click=\"toEditFinanceDiscountDetail(item,'discountAdd')\"]",
+        describe='学员订单管理-课程优惠列表-添加优惠-保存按钮')
     order_pre_fee = PageElement(
         xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[4]/div[1]/div/h2/span[1]/span",
         describe="支付列表-预收账款")
     order_accounts_receivable = PageElement(
         xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[1]/form/div[1]/div[3]/table/tbody/tr[2]/td/span",
         describe='缴费信息-应收账款')
-    add_order_discount_save = PageElement(
-        css='.box-info > div:nth-child(1) > table:nth-child(1) > '
-            'tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(5) > button:nth-child(1)',
-        describe='学员订单管理-课程优惠列表-添加优惠-保存按钮')
-
     add_order_pay_btn = PageElement(
-        css="body > div.wrapper > div.content-wrapper > "
-            "div:nth-child(1) > section.content > div:nth-child(4) > "
-            "div.row.padding-top-5 > div > div > div > table > tbody > "
-            "tr.ng-scope > td > button",
+        xpath="//button[@ng-disabled='financePayDetailEditingItem']",
         describe='学员订单管理-课程优惠列表-添加支付项')
     add_order_pay_fee = PageElement(
-        xpath='/html/body/div[1]/div[1]/div[1]/section[2]/div[4]/div[2]/div/div/div/table/tbody/tr[1]/td[3]/input',
+        xpath="//input[@ng-model='financePayDetailDialog.payFee']",
         describe='学员订单管理-课程优惠列表-添加支付项-支付金额')
-    add_order_pay_save = PageElement(
-        xpath='/html/body/div[1]/div[1]/div[1]/section[2]/div[4]/div[2]/div/div/div/table/tbody/tr[1]/td[7]/button[1]',
-        describe='学员订单管理-课程优惠列表-添加支付项-保存')
-    add_order_orther_btn = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[5]/div[2]/div/div/div/table/tbody/tr[2]/td/button",
+    add_order_pay_save_btn = PageElement(
+        xpath="//button[@ng-click=\"toEditFinancePayDetail('','payAdd')\"]",
+        describe='学员订单管理-支付列表 -添加支付项-保存按钮')
+    add_order_other_btn = PageElement(
+        xpath="//button[@ng-click=\"toEditFinanceOtherFeeDetail('','otherFeeNew')\"]",
         describe='学员订单管理-其他费用-添加其他费用')
-    add_order_otrher_fee = PageElement(
-        xpath='/html/body/div[1]/div[1]/div[1]/section[2]/div[5]/div[2]/div/div/div/table/tbody/tr[1]/td[2]/input',
-        describe='学员订单管理-其他费用-添加其他费用-支付金额')
-    add_order_otrher_save = PageElement(
-        xpath='/html/body/div[1]/div[1]/div[1]/section[2]/div[5]/div[2]/div/div/div/table/tbody/tr[1]/td[4]/button[1]',
+    add_order_other_fee = PageElement(
+        xpath="//input[@ng-model='financeOtherFeeDetailDialog.fee']",
+        describe='学员订单管理-其他费用-添加其他费用-支付金额输入框')
+    add_order_other_save = PageElement(
+        xpath="//button[@ng-click=\"toEditFinanceOtherFeeDetail('','otherFeeAdd')\"]",
         describe='学员订单管理-其他费用-添加其他费用-保存')
     pay_stu_order = PageElement(
-        css="body > div.wrapper > div.content-wrapper > "
-            "div:nth-child(1) > section.content > div:nth-child(1) > "
-            "form > div:nth-child(2) > div > button",
+        xpath="//button[@ng-click='payStuOrder()']",
         describe='学员订单管理-提交支付')
     pay_order_status = PageElement(
-        css="body > div.bootbox.modal.fade.in > div > div > div.modal-body > div > span:nth-child(1)",
-        describe='订单支付状态')
+        xpath="//span[@class='text-green'][1]",
+        describe='订单支付-支付成功订单支付状态')
     pay_order_calculation_status = PageElement(
-        css='span.text-green:nth-child(3)',
-        describe='业绩计算状态')
+        xpath="//span[@class='text-green'][2]",
+        describe='订单支付-支付成功业绩计算状态')
+    pay_order_leave = PageElement(
+        xpath="//button[@data-bb-handler='OK']",
+        describe="订单支付成功-离开当前页面按钮")
 
     pay_order_stay = PageElement(
         xpath="/html/body/div[19]/div/div/div[3]/button[1]",
         describe="支付成功后留在当前页面按钮")
 
     # 退费
+    order_detail = PageElement(
+        xpath="//i[@class='fa fa-fw fa-search']",
+        describe="学员订单管理-第一名学员的订单详情按钮")
     order_customer_name = PageElement(
         xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[1]/td[2]",
         describe="订单详情-退费申请-学员名称")
@@ -294,11 +287,10 @@ class GfyCustAddOrder(Page):
         xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[1]/td[1]",
         describe="订单详情-退费申请-订单编号")
     order_info_refund = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
-              "/div[2]/div[2]/div/div/div[1]/table/tbody/tr/td[14]/button[5]",
+        xpath="//button[@ng-click=\"stuToRefund(item,'refund')\"]",
         describe="订单详情-退费按钮")
     application_for_refund = PageElement(
-        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[6]/td/input",
+        xpath="//input[@name='refundFee']",
         describe="退费申请-结算金额")
     refund_pre_fee = PageElement(
         xpath="/html/body/div[1]/div[1]/div[1]/div[2]/div/div/div[2]/form/div/table/tbody/tr[2]/td[2]",
@@ -311,24 +303,18 @@ class GfyCustAddOrder(Page):
     refund_course_consume = PageElement(
         xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[5]/td[2]/span",
         describe="退费申请-消耗数量")
-
     refund_remark = PageElement(
-        css="textarea.ng-valid:nth-child(2)",
+        xpath="//textarea[@name='remark']",
         describe="退费申请-备注")
-
     save_order_refund = PageElement(
-        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[3]/button[2]",
+        xpath="//button[@ng-click='stuOrderSaveFinanceRefundApply()']",
         describe="退费申请-保存退费按钮")
-
     approval_confirm_account = PageElement(
         xpath="//*[@id=\"approvalMatterDialog\"]/div/div/div[2]/table/tbody/tr[5]/td/span",
         describe="审批事项确认-审批流程账号")
     save_approval_matter = PageElement(
-        xpath="//*[@id=\"approvalMatterDialog\"]/div/div/div[3]/button[2]",
+        xpath="//button[@ng-click='saveApprovalMatter(approvalMatter)']",
         describe="审批事项确认按钮")
     approval_matter_status = PageElement(
-        css=".bootbox-body",
+        xpath="//div[@class='bootbox-body']",
         describe="断言审批申请")
-    approval_matter_confirm = PageElement(
-        xpath="/html/body/div[19]/div/div/div[2]/button",
-        describe="审批保存成功确认按钮")
