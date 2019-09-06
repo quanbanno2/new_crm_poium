@@ -12,7 +12,7 @@ class GfyHomePage(Page):
         xpath="//input[@placeholder='消息内容']",
         describe="提醒消息-消息内容输入框")
     remind_center_approve_btn = PageElement(
-        css="//button[@ng-click='homeRemindToModule(item)']",
+        xpath="//button[@ng-click='homeRemindToModule(item)']",
         describe="提醒中心-审批按钮")
     approval_matter_type = PageElement(
         xpath="//select[@ng-change='loadNotApprovalMatterList()']",

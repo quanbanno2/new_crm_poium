@@ -5,51 +5,68 @@ class GfyCrmAddCustomer(Page):
     """
     crm 增加客户、客户分单、转为学员
     """
-    login_input = PageElement(css='input.ng-valid-maxlength', describe="账号")
-    pwd_input = PageElement(css='div.form-group:nth-child(2) > div:nth-child(1) > '
-                                'input:nth-child(2)', describe="密码")
-    verification_code = PageElement(css=".ng-binding", describe="验证码")
+    login_input = PageElement(
+        xpath="//input[@name='username']",
+        describe="登录界面-账号输入框")
+    pwd_input = PageElement(
+        xpath="//input[@name='password']",
+        describe="登录界面-密码输入框")
+    verification_code = PageElement(
+        xpath="//b[@ng-click='createCode()']",
+        describe="验证码")
     code_input = PageElement(
-        css='input.form-control:nth-child(1)', describe="输入验证码")
-    enter = PageElement(css='#enter', describe="登录按钮")
+        xpath="//input[@name='verify']",
+        describe="验证码输入框")
+    enter = PageElement(
+        xpath="//button[@name='submit']",
+        describe="登录按钮")
     account_name = PageElement(
-        css="body > div.wrapper > header > nav > div > ul > li.dropdown.user.user-menu > a > span",
-        describe="左上角用户名称")
+        xpath="//span[@class='hidden-xs ng-binding']",
+        describe="信息栏-左上角用户名称")
     # 新增客户
-    # cust_manger = PageElement(link_text='客户管理', describe="客户管理")
-    # my_cust = PageElement(link_text='我的客户', describe='我的客户')
-    add_cust = PageElement(css='button.pull-left:nth-child(2)', describe="新增客户")
-    add_cust_name = PageElement(css='#custNewDialog > div > div > div.modal-body > form > div:nth-child(1) > input',
-                                describe='新增客户名称')
-    school_name = PageElement(css='#custNewDialog > div > div > div.modal-body > form > div:nth-child(7) > input',
-                              describe='新建客户-公校名称')
-    pub_school_list = PageElement(xpath='//*[@id=\"schListSimpleDialog\"]/div/div/div[2]/div[1]/form/div[1]/div/input',
-                                  describe='新建客户-公校列表-公校名称')
-    pub_school_query = PageElement(xpath='//*[@id=\"schListSimpleDialog\"]/div/div/div[2]/div[1]/form/div[2]/button',
-                                   describe='新建客户-公校名称-公校列表-查询')
-    pub_school_choice = PageElement(link_text='选定学校', describe='新建客户-公校名称-公校列表-查询')
-    grade = PageElement(css='div.input-group:nth-child(8) > select:nth-child(2)', describe="年级")
-    cust_activity = PageElement(css='div.input-group:nth-child(12) > button:nth-child(3)', describe='客户来源')
+    add_cust = PageElement(
+        xpath="//button[@ng-click=\"toEditCustInfo('newCust')\"]",
+        describe="客户管理-新增客户按钮")
+    add_cust_name = PageElement(
+        xpath="//input[@ng-model='custInfoDialog.custName']",
+        describe='新增客户名称')
+    school_name = PageElement(
+        xpath="//input[@ng-model='custInfoDialog.schoolName']",
+        describe='新建客户-公校名称')
+    pub_school_list = PageElement(
+        xpath="//input[@ng-model='parentSchoolDialogParam.schoolName']",
+        describe='新建客户-公校列表-公校名称输入框')
+    pub_school_query = PageElement(
+        xpath="//button[@ng-click='parentSchoolDialogLoad()']",
+        describe='新建客户-公校名称-公校列表-查询')
+    pub_school_choice = PageElement(
+        link_text='选定学校',
+        describe='新建客户-公校名称-公校列表-选择学校')
+    grade = PageElement(
+        xpath="//select[@ng-change=\"custInfoDialog.className=''\"]",
+        describe="年级选择框")
+    cust_activity = PageElement(
+        xpath="//button[@ng-disabled=\"custInfoDialogType==='detail'\"]",
+        describe='客户来源按钮')
     # 活动列表
-    cust_activity_type = PageElement(
-        css='#marActivityListDialog > div > div > div.modal-body > form > '
-            'div:nth-child(1) > div:nth-child(2) > '
-            'div > select',
+    activity_type = PageElement(
+        xpath="//select[@ng-model='parentActivityParam.activityType']",
         describe='活动列表-活动类型')
-    cust_activity_name = PageElement(
-        xpath="//*[@id=\"marActivityListDialog\"]/div/div/div[2]/form/div[2]/div[1]/div/input",
+    activity_name = PageElement(
+        xpath="//input[@name='activityName']",
         describe='活动列表-活动名称')
-    cust_activity_query = PageElement(
-        css='div.col-lg-1:nth-child(2) > div:nth-child(1) > button:nth-child(1)',
-        describe='活动查询')
+    activity_query = PageElement(
+        xpath="//button[@ng-click='parentActivityDialogLoad(1,pageInfoDialog.pageSize)']",
+        describe='活动列表查询按钮')
+    activity_selected = PageElement(
+        link_text="选中活动",
+        describe="选择活动")
 
-    cust_activity_selected = PageElement(link_text="选中活动", describe="选择活动")
-    ###
-    phone = PageElement(css='div.input-group:nth-child(13) > div:nth-child(2) > '
-                            'div:nth-child(1) > input:nth-child(5)', describe='联系方式')
+    customer_phone = PageElement(
+        xpath="//input[@name='phone1']",
+        describe='联系方式输入框1')
     add_customer_save = PageElement(
-        css='#custNewDialog > div:nth-child(1) > div:nth-child(1) > '
-            'div:nth-child(3) > button:nth-child(2)',
+        xpath="//button[@ng-show=\"custInfoDialogType==='edit'||custInfoDialogType==='add'\"]",
         describe='订单创建保存按钮')
     cust_name = PageElement(
         xpath="//a[@ng-click='selectCust(item)'][1]",
@@ -58,30 +75,31 @@ class GfyCrmAddCustomer(Page):
         xpath="//input[@ng-model='item.selectState']",
         describe="我的客户-勾选第一个客户")
     cust_split = PageElement(
-        css="button.btn:nth-child(4)",
+        xpath="//button[@ng-click=\"$parent.openTeacherDialog(toAllotOrder,'')\"]",
         describe="分单按钮")
     # 机构老师列表
-    tech_attribution_department = PageElement(
-        css="select.ng-touched", describe="归属部门")
-    tech_login_name = PageElement(
-        xpath="/html/body/div[2]/div/div/div[2]/div[1]/form/div[3]/div/input",
-        describe="登录名")
-    tech_query = PageElement(
-        css="div.col-sm-3:nth-child(4) > button:nth-child(1)", describe="老师查询")
-    tech_select = PageElement(link_text="选中老师", describe="选择老师")
+    teacher_attribution_department = PageElement(
+        xpath="//select[@ng-model='teacherInfoParam.departmentId']",
+        describe="归属部门")
+    teacher_list_login_name = PageElement(
+        xpath="//input[@ng-model='teacherInfoParam.loginName']",
+        describe="机构老师列表-登录名输入框")
+    teacher_list_query = PageElement(
+        xpath="//button[@ng-click='loadTeacherInfoList()']",
+        describe="机构老师列表-查询按钮")
+    teacher_select = PageElement(
+        link_text="选中老师",
+        describe="选择老师")
     ###
     confirm_split = PageElement(
-        css="#allotOrderDialog > div:nth-child(1) > div:nth-child(1) > "
-            "div:nth-child(3) > button:nth-child(2)",
+        xpath="//button[@ng-click='allotOrder()']",
         describe="确认分单按钮")
     checkbox_split_count = PageElement(
-        css="#custIndex > section.content.no-padding > "
-            "div.row.padding-top-5 > div > div > "
-            "div.tab-pane.active > div > div:nth-child(1) > "
-            "label:nth-child(5) > span",
+        xpath="//input[@ng-model=\"customerColShow['分单次数']\"]",
         describe="勾选显示分单次数")
     split_count = PageElement(
-        css=".bg-active > td:nth-child(7)", describe="列表-分单次数")
+        css=".bg-active > td:nth-child(7)",
+        describe="列表-分单次数")
     convert_to_student = PageElement(
         xpath="//button[@ng-click='changeToStu(item)']",
         describe="客户管理列表-第一名客户转为学员按钮")
@@ -99,8 +117,6 @@ class GfyCrmAddCustomer(Page):
         describe="列表-是否学员")
     first_student_name = PageElement(
         xpath="//a[@ng-click='selectCust(item)']",
-        # xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div"
-        #       "/div[1]/div/div[2]/div/div[1]/table/tbody/tr[1]/td[3]/a",
         describe="客户管理列表-第一位客户名称")
     customer_add_order = PageElement(
         css="div.active:nth-child(2) > div:nth-child(4) > "
@@ -114,7 +130,8 @@ class GfyCrmAddCustomer(Page):
         xpath="//button[@class='btn btn-primary btn-xs']",
         describe="我的客户-客户信息-同步教学帐号按钮")
     customer_create_account_btn = PageElement(
-        xpath="//*[@id=\"stuBaseDialog\"]/div/div/div[2]/div[1]/form/div[2]/button[2]",
+        xpath="//button[@ng-click='stuBaseCreateStudentAccount(stuBaseUserCallBack.param,"
+              "stuBaseUserCallBack.loadFun)']",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号")
     customer_create_account_name = PageElement(
         xpath="//input[@ng-model='userStudentAccountInfo.loginName']",
@@ -124,7 +141,6 @@ class GfyCrmAddCustomer(Page):
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-密码")
     customer_create_account_repeat_password = PageElement(
         xpath="//input[@ng-model='passwordNoTemp']",
-
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-确认密码")
     customer_create_account_birthday = PageElement(
         xpath="//input[@name='birthDate']",
@@ -138,48 +154,6 @@ class GfyCrmAddCustomer(Page):
     customer_create_account_save_status = PageElement(
         xpath="/html/body/div[20]/div/div/div[1]/h4/h3",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-保存状态")
-    # 导入客户
-    import_customer_btn = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[1]/form/div[2]/div/button[3]",
-        describe="客户管理-客户列表-导入客户")
-    import_customer_school = PageElement(
-        xpath="//*[@id=\"schoolId\"]",
-        describe="客户管理-客户列表-导入客户-归属校区")
-    import_customer_school_name = PageElement(
-        xpath="//*[@id=\"schoolName\"]",
-        describe="客户管理-客户列表-导入客户-来源公校")
-    import_customer_info_name = PageElement(
-        xpath="//*[@id=\"infoName\"]",
-        describe="客户管理-客户列表-导入客户-客户来源活动")
-    import_customer_select_files = PageElement(
-        xpath="//*[@id=\"selectfiles\"]",
-        describe="客户管理-客户列表-导入客户-选择文件")
-    import_customer_postfiles = PageElement(
-        xpath="//*[@id=\"postfiles\"]",
-        describe="客户管理-客户列表-导入客户-开始上传")
-
-    # 添加教务老师
-    educational_detail = PageElement(
-        css="li.active:nth-child(4) > a:nth-child(1) > strong:nth-child(1)",
-        describe="学员信息-教务老师")
-    add_educational = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[4]"
-              "/div/div/div[4]/div[1]/div[2]/button[1]",
-        describe="学员信息-教务老师-添加教务老师")
-    educational_account_name = PageElement(
-        xpath="//*[@id=\"eduStudentInfoDialog\"]/div/div/div[2]/form/table/tbody/tr[1]/td/input",
-        describe="学员信息-教务老师-添加教务老师-教务老师账号")
-    educational_invalid_date = PageElement(
-        xpath="//*[@id=\"eduStudentInfoDialog\"]/div/div/div[2]/form/table/tbody/tr[2]/td/input",
-        describe="学员信息-教务老师-添加教务老师-生效时间")
-    educational_invalid_date_today = PageElement(css=".jedatetodaymonth", describe="生效时间-今天")
-    save_educational = PageElement(
-        xpath="//*[@id=\"eduStudentInfoDialog\"]/div/div/div[3]/button[2]",
-        describe="保存添加教务老师")
-    assert_educational = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[2]/div[4]"
-              "/div/div/div[4]/div[2]/div/div/div[1]/table/tbody/tr[1]/td[3]",
-        describe="断言教务老师")
 
 
 class GfyCustAddOrder(Page):

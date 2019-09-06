@@ -56,13 +56,13 @@ def add_customer(driver, customer_name, phone_number):
     PageWait(page.grade)
     PageSelect(page.grade, value='string:G09')
     page.cust_activity.click()
-    PageWait(page.cust_activity_type)
-    PageSelect(page.cust_activity_type, value='string:T01')
-    page.cust_activity_name.send_keys('高分云信息单')
-    page.cust_activity_query.click()
+    PageWait(page.activity_type)
+    PageSelect(page.activity_type, value='string:T01')
+    page.activity_name.send_keys('高分云信息单')
+    page.activity_query.click()
     sleep(1)
-    page.cust_activity_selected.click()
-    page.phone.send_keys(phone_number)
+    page.activity_selected.click()
+    page.customer_phone.send_keys(phone_number)
     page.add_customer_save.click()
 
 
@@ -76,11 +76,11 @@ def split_customer(driver, adviser_name):
     page = GfyCrmAddCustomer(driver)
     page.cust_check.click()
     page.cust_split.click()
-    PageWait(page.tech_login_name)
-    page.tech_login_name.send_keys(adviser_name)
-    page.tech_query.click()
-    PageWait(page.tech_select)
-    page.tech_select.click()
+    PageWait(page.teacher_list_login_name)
+    page.teacher_list_login_name.send_keys(adviser_name)
+    page.teacher_list_query.click()
+    PageWait(page.teacher_select)
+    page.teacher_select.click()
     PageWait(page.confirm_split)
     page.confirm_split.click()
 
@@ -573,17 +573,19 @@ class TestCustomerAddOrder:
         :param crm_url:
         :return:TestCustomerAddOrder
         """
+        # 申请退费
         login(crm_url, browser1, supervisor_account, pass_word)
         order_page = GfyCustAddOrder(browser1)
         refund_apply_list = refund_apply(browser1, remarks)
         refund_fee_text = refund_apply_list[2]
+        order_id_text = refund_apply_list[1]
         customer_name = refund_apply_list[0]
         assert refund_fee_text == order_page.application_for_refund.get_attribute("value")
         assert order_page.approval_matter_status.text == "审批保存成功"
         sleep(1)
         order_page.order_status_confirm.click()
         sleep(1)
-        # 首页审批
+        # 首页审批退费
         home_page = GfyHomePage(browser1)
         menu_page = GfyMenu(browser1)
         menu_page.dashboard.click()
@@ -605,28 +607,30 @@ class TestCustomerAddOrder:
         home_page.save_approval_result.click()
         sleep(1)
         assert home_page.status.text == "保存成功"
+        # 财务管理进行确认退费
         home_page.ok_button.click()
         sleep(1)
-        # menu_page = GfyMenu(browser1)
-        # menu_page.finance_menu.click()
-        # sleep(1)
-        # menu_page.finance_fee_info.click()
-        # sleep(1)
-        # menu_page.finance_refund_info.click()
-        # sleep(1)
-        # refund_page = GfyRefundInfo(browser1)
-        # refund_page.refund_order_id_input.send_keys(order_id_text)
-        # sleep(1)
-        # refund_page.query_refund_info_btn.click()
-        # sleep(1)
-        # refund_page.refund_check_confirm_btn.click()
-        # sleep(1)
-        # refund_page.refund_confirm_btn.click()
-        # sleep(1)
-        # assert refund_page.refund_status.text == "已退费"
+        menu_page = GfyMenu(browser1)
+        refund_page = GfyRefundInfo(browser1)
+        menu_page.finance_menu.click()
+        sleep(1)
+        menu_page.finance_fee_info.click()
+        sleep(1)
+        menu_page.finance_refund_info.click()
+        sleep(1)
+        refund_page.refund_order_id_input.send_keys(order_id_text)
+        sleep(1)
+        refund_page.query_refund_info_btn.click()
+        sleep(1)
+        refund_page.refund_check_confirm_btn.click()
+        sleep(1)
+        refund_page.refund_confirm_btn.click()
+        sleep(1)
+        assert refund_page.refund_status.text == "已退费"
 
 
 if __name__ == '__main__':
+
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustAdd::test_create_account"])
@@ -634,5 +638,4 @@ if __name__ == '__main__':
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd"])
     pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
-
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
