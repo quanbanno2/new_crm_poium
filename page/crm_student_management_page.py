@@ -6,40 +6,27 @@ class GfyCrmStudentCourseManagement(Page):
     学员课程管理
     """
     # 分班
-    student_management = PageElement(
-        xpath="//*[@id=\"sysMenu\"]/li[3]/a",
-        describe="菜单栏-学员管理")
-    student_course_management = PageElement(
-        xpath="//*[@id=\"sysMenu\"]/li[3]/ul/li[4]",
-        describe="学员课程管理")
     undivided_student = PageElement(
-        css=".nav-tabs > li:nth-child(2)",
+        link_text="未分班学员",
         describe="学员课程管理-未分班学员")
-    student_name = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div/div"
-              "/div/div[2]/form/div[1]/div[5]/div/input",
-        describe="学员名称筛选输入框")
-    student_undivided_query = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]"
-              "/section[2]/div/div/div/div[2]/form/div[2]/div/button[1]",
-        describe="未分班查询")
     student_select_class = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div/div/div/div[2]"
-              "/div/div/div/div[1]/table/tbody/tr[1]/td[14]/button",
-        describe="学员课程管理-未分班学员-分配班级")
+        xpath="//button[@ng-click='openClassSelectDialog(item)']",
+        describe="学员课程管理-未分班学员-分配班级按钮")
     sch_course_class_search_classname = PageElement(
-        xpath="//*[@id=\"stuCourseSelectClassDialog\"]/div/div/div[2]/div[1]/div[2]/div/input",
+        xpath="//input[@ng-model='schCourseClassRelationSearch.className']",
         describe="上课班级-班级名称输入框")
     sch_course_class_search_classname_button = PageElement(
-        xpath="//*[@id=\"stuCourseSelectClassDialog\"]/div/div/div[2]/div[2]"
-              "/div/div/div[1]/table/tbody/tr[1]/td[5]/button",
+        xpath="//button[@ng-click='saveStuOrderCourseUndivided(item)']",
         describe="上课班级-选定班级")
     sch_course_class_search_classname_confirm = PageElement(
-        css="div.modal-footer:nth-child(2) > button:nth-child(2)",
+        xpath="//button[@data-bb-handler='confirm']",
         describe="上课班级-确认分配")
     student_select_class_status = PageElement(
-        xpath="/html/body/div[19]/div/div/div[1]/div",
+        xpath="//div[@class='bootbox-body']",
         describe="分配班级结果（成功）")
+    student_select_class_ok = PageElement(
+        xpath="//button[@data-bb-handler='ok']",
+        describe="分班成功确认按钮")
 
 
 class GfyCrmStudentInClassManagement(Page):
@@ -47,49 +34,39 @@ class GfyCrmStudentInClassManagement(Page):
     学员上课管理
     """
     # 新增上课记录
-    student_class_management = PageElement(
-        xpath="//*[@id=\"sysMenu\"]"
-              "/li[3]/ul/li[4]/a",
-        describe="学员上课管理")
     add_in_class_record = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
-              "/div/div/div/div[1]/form/div[2]/div[2]/button[1]",
-        describe="学员上课-新增")
+        xpath="//button[@ng-click=\"toEditStuCourseInClassRecord('add','')\"]",
+        describe="学员上课-新增按钮")
     makeup_school_list = PageElement(
-        xpath="//*[@id=\"stuClassDialog\"]"
-              "/div/div/div[2]/form/div[1]/select",
-        describe="新增课程上课记录-归属校区")
+        xpath="//select[@ng-model='stuClassDialog.schoolId']",
+        describe="新增课程上课记录-归属校区选择框")
     makeup_class_name = PageElement(
-        xpath="//*[@id=\"stuClassDialog\"]"
-              "/div/div/div[2]/form/div[3]/input",
+        xpath="//input[@placeholder='点击选择课程班级']",
         describe="新增课程上课记录-课程班级")
     select_a_classes_search = PageElement(
-        xpath="//*[@id=\"stuClassCourseDialog\"]"
-              "/div/div/div[2]/div/div/div[1]/div/input",
+        xpath="//input[@placeholder='关键信息匹配查询']",
         describe="新增课程上课记录-课程班级-关键字搜索输入框")
     select_a_classes = PageElement(
-        xpath="//*[@id=\"stuClassCourseDialog\"]"
-              "/div/div/div[2]/div/div/div[1]/table/tbody/tr/td[4]/a",
-        describe="新增课程上课记录-课程班级-选中班级")
+        link_text="选中班级",
+        describe="新增课程上课记录-课程班级-选中班级按钮")
     makeup_time_cycle = PageElement(
-        css="select.ng-valid-required",
+        xpath="//select[@title='时间周期']",
         describe="新增课程上课记录-时间周期")
     makeup_in_class_date = PageElement(
-        css="div.input-group:nth-child(6) > input:nth-child(2)",
+        xpath="//input[@name='inclassDate']",
         describe="新增课程上课记录-开始时间")
     makeup_in_class_date_today = PageElement(
-        xpath="//*[@id=\"jedatebox\"]/div[4]/div[2]/span[2]",
+        xpath="//span[@class='jedatetodaymonth']",
         describe="新增课程上课记录-开始时间-今天")
     makeup_save = PageElement(
-        xpath="//*[@id=\"stuClassDialog\"]"
-              "/div/div/div[3]/button[2]",
-        describe="新增课程上课记录-保存")
+        xpath="//button[@ng-click='addStuCourseInClassRecord()']",
+        describe="新增课程上课记录-保存按钮")
     makeup_status = PageElement(
-        xpath="/html/body/div[19]/div/div/div[1]/div",
+        xpath="//div[@class='bootbox-body']",
         describe="新增课程上课记录-保存状态")
     makeup_in_class_status = PageElement(
-        xpath="/html/body/div[19]/div/div/div[2]/button",
-        describe="新增课程上课记录-保存状态确认")
+        xpath="//button[@data-bb-handler='ok']",
+        describe="新增课程上课记录-保存状态确认按钮")
 
     # 点名
     teacher_class_list = PageElement(
