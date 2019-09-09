@@ -138,8 +138,8 @@ class TestStudentClassManagement:
         login(crm_url, browser1, education_account, pass_word)
         add_in_class_record(browser1, school_name, class_name)
         page = GfyCrmStudentInClassManagement(browser1)
-        PageWait(page.makeup_status)
-        assert page.makeup_status.text == "保存成功"
+        PageWait(page.status)
+        assert page.status.text == "保存成功"
         page.makeup_in_class_status.click()
 
     def test_in_class(self, browser1, class_name, school_name):
@@ -147,27 +147,15 @@ class TestStudentClassManagement:
         上课点名
         :return:
         """
+        in_class(browser1, class_name, school_name)
+        sleep(1)
         page = GfyCrmStudentInClassManagement(browser1)
-        sleep(1)
-        PageSelect(page.teacher_class_list, text=class_name)
-        sleep(1)
-        PageSelect(page.in_class_school_list, text=school_name)
-        sleep(1)
-        PageSelect(page.in_class_status_list, text="未上课")
-        PageWait(page.query_in_class_record)
-        page.query_in_class_record.click()
-        sleep(1)
-        page.in_class_sign.click()
-        PageWait(page.in_class_sign_save)
-        page.in_class_sign_save.click()
-        PageWait(page.in_class_sign_confirm)
-        page.in_class_sign_confirm.click()
-        PageWait(page.in_class_sign_status)
-        assert page.in_class_sign_status.text == "保存成功"
+        PageWait(page.status)
+        assert page.status.text == "保存成功"
 
 
 if __name__ == '__main__':
     # pytest.main()
 
     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement"])
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_add_in_class_record"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement"])

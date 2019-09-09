@@ -61,7 +61,7 @@ class GfyCrmStudentInClassManagement(Page):
     makeup_save = PageElement(
         xpath="//button[@ng-click='addStuCourseInClassRecord()']",
         describe="新增课程上课记录-保存按钮")
-    makeup_status = PageElement(
+    status = PageElement(
         xpath="//div[@class='bootbox-body']",
         describe="新增课程上课记录-保存状态")
     makeup_in_class_status = PageElement(
@@ -70,31 +70,23 @@ class GfyCrmStudentInClassManagement(Page):
 
     # 点名
     teacher_class_list = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
-              "/div/div/div/div[1]/form/div[1]/div[4]/div/select",
-        describe="学员上课管理-老师班级")
+        xpath="//select[@ng-model='stuCourseInClassRecordParam.classId']",
+        describe="学员上课管理-老师班级选择框")
     query_in_class_record = PageElement(
-        css="button.margin-r-5:nth-child(2)",
-        describe="学员上课管理-查询")
+        xpath="//button[@ng-click='loadStuCourseInClassRecordList(1,initPageInfo.pageSize)']",
+        describe="学员上课管理-查询按钮")
     in_class_school_list = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
-              "/div/div/div/div[1]/form/div[1]/div[1]/div/select",
-        describe="学员上课管理-归属校区")
+        xpath="//select[@ng-model='stuCourseInClassRecordParam.schoolId']",
+        describe="学员上课管理-归属校区下拉框")
     in_class_status_list = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
-              "/div/div/div/div[1]/form/div[1]/div[2]/div/select",
-        describe="学员上课管理-状态")
+        xpath="//select[@ng-model='stuCourseInClassRecordParam.status']",
+        describe="学员上课管理-状态下拉框")
     in_class_sign = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]"
-              "/div/div/div/div[1]/div/div/div/div[1]/table"
-              "/tbody/tr[1]/td[8]/span[1]/button[1]",
-        describe="学员上课管理-点名")
+        xpath="//button[@ng-click=\"toEditStuCourseInClassRecord('sign',item)\"]",
+        describe="学员上课管理-点名按钮")
     in_class_sign_save = PageElement(
-        xpath="//*[@id=\"stuClassSign\"]/div/div/div[3]/button[3]",
-        describe="学员上课点名-保存点名")
+        xpath="//button[@ng-click='stuClassSaveStuCourseDetail()']",
+        describe="学员上课点名-保存点名按钮")
     in_class_sign_confirm = PageElement(
-        xpath="/html/body/div[20]/div/div/div[2]/button[2]",
-        describe="学员上课点名-确认点名")
-    in_class_sign_status = PageElement(
-        xpath="/html/body/div[19]/div/div/div[1]/div",
-        describe="学员上课点名-点名状态")
+        xpath="//button[@data-bb-handler='confirm']",
+        describe="学员上课点名-确认点名按钮")
