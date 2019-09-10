@@ -14,7 +14,8 @@ REPORT_DIR = BASE_DIR + "/test_report/"
 ############################
 
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
-driver_type = "chrome"
+# driver_type = "chrome"
+driver_type = "grid"
 
 # 失败重跑次数
 rerun = "3"
@@ -347,11 +348,11 @@ def browser1():
 
     elif driver_type == "grid":
         # 通过远程节点运行  command_executor远程节点地址
-        driver = Remote(command_executor='http://192.168.0.140:5555/wd/hub',
+        driver = Remote(command_executor='http://192.168.0.162:5555/wd/hub',
                         desired_capabilities={
                             "browserName": "chrome",
                         })
-        driver.set_window_size(1920, 1080)
+        driver.maximize_window()
 
     else:
         raise NameError("driver驱动类型定义错误！")
