@@ -104,7 +104,7 @@ class TestStuCourseManagement:
 
     def test_student_select_class(self, browser1, crm_url, supervisor_account, pass_word, class_name):
         """
-        单个学员分班
+        测试单个学员分班
         :param browser1:
         :param crm_url:
         :param supervisor_account:高分云指导督导1账号
@@ -144,7 +144,7 @@ class TestStudentClassManagement:
 
     def test_in_class(self, browser1, class_name, school_name):
         """
-        上课点名
+        测试上课点名
         :return:
         """
         in_class(browser1, class_name, school_name)

@@ -367,55 +367,6 @@ class TestCustomerAdd:
         # 判断新增客户是否成功
         assert page.cust_name.text == connect_db
 
-    # def test_import_customer(self, browser1, crm_url, pass_word, template_dir, supervisor_account):
-    #     """
-    #     我的客户-导入客户：新招生
-    #     :param browser1:
-    #     :param crm_url:
-    #     :param pass_word:
-    #     :param template_dir:
-    #     :param supervisor_account:
-    #     :return:
-    #     """
-    #     page = GfyCrmAddCustomer(browser1)
-    #     login(crm_url, browser1, supervisor_account, pass_word)
-    #     PageWait(page.cust_manger)
-    #     page.cust_manger.click()
-    #     PageWait(page.my_cust)
-    #     page.my_cust.click()
-    #     PageWait(page.import_customer_btn)
-    #     page.import_customer_btn.click()
-    #     PageWait(page.import_customer_school)
-    #     PageSelect(page.import_customer_school, text="高分云")
-    #     PageWait(page.import_customer_school_name)
-    #     page.import_customer_school_name.click()
-    #     PageWait(page.pub_school_list)
-    #     page.pub_school_list.send_keys("四基初级中学")
-    #     page.pub_school_query.click()
-    #     PageWait(page.pub_school_choice)
-    #     page.pub_school_choice.click()
-    #     PageWait(page.import_customer_info_name)
-    #     page.import_customer_info_name.click()
-    #     PageWait(page.cust_activity_type)
-    #     PageSelect(page.cust_activity_type, text="新单招生")
-    #     page.cust_activity_name.send_keys("高分云信息单")
-    #     page.cust_activity_query.click()
-    #     sleep(1)
-    #     page.cust_activity_selected.click()
-    #     PageWait(page.import_customer_select_files)
-    #     page.import_customer_select_files.click()
-    #     sleep(2)
-    #     # 执行上传文件的程序
-    #     # win32api.ShellExecute(0, 'open', template_dir, '', '', 0)
-    #     template_path = os.path.abspath("..")
-    #     # 拼接上传文件脚本地址
-    #     template_dir_path = template_path + template_dir
-    #     os.system(template_dir_path)
-    #     PageWait(page.import_customer_postfiles)
-    #     sleep(10)
-    #     page.import_customer_postfiles.click()
-    #     # assert 断言
-
     def test_split_customer(self, browser1, adviser_account):
         """
         测试单个客户分单
@@ -458,80 +409,6 @@ class TestCustomerAdd:
         page.convert_success_button.click()
 
 
-# class TestCustInfo:
-#     """
-#     辅导招生（邀约、到会、促成、回收）
-#     """
-#
-#     def test_cust_invite(self, crm_url, browser1, connect_db, pass_word, audio_dir,
-#     comm_content, Remark, supervisor_account):
-#         """
-#         邀约-有效沟通、承诺到会
-#         :param crm_url:
-#         :param browser1:
-#         :param connect_db:
-#         :param pass_word:
-#         :param audio_dir:
-#         :param comm_content:
-#         :param Remark:
-#         :return:
-#         """
-#         page = GfyCrmAddCustomer(browser1)
-#         page_com = CustRecruitStudents(browser1)
-#         login(crm_url, browser1, supervisor_account, pass_word)
-#         PageWait(page.cust_manger)
-#         page.cust_manger.click()
-#         PageWait(page.my_cust)
-#         page.my_cust.click()
-#         PageWait(page.cust_name)
-#         page.cust_name.click()
-#         PageWait(page_com.cust_communicate_switch_tab)
-#         page_com.cust_communicate_switch_tab.click()
-#         PageWait(page_com.cust_communicate_add)
-#         page_com.cust_communicate_add.click()
-#         PageWait(page_com.cust_communicate_responsible_personal_name)
-#         page_com.cust_communicate_responsible_personal_name.click()
-#         PageWait(page_com.cust_communicate_responsible_personal_department)
-#         PageSelect(page_com.cust_communicate_responsible_personal_department, text="高分云顾问部")
-#         page_com.cust_communicate_responsible_personal_query.click()
-#         sleep(1)
-#         page_com.cust_communicate_responsible_personal_selected.click()
-#         PageWait(page_com.cust_communicate_content)
-#         # 获取动态id
-#         content_id = page_com.cust_communicate_content.get_attribute("id")
-#         set_content(browser1, content_id, comm_content)
-#         sleep(1)
-#         audio_upload(browser1, audio_dir)
-#         sleep(5)
-#         page_com.cust_communicate_visit_date.click()
-#         PageWait(page.customer_create_account_birthday_today)
-#         page.customer_create_account_birthday_today.click()
-#         PageWait(page_com.cust_communicate_remark)
-#         page_com.cust_communicate_remark.send_keys(Remark)
-#         page_com.cust_communicate_enable.click()
-#         PageWait(page_com.cust_communicate_status)
-#         assert page_com.cust_communicate_status.text == Remark
-#
-#     def test_cust_meeting(self, browser1, crm_url, supervisor_account):
-#         page = CustRecruitStudents(browser1)
-#         PageWait(page.cust_meeting_swtich_tab)
-#         page.cust_meeting_swtich_tab.click()
-#         PageWait(page.cust_meeting_add)
-#         page.cust_meeting_add.click()
-#         PageWait(page.cust_meeting_user)
-#         page.cust_meeting_user.click()
-#         PageWait(page.cust_communicate_responsible_personal_department)
-#         PageSelect(page.cust_communicate_responsible_personal_department, text="高分云顾问部")
-#         sleep(1)
-#         page.cust_communicate_responsible_personal_selected.click()
-#         PageWait(page.cust_meeting_parent_list)
-#         PageSelect(page.cust_meeting_parent_list, text="父亲")
-#         page.cust_meeting_confirm_save.click()
-#         PageWait(page.cust_meeting_confirm_person)
-#         # 通过确认人断言是否到会
-#         assert page.cust_meeting_confirm_person.text == supervisor_account
-
-
 class TestCustomerAddOrder:
     """
     客户新建订单和支付订单、未上课退费
@@ -539,7 +416,7 @@ class TestCustomerAddOrder:
 
     def test_add_new_order(self, crm_url, browser1, adviser_name, course, pass_word, supervisor_account):
         """
-        创建订单-新单招生
+        测试创建订单-新单招生
         :param crm_url:
         :param browser1:
         :param adviser_name:
@@ -559,7 +436,7 @@ class TestCustomerAddOrder:
 
     def test_pay_new_order(self, browser1):
         """
-        支付订单：添加优惠-添加支付-添加其他费用-添加分成对象
+        测试支付订单：添加优惠-添加支付-添加其他费用-添加分成对象
         :param browser1:
         :return:
         """
@@ -574,7 +451,7 @@ class TestCustomerAddOrder:
 
     def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks):
         """
-        未分班退费
+        测试未分班退费
         :param browser1:
         :param crm_url:
         :return:TestCustomerAddOrder
@@ -636,7 +513,6 @@ class TestCustomerAddOrder:
 
 
 if __name__ == '__main__':
-
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustAdd::test_create_account"])
