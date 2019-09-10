@@ -217,6 +217,12 @@ def pay_new_order(driver):
 
 
 def refund_apply(driver, remarks):
+    """
+    订单退费
+    :param driver:
+    :param remarks:
+    :return:
+    """
     menu_page = GfyMenu(driver)
     order_page = GfyCustAddOrder(driver)
     sleep(1)

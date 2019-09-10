@@ -48,9 +48,6 @@ s_account = "高分云指导督导1"
 # 密码
 password = '123456'
 
-# 录音上传程序路径
-audio_script_dir = r"G:\pyautoTest-crm\scripts\audio_upload.exe"
-
 # 沟通信息内容
 communicate_content = "电话联系，以阅读解题技巧和数学解答题解题技巧约来，明天下午2点钟"
 
@@ -151,12 +148,6 @@ def pass_word():
     global password
     return password
 
-
-# 沟通信息录音上传
-@pytest.fixture(scope='function')
-def audio_dir():
-    global audio_script_dir
-    return audio_script_dir
 
 
 # 沟通内容
