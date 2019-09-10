@@ -364,7 +364,6 @@ class TestCustomerAdd:
         add_customer(browser1, connect_db, phone_number)
         page = GfyCrmAddCustomer(browser1)
         sleep(2)
-        # 判断新增客户是否成功
         assert page.cust_name.text == connect_db
 
     def test_split_customer(self, browser1, adviser_account):
