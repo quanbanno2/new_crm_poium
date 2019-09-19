@@ -23,6 +23,9 @@ class GfyMenu(Page):
     student_class_management = PageElement(
         xpath="//li[@ng-click=\"switchModule('stuClass')\"]",
         describe="菜单页面-学员管理-学员上课管理")
+    student_makeup_management = PageElement(
+        xpath="//i[@class='fa fa-calendar-plus-o']",
+        describe="菜单页面-学员管理-学员补课管理")
     finance_menu = PageElement(
         xpath="//i[@class='fa fa-pie-chart']",
         describe="菜单-财务管理按钮")

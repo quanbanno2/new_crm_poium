@@ -5,24 +5,10 @@ class GfyCrmAddCustomer(Page):
     """
     crm 增加客户、客户分单、转为学员
     """
-    login_input = PageElement(
-        xpath="//input[@name='username']",
-        describe="登录界面-账号输入框")
-    pwd_input = PageElement(
-        xpath="//input[@name='password']",
-        describe="登录界面-密码输入框")
-    verification_code = PageElement(
-        xpath="//b[@ng-click='createCode()']",
-        describe="验证码")
-    code_input = PageElement(
-        xpath="//input[@name='verify']",
-        describe="验证码输入框")
-    enter = PageElement(
-        xpath="//button[@name='submit']",
-        describe="登录按钮")
-    account_name = PageElement(
-        xpath="//span[@class='hidden-xs ng-binding']",
-        describe="信息栏-左上角用户名称")
+    # 客户列表
+    customer_list_school_list = PageElement(
+        xpath="//select[@ng-model='custInfoParam.schoolId']",
+        describe="我的客户-归属校区")
     # 新增客户
     add_cust = PageElement(
         xpath="//button[@ng-click=\"toEditCustInfo('newCust')\"]",
@@ -49,9 +35,18 @@ class GfyCrmAddCustomer(Page):
         xpath="//button[@ng-disabled=\"custInfoDialogType==='detail'\"]",
         describe='客户来源按钮')
     # 活动列表
+    activity_school = PageElement(
+        xpath="//select[@ng-model='parentActivityParam.schoolId']",
+        describe="活动列表-所属校区")
     activity_type = PageElement(
-        xpath="//select[@ng-model='parentActivityParam.activityType']",
+        xpath="//div[@ng-model='parentActivityParam.activityType']/div/button[@ng-click='gfySelectOpen()']",
         describe='活动列表-活动类型')
+    activity_type_search = PageElement(
+        xpath="//*[@id=\"marActivityListDialog\"]/div/div/div[2]/form/div[1]/div[2]/div/div[2]/div/div/input",
+        describe="活动列表-活动类型检索")
+    activity_type_result = PageElement(
+        xpath="//button[@title='新单招生']",
+        describe="活动列表-活动类型检索结果")
     activity_name = PageElement(
         xpath="//input[@name='activityName']",
         describe='活动列表-活动名称')

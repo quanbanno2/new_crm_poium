@@ -1,6 +1,7 @@
 import os
 import pytest
 import pymysql
+import datetime
 from py.xml import html
 from selenium import webdriver
 from selenium.webdriver import Remote
@@ -14,8 +15,8 @@ REPORT_DIR = BASE_DIR + "/test_report/"
 ############################
 
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
-# driver_type = "chrome"
-driver_type = "grid"
+driver_type = "chrome"
+# driver_type = "grid"
 
 # 失败重跑次数
 rerun = "3"
@@ -41,10 +42,13 @@ e_name = '指导1'
 e_account = '高分云指导1'
 
 # 手机号
-phone_num = '13437829328'
+phoneNumber = '13437829328'
 
 # 指导督导登录账号
-s_account = "高分云指导督导1"
+supervisorAccount = "高分云指导督导1"
+
+# 高分云辅导督导1账号
+counselingSupervision = "高分云辅导督导1"
 
 # 密码
 password = '123456'
@@ -55,17 +59,26 @@ communicate_content = "电话联系，以阅读解题技巧和数学解答题解
 # 备注内容
 remark = "这是备注内容。"
 
-# 新增订单学员名称
-stu_name = "自动化测试专用学员"
+# # 新增订单学员名称
+# stu_name = "自动化测试专用学员"
 
 # 测试班级名称（班主任：高分云指导1，初一）
-c_name = "测试自动化专用班级"
+className = "测试自动化专用班级"
+
+# 补课用班级名称（班主任：高分云指导1，初一）
+makeUpClass = "自动化测试补课班"
 
 # 高分云校区
-s_name = "高分云"
+schoolName = "高分云"
 
 # 客户生日
-cust_birth = "1991/10/25"
+customerBirthday = "1991/10/25"
+
+# 获取当前时间少1小时
+inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%Y/%m/%d %H:%M:%S")
+
+# 学员姓名
+studentName = "自动化测试学生"
 
 
 ############################
@@ -77,7 +90,6 @@ def connect_db():
     连接集成数据库得出客户***,返回集成数据库最新"客户"***+1的名称
     :return:
     """
-    # global clinetname
     db = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
                          'edu_test_user',
                          'Quanlang_edu_test')
@@ -119,8 +131,8 @@ def questions():
 
 @pytest.fixture(scope='function')
 def phone_number():
-    global phone_num
-    return phone_num
+    global phoneNumber
+    return phoneNumber
 
 
 @pytest.fixture(scope='function')
@@ -150,7 +162,6 @@ def pass_word():
     return password
 
 
-
 # 沟通内容
 @pytest.fixture(scope='function')
 def comm_content():
@@ -168,22 +179,22 @@ def remarks():
 # 督导登录账号
 @pytest.fixture(scope='function')
 def supervisor_account():
-    global s_account
-    return s_account
+    global supervisorAccount
+    return supervisorAccount
 
 
-# 新增订单专用学员账号
-@pytest.fixture(scope='function')
-def student_name():
-    global stu_name
-    return stu_name
+# # 新增订单专用学员账号
+# @pytest.fixture(scope='function')
+# def student_name():
+#     global stu_name
+#     return stu_name
 
 
 # 测试用班级名称
 @pytest.fixture(scope='function')
 def class_name():
-    global c_name
-    return c_name
+    global className
+    return className
 
 
 # 指导老师名称
@@ -203,15 +214,43 @@ def education_account():
 # 高分云校区
 @pytest.fixture(scope='function')
 def school_name():
-    global s_name
-    return s_name
+    global schoolName
+    return schoolName
 
 
 # 客户生日
 @pytest.fixture(scope='function')
 def customer_birthday():
-    global cust_birth
-    return cust_birth
+    global customerBirthday
+    return customerBirthday
+
+
+# 请假时间
+@pytest.fixture(scope='function')
+def in_class_time():
+    global inClassTime
+    return inClassTime
+
+
+# 学员姓名
+@pytest.fixture(scope='function')
+def student_name():
+    global studentName
+    return studentName
+
+
+# 补课班级名称
+@pytest.fixture(scope='function')
+def make_up_class():
+    global makeUpClass
+    return makeUpClass
+
+
+# 高分云辅导督导1名称
+@pytest.fixture(scope='function')
+def counseling_supervision():
+    global counselingSupervision
+    return counselingSupervision
 
 
 #####################

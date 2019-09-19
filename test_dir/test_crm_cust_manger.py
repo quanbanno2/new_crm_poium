@@ -1,5 +1,5 @@
 import sys
-import os
+# import os
 import pytest
 from time import sleep
 from os.path import dirname, abspath
@@ -7,6 +7,7 @@ from page.crm_cust_manger_page import GfyCrmAddCustomer, GfyCustAddOrder
 from page.crm_home_page import GfyHomePage
 from page.crm_menu_page import GfyMenu
 from page.crm_finance_page import GfyRefundInfo
+from page.crm_login_page import GfyLogin
 from poium import PageWait, PageSelect
 from _pydecimal import Context, ROUND_HALF_UP
 
@@ -22,7 +23,7 @@ def login(url, driver, account, password):
     :param password:
     :return:
     """
-    page = GfyCrmAddCustomer(driver)
+    page = GfyLogin(driver)
     page.get(url)
     page.login_input.send_keys(account)
     page.pwd_input.send_keys(password)
@@ -56,8 +57,7 @@ def add_customer(driver, customer_name, phone_number):
     PageWait(page.grade)
     PageSelect(page.grade, value='string:G09')
     page.cust_activity.click()
-    PageWait(page.activity_type)
-    PageSelect(page.activity_type, value='string:T01')
+    sleep(1)
     page.activity_name.send_keys('高分云信息单')
     page.activity_query.click()
     sleep(1)
@@ -66,15 +66,19 @@ def add_customer(driver, customer_name, phone_number):
     page.add_customer_save.click()
 
 
-def split_customer(driver, adviser_name):
+def split_customer(driver, adviser_name, school_name):
     """
     单个学员分单
     :param driver:
     :param adviser_name:
+    :param school_name:
     :return:
     """
     page = GfyCrmAddCustomer(driver)
+    PageSelect(page.customer_list_school_list, text=school_name)
+    sleep(1)
     page.cust_check.click()
+    sleep(1)
     page.cust_split.click()
     PageWait(page.teacher_list_login_name)
     page.teacher_list_login_name.send_keys(adviser_name)
@@ -85,27 +89,32 @@ def split_customer(driver, adviser_name):
     page.confirm_split.click()
 
 
-def convert_student(driver):
+def convert_student(driver, school_name):
     """
     单个客户转为学员
     :param driver:
+    :param school_name:
     :return:
     """
     page = GfyCrmAddCustomer(driver)
+    PageSelect(page.customer_list_school_list, text=school_name)
     sleep(1)
     page.convert_to_student.click()
     sleep(1)
     page.confirm_btn.click()
 
 
-def create_account(driver, password):
+def create_account(driver, password, school_name):
     """
     客户详情创建教学帐号绑定
     :param driver:
     :param password:
+    :param school_name:
     :return:
     """
     page = GfyCrmAddCustomer(driver)
+    PageSelect(page.customer_list_school_list, text=school_name)
+    sleep(1)
     account_name = page.first_student_name.text
     page.first_student_name.click()
     sleep(1)
@@ -127,15 +136,16 @@ def create_account(driver, password):
     sleep(1)
 
 
-def add_new_order(driver, url, login_name, password, consultant, course_name):
+def add_new_order(driver, url, login_name, password, consultant, course_name, school_name):
     """
     客户创建订单
     :param driver:
     :param url:
-    :param login_name: 登录名称
-    :param password: 登录密码
-    :param consultant: 顾问老师名称
-    :param course_name: 课程名称
+    :param login_name:
+    :param password:
+    :param consultant:分成对象
+    :param course_name:
+    :param school_name:
     :return:
     """
     customer_page = GfyCrmAddCustomer(driver)
@@ -145,6 +155,8 @@ def add_new_order(driver, url, login_name, password, consultant, course_name):
     menu_page.customer_management.click()
     sleep(1)
     menu_page.my_customer.click()
+    sleep(1)
+    PageSelect(customer_page.customer_list_school_list, text=school_name)
     sleep(1)
     customer_page.cust_name.click()
     order_page = GfyCustAddOrder(driver)
@@ -334,7 +346,7 @@ def set_content_by_name(driver, content_name, text):
     driver.execute_script(js)
 
 
-class TestCustomerAdd:
+class TestLogin:
 
     def test_login(self, crm_url, browser1, pass_word, supervisor_account):
         """
@@ -345,12 +357,19 @@ class TestCustomerAdd:
         :param supervisor_account:
         :return:
         """
-        page = GfyCrmAddCustomer(browser1)
+        page = GfyLogin(browser1)
         login(crm_url, browser1, supervisor_account, pass_word)
         PageWait(page.account_name)
         assert page.account_name.text == "高分云指导督导1"
 
-    def test_add_customer(self, crm_url, browser1, connect_db, phone_number, pass_word, supervisor_account):
+
+class TestCustomerAdd:
+    """
+    客户管理模块测试
+    """
+
+    def test_add_customer(self, crm_url, browser1, connect_db, phone_number, pass_word, counseling_supervision,
+                          school_name):
         """
         测试新增客户：新招生
         :param crm_url:
@@ -358,49 +377,55 @@ class TestCustomerAdd:
         :param connect_db:
         :param phone_number:
         :param pass_word:
-        :param supervisor_account:
+        :param counseling_supervision:
+        :param school_name:
         :return:
         """
+        login(crm_url, browser1, counseling_supervision, pass_word)
         add_customer(browser1, connect_db, phone_number)
         page = GfyCrmAddCustomer(browser1)
+        PageSelect(page.customer_list_school_list, text=school_name)
         sleep(2)
         assert page.cust_name.text == connect_db
 
-    def test_split_customer(self, browser1, adviser_account):
+    def test_split_customer(self, browser1, adviser_account, school_name):
         """
         测试单个客户分单
         :param browser1:
         :param adviser_account:
+        :param school_name:
         :return:
         """
-        split_customer(browser1, adviser_account)
+        split_customer(browser1, adviser_account, school_name)
         page = GfyCrmAddCustomer(browser1)
         sleep(2)
         page.checkbox_split_count.click()
         PageWait(page.split_count)
         assert page.split_count.text == "1"
 
-    def test_convert_student(self, browser1):
+    def test_convert_student(self, browser1, school_name):
         """
         测试单个转为学员
         :param browser1:
+        :param school_name:
         :return:
         """
-        convert_student(browser1)
+        convert_student(browser1, school_name)
         page = GfyCrmAddCustomer(browser1)
         sleep(1)
         assert page.convert_success_text.text == '成功转为学员'
         page.convert_success_button.click()
         sleep(1)
 
-    def test_create_account(self, browser1, pass_word):
+    def test_create_account(self, browser1, pass_word, school_name):
         """
         测试创建客户教学账号
         :param browser1:
         :param pass_word:
+        :param school_name:
         :return:
         """
-        create_account(browser1, pass_word)
+        create_account(browser1, pass_word, school_name)
         page = GfyCrmAddCustomer(browser1)
         assert page.customer_create_account_save_status.text == "保存成功"
         sleep(1)
@@ -413,7 +438,7 @@ class TestCustomerAddOrder:
     客户新建订单和支付订单、未上课退费
     """
 
-    def test_add_new_order(self, crm_url, browser1, adviser_name, course, pass_word, supervisor_account):
+    def test_add_new_order(self, crm_url, browser1, adviser_name, course, pass_word, supervisor_account, school_name):
         """
         测试创建订单-新单招生
         :param crm_url:
@@ -425,7 +450,7 @@ class TestCustomerAddOrder:
         :return:
         """
         order_page = GfyCustAddOrder(browser1)
-        add_new_order(browser1, crm_url, supervisor_account, pass_word, adviser_name, course)
+        add_new_order(browser1, crm_url, supervisor_account, pass_word, adviser_name, course, school_name)
         sleep(1)
         order_status_text = order_page.order_status.text
         sleep(1)
@@ -517,6 +542,6 @@ if __name__ == '__main__':
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustAdd::test_create_account"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
