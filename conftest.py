@@ -25,7 +25,7 @@ rerun = "3"
 cases_path = "./test_dir/"
 
 # 配置运行的 URL
-burl = "http://gaofenyun.com:8073/crm-web/login.html"
+crmUrl = "http://gaofenyun.com:8073/crm-web/login.html"
 
 # 配置测试客户问题
 question = "测试问题1"
@@ -34,12 +34,12 @@ question = "测试问题1"
 course_name = "自动化专用语文智慧月课"
 
 # 辅导老师
-a_name = '辅导1'
-a_account = '高分云辅导1'
+adviserName = '辅导1'
+adviserAccount = '高分云辅导1'
 
 # 指导老师
-e_name = '指导1'
-e_account = '高分云指导1'
+educationName = '指导1'
+educationAccount = '高分云指导1'
 
 # 手机号
 phoneNumber = '13437829328'
@@ -85,7 +85,7 @@ studentName = "自动化测试学生"
 
 
 @pytest.fixture(scope='session')
-def connect_db():
+def new_student_name():
     """
     连接集成数据库得出客户***,返回集成数据库最新"客户"***+1的名称
     :return:
@@ -113,8 +113,8 @@ def connect_db():
 # 定义基本测试环境
 @pytest.fixture(scope='function')
 def crm_url():
-    global burl
-    return burl
+    global crmUrl
+    return crmUrl
 
 
 @pytest.fixture(scope='function')
@@ -144,15 +144,15 @@ def course():
 # 辅导老师名称
 @pytest.fixture(scope='function')
 def adviser_name():
-    global a_name
-    return a_name
+    global adviserName
+    return adviserName
 
 
 # 辅导老师账号
 @pytest.fixture(scope='function')
 def adviser_account():
-    global a_account
-    return a_account
+    global adviserAccount
+    return adviserAccount
 
 
 # 登录密码
@@ -200,15 +200,15 @@ def class_name():
 # 指导老师名称
 @pytest.fixture(scope='function')
 def education_name():
-    global e_name
-    return e_name
+    global educationName
+    return educationName
 
 
 # 指导老师账号
 @pytest.fixture(scope='function')
 def education_account():
-    global e_account
-    return e_account
+    global educationAccount
+    return educationAccount
 
 
 # 高分云校区

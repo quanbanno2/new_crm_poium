@@ -31,11 +31,11 @@ def student_select_class(driver, url, login_name, password, class_name):
     page.undivided_student.click()
     PageWait(page.student_select_class)
     page.student_select_class.click()
-    PageWait(page.sch_course_class_search_classname)
-    page.sch_course_class_search_classname.send_keys(class_name)
-    page.sch_course_class_search_classname_button.click()
-    PageWait(page.sch_course_class_search_classname_confirm)
-    page.sch_course_class_search_classname_confirm.click()
+    PageWait(page.sch_course_class_search_class_name)
+    page.sch_course_class_search_class_name.send_keys(class_name)
+    page.sch_course_class_search_class_name_button.click()
+    PageWait(page.sch_course_class_search_class_name_confirm)
+    page.sch_course_class_search_class_name_confirm.click()
 
 
 def add_in_class_record(driver, school_name, class_name, in_class_time):

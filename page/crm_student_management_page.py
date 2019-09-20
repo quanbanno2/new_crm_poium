@@ -12,13 +12,13 @@ class GfyCrmStudentCourseManagement(Page):
     student_select_class = PageElement(
         xpath="//button[@ng-click='openClassSelectDialog(item)']",
         describe="学员课程管理-未分班学员-分配班级按钮")
-    sch_course_class_search_classname = PageElement(
+    sch_course_class_search_class_name = PageElement(
         xpath="//input[@ng-model='schCourseClassRelationSearch.className']",
         describe="上课班级-班级名称输入框")
-    sch_course_class_search_classname_button = PageElement(
+    sch_course_class_search_class_name_button = PageElement(
         xpath="//button[@ng-click='saveStuOrderCourseUndivided(item)']",
         describe="上课班级-选定班级")
-    sch_course_class_search_classname_confirm = PageElement(
+    sch_course_class_search_class_name_confirm = PageElement(
         xpath="//button[@data-bb-handler='confirm']",
         describe="上课班级-确认分配")
     student_select_class_status = PageElement(

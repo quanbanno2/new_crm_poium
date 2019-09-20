@@ -1,19 +1,19 @@
 from poium import Page, PageElement
 
 
-class GfyCrmAddCustomer(Page):
+class GfyCrmCustomerManagement(Page):
     """
-    crm 增加客户、客户分单、转为学员
+    crm 增加客户、客户分单、转为学员、客户回收
     """
     # 客户列表
     customer_list_school_list = PageElement(
         xpath="//select[@ng-model='custInfoParam.schoolId']",
         describe="我的客户-归属校区")
     # 新增客户
-    add_cust = PageElement(
+    add_customer = PageElement(
         xpath="//button[@ng-click=\"toEditCustInfo('newCust')\"]",
         describe="客户管理-新增客户按钮")
-    add_cust_name = PageElement(
+    add_customer_name = PageElement(
         xpath="//input[@ng-model='custInfoDialog.custName']",
         describe='新增客户名称')
     school_name = PageElement(
@@ -31,22 +31,13 @@ class GfyCrmAddCustomer(Page):
     grade = PageElement(
         xpath="//select[@ng-change=\"custInfoDialog.className=''\"]",
         describe="年级选择框")
-    cust_activity = PageElement(
+    customer_activity = PageElement(
         xpath="//button[@ng-disabled=\"custInfoDialogType==='detail'\"]",
         describe='客户来源按钮')
     # 活动列表
     activity_school = PageElement(
         xpath="//select[@ng-model='parentActivityParam.schoolId']",
         describe="活动列表-所属校区")
-    activity_type = PageElement(
-        xpath="//div[@ng-model='parentActivityParam.activityType']/div/button[@ng-click='gfySelectOpen()']",
-        describe='活动列表-活动类型')
-    activity_type_search = PageElement(
-        xpath="//*[@id=\"marActivityListDialog\"]/div/div/div[2]/form/div[1]/div[2]/div/div[2]/div/div/input",
-        describe="活动列表-活动类型检索")
-    activity_type_result = PageElement(
-        xpath="//button[@title='新单招生']",
-        describe="活动列表-活动类型检索结果")
     activity_name = PageElement(
         xpath="//input[@name='activityName']",
         describe='活动列表-活动名称')
@@ -63,13 +54,13 @@ class GfyCrmAddCustomer(Page):
     add_customer_save = PageElement(
         xpath="//button[@ng-show=\"custInfoDialogType==='edit'||custInfoDialogType==='add'\"]",
         describe='订单创建保存按钮')
-    cust_name = PageElement(
+    customer_name = PageElement(
         xpath="//a[@ng-click='selectCust(item)'][1]",
         describe='我的客户-客户管理列表排第一的客户名称')
-    cust_check = PageElement(
+    customer_check = PageElement(
         xpath="//input[@ng-model='item.selectState']",
         describe="我的客户-勾选第一个客户")
-    cust_split = PageElement(
+    customer_split = PageElement(
         xpath="//button[@ng-click=\"$parent.openTeacherDialog(toAllotOrder,'')\"]",
         describe="分单按钮")
     # 机构老师列表
@@ -100,7 +91,7 @@ class GfyCrmAddCustomer(Page):
         describe="客户管理列表-第一名客户转为学员按钮")
     confirm_btn = PageElement(
         xpath="//button[@data-bb-handler='confirm']",
-        describe="确认转为学员按钮")
+        describe="确认按钮")
     convert_success_button = PageElement(
         xpath='//button[@data-bb-handler="ok"]',
         describe="转换成功确认按钮")
@@ -150,16 +141,40 @@ class GfyCrmAddCustomer(Page):
         xpath="/html/body/div[20]/div/div/div[1]/h4/h3",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-保存状态")
 
+    # 客户回收
+    customer_recovery = PageElement(
+        xpath="//button[@ng-click='allotRecovery(item)']",
+        describe="我的客户-回收按钮")
+    customer_recovery_status = PageElement(
+        xpath="//strong[text()='保存成功']",
+        describe="回收成功状态")
+    customer_teacher = PageElement(
+        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[1]"
+              "/div/div[2]/div/div[1]/table/tbody/tr[1]/td[9]",
+        describe="我的客户-第一个客户的主跟进人名称")
+    customer_recovery_date_button = PageElement(
+        xpath="//span[text()='回收时间']",
+        describe="回收时间勾选按钮")
+    customer_recovery_teacher_button = PageElement(
+        xpath="//span[text()='回收跟进人']",
+        describe="回收跟进人勾选按钮")
+    customer_recovery_date = PageElement(
+        xpath="//td[@ng-if=\"customerColShow['回收时间']\"]",
+        describe="我的客户-第一位客户回收时间")
+    customer_recovery_teacher = PageElement(
+        xpath="//td[@ng-if=\"customerColShow['回收跟进人']\"]",
+        describe="我的客户-第一位客户回收跟进人")
 
-class GfyCustAddOrder(Page):
+
+class GfyCustomerAddOrder(Page):
     """
     新增订单（新建、支付）
     条件：新建客户
     """
-    cust_order_info = PageElement(
+    customer_order_info = PageElement(
         xpath="//a[@ng-click=\"switchTab('StuOrderInfo','student')\"]",
         describe='我的客户-查看客户综合信息-学员订单')
-    cust_order_add = PageElement(
+    customer_order_add = PageElement(
         xpath="//button[@ng-click=\"toStuOrderDetail('orderNew')\"]",
         describe='我的客户-查看客户综合信息-学员订单-新增')
     order_sharing_object_select = PageElement(
@@ -171,10 +186,10 @@ class GfyCustAddOrder(Page):
     order_select_course = PageElement(
         xpath="//button[@ng-click='toStuSelectCourse()']",
         describe='创建订单-订单课程列表 -添加课程')
-    order_select_coursename = PageElement(
+    order_select_course_name = PageElement(
         xpath="//input[@ng-model='stuSchCourseParam.courseName']",
         describe='创建订单-订单课程列表 -添加课程-课程名称输入框')
-    order_select_coursename_query = PageElement(
+    order_select_course_name_query = PageElement(
         xpath="//button[@ng-click='stuLoadSchCourseList()']",
         describe='创建订单-订单课程列表 -添加课程-查询按钮')
     order_select_course_btn = PageElement(
