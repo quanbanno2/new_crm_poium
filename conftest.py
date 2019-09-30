@@ -31,7 +31,7 @@ crmUrl = "http://gaofenyun.com:8073/crm-web/login.html"
 question = "测试问题1"
 
 # 测试课程名称
-course_name = "自动化专用语文智慧月课"
+course_name = "自动化专用语文培优次课"
 
 # 辅导老师
 adviserName = '辅导1'
@@ -74,8 +74,11 @@ schoolName = "高分云"
 # 客户生日
 customerBirthday = "1991/10/25"
 
-# 获取当前时间少1小时
-inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%Y/%m/%d %H:%M:%S")
+# 补课时间-当前时间加1小时
+makeUpTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%Y/%m/%d %H:%M:%S")
+
+# 上课时间/请假时间-当前时间
+inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d %H:%M:%S")
 
 # 学员姓名
 studentName = "自动化测试学生"
@@ -225,7 +228,13 @@ def customer_birthday():
     return customerBirthday
 
 
-# 请假时间
+# 补课时间
+@pytest.fixture(scope='function')
+def make_up_time():
+    global makeUpTime
+    return makeUpTime
+
+# 上课时间
 @pytest.fixture(scope='function')
 def in_class_time():
     global inClassTime

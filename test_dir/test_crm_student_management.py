@@ -48,6 +48,7 @@ def add_in_class_record(driver, school_name, class_name, in_class_time):
     :return:
     """
     page = GfyCrmStudentInClassManagement(driver)
+    sleep(1)
     page.add_in_class_record.click()
     sleep(1)
     # 清除readonly属性
@@ -123,10 +124,12 @@ def make_up(driver, student_name):
     :return:
     """
     makeup_page = GfyCrmStudentInClassManagement(driver)
-    PageWait(makeup_page.make_up_student_name)
+    sleep(1)
     makeup_page.make_up_student_name.send_keys(student_name)
     sleep(1)
     makeup_page.query_makeup_student.click()
+    sleep(1)
+    makeup_page.plan_student_makeup.click()
     sleep(1)
     makeup_page.makeup_select_class.click()
 
@@ -181,6 +184,7 @@ class TestStudentClassManagement:
         sleep(1)
         add_in_class_record(browser1, school_name, class_name, in_class_time)
         page = GfyCrmStudentInClassManagement(browser1)
+        # 保存成功状态，由于成功状态元素显示时间很短
         PageWait(page.status)
         assert page.status.text == "保存成功"
         page.ok_button.click()
@@ -208,6 +212,7 @@ class TestStudentClassManagement:
         :param browser1:
         :param school_name:
         :param class_name:
+        :param in_class_time:
         :return:
         """
         leave_page = GfyCrmStudentInClassManagement(browser1)
@@ -231,18 +236,36 @@ class TestStudentClassManagement:
         assert leave_page.status.text == "请假保存成功"
         sleep(1)
         leave_page.ok_button.click()
+        sleep(1)
+        # 删除上课记录
+        leave_page.del_in_class_record.click()
 
-    def test_make_up(self, browser1, crm_url, education_account, pass_word, school_name, make_up_class, in_class_time,
+    def test_make_up(self, browser1, crm_url, education_account, pass_word, school_name, make_up_class, make_up_time,
                      student_name):
-        make_up_page = GfyCrmStudentInClassManagement(browser1)
+        """
+        测试补课
+        :param browser1:
+        :param crm_url:
+        :param education_account:
+        :param pass_word:
+        :param school_name:
+        :param make_up_class:
+        :param make_up_time:
+        :param student_name:
+        :return:
+        """
         login(crm_url, browser1, education_account, pass_word)
         menu_page = GfyMenu(browser1)
         PageWait(menu_page.student_management)
         menu_page.student_management.click()
         PageWait(menu_page.student_class_management)
         menu_page.student_class_management.click()
+        sleep(1)
         # 添加补课记录
-        add_in_class_record(browser1, school_name, make_up_class, in_class_time)
+        add_in_class_record(browser1, school_name, make_up_class, make_up_time)
+        sleep(1)
+        make_up_page = GfyCrmStudentInClassManagement(browser1)
+        make_up_page.ok_button.click()
         sleep(1)
         # 安排补课
         menu_page.student_makeup_management.click()
@@ -263,6 +286,6 @@ class TestStudentClassManagement:
 
 if __name__ == '__main__':
     # pytest.main()
-
     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement"])
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
+                 "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])

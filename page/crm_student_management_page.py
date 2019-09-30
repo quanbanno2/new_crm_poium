@@ -73,6 +73,9 @@ class GfyCrmStudentInClassManagement(Page):
     add_in_class_title = PageElement(
         xpath="//h4[text()='新增课程上课记录']",
         describe="新增课程上课记录title")
+    del_in_class_record = PageElement(
+        xpath="//button[text()='删除']",
+        describe="学员上课管理-删除上课记录按钮")
 
     # 点名
     teacher_class_list = PageElement(

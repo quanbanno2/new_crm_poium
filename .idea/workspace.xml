@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20190919:&#10;1、去除新增客户选择活动类型&#10;2、增加安排补课、补课的定位和脚本">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20190919:&#10;1、客户回收脚本定位&#10;2、优化变量、函数名称">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page/crm_student_management_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_student_management_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStudentClassManagement_test_leave.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStudentClassManagement_test_leave.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStudentClassManagement_test_make_up.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStudentClassManagement_test_make_up.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_crm_cust_manger">
+  <component name="RunManager" selected="Python.test_crm_student_management">
     <configuration name="123" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -352,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568878588052</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="20190919:&#10;1、客户回收脚本定位&#10;2、优化变量、函数名称">
+      <created>1568963617557</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1568963617557</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -427,6 +434,7 @@
     <MESSAGE value="20190910:" />
     <MESSAGE value="20190910:无" />
     <MESSAGE value="20190919:&#10;1、去除新增客户选择活动类型&#10;2、增加安排补课、补课的定位和脚本" />
-    <option name="LAST_COMMIT_MESSAGE" value="20190919:&#10;1、去除新增客户选择活动类型&#10;2、增加安排补课、补课的定位和脚本" />
+    <MESSAGE value="20190919:&#10;1、客户回收脚本定位&#10;2、优化变量、函数名称" />
+    <option name="LAST_COMMIT_MESSAGE" value="20190919:&#10;1、客户回收脚本定位&#10;2、优化变量、函数名称" />
   </component>
 </project>
