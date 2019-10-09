@@ -80,6 +80,9 @@ makeUpTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%
 # 上课时间/请假时间-当前时间
 inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d %H:%M:%S")
 
+# 教务老师生效时间
+educationalEffectTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d")
+
 # 学员姓名
 studentName = "自动化测试学生"
 
@@ -233,6 +236,7 @@ def customer_birthday():
 def make_up_time():
     global makeUpTime
     return makeUpTime
+
 
 # 上课时间
 @pytest.fixture(scope='function')

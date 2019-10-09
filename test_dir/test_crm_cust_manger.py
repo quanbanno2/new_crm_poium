@@ -66,6 +66,39 @@ def add_customer(driver, customer_name, phone_number):
     page.add_customer_save.click()
 
 
+def add_educational(driver, educational_effect_time, educational_account):
+    """
+    添加教务老师
+    :param driver:
+    :param educational_effect_time: 教务老师生效时间
+    :param educational_account: 教务老师登录账号
+    :return:
+    """
+    page = GfyCrmCustomerManagement(driver)
+    page.student_educational.click()
+    sleep(1)
+    page.student_educational_add.click()
+    sleep(1)
+    page.educational_account_name.click()
+    sleep(1)
+    PageSelect(page.teacher_list_school, value="number:24")
+    sleep(1)
+    PageSelect(page.teacher_attribution_department, text="全部")
+    sleep(1)
+    page.teacher_list_login_name.send_keys(educational_account)
+    sleep(1)
+    page.teacher_select.click()
+    sleep(1)
+    js = 'document.getElementsByName("effDate")[0].removeAttribute("readonly");'
+    driver.execute_script(js)
+    sleep(1)
+    page.educational_effect_date.send_keys(educational_effect_time)
+    sleep(1)
+    page.student_educational_save.click()
+    PageWait(page.add_educational_status)
+    assert page.add_educational_status == "新增学员教务老师，保存成功"
+
+
 def split_customer(driver, adviser_name, school_name):
     """
     单个学员分单
@@ -520,7 +553,8 @@ class TestCustomerAddOrder:
         PageWait(order_page.pay_order_leave)
         order_page.pay_order_leave.click()
 
-    def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks):
+    def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks, new_student_name,
+                            phone_number):
         """
         测试未分班退费
         :param browser1:
@@ -530,6 +564,9 @@ class TestCustomerAddOrder:
         # 申请退费
         login(crm_url, browser1, supervisor_account, pass_word)
         order_page = GfyCustomerAddOrder(browser1)
+        # add_customer(browser1, new_student_name, phone_number)
+        # sleep(1)
+        # add_new_order()
         refund_apply_list = refund_apply(browser1, remarks)
         refund_fee_text = refund_apply_list[2]
         order_id_text = refund_apply_list[1]
@@ -590,6 +627,6 @@ if __name__ == '__main__':
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_customer_recovery"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_customer_recovery"])

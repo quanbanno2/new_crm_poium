@@ -3,7 +3,7 @@ from poium import Page, PageElement
 
 class GfyCrmCustomerManagement(Page):
     """
-    crm 增加客户、客户分单、转为学员、客户回收
+    crm 增加客户、客户分单、转为学员、客户回收、新增教务老师
     """
     # 客户列表
     customer_list_school_list = PageElement(
@@ -76,6 +76,10 @@ class GfyCrmCustomerManagement(Page):
     teacher_select = PageElement(
         link_text="选中老师",
         describe="选择老师")
+    teacher_list_school = PageElement(
+        xpath="//select[@ng-model='teacherInfoParam.schoolId']",
+        describe="机构老师列表-归属校区")
+
     ###
     confirm_split = PageElement(
         xpath="//button[@ng-click='allotOrder()']",
@@ -165,10 +169,32 @@ class GfyCrmCustomerManagement(Page):
         xpath="//td[@ng-if=\"customerColShow['回收跟进人']\"]",
         describe="我的客户-第一位客户回收跟进人")
 
+    """
+    新增教务老师
+    """
+    student_educational = PageElement(
+        xpath="//strong[text()='教务老师']",
+        describe="客户综合信息-学员信息-教务老师按钮")
+    student_educational_add = PageElement(
+        xpath="//button[@ng-click=\"eduStudentRelationOpen('add','',studentInfo)\"]",
+        describe="客户综合信息-学员信息-新增教务老师按钮")
+    educational_account_name = PageElement(
+        xpath="//input[@name='educationalAccountName']",
+        describe="学员教务老师-选择教务老师")
+    educational_effect_date = PageElement(
+        xpath="//input[@name='effDate']",
+        describe="学员教务老师-选择生效时间")
+    student_educational_save = PageElement(
+        xpath="//button[@ng-click='eduStudentRelationAdd()']",
+        describe="学员教务老师-保存")
+    add_educational_status = PageElement(
+        xpath="/html/body/div[21]/div/div/div/div/div/strong",
+        describe="学员教务老师新增状态")
+
 
 class GfyCustomerAddOrder(Page):
     """
-    新增订单（新建、支付）
+    新增订单（新建、支付、退费）
     条件：新建客户
     """
     customer_order_info = PageElement(
@@ -260,7 +286,9 @@ class GfyCustomerAddOrder(Page):
         xpath="/html/body/div[19]/div/div/div[3]/button[1]",
         describe="支付成功后留在当前页面按钮")
 
-    # 退费
+    """
+    退费
+    """
     order_detail = PageElement(
         xpath="//i[@class='fa fa-fw fa-search']",
         describe="学员订单管理-第一名学员的订单详情按钮")
