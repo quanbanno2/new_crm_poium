@@ -41,6 +41,10 @@ adviserAccount = '高分云辅导1'
 educationName = '指导1'
 educationAccount = '高分云指导1'
 
+# 教务老师
+educationalAccount = "高分云教务1"
+educationalName = "教务1"
+
 # 手机号
 phoneNumber = '13437829328'
 
@@ -80,7 +84,7 @@ makeUpTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%
 # 上课时间/请假时间-当前时间
 inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d %H:%M:%S")
 
-# 教务老师生效时间
+# 今天日期
 educationalEffectTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d")
 
 # 学员姓名
@@ -216,6 +220,19 @@ def education_account():
     global educationAccount
     return educationAccount
 
+# 教务老师名称
+@pytest.fixture(scope='function')
+def educational_name():
+    global educationalName
+    return educationalName
+
+
+# 教务老师账号
+@pytest.fixture(scope='function')
+def educational_account():
+    global educationalAccount
+    return educationalAccount
+
 
 # 高分云校区
 @pytest.fixture(scope='function')
@@ -243,6 +260,13 @@ def make_up_time():
 def in_class_time():
     global inClassTime
     return inClassTime
+
+
+# 返回今天日期
+@pytest.fixture(scope='function')
+def educational_effect_time():
+    global educationalEffectTime
+    return educationalEffectTime
 
 
 # 学员姓名
