@@ -220,6 +220,7 @@ def education_account():
     global educationAccount
     return educationAccount
 
+
 # 教务老师名称
 @pytest.fixture(scope='function')
 def educational_name():

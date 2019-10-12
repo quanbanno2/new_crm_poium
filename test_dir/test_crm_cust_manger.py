@@ -75,13 +75,11 @@ def add_educational(driver, educational_effect_time, educational_account):
     :return:
     """
     page = GfyCrmCustomerManagement(driver)
-    #
     menu_page = GfyMenu(driver)
     menu_page.customer_management.click()
     sleep(1)
     menu_page.my_customer.click()
     sleep(1)
-    #
     page.first_student_name.click()
     sleep(1)
     page.student_educational.click()
@@ -110,11 +108,11 @@ def add_educational(driver, educational_effect_time, educational_account):
     # assert page.add_educational_status == "新增学员教务老师，保存成功"
 
 
-def split_customer(driver, adviser_name, school_name):
+def split_customer(driver, adviser_account, school_name):
     """
     单个学员分单
     :param driver:
-    :param adviser_name:
+    :param adviser_account:分单目标账号
     :param school_name:
     :return:
     """
@@ -125,7 +123,7 @@ def split_customer(driver, adviser_name, school_name):
     sleep(1)
     page.customer_split.click()
     PageWait(page.teacher_list_login_name)
-    page.teacher_list_login_name.send_keys(adviser_name)
+    page.teacher_list_login_name.send_keys(adviser_account)
     page.teacher_list_query.click()
     PageWait(page.teacher_select)
     page.teacher_select.click()
@@ -180,13 +178,10 @@ def create_account(driver, password, school_name):
     sleep(1)
 
 
-def add_new_order(driver, url, login_name, password, consultant, course_name, school_name):
+def add_new_order(driver, consultant, course_name, school_name):
     """
     客户创建订单
     :param driver:
-    :param url:
-    :param login_name:
-    :param password:
     :param consultant:分成对象
     :param course_name:
     :param school_name:
@@ -194,7 +189,7 @@ def add_new_order(driver, url, login_name, password, consultant, course_name, sc
     """
     customer_page = GfyCrmCustomerManagement(driver)
     menu_page = GfyMenu(driver)
-    login(url, driver, login_name, password)
+    # login(url, driver, login_name, password)
     sleep(1)
     menu_page.customer_management.click()
     sleep(1)
@@ -541,7 +536,8 @@ class TestCustomerAddOrder:
         :return:
         """
         order_page = GfyCustomerAddOrder(browser1)
-        add_new_order(browser1, crm_url, supervisor_account, pass_word, adviser_name, course, school_name)
+        login(crm_url, browser1, supervisor_account, pass_word)
+        add_new_order(browser1, adviser_name, course, school_name)
         sleep(1)
         order_status_text = order_page.order_status.text
         sleep(1)
@@ -561,12 +557,12 @@ class TestCustomerAddOrder:
         PageWait(order_page.pay_order_status)
         assert order_page.pay_order_status.text == "成功"
         assert order_page.pay_order_calculation_status.text == "成功"
-        PageWait(order_page.pay_order_leave)
-        order_page.pay_order_leave.click()
+        PageWait(order_page.ok_button)
+        order_page.ok_button.click()
 
     def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks,
-                            phone_number, adviser_name, course, school_name, educational_effect_time,
-                            educational_account):
+                            phone_number, adviser_name, adviser_account, course, school_name, educational_effect_time,
+                            educational_account, new_student_name, counseling_supervision):
         """
         测试客户退费
         :param browser1:
@@ -574,33 +570,36 @@ class TestCustomerAddOrder:
         :param supervisor_account:
         :param pass_word:
         :param remarks:
-        :param new_student_name:
         :param phone_number:
-        :param adviser_name:分成对象
+        :param adviser_name:
+        :param adviser_account:
         :param course:
         :param school_name:
         :param educational_effect_time:
         :param educational_account:
+        :param new_student_name:
         :return:
         """
         # 申请退费
-        login(crm_url, browser1, supervisor_account, pass_word)
+        login(crm_url, browser1, counseling_supervision, pass_word)
         order_page = GfyCustomerAddOrder(browser1)
         # # 新增客户-新增教务老师-下单-退费
-        # add_customer(browser1, new_student_name, phone_number)
-        # sleep(1)
-        # split_customer(browser1, adviser_account, school_name)
-        # sleep(1)
-        # convert_student(browser1, school_name)
-        # sleep(1)
+        add_customer(browser1, new_student_name, phone_number)
+        sleep(1)
+        split_customer(browser1, adviser_account, school_name)
+        sleep(1)
+        convert_student(browser1, school_name)
+        sleep(1)
+        login(crm_url, browser1, supervisor_account, pass_word)
         add_educational(browser1, educational_effect_time, educational_account)
         sleep(1)
-        add_new_order(browser1, crm_url, supervisor_account, pass_word, adviser_name, course, school_name)
+        login(crm_url, browser1, supervisor_account, pass_word)
+        add_new_order(browser1, adviser_name, course, school_name)
         sleep(1)
-        login(crm_url, browser1, supervisor_account, pass_word)  # 调试
+        login(crm_url, browser1, supervisor_account, pass_word)
         pay_new_order(browser1)
         sleep(1)
-        login(crm_url, browser1, supervisor_account, pass_word)  # 调试
+        login(crm_url, browser1, supervisor_account, pass_word)
         refund_apply_list = refund_apply(browser1, remarks)
         refund_fee_text = refund_apply_list[2]
         order_id_text = refund_apply_list[1]

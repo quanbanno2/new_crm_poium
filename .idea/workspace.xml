@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191009:增加教务老师的元素定位">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191011:调试新增教务老师后退费">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_db_connect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" afterDir="false" />
     </list>
@@ -377,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570618392537</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="20191011:调试新增教务老师后退费">
+      <created>1570766536350</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1570766536350</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -485,6 +494,7 @@
     <MESSAGE value="20190919:&#10;1、客户回收脚本定位&#10;2、优化变量、函数名称" />
     <MESSAGE value="20190930:1、补课流程测试脚本缺陷修复" />
     <MESSAGE value="20191009:增加教务老师的元素定位" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191009:增加教务老师的元素定位" />
+    <MESSAGE value="20191011:调试新增教务老师后退费" />
+    <option name="LAST_COMMIT_MESSAGE" value="20191011:调试新增教务老师后退费" />
   </component>
 </project>

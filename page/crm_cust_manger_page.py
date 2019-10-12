@@ -97,7 +97,7 @@ class GfyCrmCustomerManagement(Page):
         xpath="//button[@data-bb-handler='confirm']",
         describe="确认按钮")
     convert_success_button = PageElement(
-        xpath='//button[@data-bb-handler="ok"]',
+        xpath="//button[@data-bb-handler='ok']",
         describe="转换成功确认按钮")
     convert_success_text = PageElement(
         xpath="//span[@class='text-green']",
@@ -278,10 +278,12 @@ class GfyCustomerAddOrder(Page):
     pay_order_calculation_status = PageElement(
         xpath="//span[@class='text-green'][2]",
         describe='订单支付-支付成功业绩计算状态')
-    pay_order_leave = PageElement(
+    ok_button = PageElement(
         xpath="//button[@data-bb-handler='OK']",
-        describe="订单支付成功-离开当前页面按钮")
-
+        describe="确认按钮")
+    convert_success_confirm = PageElement(
+        xpath="//button[@data-bb-handler='ok']",
+        describe="确认按钮")
     pay_order_stay = PageElement(
         xpath="/html/body/div[19]/div/div/div[3]/button[1]",
         describe="支付成功后留在当前页面按钮")

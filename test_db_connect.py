@@ -1,8 +1,8 @@
 import pymysql
 
 db = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
-                     'jiaoyupingtai_re',
-                     'QuanLang@123')
+                     'edu_test_user',
+                     'Quanlang_edu_test')
 cursor = db.cursor()
 sql = 'SELECT cust_name FROM test_customer.cust_info ' \
       'WHERE cust_id = (SELECT MAX(cust_id) ' \
@@ -11,3 +11,4 @@ cursor.execute(sql)
 result = cursor.fetchall()
 
 print(result)
+
