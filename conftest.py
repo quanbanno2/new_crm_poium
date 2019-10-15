@@ -12,6 +12,8 @@ from selenium.webdriver.firefox.options import Options as FF_Options
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
 
+# conftest配置文件每次启动初始化一次
+
 ############################
 
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
@@ -36,6 +38,10 @@ course_name = "自动化专用语文培优次课"
 # 辅导老师
 adviserName = '辅导1'
 adviserAccount = '高分云辅导1'
+
+# 高分云辅导2
+adviserName2 = '辅导2'
+adviserAccount2 = '高分云辅导2'
 
 # 指导老师
 educationName = '指导1'
@@ -92,6 +98,11 @@ studentName = "自动化测试学生"
 
 
 ############################
+
+@pytest.fixture(scope='session')
+def date_today():
+    in_class_time = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d %H:%M:%S")
+    return in_class_time
 
 
 @pytest.fixture(scope='session')
@@ -151,18 +162,32 @@ def course():
     return course_name
 
 
-# 辅导老师名称
+# 辅导1老师名称
 @pytest.fixture(scope='function')
 def adviser_name():
     global adviserName
     return adviserName
 
 
-# 辅导老师账号
+# 辅导2老师名称
+@pytest.fixture(scope='function')
+def adviser_name2():
+    global adviserName2
+    return adviserName2
+
+
+# 辅导1老师账号
 @pytest.fixture(scope='function')
 def adviser_account():
     global adviserAccount
     return adviserAccount
+
+
+# 辅导2老师账号
+@pytest.fixture(scope='function')
+def adviser_account2():
+    global adviserAccount2
+    return adviserAccount2
 
 
 # 登录密码
