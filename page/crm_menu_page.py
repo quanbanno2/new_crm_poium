@@ -35,3 +35,12 @@ class GfyMenu(Page):
     finance_refund_info = PageElement(
         xpath="//i[@class='fa fa-reply-all']",
         describe="菜单-财务管理-缴费退费信息-退费信息按钮")
+    personnel_manage = PageElement(
+        link_text="人事管理",
+        describe="人事管理")
+    staff_info = PageElement(
+        xpath="//span[text()='员工信息']",
+        describe="人事管理-员工信息")
+    staff_base_info = PageElement(
+        xpath="//a[text()='基础信息']",
+        describe="人事管理-员工信息-基础信息")

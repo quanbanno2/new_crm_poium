@@ -1,4 +1,4 @@
-from poium import Page, PageElement
+from poium import Page, PageElement, PageElements
 
 
 class GfyCrmCustomerManagement(Page):
@@ -80,16 +80,19 @@ class GfyCrmCustomerManagement(Page):
         xpath="//select[@ng-model='teacherInfoParam.schoolId']",
         describe="机构老师列表-归属校区")
 
-    ###
     confirm_split = PageElement(
         xpath="//button[@ng-click='allotOrder()']",
         describe="确认分单按钮")
     checkbox_split_count = PageElement(
         xpath="//input[@ng-model=\"customerColShow['分单次数']\"]",
         describe="勾选显示分单次数")
+    # 只勾选分单次数和联系方式
     split_count = PageElement(
         css=".bg-active > td:nth-child(7)",
         describe="列表-分单次数")
+    split_customer = PageElement(
+        css=".bg-active > td:nth-child(10)",
+        describe="列表-主跟进人")
     convert_to_student = PageElement(
         xpath="//button[@ng-click='changeToStu(item)']",
         describe="客户管理列表-第一名客户转为学员按钮")
@@ -101,7 +104,7 @@ class GfyCrmCustomerManagement(Page):
         describe="转换成功确认按钮")
     convert_success_text = PageElement(
         xpath="//span[@class='text-green']",
-        describe="转换成功提示文字")
+        describe="转为学员-转换成功提示文字")
     student_or_not = PageElement(
         css='.bg-active > td:nth-child(12) > span:nth-child(1)',
         describe="列表-是否学员")
@@ -142,8 +145,8 @@ class GfyCrmCustomerManagement(Page):
         xpath="//button[@ng-click='addStuInfo()']",
         describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-保存")
     customer_create_account_save_status = PageElement(
-        xpath="/html/body/div[20]/div/div/div[1]/h4/h3",
-        describe="我的客户-客户信息-同步教学帐号-创建教学平台帐号-保存状态")
+        xpath="//span[@ng-show='integrationStuInfo.accountNo']",
+        describe="我的客户-客户信息-同步教学帐号-教学帐号")
 
     # 客户回收
     customer_recovery = PageElement(
@@ -230,6 +233,14 @@ class GfyCustomerAddOrder(Page):
     order_status_confirm = PageElement(
         xpath="//button[@data-bb-handler='ok']",
         describe="确认订单保存状态按钮")
+    order_info_loadStuOrderList = PageElement(
+        xpath="//button[@ng-click='loadStuOrderList()']",
+        describe="客户管理-学员信息-学员订单查询")
+    order_info_totalNum = PageElements(
+        xpath="//span[@ng-show='pageInfo.totalNum']",
+        describe="客户管理-学员信息-学员订单总订单数")
+
+
     """
     支付
     """
