@@ -461,7 +461,7 @@ class TestCustomerAdd:
         :param browser1:
         :param phone_number:
         :param pass_word:
-        :param counseling_supervision:
+        :param counseling_supervision_account:
         :param school_name:
         :return:
         """
@@ -507,7 +507,7 @@ class TestCustomerAdd:
         测试单个客户转为学员
         :param crm_url:
         :param browser1:
-        :param counseling_supervision:
+        :param counseling_supervision_account:
         :param pass_word:
         :param school_name:
         :param phone_number:
@@ -534,7 +534,7 @@ class TestCustomerAdd:
         :param school_name:
         :param crm_url:
         :param adviser_account:
-        :param counseling_supervision:
+        :param counseling_supervision_account:
         :param phone_number:
         :return:
         """
@@ -608,7 +608,7 @@ class TestCustomerAddOrder:
         :param adviser_name:
         :param course:
         :param pass_word:
-        :param counseling_supervision:
+        :param counseling_supervision_account:
         :param school_name:
         :param phone_number:
         :param adviser_account:
@@ -647,7 +647,7 @@ class TestCustomerAddOrder:
         :param phone_number:
         :param adviser_name:
         :param course:
-        :param counseling_supervision:
+        :param counseling_supervision_account:
         :return:
         """
         menu_page = GfyMenu(browser1)
