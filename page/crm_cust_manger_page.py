@@ -99,6 +99,9 @@ class GfyCrmCustomerManagement(Page):
     confirm_btn = PageElement(
         xpath="//button[@data-bb-handler='confirm']",
         describe="确认按钮")
+    cancel_btn = PageElement(
+        xpath="//button[@data-bb-handler='Cancel']",
+        describe="取消按钮")
     convert_success_button = PageElement(
         xpath="//button[@data-bb-handler='ok']",
         describe="转换成功确认按钮")
@@ -240,7 +243,6 @@ class GfyCustomerAddOrder(Page):
         xpath="//span[@ng-show='pageInfo.totalNum']",
         describe="客户管理-学员信息-学员订单总订单数")
 
-
     """
     支付
     """
@@ -320,7 +322,6 @@ class GfyCustomerAddOrder(Page):
     refund_pre_fee = PageElement(
         xpath="/html/body/div[1]/div[1]/div[1]/div[2]/div/div/div[2]/form/div/table/tbody/tr[2]/td[2]",
         describe="退费申请-预收金额")
-
     refund_course_count = PageElement(
         xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[5]/td[1]/span",
         describe="退费申请-订购数量")
@@ -337,6 +338,9 @@ class GfyCustomerAddOrder(Page):
     approval_confirm_account = PageElement(
         xpath="//*[@id=\"approvalMatterDialog\"]/div/div/div[2]/table/tbody/tr[5]/td/span",
         describe="审批事项确认-审批流程账号")
+    approval_matter_setting = PageElement(
+        xpath="//select[@title='选择审批流程']",
+        describe="审批事项确认-审批流程选择框")
     save_approval_matter = PageElement(
         xpath="//button[@ng-click='saveApprovalMatter(approvalMatter)']",
         describe="审批事项确认按钮")

@@ -58,7 +58,8 @@ phoneNumber = '13437829328'
 supervisorAccount = "高分云指导督导1"
 
 # 高分云辅导督导1账号
-counselingSupervision = "高分云辅导督导1"
+counselingSupervisorAccount = "高分云辅导督导1"
+counselingSupervisorName = "辅导督导1"
 
 # 密码
 password = '123456'
@@ -312,11 +313,18 @@ def make_up_class():
     return makeUpClass
 
 
+# 高分云辅导督导1账号
+@pytest.fixture(scope='function')
+def counseling_supervision_account():
+    global counselingSupervisorAccount
+    return counselingSupervisorAccount
+
+
 # 高分云辅导督导1名称
 @pytest.fixture(scope='function')
-def counseling_supervision():
-    global counselingSupervision
-    return counselingSupervision
+def counseling_supervision_name():
+    global counselingSupervisorName
+    return counselingSupervisorName
 
 
 #####################

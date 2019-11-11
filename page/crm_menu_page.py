@@ -12,28 +12,30 @@ class GfyMenu(Page):
         link_text='我的客户',
         describe='我的客户')
     student_management = PageElement(
-        xpath="//i[@class='fa fa-users']",
+        # xpath="//i[@class='fa fa-users']",
+        xpath="//span[text()='学员管理']",
         describe="菜单页面-学员管理")
     student_order_management = PageElement(
-        xpath="//i[@class='fa fa-file-text']",
+        # xpath="//i[@class='fa fa-file-text']",
+        xpath="//a[text()='学员订单管理']",
         describe="菜单页面-学员管理-学员订单管理")
     student_course_management = PageElement(
-        xpath="//li[@ng-click=\"switchModule('stuCourse')\"]",
+        xpath="//a[text()='学员课程管理']",
         describe="菜单-学员管理-学员课程管理")
     student_class_management = PageElement(
-        xpath="//li[@ng-click=\"switchModule('stuClass')\"]",
+        xpath="//a[text()='学员上课管理']",
         describe="菜单页面-学员管理-学员上课管理")
     student_makeup_management = PageElement(
-        xpath="//i[@class='fa fa-calendar-plus-o']",
+        xpath="//a[text()='学员补课管理']",
         describe="菜单页面-学员管理-学员补课管理")
     finance_menu = PageElement(
-        xpath="//i[@class='fa fa-pie-chart']",
+        xpath="//span[text()='财务管理']",
         describe="菜单-财务管理按钮")
     finance_fee_info = PageElement(
         link_text="缴费退费信息",
         describe="菜单-财务管理-缴费退费信息按钮")
     finance_refund_info = PageElement(
-        xpath="//i[@class='fa fa-reply-all']",
+        xpath="//a[text()='退费信息']",
         describe="菜单-财务管理-缴费退费信息-退费信息按钮")
     personnel_manage = PageElement(
         link_text="人事管理",
