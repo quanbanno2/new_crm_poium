@@ -84,7 +84,8 @@ class GfyCrmCustomerManagement(Page):
         xpath="//button[@ng-click='allotOrder()']",
         describe="确认分单按钮")
     checkbox_split_count = PageElement(
-        xpath="//input[@ng-model=\"customerColShow['分单次数']\"]",
+        # xpath="//input[@ng-model=\"customerColShow['分单次数']\"]",
+        xpath="//span[text()='分单次数']",
         describe="勾选显示分单次数")
     # 只勾选分单次数和联系方式
     split_count = PageElement(
@@ -158,9 +159,10 @@ class GfyCrmCustomerManagement(Page):
     customer_recovery_status = PageElement(
         xpath="//strong[text()='保存成功']",
         describe="回收成功状态")
-    customer_teacher = PageElement(
-        xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[1]"
-              "/div/div[2]/div/div[1]/table/tbody/tr[1]/td[9]",
+    customer_teacher = PageElements(
+        # xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[1]"
+        #       "/div/div[2]/div/div[1]/table/tbody/tr[1]/td[9]",
+        xpath="//td[@class='ng-binding']",
         describe="我的客户-第一个客户的主跟进人名称")
     customer_recovery_date_button = PageElement(
         xpath="//span[text()='回收时间']",
@@ -168,10 +170,10 @@ class GfyCrmCustomerManagement(Page):
     customer_recovery_teacher_button = PageElement(
         xpath="//span[text()='回收跟进人']",
         describe="回收跟进人勾选按钮")
-    customer_recovery_date = PageElement(
+    customer_recovery_date = PageElements(
         xpath="//td[@ng-if=\"customerColShow['回收时间']\"]",
         describe="我的客户-第一位客户回收时间")
-    customer_recovery_teacher = PageElement(
+    customer_recovery_teacher = PageElements(
         xpath="//td[@ng-if=\"customerColShow['回收跟进人']\"]",
         describe="我的客户-第一位客户回收跟进人")
 
@@ -291,10 +293,10 @@ class GfyCustomerAddOrder(Page):
     pay_order_calculation_status = PageElement(
         xpath="//span[@class='text-green'][2]",
         describe='订单支付-支付成功业绩计算状态')
-    ok_button = PageElement(
+    OK_button = PageElement(
         xpath="//button[@data-bb-handler='OK']",
         describe="确认按钮")
-    convert_success_confirm = PageElement(
+    ok_button = PageElement(
         xpath="//button[@data-bb-handler='ok']",
         describe="确认按钮")
     pay_order_stay = PageElement(

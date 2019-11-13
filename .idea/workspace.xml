@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191101:&#10;1、添加客户、客户分单、转为学员、创建教学帐号、创建学员订单 - 减少关联&#10;2、新增员工信息管理-查询、新增员工信息的元素定位">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191111: 1、订单支付和订单退费 优化关联">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pyautoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pyautoTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_menu_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_menu_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_customer_recovery.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_customer_recovery.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -435,7 +435,21 @@
       <option name="project" value="LOCAL" />
       <updated>1572599717497</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="20191111:&#10;1、订单支付和订单退费 优化关联">
+      <created>1573469185044</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1573469185044</updated>
+    </task>
+    <task id="LOCAL-00025" summary="20191111: 1、订单支付和订单退费 优化关联">
+      <created>1573469323631</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1573469323631</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -550,6 +564,8 @@
     <MESSAGE value="20191012:调试新增教务老师后退费完成" />
     <MESSAGE value="20191015:①创建客户、分单、转学员和创建账号测试脚本降低脚本间的依赖&#10;②将生成学员的函数，调整到测试脚本中，不使用统一生成方式" />
     <MESSAGE value="20191101:&#10;1、添加客户、客户分单、转为学员、创建教学帐号、创建学员订单 - 减少关联&#10;2、新增员工信息管理-查询、新增员工信息的元素定位" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191101:&#10;1、添加客户、客户分单、转为学员、创建教学帐号、创建学员订单 - 减少关联&#10;2、新增员工信息管理-查询、新增员工信息的元素定位" />
+    <MESSAGE value="20191111:&#10;1、订单支付和订单退费 优化关联" />
+    <MESSAGE value="20191111: 1、订单支付和订单退费 优化关联" />
+    <option name="LAST_COMMIT_MESSAGE" value="20191111: 1、订单支付和订单退费 优化关联" />
   </component>
 </project>

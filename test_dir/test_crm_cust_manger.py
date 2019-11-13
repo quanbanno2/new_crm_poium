@@ -147,8 +147,11 @@ def split_customer(driver, adviser_account, school_name):
     page.customer_check.click()
     sleep(1)
     page.customer_split.click()
-    PageWait(page.teacher_list_login_name)
+    sleep(1)
+    page.teacher_list_login_name.clear()
+    sleep(1)
     page.teacher_list_login_name.send_keys(adviser_account)
+    sleep(1)
     page.teacher_list_query.click()
     PageWait(page.teacher_select)
     page.teacher_select.click()
@@ -169,8 +172,6 @@ def convert_student(driver, school_name):
     page.convert_to_student.click()
     sleep(1)
     page.confirm_btn.click()
-    PageWait(page.convert_success_button)
-    page.convert_success_button.click()
 
 
 def create_account(driver, password, school_name):
@@ -247,20 +248,22 @@ def customer_recovery(driver):
     """
     新单招生的客户回收
     :param driver:
-    :return:
+    :return: 返回第一位跟进人名称
     """
-    menu_page = GfyMenu(driver)
+    # menu_page = GfyMenu(driver)
+    # menu_page.customer_management.click()
+    # sleep(1)
+    # menu_page.my_customer.click()
     customer_page = GfyCrmCustomerManagement(driver)
-    menu_page.customer_management.click()
     sleep(1)
-    menu_page.my_customer.click()
+    # 获取第一位跟进人名称
+    customer_teacher_name = customer_page.customer_teacher[3].text
     sleep(1)
-    customer_teacher_text = customer_page.customer_teacher.text
-    sleep(1)
+    # 回收
     customer_page.customer_recovery.click()
     sleep(1)
     customer_page.confirm_btn.click()
-    return customer_teacher_text
+    return customer_teacher_name
 
 
 def pay_new_order(driver):
@@ -474,8 +477,7 @@ class TestCustomerAdd:
         assert page.customer_name.text == student_name
 
     def test_split_customer(self, crm_url, browser1, adviser_account, counseling_supervision_account, school_name,
-                            phone_number,
-                            pass_word, adviser_name):
+                            phone_number, pass_word, adviser_name):
         """
         测试单个客户分单
         :param crm_url:
@@ -494,15 +496,14 @@ class TestCustomerAdd:
         split_customer(browser1, adviser_account, school_name)
         sleep(2)
         page.checkbox_split_count.click()
-        PageWait(page.split_count)
+        sleep(1)
         # 断言分单次数
         # 断言分单跟进人
         assert page.split_count.text == "1"
         assert page.split_customer.text == adviser_name
 
     def test_convert_student(self, crm_url, browser1, counseling_supervision_account, pass_word, school_name,
-                             phone_number,
-                             adviser_account):
+                             phone_number, adviser_account):
         """
         测试单个客户转为学员
         :param crm_url:
@@ -522,11 +523,10 @@ class TestCustomerAdd:
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
-        assert page.convert_success_text.text == '成功转为学员'
+        assert page.convert_success_text.text == "成功转为学员"
 
     def test_create_account(self, browser1, pass_word, school_name, crm_url, adviser_account,
-                            counseling_supervision_account,
-                            phone_number):
+                            counseling_supervision_account, phone_number):
         """
         测试单个客户转为学员
         :param browser1:
@@ -547,58 +547,62 @@ class TestCustomerAdd:
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
-        create_account(browser1, pass_word, school_name)
-        sleep(1)
-        PageWait(page.convert_success_button)
         page.convert_success_button.click()
+        sleep(1)
+        create_account(browser1, pass_word, school_name)
         sleep(1)
         assert page.customer_create_account_save_status.text == account_name
 
-    # def test_customer_recovery(self, crm_url, browser1, counseling_supervision, pass_word, phone_number,
-    #                            adviser_account, school_name, adviser_account2):
-    #     """
-    #     测试客户回收再分单：新单招生
-    #     :param crm_url:
-    #     :param browser1:
-    #     :param counseling_supervision:
-    #     :param pass_word:
-    #     :param new_student_name:
-    #     :param phone_number:
-    #     :param adviser_account:
-    #     :param school_name:
-    #     :return:
-    #     """
-    #     page = GfyCrmCustomerManagement(browser1)
-    #     login(crm_url, browser1, counseling_supervision, pass_word)
-    #     # add_customer(browser1, new_student_name, phone_number)
-    #     # sleep(1)
-    #     # split_customer(browser1, adviser_account, school_name)
-    #     # sleep(1)
-    #     customer_teacher_text = customer_recovery(browser1)
-    #     PageWait(page.customer_recovery_status)
-    #     assert page.customer_recovery_status.text == "保存成功"
-    #     sleep(1)
-    #     page.customer_recovery_date_button.click()
-    #     sleep(1)
-    #     page.customer_recovery_teacher_button.click()
-    #     sleep(1)
-    #     assert page.customer_recovery_date.text != "--"
-    #     assert page.customer_recovery_teacher.text == customer_teacher_text
-    #     sleep(1)
-    #     # 二手单分单
-    #     split_customer(browser1, adviser_account2, school_name)
-    #     sleep(1)
-    #     page.checkbox_split_count.click()
-    #     PageWait(page.split_count)
-    #     # 二手单分单次数为2
-    #     assert page.split_count.text == "2"
+    def test_customer_recovery(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
+                               adviser_account, school_name, adviser_account2, adviser_name2):
+        """
+        测试二手单回收再分单
+        :param crm_url:
+        :param browser1:
+        :param counseling_supervision_account:
+        :param pass_word:
+        :param phone_number:
+        :param adviser_account:
+        :param school_name:
+        :param adviser_account2:
+        :param adviser_name2:
+        :return:
+        """
+        page = GfyCrmCustomerManagement(browser1)
+        login(crm_url, browser1, counseling_supervision_account, pass_word)
+        add_customer(browser1, new_student_name(), phone_number)
+        sleep(1)
+        # 第一个跟进人分单
+        split_customer(browser1, adviser_account, school_name)
+        # 分单完成等待刷新
+        sleep(1)
+        first_customer_teacher_name = customer_recovery(browser1)
+        # 等待"保存成功"提示
+        PageWait(page.customer_recovery_status)
+        assert page.customer_recovery_status.text == "保存成功"
+        sleep(1)
+        page.customer_recovery_date_button.click()
+        sleep(1)
+        page.customer_recovery_teacher_button.click()
+        sleep(1)
+        assert page.customer_recovery_date[0].text != "--"
+        assert page.customer_recovery_teacher[0].text == first_customer_teacher_name
+        sleep(1)
+        # 二手单分单
+        split_customer(browser1, adviser_account2, school_name)
+        sleep(1)
+        page.checkbox_split_count.click()
+        sleep(1)
+        # 二手单分单次数为2
+        # 断言主跟进人
+        assert page.customer_teacher[3].text == adviser_name2
+        assert page.split_count.text == "2"
 
 
 class TestCustomerAddOrder:
     """
     客户新建订单和支付订单、未上课退费
     """
-
     def test_add_new_order(self, crm_url, browser1, adviser_name, course, pass_word, counseling_supervision_account,
                            school_name, phone_number, adviser_account):
         """
@@ -623,6 +627,8 @@ class TestCustomerAddOrder:
         split_customer(browser1, adviser_account, school_name)
         sleep(1)
         convert_student(browser1, school_name)
+        sleep(1)
+        order_page.ok_button.click()
         sleep(1)
         menu_page.customer_management.click()
         sleep(1)
@@ -659,6 +665,8 @@ class TestCustomerAddOrder:
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
+        order_page.ok_button.click()
+        sleep(1)
         menu_page.customer_management.click()
         sleep(1)
         add_new_order(browser1, adviser_name, course, school_name)
@@ -670,8 +678,8 @@ class TestCustomerAddOrder:
         sleep(1)
         assert order_page.pay_order_status.text == "成功"
         assert order_page.pay_order_calculation_status.text == "成功"
-        PageWait(order_page.ok_button)
-        order_page.ok_button.click()
+        PageWait(order_page.OK_button)
+        order_page.OK_button.click()
 
     def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks,
                             phone_number, adviser_name, adviser_account, course, school_name, educational_effect_time,
@@ -702,6 +710,8 @@ class TestCustomerAddOrder:
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
+        order_page.ok_button.click()
+        sleep(1)
         menu_page.customer_management.click()
         sleep(1)
         add_new_order(browser1, adviser_name, course, school_name)
@@ -718,6 +728,7 @@ class TestCustomerAddOrder:
         refund_fee_text = refund_apply_list[2]
         order_id_text = refund_apply_list[1]
         customer_name = refund_apply_list[0]
+
         assert refund_fee_text == order_page.application_for_refund.get_attribute("value")
         assert order_page.approval_matter_status.text == "审批保存成功"
         sleep(1)
@@ -770,11 +781,11 @@ class TestCustomerAddOrder:
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_create_account"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_customer_recovery"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_customer_recovery"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer",
     #              "-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_convert_student"])
