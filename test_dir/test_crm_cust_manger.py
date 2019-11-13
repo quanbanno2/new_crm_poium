@@ -1,5 +1,4 @@
 import sys
-# import os
 import pytest
 import pymysql
 from time import sleep
@@ -215,12 +214,12 @@ def add_new_order(driver, consultant, course_name, school_name):
     :return:
     """
     customer_page = GfyCrmCustomerManagement(driver)
-    menu_page = GfyMenu(driver)
     order_page = GfyCustomerAddOrder(driver)
-    menu_page.customer_management.click()
-    PageWait(menu_page.my_customer)
-    menu_page.my_customer.click()
-    sleep(1)
+    # menu_page = GfyMenu(driver)
+    # menu_page.customer_management.click()
+    # sleep(1)
+    # # menu_page.my_customer.click()
+    # sleep(1)
     PageSelect(customer_page.customer_list_school_list, text=school_name)
     sleep(1)
     customer_page.customer_name.click()
@@ -297,7 +296,7 @@ def pay_new_order(driver):
     order_page.add_order_pay_fee.send_keys(order_page.order_pre_fee.text)
     sleep(1)
     order_page.add_order_pay_save_btn.click()
-    # 其他费用
+    # 计算其他费用
     sleep(1)
     service_charge = cal_service_charge(order_page.order_pre_fee.text)
     sleep(1)
@@ -311,7 +310,6 @@ def pay_new_order(driver):
     driver.execute_script("arguments[0].click();", order_page.pay_stu_order)
     sleep(1)
     other_page.confirm_btn.click()
-    sleep(1)
 
 
 def refund_apply(driver, remarks):
@@ -547,7 +545,7 @@ class TestCustomerAdd:
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
-        page.convert_success_button.click()
+        page.customer_ok_button.click()
         sleep(1)
         create_account(browser1, pass_word, school_name)
         sleep(1)
@@ -629,8 +627,8 @@ class TestCustomerAddOrder:
         convert_student(browser1, school_name)
         sleep(1)
         order_page.ok_button.click()
-        sleep(1)
-        menu_page.customer_management.click()
+        # sleep(1)
+        # menu_page.customer_management.click()
         sleep(1)
         add_new_order(browser1, adviser_name, course, school_name)
         sleep(1)
@@ -667,8 +665,8 @@ class TestCustomerAddOrder:
         sleep(1)
         order_page.ok_button.click()
         sleep(1)
-        menu_page.customer_management.click()
-        sleep(1)
+        # menu_page.customer_management.click()
+        # sleep(1)
         add_new_order(browser1, adviser_name, course, school_name)
         sleep(1)
         order_page.order_status_confirm.click()
@@ -678,8 +676,6 @@ class TestCustomerAddOrder:
         sleep(1)
         assert order_page.pay_order_status.text == "成功"
         assert order_page.pay_order_calculation_status.text == "成功"
-        PageWait(order_page.OK_button)
-        order_page.OK_button.click()
 
     def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks,
                             phone_number, adviser_name, adviser_account, course, school_name, educational_effect_time,
@@ -712,8 +708,8 @@ class TestCustomerAddOrder:
         sleep(1)
         order_page.ok_button.click()
         sleep(1)
-        menu_page.customer_management.click()
-        sleep(1)
+        # menu_page.customer_management.click()
+        # sleep(1)
         add_new_order(browser1, adviser_name, course, school_name)
         sleep(1)
         order_page.order_status_confirm.click()
@@ -781,11 +777,11 @@ class TestCustomerAddOrder:
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_customer_recovery"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_customer_recovery"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_customer_recovery"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_add_new_order"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer",
     #              "-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_convert_student"])

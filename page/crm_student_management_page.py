@@ -1,4 +1,4 @@
-from poium import Page, PageElement
+from poium import Page, PageElement,PageElements
 
 
 class GfyCrmStudentCourseManagement(Page):
@@ -9,21 +9,24 @@ class GfyCrmStudentCourseManagement(Page):
     undivided_student = PageElement(
         link_text="未分班学员",
         describe="学员课程管理-未分班学员")
-    student_select_class = PageElement(
-        xpath="//button[@ng-click='openClassSelectDialog(item)']",
+    student_select_class = PageElements(
+        xpath="//button[text()='分配班级']",
         describe="学员课程管理-未分班学员-分配班级按钮")
     sch_course_class_search_class_name = PageElement(
         xpath="//input[@ng-model='schCourseClassRelationSearch.className']",
         describe="上课班级-班级名称输入框")
-    sch_course_class_search_class_name_button = PageElement(
-        xpath="//button[@ng-click='saveStuOrderCourseUndivided(item)']",
+    sch_course_class_search_class_name_button = PageElements(
+        xpath="//button[text()='选定班级']",
         describe="上课班级-选定班级")
-    sch_course_class_search_class_name_confirm = PageElement(
-        xpath="//button[@data-bb-handler='confirm']",
-        describe="上课班级-确认分配")
+    sch_order_course_class_save = PageElement(
+        xpath="//button[@ng-click='stuOrderCourseChangClassSave()']",
+        describe="上课班级-分班确认")
+    # sch_course_class_search_class_name_confirm = PageElement(
+    #     xpath="//button[@data-bb-handler='confirm']",
+    #     describe="上课班级-确认分配")
     student_select_class_status = PageElement(
-        xpath="//div[@class='bootbox-body']",
-        describe="分配班级结果（成功）")
+        xpath="//h3[text()='保存成功']",
+        describe="学员分配班级结果（成功）")
     student_select_class_ok = PageElement(
         xpath="//button[@data-bb-handler='ok']",
         describe="分班成功确认按钮")

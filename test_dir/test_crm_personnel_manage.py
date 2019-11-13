@@ -11,32 +11,6 @@ from os.path import dirname, abspath
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 
-def new_staff_name():
-    customer_name = []
-    # db = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
-    #                      'edu_test_user',
-    #                      'Quanlang_edu_test')
-    db = pymysql.connect('192.168.0.195',
-                         'root',
-                         '123456')
-    cursor = db.cursor()
-    sql = 'SELECT `name`  FROM `test_user`.`usr_staff_base_info` ' \
-          ' WHERE `staff_base_id`  = (SELECT MAX(`staff_base_id`) ' \
-          ' FROM `test_user`.`usr_staff_base_info`  WHERE `name`  LIKE "高分云员工%" AND `status_cd` ="S01" ' \
-          ' OR `status_cd`= "S03")'
-    cursor.execute(sql)
-    result = cursor.fetchall()
-    for re in result:
-        customer_name = re[0]
-    # 读取客户名称后的数字
-    a = customer_name[5:]
-    client_num = int(a)
-    client_num = client_num + 1
-    client_name = "高分云员工" + str(client_num)
-    db.close()
-    return client_name
-
-
 def add_staff_base_info(driver):
     menu_page = GfyMenu(driver)
     page = GfyPersonnel(driver)

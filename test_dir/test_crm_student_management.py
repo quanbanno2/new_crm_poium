@@ -2,40 +2,37 @@ import pytest
 import sys
 from time import sleep
 from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
+from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
 from page.crm_menu_page import GfyMenu
 from poium import PageWait, PageSelect
-from test_dir.test_crm_cust_manger import login
+from test_dir.test_crm_cust_manger import login, new_student_name, add_customer, split_customer, convert_student, \
+    create_account, add_new_order, pay_new_order
 from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 
-def student_select_class(driver, url, login_name, password, class_name):
+def student_select_class(driver, class_name):
     """
     学员分班
     :param driver:
-    :param url:
-    :param login_name:
-    :param password:
     :param class_name:
     :return:
     """
-    login(url, driver, login_name, password)
     page = GfyCrmStudentCourseManagement(driver)
     menu_page = GfyMenu(driver)
-    PageWait(menu_page.student_management)
-    menu_page.student_management.click()
-    PageWait(menu_page.student_course_management)
+    sleep(1)
     menu_page.student_course_management.click()
     PageWait(page.undivided_student)
     page.undivided_student.click()
-    PageWait(page.student_select_class)
-    page.student_select_class.click()
-    PageWait(page.sch_course_class_search_class_name)
+    sleep(1)
+    page.student_select_class[0].click()
+    sleep(1)
     page.sch_course_class_search_class_name.send_keys(class_name)
-    page.sch_course_class_search_class_name_button.click()
-    PageWait(page.sch_course_class_search_class_name_confirm)
-    page.sch_course_class_search_class_name_confirm.click()
+    sleep(1)
+    page.sch_course_class_search_class_name_button[0].click()
+    sleep(1)
+    page.sch_order_course_class_save.click()
 
 
 def add_in_class_record(driver, school_name, class_name, in_class_time):
@@ -139,21 +136,52 @@ class TestStuCourseManagement:
     学员课程管理
     """
 
-    def test_student_select_class(self, browser1, crm_url, supervisor_account, pass_word, class_name):
+    def test_student_select_class(self, browser1, crm_url, counseling_supervision_account, adviser_account, pass_word,
+                                  class_name, course,adviser_name,
+                                  phone_number, school_name):
         """
         测试单个学员分班
         :param browser1:
         :param crm_url:
-        :param supervisor_account:高分云指导督导1账号
+        :param counseling_supervision_account:
+        :param adviser_account:
         :param pass_word:
         :param class_name:
+        :param course:
+        :param adviser_name:
+        :param phone_number:
+        :param school_name:
         :return:
         """
-        student_select_class(browser1, crm_url, supervisor_account, pass_word, class_name)
-        page = GfyCrmStudentCourseManagement(browser1)
+        customer_page = GfyCrmCustomerManagement(browser1)
+        order_page = GfyCustomerAddOrder(browser1)
+        student_page = GfyCrmStudentCourseManagement(browser1)
+        login(crm_url, browser1, counseling_supervision_account, pass_word)
+        add_customer(browser1, new_student_name(), phone_number)
         sleep(1)
-        assert page.student_select_class_status.text == "保存成功"
-        page.student_select_class_ok.click()
+        split_customer(browser1, adviser_account, school_name)
+        sleep(1)
+        convert_student(browser1, school_name)
+        sleep(1)
+        customer_page.customer_ok_button.click()
+        sleep(1)
+        create_account(browser1, pass_word, school_name)
+        sleep(1)
+        customer_page.customer_ok_button.click()
+        sleep(1)
+        customer_page.customer_list.click()
+        sleep(1)
+        add_new_order(browser1, adviser_name, course, school_name)
+        sleep(1)
+        order_page.order_status_confirm.click()
+        sleep(1)
+        pay_new_order(browser1)
+        PageWait(customer_page.cancel_btn)
+        customer_page.cancel_btn.click()
+        sleep(1)
+        student_select_class(browser1, class_name)
+        PageWait(student_page.student_select_class_status)
+        assert student_page.student_select_class_status.text == "保存成功"
 
 
 class TestStudentClassManagement:
@@ -286,6 +314,6 @@ class TestStudentClassManagement:
 
 if __name__ == '__main__':
     # pytest.main()
-    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement"])
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
-                 "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"])
+    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
+    #              "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])

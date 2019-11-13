@@ -9,6 +9,9 @@ class GfyCrmCustomerManagement(Page):
     customer_list_school_list = PageElement(
         xpath="//select[@ng-model='custInfoParam.schoolId']",
         describe="我的客户-归属校区")
+    customer_list = PageElement(
+        xpath="//b[text()='客户列表']",
+        describe="我的客户-客户列表")
     # 新增客户
     add_customer = PageElement(
         xpath="//button[@ng-click=\"toEditCustInfo('newCust')\"]",
@@ -103,7 +106,7 @@ class GfyCrmCustomerManagement(Page):
     cancel_btn = PageElement(
         xpath="//button[@data-bb-handler='Cancel']",
         describe="取消按钮")
-    convert_success_button = PageElement(
+    customer_ok_button = PageElement(
         xpath="//button[@data-bb-handler='ok']",
         describe="转换成功确认按钮")
     convert_success_text = PageElement(
@@ -262,9 +265,11 @@ class GfyCustomerAddOrder(Page):
         describe='学员订单管理-课程优惠列表-添加优惠-保存按钮')
     order_pre_fee = PageElement(
         xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[4]/div[1]/div/h2/span[1]/span",
+        # xpath="//span[@class='ng-binding']",
         describe="支付列表-预收账款")
     order_accounts_receivable = PageElement(
         xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[1]/form/div[1]/div[3]/table/tbody/tr[2]/td/span",
+        # xpath="//span[@class='ng-binding']",
         describe='缴费信息-应收账款')
     add_order_pay_btn = PageElement(
         xpath="//button[@ng-disabled='financePayDetailEditingItem']",
