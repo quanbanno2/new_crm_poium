@@ -12,11 +12,9 @@ class GfyMenu(Page):
         link_text='我的客户',
         describe='我的客户')
     student_management = PageElement(
-        # xpath="//i[@class='fa fa-users']",
         xpath="//span[text()='学员管理']",
         describe="菜单页面-学员管理")
     student_order_management = PageElement(
-        # xpath="//i[@class='fa fa-file-text']",
         xpath="//a[text()='学员订单管理']",
         describe="菜单页面-学员管理-学员订单管理")
     student_course_management = PageElement(

@@ -1,4 +1,4 @@
-from poium import Page, PageElement,PageElements
+from poium import Page, PageElement, PageElements
 
 
 class GfyCrmStudentCourseManagement(Page):
@@ -76,7 +76,7 @@ class GfyCrmStudentInClassManagement(Page):
     add_in_class_title = PageElement(
         xpath="//h4[text()='新增课程上课记录']",
         describe="新增课程上课记录title")
-    del_in_class_record = PageElement(
+    delete_button = PageElement(
         xpath="//button[text()='删除']",
         describe="学员上课管理-删除上课记录按钮")
 
@@ -94,10 +94,12 @@ class GfyCrmStudentInClassManagement(Page):
         xpath="//select[@ng-model='stuCourseInClassRecordParam.status']",
         describe="学员上课管理-状态下拉框")
     in_class_sign = PageElement(
-        xpath="//button[@ng-click=\"toEditStuCourseInClassRecord('sign',item)\"]",
+        # xpath="//button[@ng-click=\"toEditStuCourseInClassRecord('sign',item)\"]",
+        xpath="//button[text()='点名']",
         describe="学员上课管理-点名按钮")
     in_class_sign_save = PageElement(
-        xpath="//button[@ng-click='stuClassSaveStuCourseDetail()']",
+        # xpath="//button[@ng-click='stuClassSaveStuCourseDetail()']",
+        xpath="//button[@ng-if='classFlagObj.flag']",
         describe="学员上课点名-保存点名按钮")
     in_class_sign_confirm = PageElement(
         xpath="//button[@data-bb-handler='confirm']",

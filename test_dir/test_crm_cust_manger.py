@@ -74,6 +74,7 @@ def add_customer(driver, customer_name, phone_number):
     page.add_customer.click()
     sleep(2)
     page.add_customer_name.send_keys(customer_name)
+    sleep(1)
     page.school_name.click()
     PageWait(page.pub_school_list)
     page.pub_school_list.send_keys("四基初级中学")
