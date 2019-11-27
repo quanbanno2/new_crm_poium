@@ -87,6 +87,9 @@ class GfyCrmStudentInClassManagement(Page):
     query_in_class_record = PageElement(
         xpath="//button[@ng-click='loadStuCourseInClassRecordList(1,initPageInfo.pageSize)']",
         describe="学员上课管理-查询按钮")
+    in_class_record = PageElement(
+        xpath="//tr[@ng-repeat='item in stuCourseInClassRecordList']/td[3]",
+        describe="学员上课管理-上课记录")
     in_class_school_list = PageElement(
         xpath="//select[@ng-model='stuCourseInClassRecordParam.schoolId']",
         describe="学员上课管理-归属校区下拉框")
@@ -121,7 +124,7 @@ class GfyCrmStudentInClassManagement(Page):
     in_class_leave_save = PageElement(
         xpath="//button[@ng-click='studentLeaveAdd()']",
         describe="学员上课管理-保存请假按钮")
-    in_class_record = PageElement(
+    in_class_record_tab = PageElement(
         xpath="//a[@ng-click=\"changeInClassType('classSales')\"]",
         describe="学员上课管理-上课记录tab")
     record_teacher_list = PageElement(

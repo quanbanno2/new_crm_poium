@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191113: 2、单个学员分班优化">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191115: 1、上课管理-上课点名完善测试脚本和元素定位">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_menu_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_menu_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page/crm_student_management_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_student_management_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/image/test_crm_student_management.py_TestStudentClassManagement_test_add_in_class_record.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/image/test_crm_student_management.py_TestStudentClassManagement_test_add_in_class_record.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/image/test_crm_student_management.py_TestStudentClassManagement_test_in_class.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/image/test_crm_student_management.py_TestStudentClassManagement_test_in_class.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,12 +47,12 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_dir/test_crm_student_management.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -225,9 +227,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/venv/bin/python3.7" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_dir" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_dir/test_crm_student_management.py" />
@@ -462,25 +464,15 @@
       <option name="project" value="LOCAL" />
       <updated>1573640691735</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="20191115: 1、上课管理-上课点名完善测试脚本和元素定位">
+      <created>1573809290740</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1573809290740</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.07.24 at 16h 12m 13s.xml">
-      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.07.24 at 16h 13m 20s.xml">
-      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_crm_student_management_TestStudentOrderManagement_test_student_refund - 2019.08.06 at 17h 59m 46s.xml">
-      <configuration name="pytest for test_crm_student_management.TestStudentOrderManagement.test_student_refund" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_crm_student_management_TestStudentClassManagement_test_add_in_class_record - 2019.08.06 at 18h 00m 46s.xml">
-      <configuration name="pytest for test_crm_student_management.TestStudentClassManagement.test_add_in_class_record" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.08.20 at 11h 04m 34s.xml">
-      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
-    </history-entry>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -556,7 +548,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="更新poium框架" />
     <MESSAGE value="无" />
     <MESSAGE value="20190809 增加未上课退费" />
     <MESSAGE value="20190820 退费审批完成" />
@@ -581,6 +572,8 @@
     <MESSAGE value="20191111: 1、订单支付和订单退费 优化关联" />
     <MESSAGE value="20191113: 1、二手单回收" />
     <MESSAGE value="20191113: 2、单个学员分班优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191113: 2、单个学员分班优化" />
+    <MESSAGE value="20191115: 1、上课管理-上课点名完善测试脚本和元素定位" />
+    <option name="LAST_COMMIT_MESSAGE" value="20191115: 1、上课管理-上课点名完善测试脚本和元素定位" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

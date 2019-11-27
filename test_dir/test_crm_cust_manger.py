@@ -2,16 +2,16 @@ import sys
 import pytest
 import pymysql
 from time import sleep
+from poium import PageWait, PageSelect
+from _pydecimal import Context, ROUND_HALF_UP
 from os.path import dirname, abspath
+
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
 from page.crm_home_page import GfyHomePage
 from page.crm_menu_page import GfyMenu
 from page.crm_finance_page import GfyRefundInfo
 from page.crm_login_page import GfyLogin
-from poium import PageWait, PageSelect
-from _pydecimal import Context, ROUND_HALF_UP
-
-sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 
 def new_student_name():
@@ -602,6 +602,7 @@ class TestCustomerAddOrder:
     """
     客户新建订单和支付订单、未上课退费
     """
+
     def test_add_new_order(self, crm_url, browser1, adviser_name, course, pass_word, counseling_supervision_account,
                            school_name, phone_number, adviser_account):
         """
@@ -618,7 +619,7 @@ class TestCustomerAddOrder:
         :return:
         """
         order_page = GfyCustomerAddOrder(browser1)
-        menu_page = GfyMenu(browser1)
+        # menu_page = GfyMenu(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         sleep(1)
         add_customer(browser1, new_student_name(), phone_number)
@@ -655,7 +656,7 @@ class TestCustomerAddOrder:
         :param counseling_supervision_account:
         :return:
         """
-        menu_page = GfyMenu(browser1)
+        # menu_page = GfyMenu(browser1)
         order_page = GfyCustomerAddOrder(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, new_student_name(), phone_number)
@@ -777,12 +778,13 @@ class TestCustomerAddOrder:
 
 if __name__ == '__main__':
     # pytest.main()
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_customer_recovery"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_add_new_order"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_add_new_order"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer",
     #              "-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_convert_student"])

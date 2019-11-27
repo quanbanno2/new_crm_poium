@@ -1,6 +1,5 @@
 import pytest
 import sys
-import pymysql
 from time import sleep
 from page.crm_personnel_page import GfyPersonnel
 from page.crm_menu_page import GfyMenu

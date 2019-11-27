@@ -1,15 +1,16 @@
 import pytest
 import sys
 from time import sleep
-from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
-from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
-from page.crm_menu_page import GfyMenu
-from poium import PageWait, PageSelect
 from test_dir.test_crm_cust_manger import login, new_student_name, add_customer, split_customer, convert_student, \
     create_account, add_new_order, pay_new_order
 from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
+
+from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
+from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
+from page.crm_menu_page import GfyMenu
+from poium import PageWait, PageSelect
 
 
 def student_select_class(driver, class_name):
@@ -86,6 +87,7 @@ def in_class(driver, class_name, school_name):
     """
     menu_page = GfyMenu(driver)
     in_class_page = GfyCrmStudentInClassManagement(driver)
+    PageWait(menu_page.student_management)
     menu_page.student_management.click()
     sleep(1)
     menu_page.student_class_management.click()
@@ -217,16 +219,20 @@ class TestStudentClassManagement:
         # 保存成功状态，由于成功状态元素显示时间很短
         PageWait(page.status)
         assert page.status.text == "保存成功"
+        # 断言完成后删除新增的上课记录
         page.ok_button.click()
         sleep(1)
         PageSelect(page.teacher_class_list, text=class_name)
         sleep(1)
         page.query_in_class_record.click()
+        sleep(1)
+        # 断言班级名称
+        assert page.in_class_record.text == class_name
         PageWait(page.delete_button)
         page.delete_button.click()
 
     def test_in_class(self, crm_url, counseling_supervision_account, pass_word, phone_number, adviser_account,
-                      adviser_name, course, browser1, class_name, school_name):
+                      adviser_name, course, browser1, class_name, school_name, education_account, in_class_time):
         """
         测试上课点名
         流程：新增客户-分单-转学员-创订单-支付-绑定账号-分班-新增上课记录-上课
@@ -238,6 +244,7 @@ class TestStudentClassManagement:
         customer_page = GfyCrmCustomerManagement(browser1)
         order_page = GfyCustomerAddOrder(browser1)
         in_class_page = GfyCrmStudentInClassManagement(browser1)
+        menu_page = GfyMenu(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, new_student_name(), phone_number)
         sleep(1)
@@ -264,14 +271,26 @@ class TestStudentClassManagement:
         sleep(1)
         student_select_class(browser1, class_name)
         sleep(1)
+        # 切换到"高分云指导1"登录
+        login(crm_url, browser1, education_account, pass_word)
+        # 增加上课记录
+        add_in_class_record(browser1, school_name, class_name, in_class_time)
+        sleep(1)
+        in_class_page.ok_button.click()
+        sleep(1)
+        menu_page.student_management.click()
+        sleep(1)
+        # 上课点名
         in_class(browser1, class_name, school_name)
         sleep(1)
         # 断言点名保存成功
         assert in_class_page.status.text == "保存成功"
 
-    def test_leave(self, crm_url, education_account, pass_word, browser1, school_name, class_name, in_class_time):
+    def test_leave(self, crm_url, education_account, pass_word, browser1, school_name, class_name, in_class_time,
+                   phone_number, adviser_account, adviser_name, course, ):
         """
         测试请假
+        流程：创建客户-创建账号-创建订单-支付-分班-请假
         :param crm_url:
         :param education_account:
         :param pass_word:
@@ -282,19 +301,48 @@ class TestStudentClassManagement:
         :return:
         """
         leave_page = GfyCrmStudentInClassManagement(browser1)
-        login(crm_url, browser1, education_account, pass_word)
+        customer_page = GfyCrmCustomerManagement(browser1)
         menu_page = GfyMenu(browser1)
-        PageWait(menu_page.student_management)
+        order_page = GfyCustomerAddOrder(browser1)
+        login(crm_url, browser1, education_account, pass_word)
+        sleep(1)
+        add_customer(browser1, new_student_name(), phone_number)
+        sleep(1)
+        # 分单
+        split_customer(browser1, adviser_account, school_name)
+        sleep(1)
+        # 转学员
+        convert_student(browser1, school_name)
+        sleep(1)
+        customer_page.customer_ok_button.click()
+        sleep(1)
+        # 创建账号
+        create_account(browser1, pass_word, school_name)
+        sleep(1)
+        customer_page.customer_ok_button.click()
+        sleep(1)
+        customer_page.customer_list.click()
+        sleep(1)
+        # 创建订单
+        add_new_order(browser1, adviser_name, course, school_name)
+        sleep(1)
+        order_page.order_status_confirm.click()
+        sleep(1)
+        # 支付
+        pay_new_order(browser1)
+        sleep(1)
         menu_page.student_management.click()
-        PageWait(menu_page.student_class_management)
+        sleep(1)
         menu_page.student_class_management.click()
         sleep(1)
+        # 老师新增上课记录
         add_in_class_record(browser1, school_name, class_name, in_class_time)
         sleep(1)
         leave_page.ok_button.click()
         sleep(1)
         PageSelect(leave_page.teacher_class_list, text=class_name)
         sleep(1)
+        # 查询新增上课记录
         leave_page.query_in_class_record.click()
         sleep(1)
         leave(browser1)
@@ -353,6 +401,6 @@ class TestStudentClassManagement:
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"])
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_in_class"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_add_in_class_record"])
     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
     #              "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
