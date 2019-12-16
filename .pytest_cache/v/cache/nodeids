@@ -1,0 +1,18 @@
+[
+  "test_dir/test_crm_cust_manger.py::TestLogin::test_login",
+  "test_dir/test_crm_cust_manger.py::TestCustomerAdd::test_add_customer",
+  "test_dir/test_crm_cust_manger.py::TestCustomerAdd::test_split_customer",
+  "test_dir/test_crm_cust_manger.py::TestCustomerAdd::test_convert_student",
+  "test_dir/test_crm_cust_manger.py::TestCustomerAdd::test_create_account",
+  "test_dir/test_crm_cust_manger.py::TestCustomerAdd::test_customer_recovery",
+  "test_dir/test_crm_cust_manger.py::TestCustomerAddOrder::test_add_new_order",
+  "test_dir/test_crm_cust_manger.py::TestCustomerAddOrder::test_pay_new_order",
+  "test_dir/test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund",
+  "test_dir/test_crm_personnel_manage.py::TestStaffInfo::test_load_staff_info",
+  "test_dir/test_crm_personnel_manage.py::TestStaffInfo::test_add_staff_base_info",
+  "test_dir/test_crm_student_management.py::TestStuCourseManagement::test_student_select_class",
+  "test_dir/test_crm_student_management.py::TestStudentClassManagement::test_add_in_class_record",
+  "test_dir/test_crm_student_management.py::TestStudentClassManagement::test_in_class",
+  "test_dir/test_crm_student_management.py::TestStudentClassManagement::test_leave",
+  "test_dir/test_crm_student_management.py::TestStudentClassManagement::test_make_up"
+]

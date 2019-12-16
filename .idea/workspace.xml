@@ -253,10 +253,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.db" />
-        <item itemvalue="Python.http_req" />
         <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.run_tests" />
+        <item itemvalue="Python.http_req" />
+        <item itemvalue="Python.db" />
         <item itemvalue="Python.123" />
       </list>
     </recent_temporary>
@@ -575,5 +575,27 @@
     <MESSAGE value="20191115: 1、上课管理-上课点名完善测试脚本和元素定位" />
     <option name="LAST_COMMIT_MESSAGE" value="20191115: 1、上课管理-上课点名完善测试脚本和元素定位" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="322" y="62" key="CommitChangelistDialog2" timestamp="1576482499971">
+      <screen x="0" y="23" width="1373" height="877" />
+    </state>
+    <state x="322" y="62" key="CommitChangelistDialog2/0.23.1373.877@0.23.1373.877" timestamp="1576482499971" />
+    <state x="148" y="100" key="MergeDialog" timestamp="1576482562414">
+      <screen x="0" y="23" width="1373" height="877" />
+    </state>
+    <state x="148" y="100" key="MergeDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482562414" />
+    <state x="398" y="184" width="598" height="554" key="MultipleFileMergeDialog" timestamp="1576482562491">
+      <screen x="0" y="23" width="1373" height="877" />
+    </state>
+    <state x="398" y="184" width="598" height="554" key="MultipleFileMergeDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482562491" />
+    <state x="188" y="100" key="SettingsEditor" timestamp="1576482528282">
+      <screen x="0" y="23" width="1373" height="877" />
+    </state>
+    <state x="188" y="100" key="SettingsEditor/0.23.1373.877@0.23.1373.877" timestamp="1576482528282" />
+    <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576482571334">
+      <screen x="0" y="23" width="1373" height="877" />
+    </state>
+    <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482571334" />
   </component>
 </project>

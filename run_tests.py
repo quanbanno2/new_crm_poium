@@ -38,6 +38,9 @@ def run(m):
                      "--junit-xml=" + xml_report,
                      "--self-contained-html",
                      "--reruns", rerun])
+
+
+
     elif m == "debug":
         print("debug模式运行测试用例：")
         pytest.main(["-v", "-s", cases_path])
