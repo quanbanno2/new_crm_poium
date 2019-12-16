@@ -116,6 +116,7 @@ def leave(driver):
     leave_page = GfyCrmStudentInClassManagement(driver)
     leave_page.in_class_leave.click()
     sleep(1)
+    # 点击"自动化测试学生"进行请假
     leave_page.in_class_leave_student.click()
     sleep(1)
     PageSelect(leave_page.in_class_leave_type, text="公校原因")
@@ -287,10 +288,10 @@ class TestStudentClassManagement:
         assert in_class_page.status.text == "保存成功"
 
     def test_leave(self, crm_url, education_account, pass_word, browser1, school_name, class_name, in_class_time,
-                   phone_number, adviser_account, adviser_name, course, ):
+                   phone_number, adviser_account, adviser_name, course, counseling_supervision_account):
         """
         测试请假
-        流程：创建客户-创建账号-创建订单-支付-分班-请假
+        流程：创建客户-创建账号-创建订单-支付-(换指导老师账号)分班-请假
         :param crm_url:
         :param education_account:
         :param pass_word:
@@ -304,7 +305,7 @@ class TestStudentClassManagement:
         customer_page = GfyCrmCustomerManagement(browser1)
         menu_page = GfyMenu(browser1)
         order_page = GfyCustomerAddOrder(browser1)
-        login(crm_url, browser1, education_account, pass_word)
+        login(crm_url, browser1, counseling_supervision_account, pass_word)
         sleep(1)
         add_customer(browser1, new_student_name(), phone_number)
         sleep(1)
@@ -331,20 +332,24 @@ class TestStudentClassManagement:
         # 支付
         pay_new_order(browser1)
         sleep(1)
-        menu_page.student_management.click()
+        login(crm_url, browser1, education_account, pass_word)
         sleep(1)
-        menu_page.student_class_management.click()
-        sleep(1)
+        # menu_page.student_management.click()
+        # sleep(1)
+        # menu_page.student_class_management.click()
+        # sleep(1)
+
         # 老师新增上课记录
         add_in_class_record(browser1, school_name, class_name, in_class_time)
         sleep(1)
+        # 教学老师为学员请假
         leave_page.ok_button.click()
         sleep(1)
         PageSelect(leave_page.teacher_class_list, text=class_name)
         sleep(1)
-        # 查询新增上课记录
         leave_page.query_in_class_record.click()
         sleep(1)
+        # 查询新增上课记录
         leave(browser1)
         sleep(1)
         assert leave_page.status.text == "请假保存成功"
@@ -353,6 +358,11 @@ class TestStudentClassManagement:
         sleep(1)
         # 删除上课记录
         leave_page.delete_button.click()
+        PageWait(leave_page.ok_button)
+        leave_page.ok_button.click()
+        # 撤销请假记录
+        sleep(1)
+        menu_page.student_makeup_management.click()
 
     def test_make_up(self, browser1, crm_url, education_account, pass_word, school_name, make_up_class, make_up_time,
                      student_name):
@@ -401,6 +411,6 @@ class TestStudentClassManagement:
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"])
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_add_in_class_record"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave"])
     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
     #              "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])

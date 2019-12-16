@@ -307,6 +307,9 @@ class GfyCustomerAddOrder(Page):
     pay_order_stay = PageElement(
         xpath="/html/body/div[19]/div/div/div[3]/button[1]",
         describe="支付成功后留在当前页面按钮")
+    pay_cancel_button = PageElement(
+        xpath="//button[@data-bb-handler='Cancel']",
+        describe="取消按钮")
 
     """
     退费
