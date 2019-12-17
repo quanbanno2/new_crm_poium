@@ -138,15 +138,27 @@ class GfyCrmStudentInClassManagement(Page):
         describe="上课记录-查看明细")
 
     # 补课
-    make_up_student_name = PageElement(
+    make_up_student_name_input = PageElement(
         xpath="//input[@name='studentName']",
         describe="补课管理-学员姓名输入框")
+    make_up_student_name = PageElements(
+        xpath="//tr[@ng-repeat='item in stuLeaveDetailList']/td[12]",
+        describe="补课管理-查询数据第一行的学员姓名")
     query_makeup_student = PageElement(
         xpath="//button[@ng-click='loadStuLeaveDetail(1,pageInfo.pageSize)']",
         describe="补课管理-查询按钮")
+    cancel_makeup = PageElement(
+        xpath="//button[@title='撤销请假']",
+        describe="补课管理-撤销请假")
+    cancel_makeup_confirm = PageElement(
+        xpath="//button[@ng-click='messageCallBack(true,messageJson.inputValue)']",
+        describe="补课管理-撤销请假确认")
     plan_student_makeup = PageElement(
         xpath="//button[@ng-click='stuToMakeup(item)']",
         describe="补课管理-安排补课")
     makeup_select_class = PageElement(
         xpath="//button[@ng-click='stuMakeupSelectClass(item)']",
         describe="补课管理-选择补课班级")
+    leave_status_select = PageElement(
+        xpath="//select[@ng-model='stuLeaveDetailParam.makeupType']",
+        describe="补课管理-补课状态下拉框")

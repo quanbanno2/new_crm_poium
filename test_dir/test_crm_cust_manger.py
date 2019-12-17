@@ -89,6 +89,7 @@ def add_customer(driver, customer_name, phone_number):
     page.activity_query.click()
     sleep(1)
     page.activity_selected.click()
+    sleep(1)
     page.customer_phone.send_keys(phone_number)
     page.add_customer_save.click()
 

@@ -1,38 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191216">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191216:请假 增加撤销请假记录，请假调试完成">
+      <change beforePath="$PROJECT_DIR$/.idea/pyautoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pyautoTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/crm_student_management_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_student_management_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_add_new_order.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_pay_new_order.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_add_customer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_convert_student.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_create_account.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_customer_recovery.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_split_customer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestLogin_test_login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestLogin_test_time.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestLogin_test_time2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_personnel_manage.py_TestStaffInfo_test_add_staff_base_info.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_personnel_manage.py_TestStaffInfo_test_load_staff_info.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStuCourseManagement_test_student_select_class.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStudentClassManagement_test_add_in_class_record.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStudentClassManagement_test_in_class.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStudentClassManagement_test_leave.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_student_management.py_TestStudentClassManagement_test_make_up.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/image/test_crm_cust_manger.py_TestCustomerAdd_test_add_customer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/image/test_crm_student_management.py_TestStudentClassManagement_test_add_in_class_record.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/image/test_crm_student_management.py_TestStudentClassManagement_test_in_class.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_11_15_10_29_06/report.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +55,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -506,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576482599757</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="20191216:请假 增加撤销请假记录，请假调试完成">
+      <created>1576493084669</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1576493084669</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +565,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20190809 增加未上课退费" />
     <MESSAGE value="20190820 退费审批完成" />
     <MESSAGE value="20190820 退费（建单、支付、退费申请、审批、确认退费）" />
     <MESSAGE value="20190828 : 优化创建客户的xpath定位、将创建客户流程模块化" />
@@ -608,46 +589,51 @@
     <MESSAGE value="20191113: 2、单个学员分班优化" />
     <MESSAGE value="20191115: 1、上课管理-上课点名完善测试脚本和元素定位" />
     <MESSAGE value="20191216" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191216" />
+    <MESSAGE value="20191216:请假 增加撤销请假记录，请假调试完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="20191216:请假 增加撤销请假记录，请假调试完成" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="322" y="62" key="CommitChangelistDialog2" timestamp="1576493029846">
+    <state x="287" y="127" key="#Updates" timestamp="1576546221241">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state x="322" y="62" key="CommitChangelistDialog2/0.23.1373.877@0.23.1373.877" timestamp="1576493029846" />
-    <state width="1352" height="195" key="GridCell.Tab.0.bottom" timestamp="1576491440371">
+    <state x="287" y="127" key="#Updates/0.23.1373.877@0.23.1373.877" timestamp="1576546221241" />
+    <state x="314" y="62" key="CommitChangelistDialog2" timestamp="1576493084308">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="195" key="GridCell.Tab.0.bottom/0.23.1373.877@0.23.1373.877" timestamp="1576491440371" />
-    <state width="1352" height="195" key="GridCell.Tab.0.center" timestamp="1576491440371">
+    <state x="314" y="62" key="CommitChangelistDialog2/0.23.1373.877@0.23.1373.877" timestamp="1576493084308" />
+    <state width="1352" height="239" key="GridCell.Tab.0.bottom" timestamp="1576567859497">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="195" key="GridCell.Tab.0.center/0.23.1373.877@0.23.1373.877" timestamp="1576491440371" />
-    <state width="1352" height="195" key="GridCell.Tab.0.left" timestamp="1576491440370">
+    <state width="1352" height="239" key="GridCell.Tab.0.bottom/0.23.1373.877@0.23.1373.877" timestamp="1576567859497" />
+    <state width="1352" height="239" key="GridCell.Tab.0.center" timestamp="1576567859496">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="195" key="GridCell.Tab.0.left/0.23.1373.877@0.23.1373.877" timestamp="1576491440370" />
-    <state width="1352" height="195" key="GridCell.Tab.0.right" timestamp="1576491440371">
+    <state width="1352" height="239" key="GridCell.Tab.0.center/0.23.1373.877@0.23.1373.877" timestamp="1576567859496" />
+    <state width="1352" height="239" key="GridCell.Tab.0.left" timestamp="1576567859496">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="195" key="GridCell.Tab.0.right/0.23.1373.877@0.23.1373.877" timestamp="1576491440371" />
-    <state width="1352" height="459" key="GridCell.Tab.1.bottom" timestamp="1576490016482">
+    <state width="1352" height="239" key="GridCell.Tab.0.left/0.23.1373.877@0.23.1373.877" timestamp="1576567859496" />
+    <state width="1352" height="239" key="GridCell.Tab.0.right" timestamp="1576567859496">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="459" key="GridCell.Tab.1.bottom/0.23.1373.877@0.23.1373.877" timestamp="1576490016482" />
-    <state width="1352" height="459" key="GridCell.Tab.1.center" timestamp="1576490016481">
+    <state width="1352" height="239" key="GridCell.Tab.0.right/0.23.1373.877@0.23.1373.877" timestamp="1576567859496" />
+    <state width="1352" height="459" key="GridCell.Tab.1.bottom" timestamp="1576493141635">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="459" key="GridCell.Tab.1.center/0.23.1373.877@0.23.1373.877" timestamp="1576490016481" />
-    <state width="1352" height="459" key="GridCell.Tab.1.left" timestamp="1576490016480">
+    <state width="1352" height="459" key="GridCell.Tab.1.bottom/0.23.1373.877@0.23.1373.877" timestamp="1576493141635" />
+    <state width="1352" height="459" key="GridCell.Tab.1.center" timestamp="1576493141635">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="459" key="GridCell.Tab.1.left/0.23.1373.877@0.23.1373.877" timestamp="1576490016480" />
-    <state width="1352" height="459" key="GridCell.Tab.1.right" timestamp="1576490016481">
+    <state width="1352" height="459" key="GridCell.Tab.1.center/0.23.1373.877@0.23.1373.877" timestamp="1576493141635" />
+    <state width="1352" height="459" key="GridCell.Tab.1.left" timestamp="1576493141635">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="459" key="GridCell.Tab.1.right/0.23.1373.877@0.23.1373.877" timestamp="1576490016481" />
+    <state width="1352" height="459" key="GridCell.Tab.1.left/0.23.1373.877@0.23.1373.877" timestamp="1576493141635" />
+    <state width="1352" height="459" key="GridCell.Tab.1.right" timestamp="1576493141635">
+      <screen x="0" y="23" width="1373" height="877" />
+    </state>
+    <state width="1352" height="459" key="GridCell.Tab.1.right/0.23.1373.877@0.23.1373.877" timestamp="1576493141635" />
     <state x="148" y="100" key="MergeDialog" timestamp="1576482562414">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
@@ -656,17 +642,21 @@
       <screen x="0" y="23" width="1373" height="877" />
     </state>
     <state x="398" y="184" width="598" height="554" key="MultipleFileMergeDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482562491" />
-    <state x="188" y="100" key="SettingsEditor" timestamp="1576482528282">
+    <state x="188" y="100" key="SettingsEditor" timestamp="1576546601236">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state x="188" y="100" key="SettingsEditor/0.23.1373.877@0.23.1373.877" timestamp="1576482528282" />
-    <state x="286" y="201" key="Vcs.Push.Dialog.v2" timestamp="1576482601767">
+    <state x="188" y="100" key="SettingsEditor/0.23.1373.877@0.23.1373.877" timestamp="1576546601236" />
+    <state x="286" y="201" key="Vcs.Push.Dialog.v2" timestamp="1576493085878">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state x="286" y="201" key="Vcs.Push.Dialog.v2/0.23.1373.877@0.23.1373.877" timestamp="1576482601767" />
+    <state x="286" y="201" key="Vcs.Push.Dialog.v2/0.23.1373.877@0.23.1373.877" timestamp="1576493085878" />
     <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576482571334">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
     <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482571334" />
+    <state x="310" y="125" width="670" height="676" key="search.everywhere.popup" timestamp="1576563285035">
+      <screen x="0" y="23" width="1373" height="877" />
+    </state>
+    <state x="310" y="125" width="670" height="676" key="search.everywhere.popup/0.23.1373.877@0.23.1373.877" timestamp="1576563285035" />
   </component>
 </project>
