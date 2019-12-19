@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191217:1.补课不使用全流程 2.请假不使用全流程">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191219:全流程调整">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_10_47/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_pay_new_order.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_10_47/image/test_crm_cust_manger.py_TestCustomerAdd_test_create_account.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_10_47/image/test_crm_cust_manger.py_TestCustomerAdd_test_customer_recovery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_10_47/junit-xml.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_10_47/report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_56_21/junit-xml.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_56_21/report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_56_38/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_add_new_order.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_56_38/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_pay_new_order.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_56_38/image/test_crm_cust_manger.py_TestCustomerAdd_test_create_account.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_17_56_38/image/test_crm_cust_manger.py_TestCustomerAdd_test_customer_recovery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_18_04_35/junit-xml.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_18_04_35/report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_18_04_48/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_pay_new_order.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_18_04_48/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_18_04_48/image/test_crm_personnel_manage.py_TestStaffInfo_test_add_staff_base_info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_18_04_48/junit-xml.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_12_19_18_04_48/report.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -496,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576568163614</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="20191219:全流程调整">
+      <created>1576756164597</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1576756164597</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +592,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20190820 退费（建单、支付、退费申请、审批、确认退费）" />
     <MESSAGE value="20190828 : 优化创建客户的xpath定位、将创建客户流程模块化" />
     <MESSAGE value="20190901 : 优化订单退费退费申请、退费审批元素定位" />
     <MESSAGE value="20190906: 优化订单退费退费申请、退费审批元素定位 完成" />
@@ -598,7 +616,8 @@
     <MESSAGE value="20191216" />
     <MESSAGE value="20191216:请假 增加撤销请假记录，请假调试完成" />
     <MESSAGE value="20191217:1.补课不使用全流程 2.请假不使用全流程" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191217:1.补课不使用全流程 2.请假不使用全流程" />
+    <MESSAGE value="20191219:全流程调整" />
+    <option name="LAST_COMMIT_MESSAGE" value="20191219:全流程调整" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -606,9 +625,10 @@
       <screen x="0" y="23" width="1373" height="877" />
     </state>
     <state x="287" y="127" key="#Updates/0.23.1373.877@0.23.1373.877" timestamp="1576546221241" />
-    <state x="314" y="62" key="CommitChangelistDialog2" timestamp="1576568163324">
+    <state x="314" y="62" key="CommitChangelistDialog2" timestamp="1576756164117">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
+    <state x="314" y="62" key="CommitChangelistDialog2/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576756164117" />
     <state x="314" y="62" key="CommitChangelistDialog2/0.23.1373.877@0.23.1373.877" timestamp="1576568163324" />
     <state width="1352" height="287" key="GridCell.Tab.0.bottom" timestamp="1576756107683">
       <screen x="0" y="23" width="1373" height="877" />
@@ -658,9 +678,10 @@
       <screen x="0" y="23" width="1373" height="877" />
     </state>
     <state x="188" y="100" key="SettingsEditor/0.23.1373.877@0.23.1373.877" timestamp="1576546601236" />
-    <state x="286" y="201" key="Vcs.Push.Dialog.v2" timestamp="1576568165036">
+    <state x="286" y="201" key="Vcs.Push.Dialog.v2" timestamp="1576756166432">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
+    <state x="286" y="201" key="Vcs.Push.Dialog.v2/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576756166432" />
     <state x="286" y="201" key="Vcs.Push.Dialog.v2/0.23.1373.877@0.23.1373.877" timestamp="1576568165036" />
     <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576482571334">
       <screen x="0" y="23" width="1373" height="877" />
