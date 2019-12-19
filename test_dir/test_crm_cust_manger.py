@@ -551,6 +551,8 @@ class TestCustomerAdd:
         sleep(1)
         create_account(browser1, pass_word, school_name)
         sleep(1)
+        page.customer_ok_button.click()
+        sleep(1)
         assert page.customer_create_account_save_status.text == account_name
 
     def test_customer_recovery(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
@@ -579,23 +581,28 @@ class TestCustomerAdd:
         first_customer_teacher_name = customer_recovery(browser1)
         # 等待"保存成功"提示
         PageWait(page.customer_recovery_status)
+        # 断言是否回收成功
         assert page.customer_recovery_status.text == "保存成功"
         sleep(1)
         page.customer_recovery_date_button.click()
         sleep(1)
         page.customer_recovery_teacher_button.click()
         sleep(1)
+        # 断言是否有回收时间
         assert page.customer_recovery_date[0].text != "--"
+        sleep(1)
+        # 断言回收人是否正确
         assert page.customer_recovery_teacher[0].text == first_customer_teacher_name
         sleep(1)
         # 二手单分单
         split_customer(browser1, adviser_account2, school_name)
-        sleep(1)
+        sleep(2)
         page.checkbox_split_count.click()
         sleep(1)
         # 二手单分单次数为2
         # 断言主跟进人
         assert page.customer_teacher[3].text == adviser_name2
+        sleep(1)
         assert page.split_count.text == "2"
 
 
@@ -668,15 +675,13 @@ class TestCustomerAddOrder:
         sleep(1)
         order_page.ok_button.click()
         sleep(1)
-        # menu_page.customer_management.click()
-        # sleep(1)
         add_new_order(browser1, adviser_name, course, school_name)
         sleep(1)
         order_page.order_status_confirm.click()
         sleep(1)
         pay_new_order(browser1)
         # 断言是否支付成功
-        sleep(1)
+        sleep(2)
         assert order_page.pay_order_status.text == "成功"
         assert order_page.pay_order_calculation_status.text == "成功"
 
@@ -727,7 +732,6 @@ class TestCustomerAddOrder:
         refund_fee_text = refund_apply_list[2]
         order_id_text = refund_apply_list[1]
         customer_name = refund_apply_list[0]
-
         assert refund_fee_text == order_page.application_for_refund.get_attribute("value")
         assert order_page.approval_matter_status.text == "审批保存成功"
         sleep(1)
@@ -784,8 +788,8 @@ if __name__ == '__main__':
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_customer_recovery"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_add_new_order"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer",
     #              "-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_convert_student"])

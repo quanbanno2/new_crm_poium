@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191216:请假 增加撤销请假记录，请假调试完成">
-      <change beforePath="$PROJECT_DIR$/.idea/pyautoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pyautoTest.iml" afterDir="false" />
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191217:1.补课不使用全流程 2.请假不使用全流程">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_student_management_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_student_management_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +64,7 @@
       <recent name="$PROJECT_DIR$/test_dir" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_crm_student_management">
+  <component name="RunManager" selected="Python.test_crm_cust_manger">
     <configuration name="123" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -488,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576493084669</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="20191217:1.补课不使用全流程 2.请假不使用全流程">
+      <created>1576568163614</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1576568163614</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +573,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20190820 退费审批完成" />
     <MESSAGE value="20190820 退费（建单、支付、退费申请、审批、确认退费）" />
     <MESSAGE value="20190828 : 优化创建客户的xpath定位、将创建客户流程模块化" />
     <MESSAGE value="20190901 : 优化订单退费退费申请、退费审批元素定位" />
@@ -590,7 +597,8 @@
     <MESSAGE value="20191115: 1、上课管理-上课点名完善测试脚本和元素定位" />
     <MESSAGE value="20191216" />
     <MESSAGE value="20191216:请假 增加撤销请假记录，请假调试完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191216:请假 增加撤销请假记录，请假调试完成" />
+    <MESSAGE value="20191217:1.补课不使用全流程 2.请假不使用全流程" />
+    <option name="LAST_COMMIT_MESSAGE" value="20191217:1.补课不使用全流程 2.请假不使用全流程" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -598,26 +606,30 @@
       <screen x="0" y="23" width="1373" height="877" />
     </state>
     <state x="287" y="127" key="#Updates/0.23.1373.877@0.23.1373.877" timestamp="1576546221241" />
-    <state x="314" y="62" key="CommitChangelistDialog2" timestamp="1576493084308">
+    <state x="314" y="62" key="CommitChangelistDialog2" timestamp="1576568163324">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state x="314" y="62" key="CommitChangelistDialog2/0.23.1373.877@0.23.1373.877" timestamp="1576493084308" />
-    <state width="1352" height="239" key="GridCell.Tab.0.bottom" timestamp="1576567859497">
+    <state x="314" y="62" key="CommitChangelistDialog2/0.23.1373.877@0.23.1373.877" timestamp="1576568163324" />
+    <state width="1352" height="287" key="GridCell.Tab.0.bottom" timestamp="1576756107683">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="239" key="GridCell.Tab.0.bottom/0.23.1373.877@0.23.1373.877" timestamp="1576567859497" />
-    <state width="1352" height="239" key="GridCell.Tab.0.center" timestamp="1576567859496">
+    <state width="1352" height="287" key="GridCell.Tab.0.bottom/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576756107683" />
+    <state width="1352" height="239" key="GridCell.Tab.0.bottom/0.23.1373.877@0.23.1373.877" timestamp="1576568727323" />
+    <state width="1352" height="287" key="GridCell.Tab.0.center" timestamp="1576756107682">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="239" key="GridCell.Tab.0.center/0.23.1373.877@0.23.1373.877" timestamp="1576567859496" />
-    <state width="1352" height="239" key="GridCell.Tab.0.left" timestamp="1576567859496">
+    <state width="1352" height="287" key="GridCell.Tab.0.center/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576756107682" />
+    <state width="1352" height="239" key="GridCell.Tab.0.center/0.23.1373.877@0.23.1373.877" timestamp="1576568727322" />
+    <state width="1352" height="287" key="GridCell.Tab.0.left" timestamp="1576756107682">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="239" key="GridCell.Tab.0.left/0.23.1373.877@0.23.1373.877" timestamp="1576567859496" />
-    <state width="1352" height="239" key="GridCell.Tab.0.right" timestamp="1576567859496">
+    <state width="1352" height="287" key="GridCell.Tab.0.left/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576756107682" />
+    <state width="1352" height="239" key="GridCell.Tab.0.left/0.23.1373.877@0.23.1373.877" timestamp="1576568727321" />
+    <state width="1352" height="287" key="GridCell.Tab.0.right" timestamp="1576756107683">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state width="1352" height="239" key="GridCell.Tab.0.right/0.23.1373.877@0.23.1373.877" timestamp="1576567859496" />
+    <state width="1352" height="287" key="GridCell.Tab.0.right/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576756107683" />
+    <state width="1352" height="239" key="GridCell.Tab.0.right/0.23.1373.877@0.23.1373.877" timestamp="1576568727322" />
     <state width="1352" height="459" key="GridCell.Tab.1.bottom" timestamp="1576493141635">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
@@ -646,17 +658,18 @@
       <screen x="0" y="23" width="1373" height="877" />
     </state>
     <state x="188" y="100" key="SettingsEditor/0.23.1373.877@0.23.1373.877" timestamp="1576546601236" />
-    <state x="286" y="201" key="Vcs.Push.Dialog.v2" timestamp="1576493085878">
+    <state x="286" y="201" key="Vcs.Push.Dialog.v2" timestamp="1576568165036">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
-    <state x="286" y="201" key="Vcs.Push.Dialog.v2/0.23.1373.877@0.23.1373.877" timestamp="1576493085878" />
+    <state x="286" y="201" key="Vcs.Push.Dialog.v2/0.23.1373.877@0.23.1373.877" timestamp="1576568165036" />
     <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576482571334">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
     <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482571334" />
-    <state x="310" y="125" width="670" height="676" key="search.everywhere.popup" timestamp="1576563285035">
+    <state x="310" y="125" width="670" height="676" key="search.everywhere.popup" timestamp="1576747587361">
       <screen x="0" y="23" width="1373" height="877" />
     </state>
+    <state x="310" y="125" width="670" height="676" key="search.everywhere.popup/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576747587361" />
     <state x="310" y="125" width="670" height="676" key="search.everywhere.popup/0.23.1373.877@0.23.1373.877" timestamp="1576563285035" />
   </component>
 </project>

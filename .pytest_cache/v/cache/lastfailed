@@ -2,12 +2,10 @@
   "test_db_connect.py": true,
   "test_dir/test_baidu.py::TestSearch::test_baidu_search[case1]": true,
   "test_dir/test_baidu.py::TestSearch::test_baidu_search_case": true,
-  "test_dir/test_crm_cust_manger.py::TestCustomerAdd::test_create_account": true,
   "test_dir/test_crm_cust_manger.py::TestCustomerAdd::test_import_customer": true,
   "test_dir/test_crm_cust_manger.py::TestCustomerAdd::test_single_convert_to_student": true,
+  "test_dir/test_crm_cust_manger.py::TestCustomerAddOrder::test_pay_new_order": true,
   "test_dir/test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund": true,
-  "test_dir/test_crm_student_management.py::TestStuCourseManagement::test_student_select_class": true,
-  "test_dir/test_crm_student_management.py::TestStudentClassManagement::test_add_in_class_record": true,
-  "test_dir/test_crm_student_management.py::TestStudentClassManagement::test_in_class": true,
+  "test_dir/test_crm_personnel_manage.py::TestStaffInfo::test_add_staff_base_info": true,
   "test_dir/test_parametrize.py": true
 }

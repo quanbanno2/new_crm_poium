@@ -87,8 +87,8 @@ class GfyCrmCustomerManagement(Page):
         xpath="//button[@ng-click='allotOrder()']",
         describe="确认分单按钮")
     checkbox_split_count = PageElement(
-        # xpath="//input[@ng-model=\"customerColShow['分单次数']\"]",
         xpath="//span[text()='分单次数']",
+        # xpath="//input[@ng-model=\"customerColShow['分单次数']\"]",
         describe="勾选显示分单次数")
     # 只勾选分单次数和联系方式
     split_count = PageElement(
@@ -175,7 +175,7 @@ class GfyCrmCustomerManagement(Page):
         describe="回收跟进人勾选按钮")
     customer_recovery_date = PageElements(
         xpath="//td[@ng-if=\"customerColShow['回收时间']\"]",
-        describe="我的客户-第一位客户回收时间")
+        describe="我的客户-回收时间")
     customer_recovery_teacher = PageElements(
         xpath="//td[@ng-if=\"customerColShow['回收跟进人']\"]",
         describe="我的客户-第一位客户回收跟进人")

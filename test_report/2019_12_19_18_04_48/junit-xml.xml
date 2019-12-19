@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuite errors="0" failures="3" name="pytest" skipped="0" tests="16" time="940.411">
+    <testcase classname="test_dir.test_crm_cust_manger.TestLogin" file="test_dir/test_crm_cust_manger.py" line="438"
+              name="test_login" time="14.749"></testcase>
+    <testcase classname="test_dir.test_crm_cust_manger.TestCustomerAdd" file="test_dir/test_crm_cust_manger.py"
+              line="458" name="test_add_customer" time="20.013"></testcase>
+    <testcase classname="test_dir.test_crm_cust_manger.TestCustomerAdd" file="test_dir/test_crm_cust_manger.py"
+              line="478" name="test_split_customer" time="29.130"></testcase>
+    <testcase classname="test_dir.test_crm_cust_manger.TestCustomerAdd" file="test_dir/test_crm_cust_manger.py"
+              line="504" name="test_convert_student" time="28.272"></testcase>
+    <testcase classname="test_dir.test_crm_cust_manger.TestCustomerAdd" file="test_dir/test_crm_cust_manger.py"
+              line="527" name="test_create_account" time="43.262"></testcase>
+    <testcase classname="test_dir.test_crm_cust_manger.TestCustomerAdd" file="test_dir/test_crm_cust_manger.py"
+              line="557" name="test_customer_recovery" time="46.254"></testcase>
+    <testcase classname="test_dir.test_crm_cust_manger.TestCustomerAddOrder" file="test_dir/test_crm_cust_manger.py"
+              line="613" name="test_add_new_order" time="44.880"></testcase>
+    <testcase classname="test_dir.test_crm_cust_manger.TestCustomerAddOrder" file="test_dir/test_crm_cust_manger.py"
+              line="651" name="test_pay_new_order" time="127.474">
+        <failure message="AssertionError: assert &apos;&apos; == &apos;成功&apos;
+  + 成功">self = &lt;test_dir.test_crm_cust_manger.TestCustomerAddOrder object at 0x10a0f8d10&gt;
+            crm_url = &apos;http://gaofenyun.com:8073/crm-web/login.html&apos;
+            browser1 = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;be7ca24cd0a34e87d54ef14360a8599e&quot;)&gt;
+            school_name = &apos;高分云&apos;, adviser_account = &apos;高分云辅导1&apos;, pass_word = &apos;123456&apos;,
+            phone_number = &apos;13437829328&apos;
+            adviser_name = &apos;辅导1&apos;, course = &apos;自动化专用语文培优次课&apos;, counseling_supervision_account = &apos;高分云辅导督导1&apos;
+
+            def test_pay_new_order(self, crm_url, browser1, school_name, adviser_account, pass_word, phone_number,
+            adviser_name,
+            course, counseling_supervision_account):
+            &quot;&quot;&quot;
+            测试支付订单：添加优惠-添加支付-添加其他费用-添加分成对象
+            :param crm_url:
+            :param browser1:
+            :param school_name:
+            :param adviser_account:
+            :param pass_word:
+            :param phone_number:
+            :param adviser_name:
+            :param course:
+            :param counseling_supervision_account:
+            :return:
+            &quot;&quot;&quot;
+            # menu_page = GfyMenu(browser1)
+            order_page = GfyCustomerAddOrder(browser1)
+            login(crm_url, browser1, counseling_supervision_account, pass_word)
+            add_customer(browser1, new_student_name(), phone_number)
+            sleep(1)
+            split_customer(browser1, adviser_account, school_name)
+            sleep(1)
+            convert_student(browser1, school_name)
+            sleep(1)
+            order_page.ok_button.click()
+            sleep(1)
+            # menu_page.customer_management.click()
+            # sleep(1)
+            add_new_order(browser1, adviser_name, course, school_name)
+            sleep(1)
+            order_page.order_status_confirm.click()
+            sleep(1)
+            pay_new_order(browser1)
+            # 断言是否支付成功
+            sleep(1)
+            &gt; assert order_page.pay_order_status.text == &quot;成功&quot;
+            E AssertionError: assert &apos;&apos; == &apos;成功&apos;
+            E + 成功
+
+            test_dir/test_crm_cust_manger.py:687: AssertionError
+        </failure>
+    </testcase>
+    <testcase classname="test_dir.test_crm_cust_manger.TestCustomerAddOrder" file="test_dir/test_crm_cust_manger.py"
+              line="689" name="test_student_refund" time="153.320">
+        <failure message="TimeoutError: Timeout, element invisible">self = &lt;test_dir.test_crm_cust_manger.TestCustomerAddOrder
+            object at 0x10a0f8690&gt;
+            browser1 = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;be7ca24cd0a34e87d54ef14360a8599e&quot;)&gt;
+            crm_url = &apos;http://gaofenyun.com:8073/crm-web/login.html&apos;, supervisor_account = &apos;高分云指导督导1&apos;
+            pass_word = &apos;123456&apos;, remarks = &apos;这是备注内容。&apos;, phone_number = &apos;13437829328&apos;,
+            adviser_name = &apos;辅导1&apos;
+            adviser_account = &apos;高分云辅导1&apos;, course = &apos;自动化专用语文培优次课&apos;, school_name = &apos;高分云&apos;
+            educational_effect_time = &apos;2019/12/19&apos;, educational_account = &apos;高分云教务1&apos;
+            counseling_supervision_account = &apos;高分云辅导督导1&apos;
+
+            def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks,
+            phone_number, adviser_name, adviser_account, course, school_name, educational_effect_time,
+            educational_account, counseling_supervision_account):
+            &quot;&quot;&quot;
+            测试客户退费
+            :param browser1:
+            :param crm_url:
+            :param supervisor_account:
+            :param pass_word:
+            :param remarks:
+            :param phone_number:
+            :param adviser_name:
+            :param adviser_account:
+            :param course:
+            :param school_name:
+            :param educational_effect_time:
+            :param educational_account:
+            :return:
+            &quot;&quot;&quot;
+            menu_page = GfyMenu(browser1)
+            order_page = GfyCustomerAddOrder(browser1)
+            other_page = GfyCrmCustomerManagement(browser1)
+            login(crm_url, browser1, counseling_supervision_account, pass_word)
+            add_customer(browser1, new_student_name(), phone_number)
+            sleep(1)
+            split_customer(browser1, adviser_account, school_name)
+            sleep(1)
+            convert_student(browser1, school_name)
+            sleep(1)
+            order_page.ok_button.click()
+            sleep(1)
+            # menu_page.customer_management.click()
+            # sleep(1)
+            add_new_order(browser1, adviser_name, course, school_name)
+            sleep(1)
+            order_page.order_status_confirm.click()
+            sleep(1)
+            pay_new_order(browser1)
+            sleep(1)
+            other_page.cancel_btn.click()
+            sleep(1)
+            menu_page.student_management.click()
+            sleep(1)
+            &gt; refund_apply_list = refund_apply(browser1, remarks)
+
+            test_dir/test_crm_cust_manger.py:733:
+            _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+            test_dir/test_crm_cust_manger.py:345: in refund_apply
+            PageWait(order_page.approval_matter_setting)
+            _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+            self = &lt;poium.page_objects.PageWait object at 0x10a216dd0&gt;
+            elm = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;be7ca24cd0a34e87d54ef14360a8599e&quot;,
+            element=&quot;1ccdc308-4012-4dea-8e5f-5630688f4c44&quot;)&gt;
+            timeout = 3
+
+            def __init__(self, elm, timeout=3):
+            &quot;&quot;&quot;
+            wait webelement display
+            &quot;&quot;&quot;
+            try:
+            timeout_int = int(timeout)
+            except TypeError:
+            raise ValueError(&quot;Type &apos;timeout&apos; error, must be type int() &quot;)
+
+            for i in range(timeout_int):
+            if elm is not None:
+            if elm.is_displayed() is True:
+            break
+            else:
+            sleep(1)
+            else:
+            sleep(1)
+            else:
+            &gt; raise TimeoutError(&quot;Timeout, element invisible&quot;)
+            E TimeoutError: Timeout, element invisible
+
+            /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/poium/page_objects.py:214:
+            TimeoutError
+        </failure>
+    </testcase>
+    <testcase classname="test_dir.test_crm_personnel_manage.TestStaffInfo" file="test_dir/test_crm_personnel_manage.py"
+              line="28" name="test_load_staff_info" time="18.753"></testcase>
+    <testcase classname="test_dir.test_crm_personnel_manage.TestStaffInfo" file="test_dir/test_crm_personnel_manage.py"
+              line="42" name="test_add_staff_base_info" time="77.328">
+        <failure message="TimeoutError: Timeout, element invisible">self = &lt;test_dir.test_crm_personnel_manage.TestStaffInfo
+            object at 0x10a2bf290&gt;
+            browser1 = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;be7ca24cd0a34e87d54ef14360a8599e&quot;)&gt;
+            crm_url = &apos;http://gaofenyun.com:8073/crm-web/login.html&apos;, supervisor_account = &apos;高分云指导督导1&apos;
+            pass_word = &apos;123456&apos;
+
+            def test_add_staff_base_info(self, browser1, crm_url, supervisor_account, pass_word):
+            login(crm_url, browser1, supervisor_account, pass_word)
+            &gt; add_staff_base_info(browser1)
+
+            test_dir/test_crm_personnel_manage.py:45:
+            _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+            test_dir/test_crm_personnel_manage.py:21: in add_staff_base_info
+            PageWait(page.add_staff_base_info)
+            _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+            self = &lt;poium.page_objects.PageWait object at 0x10a2bf0d0&gt;, elm = None, timeout = 3
+
+            def __init__(self, elm, timeout=3):
+            &quot;&quot;&quot;
+            wait webelement display
+            &quot;&quot;&quot;
+            try:
+            timeout_int = int(timeout)
+            except TypeError:
+            raise ValueError(&quot;Type &apos;timeout&apos; error, must be type int() &quot;)
+
+            for i in range(timeout_int):
+            if elm is not None:
+            if elm.is_displayed() is True:
+            break
+            else:
+            sleep(1)
+            else:
+            sleep(1)
+            else:
+            &gt; raise TimeoutError(&quot;Timeout, element invisible&quot;)
+            E TimeoutError: Timeout, element invisible
+
+            /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/poium/page_objects.py:214:
+            TimeoutError
+        </failure>
+    </testcase>
+    <testcase classname="test_dir.test_crm_student_management.TestStuCourseManagement"
+              file="test_dir/test_crm_student_management.py" line="146" name="test_student_select_class"
+              time="89.381"></testcase>
+    <testcase classname="test_dir.test_crm_student_management.TestStudentClassManagement"
+              file="test_dir/test_crm_student_management.py" line="199" name="test_add_in_class_record"
+              time="23.155"></testcase>
+    <testcase classname="test_dir.test_crm_student_management.TestStudentClassManagement"
+              file="test_dir/test_crm_student_management.py" line="230" name="test_in_class" time="115.742"></testcase>
+    <testcase classname="test_dir.test_crm_student_management.TestStudentClassManagement"
+              file="test_dir/test_crm_student_management.py" line="292" name="test_leave" time="37.123"></testcase>
+    <testcase classname="test_dir.test_crm_student_management.TestStudentClassManagement"
+              file="test_dir/test_crm_student_management.py" line="345" name="test_make_up" time="68.412"></testcase>
+</testsuite>
