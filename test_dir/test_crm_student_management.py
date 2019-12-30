@@ -3,14 +3,13 @@ import sys
 from time import sleep
 from test_dir.test_crm_cust_manger import login, new_student_name, add_customer, split_customer, convert_student, \
     create_account, add_new_order, pay_new_order
-from os.path import dirname, abspath
-
-sys.path.insert(0, dirname(dirname(abspath(__file__))))
-
 from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
 from page.crm_menu_page import GfyMenu
 from poium import PageWait, PageSelect
+from os.path import dirname, abspath
+
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 
 def student_select_class(driver, class_name):
@@ -250,7 +249,7 @@ class TestStudentClassManagement:
         customer_page = GfyCrmCustomerManagement(browser1)
         order_page = GfyCustomerAddOrder(browser1)
         in_class_page = GfyCrmStudentInClassManagement(browser1)
-        menu_page = GfyMenu(browser1)
+        # menu_page = GfyMenu(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, new_student_name(), phone_number)
         sleep(1)

@@ -37,6 +37,27 @@ class GfyCrmCustomerManagement(Page):
     customer_activity = PageElement(
         xpath="//button[@ng-disabled=\"custInfoDialogType==='detail'\"]",
         describe='客户来源按钮')
+
+    # 编辑客户
+    customer_edit_button = PageElements(
+        xpath="//button[@title='编辑']",
+        describe="客户列表-编辑客户按钮")
+    edit_customer_parentSet = PageElement(
+        xpath="//input[@value='F01']",
+        describe="客户列表-编辑家长关系")
+    edit_customer_sex = PageElement(
+        xpath="//input[@ng-model='custInfoDialog.sex'][@value='S02']",
+        describe="客户列表-编辑性别")
+    edit_customer_school = PageElement(
+        xpath="//select[@name='belongSchoolId']",
+        describe="客户列表-编辑校区")
+    edit_customer_intentLevel = PageElement(
+        xpath="//select[@name='intentLevel']",
+        describe="客户列表-编辑意向级别")
+    edit_customer_type = PageElement(
+        xpath="//select[@name='custType']",
+        describe="客户列表-编辑客户类型")
+
     # 活动列表
     activity_school = PageElement(
         xpath="//select[@ng-model='parentActivityParam.schoolId']",
@@ -50,13 +71,13 @@ class GfyCrmCustomerManagement(Page):
     activity_selected = PageElement(
         link_text="选中活动",
         describe="选择活动")
-
     customer_phone = PageElement(
         xpath="//input[@name='phone1']",
         describe='联系方式输入框1')
-    add_customer_save = PageElement(
-        xpath="//button[@ng-show=\"custInfoDialogType==='edit'||custInfoDialogType==='add'\"]",
-        describe='订单创建保存按钮')
+    add_customer_save = PageElements(
+        # xpath="//button[@ng-show=\"custInfoDialogType==='edit'||custInfoDialogType==='add'\"]",
+        xpath="//button[@ng-click='saveCustInfo()']",
+        describe='客户创建保存按钮')
     customer_name = PageElement(
         xpath="//a[@ng-click='selectCust(item)'][1]",
         describe='我的客户-客户管理列表排第一的客户名称')
@@ -100,6 +121,9 @@ class GfyCrmCustomerManagement(Page):
     convert_to_student = PageElement(
         xpath="//button[@ng-click='changeToStu(item)']",
         describe="客户管理列表-第一名客户转为学员按钮")
+    convert_confirm = PageElement(
+        xpath="//button[@ng-disabled='!messageJson.inputValue']",
+        describe="我的客户-转为学员确定")
     confirm_btn = PageElement(
         xpath="//button[@data-bb-handler='confirm']",
         describe="确认按钮")
@@ -357,3 +381,13 @@ class GfyCustomerAddOrder(Page):
     approval_matter_status = PageElement(
         xpath="//div[@class='bootbox-body']",
         describe="断言审批申请")
+
+
+class GfyCustomerDataEliminate(Page):
+    # 删除创建的客户
+    customer_eliminate = PageElements(
+        xpath="//button[@title='删除']",
+        describe="我的客户-客户删除按钮")
+    eliminate_confirm = PageElement(
+        xpath="//button[@data-bb-handler='confirm']",
+        describe="确认删除按钮")

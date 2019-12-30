@@ -4,14 +4,26 @@ import pymysql
 from time import sleep
 from poium import PageWait, PageSelect
 from _pydecimal import Context, ROUND_HALF_UP
+
 from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
-from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
+from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder, GfyCustomerDataEliminate
 from page.crm_home_page import GfyHomePage
 from page.crm_menu_page import GfyMenu
 from page.crm_finance_page import GfyRefundInfo
 from page.crm_login_page import GfyLogin
+
+
+def database_connect():
+    """
+    集成数据库链接
+    :return:
+    """
+    my_con = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
+                             'edu_test_user',
+                             'Quanlang_edu_test')
+    return my_con
 
 
 def new_student_name():
@@ -20,24 +32,41 @@ def new_student_name():
     :return:
     """
     customer_name = []
-    db = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
-                         'edu_test_user',
-                         'Quanlang_edu_test')
-    cursor = db.cursor()
+    # db = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
+    #                      'edu_test_user',
+    #                      'Quanlang_edu_test')
+    # cursor = db.cursor()
+    my_con = database_connect()
+    my_cursor = my_con.cursor()
     sql = 'SELECT cust_name FROM test_customer.cust_info ' \
           'WHERE cust_id = (SELECT MAX(cust_id) ' \
           'FROM test_customer.cust_info WHERE cust_name LIKE "客户%" AND cust_status="S01")'
-    cursor.execute(sql)
-    result = cursor.fetchall()
+    my_cursor.execute(sql)
+    result = my_cursor.fetchall()
     for re in result:
         customer_name = re[0]
     # 读取客户名称后的数字
     a = customer_name[2:]
     client_num = int(a)
-    client_num = client_num + 1
+    client_num += 1
     client_name = "客户" + str(client_num)
-    db.close()
+    my_con.close()
     return client_name
+
+
+def eliminate_account(account_name):
+    """
+    链接-执行-提交事务-关闭数据库
+    :param account_name:
+    :return:
+    """
+    my_con = database_connect()
+    my_cursor = my_con.cursor()
+    sql = 'DELETE FROM test_user.usr_account_info WHERE login_name="%s"' % account_name
+    my_cursor.execute(sql)
+    my_con.commit()
+    my_cursor.close()
+    my_con.close()
 
 
 def login(url, driver, account, password):
@@ -91,7 +120,7 @@ def add_customer(driver, customer_name, phone_number):
     page.activity_selected.click()
     sleep(1)
     page.customer_phone.send_keys(phone_number)
-    page.add_customer_save.click()
+    page.add_customer_save[0].click()
 
 
 def add_educational(driver, educational_effect_time, educational_account):
@@ -143,8 +172,8 @@ def split_customer(driver, adviser_account, school_name):
     :return:
     """
     page = GfyCrmCustomerManagement(driver)
-    PageSelect(page.customer_list_school_list, text=school_name)
-    sleep(1)
+    # PageSelect(page.customer_list_school_list, text=school_name)
+    # sleep(1)
     page.customer_check.click()
     sleep(1)
     page.customer_split.click()
@@ -172,7 +201,7 @@ def convert_student(driver, school_name):
     sleep(1)
     page.convert_to_student.click()
     sleep(1)
-    page.confirm_btn.click()
+    page.convert_confirm.click()
 
 
 def create_account(driver, password, school_name):
@@ -204,6 +233,10 @@ def create_account(driver, password, school_name):
     page.customer_create_account_birthday_today.click()
     sleep(1)
     page.customer_create_account_save.click()
+
+
+def customer_edit():
+    pass
 
 
 def add_new_order(driver, consultant, course_name, school_name):
@@ -472,9 +505,14 @@ class TestCustomerAdd:
         student_name = new_student_name()
         add_customer(browser1, student_name, phone_number)
         page = GfyCrmCustomerManagement(browser1)
+        eliminate_page = GfyCustomerDataEliminate(browser1)
         PageSelect(page.customer_list_school_list, text=school_name)
         sleep(2)
         assert page.customer_name.text == student_name
+        # 数据清除
+        eliminate_page.customer_eliminate[0].click()
+        PageWait(eliminate_page.eliminate_confirm)
+        eliminate_page.eliminate_confirm.click()
 
     def test_split_customer(self, crm_url, browser1, adviser_account, counseling_supervision_account, school_name,
                             phone_number, pass_word, adviser_name):
@@ -490,6 +528,7 @@ class TestCustomerAdd:
         :return:
         """
         page = GfyCrmCustomerManagement(browser1)
+        eliminate_page = GfyCustomerDataEliminate(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, new_student_name(), phone_number)
         sleep(1)
@@ -501,9 +540,12 @@ class TestCustomerAdd:
         # 断言分单跟进人
         assert page.split_count.text == "1"
         assert page.split_customer.text == adviser_name
+        eliminate_page.customer_eliminate[0].click()
+        PageWait(eliminate_page.eliminate_confirm)
+        eliminate_page.eliminate_confirm.click()
 
     def test_convert_student(self, crm_url, browser1, counseling_supervision_account, pass_word, school_name,
-                             phone_number, adviser_account):
+                             phone_number):
         """
         测试单个客户转为学员
         :param crm_url:
@@ -512,38 +554,43 @@ class TestCustomerAdd:
         :param pass_word:
         :param school_name:
         :param phone_number:
-        :param adviser_account:
         :return:
         """
         page = GfyCrmCustomerManagement(browser1)
+        eliminate_page = GfyCustomerDataEliminate(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, new_student_name(), phone_number)
         sleep(1)
-        split_customer(browser1, adviser_account, school_name)
+        split_customer(browser1, counseling_supervision_account, school_name)
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
         assert page.convert_success_text.text == "成功转为学员"
+        page.customer_ok_button.click()
+        sleep(1)
+        eliminate_page.customer_eliminate[0].click()
+        PageWait(eliminate_page.eliminate_confirm)
+        eliminate_page.eliminate_confirm.click()
 
-    def test_create_account(self, browser1, pass_word, school_name, crm_url, adviser_account,
-                            counseling_supervision_account, phone_number):
+    def test_create_account(self, browser1, pass_word, school_name, crm_url, counseling_supervision_account,
+                            phone_number):
         """
-        测试单个客户转为学员
+        测试学员创建账号
         :param browser1:
         :param pass_word:
         :param school_name:
         :param crm_url:
-        :param adviser_account:
         :param counseling_supervision_account:
         :param phone_number:
         :return:
         """
         page = GfyCrmCustomerManagement(browser1)
+        eliminate_page = GfyCustomerDataEliminate(browser1)
         account_name = new_student_name()
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, account_name, phone_number)
         sleep(1)
-        split_customer(browser1, adviser_account, school_name)
+        split_customer(browser1, counseling_supervision_account, school_name)
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
@@ -554,6 +601,16 @@ class TestCustomerAdd:
         page.customer_ok_button.click()
         sleep(1)
         assert page.customer_create_account_save_status.text == account_name
+        sleep(0.5)
+        page.customer_list.click()
+        sleep(1)
+        # 我的客户-删除客户
+        eliminate_page.customer_eliminate[0].click()
+        PageWait(eliminate_page.eliminate_confirm)
+        eliminate_page.eliminate_confirm.click()
+        # 清理账号
+        eliminate_account(account_name)
+        sleep(2)
 
     def test_customer_recovery(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
                                adviser_account, school_name, adviser_account2, adviser_name2):
@@ -690,6 +747,7 @@ class TestCustomerAddOrder:
                             educational_account, counseling_supervision_account):
         """
         测试客户退费
+        活动：新招生
         :param browser1:
         :param crm_url:
         :param supervisor_account:
@@ -789,7 +847,7 @@ if __name__ == '__main__':
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer",
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_create_account"])
     #              "-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_convert_student"])
