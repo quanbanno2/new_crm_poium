@@ -1,4 +1,5 @@
 {
   "test_crm_cust_manger.py::TestCustomerAddOrder::test_add_new_order": true,
+  "test_crm_cust_manger.py::TestCustomerManagement::test_customer_recovery": true,
   "test_crm_cust_manger.py::TestStudentOrderManagement::test_student_refund": true
 }

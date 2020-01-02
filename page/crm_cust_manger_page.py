@@ -81,9 +81,9 @@ class GfyCrmCustomerManagement(Page):
     customer_name = PageElement(
         xpath="//a[@ng-click='selectCust(item)'][1]",
         describe='我的客户-客户管理列表排第一的客户名称')
-    customer_check = PageElement(
+    customer_check = PageElements(
         xpath="//input[@ng-model='item.selectState']",
-        describe="我的客户-勾选第一个客户")
+        describe="我的客户-勾选客户")
     customer_split = PageElement(
         xpath="//button[@ng-click=\"$parent.openTeacherDialog(toAllotOrder,'')\"]",
         describe="分单按钮")
@@ -190,17 +190,17 @@ class GfyCrmCustomerManagement(Page):
         # xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[1]"
         #       "/div/div[2]/div/div[1]/table/tbody/tr[1]/td[9]",
         xpath="//td[@class='ng-binding']",
-        describe="我的客户-第一个客户的主跟进人名称")
+        describe="我的客户-客户的主跟进人名称")
     customer_recovery_date_button = PageElement(
         xpath="//span[text()='回收时间']",
         describe="回收时间勾选按钮")
     customer_recovery_teacher_button = PageElement(
         xpath="//span[text()='回收跟进人']",
         describe="回收跟进人勾选按钮")
-    customer_recovery_date = PageElements(
+    customer_recovery_date = PageElement(
         xpath="//td[@ng-if=\"customerColShow['回收时间']\"]",
         describe="我的客户-回收时间")
-    customer_recovery_teacher = PageElements(
+    customer_recovery_teacher = PageElement(
         xpath="//td[@ng-if=\"customerColShow['回收跟进人']\"]",
         describe="我的客户-第一位客户回收跟进人")
 
@@ -384,7 +384,9 @@ class GfyCustomerAddOrder(Page):
 
 
 class GfyCustomerDataEliminate(Page):
-    # 删除创建的客户
+    """
+    清理数据
+    """
     customer_eliminate = PageElements(
         xpath="//button[@title='删除']",
         describe="我的客户-客户删除按钮")

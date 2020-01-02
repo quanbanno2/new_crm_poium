@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191219:全流程调整">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191015:①创建客户、分单、转学员和创建账号测试脚本降低脚本间的依赖&#10;②将生成学员的函数，调整到测试脚本中，不使用统一生成方式">
+      <change beforePath="$PROJECT_DIR$/.idea/pyautoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pyautoTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_db_connect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
@@ -44,25 +43,19 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_dir/test_crm_student_management.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/page" />
       <recent name="$PROJECT_DIR$/test_dir" />
+      <recent name="$PROJECT_DIR$/page" />
     </key>
   </component>
   <component name="RunManager" selected="Python.test_crm_cust_manger">
@@ -192,7 +185,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_crm_personnel_manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="test_crm_student_management" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -202,27 +195,6 @@
       <option name="SDK_HOME" value="$USER_HOME$/venv/bin/python3.7" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_dir" />
       <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test_crm_student_management" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="pyautoTest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_dir" />
-      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_dir/test_crm_student_management.py" />
@@ -236,20 +208,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.test_crm_cust_manger" />
-      <item itemvalue="Python.test_crm_personnel_manage" />
       <item itemvalue="Python.test_crm_student_management" />
       <item itemvalue="Python.123" />
-      <item itemvalue="Python.db" />
-      <item itemvalue="Python.http_req" />
       <item itemvalue="Python.run_tests" />
       <item itemvalue="Python.test (1)" />
+      <item itemvalue="Python.http_req" />
+      <item itemvalue="Python.db" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.db" />
         <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.run_tests" />
         <item itemvalue="Python.http_req" />
+        <item itemvalue="Python.db" />
         <item itemvalue="Python.123" />
       </list>
     </recent_temporary>
@@ -434,85 +405,25 @@
       <option name="project" value="LOCAL" />
       <updated>1571103660075</updated>
     </task>
-    <task id="LOCAL-00023" summary="20191101:&#10;1、添加客户、客户分单、转为学员、创建教学帐号、创建学员订单 - 减少关联&#10;2、新增员工信息管理-查询、新增员工信息的元素定位">
-      <created>1572599717497</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1572599717497</updated>
-    </task>
-    <task id="LOCAL-00024" summary="20191111:&#10;1、订单支付和订单退费 优化关联">
-      <created>1573469185044</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1573469185044</updated>
-    </task>
-    <task id="LOCAL-00025" summary="20191111: 1、订单支付和订单退费 优化关联">
-      <created>1573469323631</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1573469323631</updated>
-    </task>
-    <task id="LOCAL-00026" summary="20191113: 1、二手单回收">
-      <created>1573629086848</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1573629086848</updated>
-    </task>
-    <task id="LOCAL-00027" summary="20191113: 2、单个学员分班优化">
-      <created>1573640691734</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1573640691735</updated>
-    </task>
-    <task id="LOCAL-00028" summary="20191115: 1、上课管理-上课点名完善测试脚本和元素定位">
-      <created>1573809290740</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1573809290740</updated>
-    </task>
-    <task id="LOCAL-00029" summary="20191216">
-      <created>1576482599757</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1576482599757</updated>
-    </task>
-    <task id="LOCAL-00030" summary="20191216:请假 增加撤销请假记录，请假调试完成">
-      <created>1576493084669</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1576493084669</updated>
-    </task>
-    <task id="LOCAL-00031" summary="20191217:1.补课不使用全流程 2.请假不使用全流程">
-      <created>1576568163614</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1576568163614</updated>
-    </task>
-    <task id="LOCAL-00032" summary="20191219:全流程调整">
-      <created>1576756164597</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1576756164597</updated>
-    </task>
-    <task id="LOCAL-00033" summary="20191219:全流程调整">
-      <created>1576756707367</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1576756707367</updated>
-    </task>
-    <option name="localTasksCounter" value="34" />
+    <option name="localTasksCounter" value="23" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.07.24 at 16h 12m 13s.xml">
+      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.07.24 at 16h 13m 20s.xml">
+      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_crm_student_management_TestStudentOrderManagement_test_student_refund - 2019.08.06 at 17h 59m 46s.xml">
+      <configuration name="pytest for test_crm_student_management.TestStudentOrderManagement.test_student_refund" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_crm_student_management_TestStudentClassManagement_test_add_in_class_record - 2019.08.06 at 18h 00m 46s.xml">
+      <configuration name="pytest for test_crm_student_management.TestStudentClassManagement.test_add_in_class_record" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.08.20 at 11h 04m 34s.xml">
+      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -588,6 +499,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="更新poium框架" />
+    <MESSAGE value="无" />
+    <MESSAGE value="20190809 增加未上课退费" />
+    <MESSAGE value="20190820 退费审批完成" />
+    <MESSAGE value="20190820 退费（建单、支付、退费申请、审批、确认退费）" />
     <MESSAGE value="20190828 : 优化创建客户的xpath定位、将创建客户流程模块化" />
     <MESSAGE value="20190901 : 优化订单退费退费申请、退费审批元素定位" />
     <MESSAGE value="20190906: 优化订单退费退费申请、退费审批元素定位 完成" />
@@ -603,114 +519,36 @@
     <MESSAGE value="20191011:调试新增教务老师后退费" />
     <MESSAGE value="20191012:调试新增教务老师后退费完成" />
     <MESSAGE value="20191015:①创建客户、分单、转学员和创建账号测试脚本降低脚本间的依赖&#10;②将生成学员的函数，调整到测试脚本中，不使用统一生成方式" />
-    <MESSAGE value="20191101:&#10;1、添加客户、客户分单、转为学员、创建教学帐号、创建学员订单 - 减少关联&#10;2、新增员工信息管理-查询、新增员工信息的元素定位" />
-    <MESSAGE value="20191111:&#10;1、订单支付和订单退费 优化关联" />
-    <MESSAGE value="20191111: 1、订单支付和订单退费 优化关联" />
-    <MESSAGE value="20191113: 1、二手单回收" />
-    <MESSAGE value="20191113: 2、单个学员分班优化" />
-    <MESSAGE value="20191115: 1、上课管理-上课点名完善测试脚本和元素定位" />
-    <MESSAGE value="20191216" />
-    <MESSAGE value="20191216:请假 增加撤销请假记录，请假调试完成" />
-    <MESSAGE value="20191217:1.补课不使用全流程 2.请假不使用全流程" />
-    <MESSAGE value="20191219:全流程调整" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191219:全流程调整" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="20191015:①创建客户、分单、转学员和创建账号测试脚本降低脚本间的依赖&#10;②将生成学员的函数，调整到测试脚本中，不使用统一生成方式" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="287" y="127" key="#Updates" timestamp="1576546221241">
-      <screen x="0" y="23" width="1373" height="877" />
-    </state>
-    <state x="287" y="127" key="#Updates/0.23.1373.877@0.23.1373.877" timestamp="1576546221241" />
-    <state x="314" y="62" key="CommitChangelistDialog2" timestamp="1576756707088">
-      <screen x="0" y="23" width="1373" height="877" />
-    </state>
-    <state x="314" y="62" key="CommitChangelistDialog2/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576756707088" />
-    <state x="314" y="62" key="CommitChangelistDialog2/0.23.1373.877@0.23.1373.877" timestamp="1576568163324" />
-    <state width="1419" height="417" key="GridCell.Tab.0.bottom" timestamp="1577690476992">
+    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1577952515135">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1352" height="458" key="GridCell.Tab.0.bottom/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576821930301" />
-    <state width="1352" height="239" key="GridCell.Tab.0.bottom/0.23.1373.877@0.23.1373.877" timestamp="1576568727323" />
-    <state width="1142" height="22" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577688187879" />
-    <state width="1419" height="417" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1577690476992" />
-    <state width="1258" height="197" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1577415600904" />
-    <state width="1419" height="417" key="GridCell.Tab.0.center" timestamp="1577690476990">
+    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577952515135" />
+    <state width="1419" height="319" key="GridCell.Tab.0.bottom" timestamp="1577960026534">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1352" height="458" key="GridCell.Tab.0.center/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576821930300" />
-    <state width="1352" height="239" key="GridCell.Tab.0.center/0.23.1373.877@0.23.1373.877" timestamp="1576568727322" />
-    <state width="1142" height="22" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577688187878" />
-    <state width="1419" height="417" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1577690476990" />
-    <state width="1258" height="197" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1577415600902" />
-    <state width="1419" height="417" key="GridCell.Tab.0.left" timestamp="1577690476990">
+    <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
+    <state width="1419" height="319" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960026534" />
+    <state width="1419" height="319" key="GridCell.Tab.0.center" timestamp="1577960026531">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1352" height="458" key="GridCell.Tab.0.left/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576821930297" />
-    <state width="1352" height="239" key="GridCell.Tab.0.left/0.23.1373.877@0.23.1373.877" timestamp="1576568727321" />
-    <state width="1142" height="22" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577688187878" />
-    <state width="1419" height="417" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1577690476990" />
-    <state width="1258" height="197" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1577415600901" />
-    <state width="1419" height="417" key="GridCell.Tab.0.right" timestamp="1577690476991">
+    <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
+    <state width="1419" height="319" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960026531" />
+    <state width="1419" height="319" key="GridCell.Tab.0.left" timestamp="1577960026530">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1352" height="458" key="GridCell.Tab.0.right/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576821930301" />
-    <state width="1352" height="239" key="GridCell.Tab.0.right/0.23.1373.877@0.23.1373.877" timestamp="1576568727322" />
-    <state width="1142" height="22" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577688187879" />
-    <state width="1419" height="417" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1577690476991" />
-    <state width="1258" height="197" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1577415600903" />
-    <state width="1419" height="417" key="GridCell.Tab.1.bottom" timestamp="1577690476994">
+    <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
+    <state width="1419" height="319" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960026530" />
+    <state width="1419" height="319" key="GridCell.Tab.0.right" timestamp="1577960026534">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1352" height="458" key="GridCell.Tab.1.bottom/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576821930303" />
-    <state width="1352" height="459" key="GridCell.Tab.1.bottom/0.23.1373.877@0.23.1373.877" timestamp="1576493141635" />
-    <state width="1419" height="417" key="GridCell.Tab.1.bottom/0.23.1440.814@0.23.1440.814" timestamp="1577690476994" />
-    <state width="1419" height="428" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1577276141149" />
-    <state width="1419" height="417" key="GridCell.Tab.1.center" timestamp="1577690476993">
+    <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
+    <state width="1419" height="319" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960026534" />
+    <state x="303" y="84" key="SettingsEditor" timestamp="1577957467768">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1352" height="458" key="GridCell.Tab.1.center/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576821930302" />
-    <state width="1352" height="459" key="GridCell.Tab.1.center/0.23.1373.877@0.23.1373.877" timestamp="1576493141635" />
-    <state width="1419" height="417" key="GridCell.Tab.1.center/0.23.1440.814@0.23.1440.814" timestamp="1577690476993" />
-    <state width="1419" height="428" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1577276141148" />
-    <state width="1419" height="417" key="GridCell.Tab.1.left" timestamp="1577690476993">
-      <screen x="0" y="23" width="1440" height="814" />
-    </state>
-    <state width="1352" height="458" key="GridCell.Tab.1.left/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576821930302" />
-    <state width="1352" height="459" key="GridCell.Tab.1.left/0.23.1373.877@0.23.1373.877" timestamp="1576493141635" />
-    <state width="1419" height="417" key="GridCell.Tab.1.left/0.23.1440.814@0.23.1440.814" timestamp="1577690476993" />
-    <state width="1419" height="428" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1577276141148" />
-    <state width="1419" height="417" key="GridCell.Tab.1.right" timestamp="1577690476994">
-      <screen x="0" y="23" width="1440" height="814" />
-    </state>
-    <state width="1352" height="458" key="GridCell.Tab.1.right/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576821930303" />
-    <state width="1352" height="459" key="GridCell.Tab.1.right/0.23.1373.877@0.23.1373.877" timestamp="1576493141635" />
-    <state width="1419" height="417" key="GridCell.Tab.1.right/0.23.1440.814@0.23.1440.814" timestamp="1577690476994" />
-    <state width="1419" height="428" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1577276141148" />
-    <state x="148" y="100" key="MergeDialog" timestamp="1576482562414">
-      <screen x="0" y="23" width="1373" height="877" />
-    </state>
-    <state x="148" y="100" key="MergeDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482562414" />
-    <state x="398" y="184" width="598" height="554" key="MultipleFileMergeDialog" timestamp="1576482562491">
-      <screen x="0" y="23" width="1373" height="877" />
-    </state>
-    <state x="398" y="184" width="598" height="554" key="MultipleFileMergeDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482562491" />
-    <state x="188" y="100" key="SettingsEditor" timestamp="1576546601236">
-      <screen x="0" y="23" width="1373" height="877" />
-    </state>
-    <state x="188" y="100" key="SettingsEditor/0.23.1373.877@0.23.1373.877" timestamp="1576546601236" />
-    <state x="286" y="201" key="Vcs.Push.Dialog.v2" timestamp="1576756708684">
-      <screen x="0" y="23" width="1373" height="877" />
-    </state>
-    <state x="286" y="201" key="Vcs.Push.Dialog.v2/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576756708684" />
-    <state x="286" y="201" key="Vcs.Push.Dialog.v2/0.23.1373.877@0.23.1373.877" timestamp="1576568165036" />
-    <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576482571334">
-      <screen x="0" y="23" width="1373" height="877" />
-    </state>
-    <state x="433" y="181" key="git4idea.branch.GitSmartOperationDialog/0.23.1373.877@0.23.1373.877" timestamp="1576482571334" />
-    <state x="310" y="125" width="670" height="676" key="search.everywhere.popup" timestamp="1576758351088">
-      <screen x="0" y="23" width="1373" height="877" />
-    </state>
-    <state x="310" y="125" width="670" height="676" key="search.everywhere.popup/0.23.1373.877/-1920.-157.1920.1057@0.23.1373.877" timestamp="1576758351088" />
-    <state x="310" y="125" width="670" height="676" key="search.everywhere.popup/0.23.1373.877@0.23.1373.877" timestamp="1576563285035" />
+    <state x="303" y="84" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577957467768" />
   </component>
 </project>

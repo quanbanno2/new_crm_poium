@@ -1,7 +1,7 @@
 import pytest
 import sys
 from time import sleep
-from test_dir.test_crm_cust_manger import login, new_student_name, add_customer, split_customer, convert_student, \
+from test_dir.test_crm_cust_manger import login, new_customer_name_by_sql, add_customer, split_customer, convert_student, \
     create_account, add_new_order, pay_new_order
 from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
@@ -164,9 +164,9 @@ class TestStuCourseManagement:
         order_page = GfyCustomerAddOrder(browser1)
         student_page = GfyCrmStudentCourseManagement(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_student_name(), phone_number)
+        add_customer(browser1, new_customer_name_by_sql(), phone_number)
         sleep(1)
-        split_customer(browser1, adviser_account, school_name)
+        split_customer(browser1, adviser_account)
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
@@ -251,9 +251,9 @@ class TestStudentClassManagement:
         in_class_page = GfyCrmStudentInClassManagement(browser1)
         # menu_page = GfyMenu(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_student_name(), phone_number)
+        add_customer(browser1, new_customer_name_by_sql(), phone_number)
         sleep(1)
-        split_customer(browser1, adviser_account, school_name)
+        split_customer(browser1, adviser_account)
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
