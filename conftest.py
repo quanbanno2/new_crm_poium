@@ -425,7 +425,7 @@ def new_report_time():
 
 # 启动浏览器
 @pytest.fixture(scope='session', autouse=True)
-def browser1():
+def browser_driver():
     """
     全局定义浏览器驱动
     :return:

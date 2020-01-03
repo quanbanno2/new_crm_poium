@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-03:增加test_func包，分离db操作">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_func/customer_management_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_func/customer_management_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_add_new_order.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_add_new_order.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,28 +62,7 @@
       <recent name="$PROJECT_DIR$/page" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_crm_cust_manger">
-    <configuration name="123" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pyautoTest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/123.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.test_crm_student_management">
     <configuration name="db" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,6 +118,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="student_management_func" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="pyautoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_func" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_func/student_management_func.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -213,19 +213,19 @@
     <list>
       <item itemvalue="Python.test_crm_cust_manger" />
       <item itemvalue="Python.test_crm_student_management" />
-      <item itemvalue="Python.123" />
       <item itemvalue="Python.run_tests" />
       <item itemvalue="Python.test (1)" />
       <item itemvalue="Python.http_req" />
       <item itemvalue="Python.db" />
+      <item itemvalue="Python.student_management_func" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.student_management_func" />
         <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.run_tests" />
         <item itemvalue="Python.http_req" />
         <item itemvalue="Python.db" />
-        <item itemvalue="Python.123" />
       </list>
     </recent_temporary>
   </component>
@@ -423,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578023001763</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作">
+      <created>1578025856297</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1578025856297</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -539,37 +546,38 @@
     <MESSAGE value="20191015:①创建客户、分单、转学员和创建账号测试脚本降低脚本间的依赖&#10;②将生成学员的函数，调整到测试脚本中，不使用统一生成方式" />
     <MESSAGE value="20200102:回收分单和创建账号数据清理" />
     <MESSAGE value="2020-01-03:增加test_func包，分离db操作" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020-01-03:增加test_func包，分离db操作" />
+    <MESSAGE value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1578023962898">
+    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1578025856035">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023962898" />
-    <state x="100" y="123" width="1240" height="614" key="DiffContextDialog" timestamp="1578022032500">
+    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025856035" />
+    <state x="100" y="123" width="1240" height="614" key="DiffContextDialog" timestamp="1578025893075">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state x="100" y="123" width="1240" height="614" key="DiffContextDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578022032500" />
-    <state width="1419" height="319" key="GridCell.Tab.0.bottom" timestamp="1578025745542">
+    <state x="100" y="123" width="1240" height="614" key="DiffContextDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025893075" />
+    <state width="1419" height="319" key="GridCell.Tab.0.bottom" timestamp="1578032952732">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
-    <state width="1419" height="319" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025745542" />
-    <state width="1419" height="319" key="GridCell.Tab.0.center" timestamp="1578025745542">
+    <state width="1419" height="319" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578032952732" />
+    <state width="1419" height="319" key="GridCell.Tab.0.center" timestamp="1578032952731">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
-    <state width="1419" height="319" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025745542" />
-    <state width="1419" height="319" key="GridCell.Tab.0.left" timestamp="1578025745541">
+    <state width="1419" height="319" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578032952731" />
+    <state width="1419" height="319" key="GridCell.Tab.0.left" timestamp="1578032952730">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
-    <state width="1419" height="319" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025745541" />
-    <state width="1419" height="319" key="GridCell.Tab.0.right" timestamp="1578025745542">
+    <state width="1419" height="319" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578032952730" />
+    <state width="1419" height="319" key="GridCell.Tab.0.right" timestamp="1578032952731">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
-    <state width="1419" height="319" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025745542" />
+    <state width="1419" height="319" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578032952731" />
     <state width="1419" height="392" key="GridCell.Tab.1.bottom" timestamp="1578023425327">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
@@ -590,9 +598,9 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="303" y="84" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577957467768" />
-    <state x="320" y="170" key="Vcs.Push.Dialog.v2" timestamp="1578023003205">
+    <state x="320" y="170" key="Vcs.Push.Dialog.v2" timestamp="1578025858166">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023003205" />
+    <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025858166" />
   </component>
 </project>

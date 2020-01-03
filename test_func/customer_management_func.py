@@ -1,12 +1,6 @@
-import sys
 from time import sleep
 from poium import PageWait, PageSelect
 from _pydecimal import Context, ROUND_HALF_UP
-
-from os.path import dirname, abspath
-
-sys.path.insert(0, dirname(dirname(abspath(__file__))))
-
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder, GfyCustomerDataEliminate
 from page.crm_menu_page import GfyMenu
 from page.crm_login_page import GfyLogin
