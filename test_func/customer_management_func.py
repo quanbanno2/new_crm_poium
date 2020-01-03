@@ -12,6 +12,42 @@ from page.crm_menu_page import GfyMenu
 from page.crm_login_page import GfyLogin
 
 
+def cal_preferential_amount(charge):
+    """
+    计算优惠
+    :param charge:
+    :return:
+    """
+    preferential_amount = int(int(charge) * 0.1)
+    return preferential_amount
+
+
+def cal_service_charge(charge):
+    """
+    计算手续费
+    :param charge:
+    :return:
+    """
+    service_charge = int(int(charge) * 5 / 1000)
+    return service_charge
+
+
+def cal_refund_fee(pre_fee, course_count, course_consume):
+    """
+    计算退费结算金额 = 预收 - （预收/课程单价*消耗课程数量）
+    :param pre_fee:预收金额
+    :param course_count:课程总数量
+    :param course_consume:已消耗课程
+    :return:
+    """
+    pre_fee = float(pre_fee)
+    course_count = float(course_count)
+    course_consume = float(course_consume)
+    refund_fee = pre_fee - (pre_fee / course_count * course_consume)
+    # 保留两位、四舍五入,以字符串格式返回
+    return str(Context(prec=6, rounding=ROUND_HALF_UP).create_decimal(refund_fee))
+
+
 def operate_delete_customer(driver):
     """
     我的客户-删除客户信息操作
@@ -328,42 +364,6 @@ def refund_apply(driver, remarks):
     sleep(1)
     refund_fee_text = cal_refund_fee(refund_pre_fee_text, refund_course_count_text, refund_course_consume_text)
     return customer_name, order_id_text, refund_fee_text
-
-
-def cal_preferential_amount(charge):
-    """
-    计算优惠
-    :param charge:
-    :return:
-    """
-    preferential_amount = int(int(charge) * 0.1)
-    return preferential_amount
-
-
-def cal_service_charge(charge):
-    """
-    计算手续费
-    :param charge:
-    :return:
-    """
-    service_charge = int(int(charge) * 5 / 1000)
-    return service_charge
-
-
-def cal_refund_fee(pre_fee, course_count, course_consume):
-    """
-    计算退费结算金额 = 预收 - （预收/课程单价*消耗课程数量）
-    :param pre_fee:预收金额
-    :param course_count:课程总数量
-    :param course_consume:已消耗课程
-    :return:
-    """
-    pre_fee = float(pre_fee)
-    course_count = float(course_count)
-    course_consume = float(course_consume)
-    refund_fee = pre_fee - (pre_fee / course_count * course_consume)
-    # 保留两位、四舍五入,以字符串格式返回
-    return str(Context(prec=6, rounding=ROUND_HALF_UP).create_decimal(refund_fee))
 
 
 # def audio_upload(driver, audio_dir):
