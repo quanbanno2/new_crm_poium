@@ -1,51 +1,49 @@
-# import pytest
-# import sys
-# from time import sleep
-# from page.crm_personnel_page import GfyPersonnel
-# from page.crm_menu_page import GfyMenu
-# from poium import PageWait, PageSelect
-# from test_dir.test_crm_cust_manger import login
-# from os.path import dirname, abspath
-#
-# sys.path.insert(0, dirname(dirname(abspath(__file__))))
-#
-#
-# def add_staff_base_info(driver):
-#     menu_page = GfyMenu(driver)
-#     page = GfyPersonnel(driver)
-#     menu_page.personnel_manage.click()
-#     sleep(1)
-#     menu_page.staff_info.click()
-#     sleep(1)
-#     menu_page.staff_base_info.click()
-#     PageWait(page.add_staff_base_info)
-#     page.add_staff_base_info.click()
-#     PageWait(page.staff_name[1])
-#     page.staff_name[1].send_keys()
-#
-#
-# class TestStaffInfo:
-#
-#     def test_load_staff_info(self, browser1, crm_url, supervisor_account, pass_word):
-#         menu_page = GfyMenu(browser1)
-#         personnel_page = GfyPersonnel(browser1)
-#         login(crm_url, browser1, supervisor_account, pass_word)
-#         menu_page.personnel_manage.click()
-#         sleep(1)
-#         menu_page.staff_info.click()
-#         menu_page.staff_base_info.click()
-#         sleep(5)
-#         personnel_page.load_staff_base_list.click()
-#         sleep(5)
-#         # 断言当前总条数如果为0，即认为查询失败，否则认为成功
-#         assert personnel_page.load_result.text != "0"
-#
-#     def test_add_staff_base_info(self, browser1, crm_url, supervisor_account, pass_word):
-#         login(crm_url, browser1, supervisor_account, pass_word)
-#         add_staff_base_info(browser1)
-#
-#         sleep(10)
-#
-#
-# if __name__ == '__main__':
-#     pytest.main(["-v", "-s", "test_crm_personnel_manage.py::TestStaffInfo::test_add_staff_base_info"])
+import pytest
+import sys
+from time import sleep
+from poium import PageWait, PageSelect
+from os.path import dirname, abspath
+
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
+from page.crm_personnel_page import GfyPersonnel
+from page.crm_menu_page import GfyMenu
+from test_func.db_func import new_staff_name_by_sql
+from test_func.customer_management_func import login
+
+
+def add_staff_base_info(driver):
+    """
+    新增员工
+    @param driver:
+    @return:
+    """
+    staff_info_page = GfyPersonnel(driver)
+    staff_info_page.add_staff_base_info.click()
+    sleep(1)
+    staff_info_page.add_staff_name[1].send_keys(new_staff_name_by_sql())
+    staff_info_page.staff_job_number[1].send_keys()
+    # 员工账号
+
+
+class TestStaffInfo:
+
+    def test_add_staff(self, browser1, human_resource_account, pass_word, crm_url):
+        """
+        测试员工入职
+        入职流程：新建员工-新增岗位-新增基础工资信息
+        @param browser1:
+        @return:
+        """
+        menu_page = GfyMenu(browser1)
+        staff_info_page = GfyPersonnel(browser1)
+        login(crm_url, browser1, human_resource_account, pass_word)
+        menu_page.personnel_manage.click()
+        sleep(1)
+        menu_page.staff_info.click()
+        sleep(1)
+        menu_page.staff_base_info.click()
+        add_staff_base_info(browser1)
+
+
+if __name__ == '__main__':
+    pytest.main(["-v", "-s", "test_crm_personnel_manage.py::TestStaffInfo::test_add_staff"])

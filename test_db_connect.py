@@ -10,6 +10,30 @@ def database_connect():
     return db
 
 
+def new_staff_name_by_sql():
+    """
+    新增员工名称
+    :return:
+    """
+    staff_name = []
+    my_con = database_connect()
+    my_cursor = my_con.cursor()
+    sql = 'SELECT name FROM test_user.usr_staff_base_info ' \
+          'WHERE staff_base_id = (SELECT MAX(staff_base_id) ' \
+          'FROM test_user.usr_staff_base_info WHERE name LIKE "高分云员工%")'
+    my_cursor.execute(sql)
+    result = my_cursor.fetchall()
+    for re in result:
+        staff_name = re[0]
+    # 读取客户名称后的数字
+    a = staff_name[5:]
+    staff_num = int(a)
+    staff_num += 1
+    new_name = "高分云员工" + str(staff_num)
+    my_con.close()
+    return new_name
+
+
 # def new_student_name():
 #     """
 #     连接集成数据库得出客户***,返回集成数据库最新"客户"***+1的名称
@@ -76,5 +100,7 @@ def eliminate_account(account_name):
     my_con.close()
 
 
-name = "客户577"
-eliminate_account(name)
+# name = "客户577"
+# eliminate_account(name)
+
+new_staff_name_by_sql()

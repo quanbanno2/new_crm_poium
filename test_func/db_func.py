@@ -50,3 +50,26 @@ def eliminate_account_by_sql(account_name):
     my_con.commit()
     my_cursor.close()
     my_con.close()
+
+
+def new_staff_name_by_sql():
+    """
+    新增员工名称
+    @return: 返回生成的员工名称
+    """
+    staff_name = []
+    my_con = database_connect()
+    my_cursor = my_con.cursor()
+    sql = 'SELECT name FROM test_user.usr_staff_base_info ' \
+          'WHERE staff_base_id = (SELECT MAX(staff_base_id) ' \
+          'FROM test_user.usr_staff_base_info WHERE name LIKE "高分云员工%")'
+    my_cursor.execute(sql)
+    result = my_cursor.fetchall()
+    for re in result:
+        staff_name = re[0]
+    a = staff_name[5:]
+    staff_num = int(a)
+    staff_num += 1
+    new_name = "高分云员工" + str(staff_num)
+    my_con.close()
+    return new_name

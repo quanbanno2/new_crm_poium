@@ -96,6 +96,10 @@ educationalEffectTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).
 # 学员姓名
 studentName = "自动化测试学生"
 
+# 人事助理账号&名称
+humanResourceAccount = "高分云人事1"
+humanResourceName = "人事1"
+
 
 ############################
 
@@ -326,6 +330,13 @@ def counseling_supervision_name():
     return counselingSupervisorName
 
 
+# 高分云人事1账号
+@pytest.fixture(scope='function')
+def human_resource_account():
+    global humanResourceAccount
+    return humanResourceAccount
+
+
 #####################
 
 # 设置用例描述表头
@@ -425,7 +436,7 @@ def new_report_time():
 
 # 启动浏览器
 @pytest.fixture(scope='session', autouse=True)
-def browser_driver():
+def browser1():
     """
     全局定义浏览器驱动
     :return:

@@ -1,3 +1,3 @@
 [
-  "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"
+  "test_crm_personnel_manage.py::TestStaffInfo::test_add_staff"
 ]

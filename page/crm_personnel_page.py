@@ -11,10 +11,10 @@ class GfyPersonnel(Page):
     add_staff_base_info = PageElement(
         xpath="//button[@title='新增']",
         describe="员工信息-新增按钮")
-    staff_name = PageElements(
+    add_staff_name = PageElements(
         xpath="//input[@name='name']",
         describe="员工信息-新增-员工姓名")
-    staff_jobNumber = PageElements(
+    staff_job_number = PageElements(
         xpath="//input[@name='jobNumber']",
         describe="员工信息-新增-员工工号")
     staff_account = PageElements(

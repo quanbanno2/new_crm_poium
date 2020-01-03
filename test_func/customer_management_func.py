@@ -330,12 +330,7 @@ def refund_apply(driver, remarks):
     :param remarks:
     :return: customer_name 客户名称、order_id_text 订单编号、refund_fee_text 应退费值
     """
-    menu_page = GfyMenu(driver)
     order_page = GfyCustomerAddOrder(driver)
-    sleep(1)
-    menu_page.student_management.click()
-    sleep(1)
-    menu_page.student_order_management.click()
     sleep(1)
     order_page.order_detail.click()
     sleep(1)
@@ -345,7 +340,9 @@ def refund_apply(driver, remarks):
     refund_pre_fee_text = order_page.refund_pre_fee.text
     refund_course_count_text = order_page.refund_course_count.text
     refund_course_consume_text = order_page.refund_course_consume.text
+    # 获取客户名称
     customer_name = order_page.order_customer_name.text
+    # 获取订单编号
     order_id_text = order_page.order_id.text
     sleep(1)
     order_page.refund_remark.send_keys(remarks)
@@ -356,6 +353,7 @@ def refund_apply(driver, remarks):
     sleep(1)
     order_page.save_approval_matter.click()
     sleep(1)
+    # 计算退费结算金额
     refund_fee_text = cal_refund_fee(refund_pre_fee_text, refund_course_count_text, refund_course_consume_text)
     return customer_name, order_id_text, refund_fee_text
 

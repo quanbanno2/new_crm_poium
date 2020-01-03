@@ -2,9 +2,10 @@ import pytest
 import sys
 from time import sleep
 from poium import PageWait, PageSelect
+# 定义搜索模块顺序，优先搜索new_crm_poium文件夹
 from os.path import dirname, abspath
 
-pr = sys.path.insert(0, dirname(dirname(abspath(__file__))))
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
 from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
 from page.crm_menu_page import GfyMenu
@@ -19,7 +20,7 @@ class TestStuCourseManagement:
     学员课程管理
     """
 
-    def test_student_select_class(self, browser_driver, crm_url, counseling_supervision_account, pass_word, class_name,
+    def test_student_select_class(self, browser1, crm_url, counseling_supervision_account, pass_word, class_name,
                                   course, phone_number, school_name, counseling_supervision_name):
         """
         测试单个学员分班
@@ -34,33 +35,33 @@ class TestStuCourseManagement:
         @param counseling_supervision_name:
         @return:
         """
-        customer_page = GfyCrmCustomerManagement(browser_driver)
-        order_page = GfyCustomerAddOrder(browser_driver)
-        student_page = GfyCrmStudentCourseManagement(browser_driver)
-        login(crm_url, browser_driver, counseling_supervision_account, pass_word)
-        add_customer(browser_driver, new_customer_name_by_sql(), phone_number)
+        customer_page = GfyCrmCustomerManagement(browser1)
+        order_page = GfyCustomerAddOrder(browser1)
+        student_page = GfyCrmStudentCourseManagement(browser1)
+        login(crm_url, browser1, counseling_supervision_account, pass_word)
+        add_customer(browser1, new_customer_name_by_sql(), phone_number)
         sleep(1)
-        split_customer(browser_driver, counseling_supervision_account)
+        split_customer(browser1, counseling_supervision_account)
         sleep(1)
-        convert_student(browser_driver, school_name)
+        convert_student(browser1, school_name)
         sleep(1)
         customer_page.customer_ok_button.click()
         sleep(1)
-        create_account(browser_driver, pass_word, school_name)
+        create_account(browser1, pass_word, school_name)
         sleep(1)
         customer_page.customer_ok_button.click()
         sleep(1)
         customer_page.customer_list.click()
         sleep(1)
-        add_new_order(browser_driver, counseling_supervision_name, course, school_name)
+        add_new_order(browser1, counseling_supervision_name, course, school_name)
         sleep(1)
         order_page.order_status_confirm.click()
         sleep(1)
-        pay_new_order(browser_driver)
+        pay_new_order(browser1)
         PageWait(customer_page.cancel_btn)
         customer_page.cancel_btn.click()
         sleep(1)
-        student_select_class(browser_driver, class_name)
+        student_select_class(browser1, class_name)
         PageWait(student_page.student_select_class_status)
         assert student_page.student_select_class_status.text == "保存成功"
 
@@ -70,7 +71,7 @@ class TestStudentClassManagement:
     学员上课管理
     """
 
-    def test_add_in_class_record(self, browser_driver, crm_url, education_account, pass_word, class_name, school_name,
+    def test_add_in_class_record(self, browser1, crm_url, education_account, pass_word, class_name, school_name,
                                  in_class_time):
         """
         测试指导老师新增上课记录
@@ -83,9 +84,9 @@ class TestStudentClassManagement:
         :param in_class_time:
         :return:
         """
-        page = GfyCrmStudentInClassManagement(browser_driver)
-        login(crm_url, browser_driver, education_account, pass_word)
-        add_in_class_record(browser_driver, school_name, class_name, in_class_time)
+        page = GfyCrmStudentInClassManagement(browser1)
+        login(crm_url, browser1, education_account, pass_word)
+        add_in_class_record(browser1, school_name, class_name, in_class_time)
         # 保存成功状态，由于成功状态元素显示时间很短
         PageWait(page.status)
         assert page.status.text == "保存成功"
@@ -102,7 +103,7 @@ class TestStudentClassManagement:
         page.delete_button.click()
 
     def test_in_class(self, crm_url, counseling_supervision_account, pass_word, phone_number,
-                      counseling_supervision_name, course, browser_driver, class_name, school_name,
+                      counseling_supervision_name, course, browser1, class_name, school_name,
                       education_account, in_class_time):
         """
         测试上课点名
@@ -120,49 +121,49 @@ class TestStudentClassManagement:
         @param in_class_time:
         @return:
         """
-        customer_page = GfyCrmCustomerManagement(browser_driver)
-        order_page = GfyCustomerAddOrder(browser_driver)
-        in_class_page = GfyCrmStudentInClassManagement(browser_driver)
-        login(crm_url, browser_driver, counseling_supervision_account, pass_word)
-        add_customer(browser_driver, new_customer_name_by_sql(), phone_number)
+        customer_page = GfyCrmCustomerManagement(browser1)
+        order_page = GfyCustomerAddOrder(browser1)
+        in_class_page = GfyCrmStudentInClassManagement(browser1)
+        login(crm_url, browser1, counseling_supervision_account, pass_word)
+        add_customer(browser1, new_customer_name_by_sql(), phone_number)
         sleep(1)
-        split_customer(browser_driver, counseling_supervision_account)
+        split_customer(browser1, counseling_supervision_account)
         sleep(1)
-        convert_student(browser_driver, school_name)
+        convert_student(browser1, school_name)
         sleep(1)
         customer_page.customer_ok_button.click()
         sleep(1)
-        create_account(browser_driver, pass_word, school_name)
+        create_account(browser1, pass_word, school_name)
         sleep(1)
         customer_page.customer_ok_button.click()
         sleep(1)
         customer_page.customer_list.click()
         sleep(1)
-        add_new_order(browser_driver, counseling_supervision_name, course, school_name)
+        add_new_order(browser1, counseling_supervision_name, course, school_name)
         sleep(1)
         order_page.order_status_confirm.click()
         sleep(1)
-        pay_new_order(browser_driver)
+        pay_new_order(browser1)
         # 支付完成留在当前页面
         PageWait(customer_page.cancel_btn)
         customer_page.cancel_btn.click()
         sleep(1)
-        student_select_class(browser_driver, class_name)
+        student_select_class(browser1, class_name)
         sleep(1)
         # 切换到"高分云指导1"登录
-        login(crm_url, browser_driver, education_account, pass_word)
+        login(crm_url, browser1, education_account, pass_word)
         # 增加上课记录
-        add_in_class_record(browser_driver, school_name, class_name, in_class_time)
+        add_in_class_record(browser1, school_name, class_name, in_class_time)
         sleep(1)
         in_class_page.ok_button.click()
         sleep(1)
         # 上课点名
-        in_class(browser_driver, class_name, school_name)
+        in_class(browser1, class_name, school_name)
         sleep(1)
         # 断言点名保存成功
         assert in_class_page.status.text == "保存成功"
 
-    def test_leave(self, crm_url, education_account, pass_word, browser_driver, school_name, class_name, in_class_time,
+    def test_leave(self, crm_url, education_account, pass_word, browser1, school_name, class_name, in_class_time,
                    student_name):
         """
         测试请假
@@ -177,12 +178,12 @@ class TestStudentClassManagement:
         :param student_name:
         :return:
         """
-        leave_page = GfyCrmStudentInClassManagement(browser_driver)
-        menu_page = GfyMenu(browser_driver)
-        login(crm_url, browser_driver, education_account, pass_word)
+        leave_page = GfyCrmStudentInClassManagement(browser1)
+        menu_page = GfyMenu(browser1)
+        login(crm_url, browser1, education_account, pass_word)
         sleep(1)
         # 老师新增上课记录
-        add_in_class_record(browser_driver, school_name, class_name, in_class_time)
+        add_in_class_record(browser1, school_name, class_name, in_class_time)
         sleep(1)
         leave_page.ok_button.click()
         sleep(1)
@@ -191,7 +192,7 @@ class TestStudentClassManagement:
         leave_page.query_in_class_record.click()
         sleep(1)
         # 请假操作
-        leave(browser_driver)
+        leave(browser1)
         sleep(1)
         assert leave_page.status.text == "请假保存成功"
         sleep(1)
@@ -215,7 +216,7 @@ class TestStudentClassManagement:
         sleep(1)
         leave_page.ok_button.click()
 
-    def test_make_up(self, browser_driver, crm_url, education_account, pass_word, school_name, make_up_class, make_up_time,
+    def test_make_up(self, browser1, crm_url, education_account, pass_word, school_name, make_up_class, make_up_time,
                      student_name, in_class_time, class_name):
         """
         测试补课
@@ -232,11 +233,11 @@ class TestStudentClassManagement:
         :param class_name:
         :return:
         """
-        menu_page = GfyMenu(browser_driver)
-        make_up_page = GfyCrmStudentInClassManagement(browser_driver)
-        login(crm_url, browser_driver, education_account, pass_word)
+        menu_page = GfyMenu(browser1)
+        make_up_page = GfyCrmStudentInClassManagement(browser1)
+        login(crm_url, browser1, education_account, pass_word)
         # 添加上课记录
-        add_in_class_record(browser_driver, school_name, class_name, in_class_time)
+        add_in_class_record(browser1, school_name, class_name, in_class_time)
         make_up_page.ok_button.click()
         sleep(1)
         # 请假操作
@@ -244,7 +245,7 @@ class TestStudentClassManagement:
         sleep(1)
         make_up_page.query_in_class_record.click()
         sleep(1)
-        leave(browser_driver)
+        leave(browser1)
         sleep(1)
         make_up_page.ok_button.click()
         sleep(1)
@@ -256,21 +257,21 @@ class TestStudentClassManagement:
         # 添加补课记录
         menu_page.student_management.click()
         sleep(1)
-        add_in_class_record(browser_driver, school_name, make_up_class, make_up_time)
+        add_in_class_record(browser1, school_name, make_up_class, make_up_time)
         sleep(1)
         make_up_page.ok_button.click()
         sleep(1)
         # 安排补课
         menu_page.student_makeup_management.click()
         sleep(1)
-        make_up(browser_driver, student_name)
+        make_up(browser1, student_name)
         sleep(1)
         make_up_page.ok_button.click()
         sleep(1)
         # 老师上课
         menu_page.student_class_management.click()
         sleep(1)
-        in_class(browser_driver, make_up_class, school_name)
+        in_class(browser1, make_up_class, school_name)
         sleep(1)
         # 断言补课上课
         assert make_up_page.status.text == "保存成功"
@@ -288,8 +289,8 @@ class TestStudentClassManagement:
 
 
 if __name__ == '__main__':
-    # pytest.main()
+    pytest.main()
     pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"])
-    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
-    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
-    #              "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
+                 "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])

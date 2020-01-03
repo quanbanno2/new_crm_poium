@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作">
+      <change afterPath="$PROJECT_DIR$/test_func/staff_func.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_personnel_manage.py_TestStaffInfo_test_add_staff.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/crm_personnel_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_personnel_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_db_connect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_func/customer_management_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_func/customer_management_func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_func/db_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_func/db_func.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +69,7 @@
       <recent name="$PROJECT_DIR$/page" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_crm_student_management">
+  <component name="RunManager" selected="Python tests.pytest in test_crm_personnel_manage.py">
     <configuration name="db" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -84,48 +91,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="http_req" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pyautoTest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/http_req.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="run_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pyautoTest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_tests.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="student_management_func" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,27 +104,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_func/student_management_func.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pyautoTest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -210,22 +154,67 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for test_crm_personnel_manage.TestStaffInfo" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="pyautoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_dir" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_crm_personnel_manage.TestStaffInfo&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_crm_personnel_manage.TestStaffInfo.test_add_staff" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="pyautoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_dir" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_crm_personnel_manage.TestStaffInfo.test_add_staff&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in test_crm_personnel_manage.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="pyautoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_dir" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.test_crm_cust_manger" />
       <item itemvalue="Python.test_crm_student_management" />
-      <item itemvalue="Python.run_tests" />
-      <item itemvalue="Python.test (1)" />
-      <item itemvalue="Python.http_req" />
       <item itemvalue="Python.db" />
       <item itemvalue="Python.student_management_func" />
+      <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo.test_add_staff" />
+      <item itemvalue="Python tests.pytest in test_crm_personnel_manage.py" />
+      <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.student_management_func" />
-        <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.run_tests" />
-        <item itemvalue="Python.http_req" />
+        <item itemvalue="Python tests.pytest in test_crm_personnel_manage.py" />
+        <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo" />
+        <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo.test_add_staff" />
         <item itemvalue="Python.db" />
+        <item itemvalue="Python.student_management_func" />
       </list>
     </recent_temporary>
   </component>
@@ -433,23 +422,6 @@
     <option name="localTasksCounter" value="26" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.07.24 at 16h 12m 13s.xml">
-      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.07.24 at 16h 13m 20s.xml">
-      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_crm_student_management_TestStudentOrderManagement_test_student_refund - 2019.08.06 at 17h 59m 46s.xml">
-      <configuration name="pytest for test_crm_student_management.TestStudentOrderManagement.test_student_refund" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_crm_student_management_TestStudentClassManagement_test_add_in_class_record - 2019.08.06 at 18h 00m 46s.xml">
-      <configuration name="pytest for test_crm_student_management.TestStudentClassManagement.test_add_in_class_record" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_crm_cust_manger_TestCustomerAddOrder_test_pay_new_order - 2019.08.20 at 11h 04m 34s.xml">
-      <configuration name="pytest for test_crm_cust_manger.TestCustomerAddOrder.test_pay_new_order" configurationId="tests" />
-    </history-entry>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -558,26 +530,30 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="100" y="123" width="1240" height="614" key="DiffContextDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025893075" />
-    <state width="1419" height="319" key="GridCell.Tab.0.bottom" timestamp="1578032952732">
+    <state width="1419" height="322" key="GridCell.Tab.0.bottom" timestamp="1578043281847">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
-    <state width="1419" height="319" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578032952732" />
-    <state width="1419" height="319" key="GridCell.Tab.0.center" timestamp="1578032952731">
+    <state width="1419" height="224" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715778" />
+    <state width="1419" height="322" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578043281847" />
+    <state width="1419" height="322" key="GridCell.Tab.0.center" timestamp="1578043281846">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
-    <state width="1419" height="319" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578032952731" />
-    <state width="1419" height="319" key="GridCell.Tab.0.left" timestamp="1578032952730">
+    <state width="1419" height="224" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715777" />
+    <state width="1419" height="322" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1578043281846" />
+    <state width="1419" height="322" key="GridCell.Tab.0.left" timestamp="1578043281846">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
-    <state width="1419" height="319" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578032952730" />
-    <state width="1419" height="319" key="GridCell.Tab.0.right" timestamp="1578032952731">
+    <state width="1419" height="224" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715776" />
+    <state width="1419" height="322" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1578043281846" />
+    <state width="1419" height="322" key="GridCell.Tab.0.right" timestamp="1578043281847">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
-    <state width="1419" height="319" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578032952731" />
+    <state width="1419" height="224" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715778" />
+    <state width="1419" height="322" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1578043281847" />
     <state width="1419" height="392" key="GridCell.Tab.1.bottom" timestamp="1578023425327">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
@@ -602,5 +578,9 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025858166" />
+    <state x="393" y="228" key="git4idea.merge.GitPullDialog" timestamp="1578034987732">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state x="393" y="228" key="git4idea.merge.GitPullDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578034987732" />
   </component>
 </project>
