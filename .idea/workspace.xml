@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191015:①创建客户、分单、转学员和创建账号测试脚本降低脚本间的依赖&#10;②将生成学员的函数，调整到测试脚本中，不使用统一生成方式">
-      <change beforePath="$PROJECT_DIR$/.idea/pyautoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pyautoTest.iml" afterDir="false" />
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20200102:回收分单和创建账号数据清理">
+      <change afterPath="$PROJECT_DIR$/test_func/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_func/customer_management_func.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_func/db_func.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_add_new_order.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/lastfailed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +48,11 @@
   <component name="ProjectId" id="1QttnuY5lHPyu3QgmaiqDXVrBqo" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -405,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571103660075</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="20200102:回收分单和创建账号数据清理">
+      <created>1577960083655</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1577960083655</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -519,36 +537,45 @@
     <MESSAGE value="20191011:调试新增教务老师后退费" />
     <MESSAGE value="20191012:调试新增教务老师后退费完成" />
     <MESSAGE value="20191015:①创建客户、分单、转学员和创建账号测试脚本降低脚本间的依赖&#10;②将生成学员的函数，调整到测试脚本中，不使用统一生成方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191015:①创建客户、分单、转学员和创建账号测试脚本降低脚本间的依赖&#10;②将生成学员的函数，调整到测试脚本中，不使用统一生成方式" />
+    <MESSAGE value="20200102:回收分单和创建账号数据清理" />
+    <option name="LAST_COMMIT_MESSAGE" value="20200102:回收分单和创建账号数据清理" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1577952515135">
+    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1577960083449">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577952515135" />
-    <state width="1419" height="319" key="GridCell.Tab.0.bottom" timestamp="1577960026534">
+    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960083449" />
+    <state x="100" y="123" width="1240" height="614" key="DiffContextDialog" timestamp="1578022032500">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state x="100" y="123" width="1240" height="614" key="DiffContextDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578022032500" />
+    <state width="1419" height="319" key="GridCell.Tab.0.bottom" timestamp="1578022109161">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
-    <state width="1419" height="319" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960026534" />
-    <state width="1419" height="319" key="GridCell.Tab.0.center" timestamp="1577960026531">
+    <state width="1419" height="319" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578022109161" />
+    <state width="1419" height="319" key="GridCell.Tab.0.center" timestamp="1578022109156">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
-    <state width="1419" height="319" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960026531" />
-    <state width="1419" height="319" key="GridCell.Tab.0.left" timestamp="1577960026530">
+    <state width="1419" height="319" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578022109156" />
+    <state width="1419" height="319" key="GridCell.Tab.0.left" timestamp="1578022109155">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
-    <state width="1419" height="319" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960026530" />
-    <state width="1419" height="319" key="GridCell.Tab.0.right" timestamp="1577960026534">
+    <state width="1419" height="319" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578022109155" />
+    <state width="1419" height="319" key="GridCell.Tab.0.right" timestamp="1578022109157">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
-    <state width="1419" height="319" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960026534" />
+    <state width="1419" height="319" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578022109157" />
     <state x="303" y="84" key="SettingsEditor" timestamp="1577957467768">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="303" y="84" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577957467768" />
+    <state x="320" y="170" key="Vcs.Push.Dialog.v2" timestamp="1577960094733">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577960094733" />
   </component>
 </project>

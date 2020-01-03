@@ -1,7 +1,8 @@
 import pytest
 import sys
 from time import sleep
-from test_dir.test_crm_cust_manger import login, new_customer_name_by_sql, add_customer, split_customer, convert_student, \
+from test_dir.test_crm_cust_manger import login, new_customer_name_by_sql, add_customer, split_customer, \
+    convert_student, \
     create_account, add_new_order, pay_new_order
 from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
@@ -143,15 +144,13 @@ class TestStuCourseManagement:
     学员课程管理
     """
 
-    def test_student_select_class(self, browser1, crm_url, counseling_supervision_account, adviser_account, pass_word,
-                                  class_name, course, adviser_name,
-                                  phone_number, school_name):
+    def test_student_select_class(self, browser1, crm_url, counseling_supervision_account, pass_word, class_name,
+                                  course, adviser_name, phone_number, school_name):
         """
         测试单个学员分班
         :param browser1:
         :param crm_url:
         :param counseling_supervision_account:
-        :param adviser_account:
         :param pass_word:
         :param class_name:
         :param course:
@@ -166,7 +165,7 @@ class TestStuCourseManagement:
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, new_customer_name_by_sql(), phone_number)
         sleep(1)
-        split_customer(browser1, adviser_account)
+        split_customer(browser1, counseling_supervision_account)
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
@@ -227,7 +226,7 @@ class TestStudentClassManagement:
         PageWait(page.delete_button)
         page.delete_button.click()
 
-    def test_in_class(self, crm_url, counseling_supervision_account, pass_word, phone_number, adviser_account,
+    def test_in_class(self, crm_url, counseling_supervision_account, pass_word, phone_number,
                       adviser_name, course, browser1, class_name, school_name, education_account, in_class_time):
         """
         测试上课点名
@@ -236,7 +235,6 @@ class TestStudentClassManagement:
         :param counseling_supervision_account:
         :param pass_word:
         :param phone_number:
-        :param adviser_account:
         :param adviser_name:
         :param course:
         :param browser1:
@@ -253,7 +251,7 @@ class TestStudentClassManagement:
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, new_customer_name_by_sql(), phone_number)
         sleep(1)
-        split_customer(browser1, adviser_account)
+        split_customer(browser1, counseling_supervision_account)
         sleep(1)
         convert_student(browser1, school_name)
         sleep(1)
