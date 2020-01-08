@@ -91,7 +91,7 @@ makeUpTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%
 inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d %H:%M:%S")
 
 # 今天日期
-educationalEffectTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d")
+todayDate = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d")
 
 # 学员姓名
 studentName = "自动化测试学生"
@@ -99,6 +99,13 @@ studentName = "自动化测试学生"
 # 人事助理账号&名称
 humanResourceAccount = "高分云人事1"
 humanResourceName = "人事1"
+
+# 登录和服务器信息、发送人、接收人
+mail_host = "smtp.quanlangedu.com"
+mail_user = "fengjiahui@quanlangedu.com"
+mail_pass = "Fjh011310"
+sender = "fengjiahui@quanlangedu.com"
+receivers = "fengjiahui@quanlangedu.com"
 
 
 ############################
@@ -297,9 +304,9 @@ def in_class_time():
 
 # 返回今天日期
 @pytest.fixture(scope='function')
-def educational_effect_time():
-    global educationalEffectTime
-    return educationalEffectTime
+def today_date():
+    global todayDate
+    return todayDate
 
 
 # 学员姓名
@@ -373,7 +380,8 @@ def pytest_runtest_makereport(item):
             else:
                 case_name = case_path
             capture_screenshot(case_name)
-            img_path = "image/" + case_name.split("/")[-1]
+            # img_path = "image/" + case_name.split("/")[-1]
+            img_path = case_name.split("/")[-1]
             if img_path:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
                        'onclick="window.open(this.src)" align="right"/></div>' % img_path
@@ -407,6 +415,21 @@ def description_html(desc):
     return desc_html
 
 
+# def capture_screenshot(case_name):
+#     """
+#     配置用例失败截图路径
+#     :param case_name: 用例名
+#     :return:
+#     """
+#     global driver
+#     file_name = case_name.split("/")[-1]
+#     new_report_dir = new_report_time()
+#     if new_report_dir is None:
+#         raise RuntimeError('没有初始化测试目录')
+#     image_dir = os.path.join(REPORT_DIR, new_report_dir, "image", file_name)
+#     print(image_dir)
+#     driver.save_screenshot(image_dir)
+
 def capture_screenshot(case_name):
     """
     配置用例失败截图路径
@@ -418,7 +441,8 @@ def capture_screenshot(case_name):
     new_report_dir = new_report_time()
     if new_report_dir is None:
         raise RuntimeError('没有初始化测试目录')
-    image_dir = os.path.join(REPORT_DIR, new_report_dir, "image", file_name)
+    image_dir = os.path.join(REPORT_DIR, new_report_dir, file_name)
+    print(image_dir)
     driver.save_screenshot(image_dir)
 
 

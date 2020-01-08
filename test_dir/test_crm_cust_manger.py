@@ -31,7 +31,7 @@ class TestLogin:
         page = GfyLogin(browser1)
         login(crm_url, browser1, supervisor_account, pass_word)
         PageWait(page.account_name)
-        assert page.account_name.text == "高分云指导督导1"
+        assert page.account_name.text == "高分云指导督导2"
 
 
 class TestCustomerManagement:
@@ -277,7 +277,7 @@ class TestCustomerAddOrder:
         assert order_page.pay_order_calculation_status.text == "成功"
 
     def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks,
-                            phone_number, course, school_name, educational_effect_time, educational_account,
+                            phone_number, course, school_name, today_date, educational_account,
                             counseling_supervision_account, counseling_supervision_name):
         """
         测试客户退费
@@ -290,7 +290,7 @@ class TestCustomerAddOrder:
         @param phone_number:
         @param course:
         @param school_name:
-        @param educational_effect_time:
+        @param today_date:
         @param educational_account:
         @param counseling_supervision_account:
         @param counseling_supervision_name:

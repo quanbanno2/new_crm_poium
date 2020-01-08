@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作">
-      <change afterPath="$PROJECT_DIR$/test_func/staff_func.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_personnel_manage.py_TestStaffInfo_test_add_staff.png" afterDir="false" />
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作&#10;3、员工入职 完成10%">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_personnel_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_personnel_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_db_connect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/.pytest_cache/v/cache/nodeids" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_personnel_manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_student_management.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_func/customer_management_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_func/customer_management_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_func/db_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_func/db_func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_add_new_order.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_pay_new_order.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_personnel_manage.py_TestStaffInfo_test_add_staff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/junit-xml.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/report.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,28 @@
       <recent name="$PROJECT_DIR$/page" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test_crm_personnel_manage.py">
+  <component name="RunManager" selected="Python.conftest">
+    <configuration name="conftest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="pyautoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/conftest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="db" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,27 +104,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_db_connect.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="student_management_func" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pyautoTest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_func" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_func/student_management_func.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -203,18 +203,18 @@
       <item itemvalue="Python.test_crm_cust_manger" />
       <item itemvalue="Python.test_crm_student_management" />
       <item itemvalue="Python.db" />
-      <item itemvalue="Python.student_management_func" />
+      <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo" />
       <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo.test_add_staff" />
       <item itemvalue="Python tests.pytest in test_crm_personnel_manage.py" />
-      <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo" />
+      <item itemvalue="Python.conftest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.conftest" />
         <item itemvalue="Python tests.pytest in test_crm_personnel_manage.py" />
         <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo" />
         <item itemvalue="Python tests.pytest for test_crm_personnel_manage.TestStaffInfo.test_add_staff" />
         <item itemvalue="Python.db" />
-        <item itemvalue="Python.student_management_func" />
       </list>
     </recent_temporary>
   </component>
@@ -419,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578025856297</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作&#10;3、员工入职 完成10%">
+      <created>1578044992348</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1578044992348</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,68 +526,86 @@
     <MESSAGE value="20200102:回收分单和创建账号数据清理" />
     <MESSAGE value="2020-01-03:增加test_func包，分离db操作" />
     <MESSAGE value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作" />
+    <MESSAGE value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作&#10;3、员工入职 完成10%" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作&#10;3、员工入职 完成10%" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1578025856035">
+    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1578044992097">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025856035" />
+    <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1578044992097" />
     <state x="100" y="123" width="1240" height="614" key="DiffContextDialog" timestamp="1578025893075">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="100" y="123" width="1240" height="614" key="DiffContextDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025893075" />
-    <state width="1419" height="322" key="GridCell.Tab.0.bottom" timestamp="1578043281847">
+    <state width="1419" height="175" key="GridCell.Tab.0.bottom" timestamp="1578453079892">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
     <state width="1419" height="224" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715778" />
-    <state width="1419" height="322" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578043281847" />
-    <state width="1419" height="322" key="GridCell.Tab.0.center" timestamp="1578043281846">
+    <state width="1419" height="175" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578453079892" />
+    <state width="1419" height="175" key="GridCell.Tab.0.center" timestamp="1578453079891">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
     <state width="1419" height="224" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715777" />
-    <state width="1419" height="322" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1578043281846" />
-    <state width="1419" height="322" key="GridCell.Tab.0.left" timestamp="1578043281846">
+    <state width="1419" height="175" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1578453079891" />
+    <state width="1419" height="175" key="GridCell.Tab.0.left" timestamp="1578453079890">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
     <state width="1419" height="224" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715776" />
-    <state width="1419" height="322" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1578043281846" />
-    <state width="1419" height="322" key="GridCell.Tab.0.right" timestamp="1578043281847">
+    <state width="1419" height="175" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1578453079890" />
+    <state width="1419" height="175" key="GridCell.Tab.0.right" timestamp="1578453079891">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
     <state width="1419" height="224" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715778" />
-    <state width="1419" height="322" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1578043281847" />
-    <state width="1419" height="392" key="GridCell.Tab.1.bottom" timestamp="1578023425327">
+    <state width="1419" height="175" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1578453079891" />
+    <state width="1419" height="392" key="GridCell.Tab.1.bottom" timestamp="1578451859895">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425327" />
-    <state width="1419" height="392" key="GridCell.Tab.1.center" timestamp="1578023425326">
+    <state width="1419" height="392" key="GridCell.Tab.1.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578451859895" />
+    <state width="1419" height="392" key="GridCell.Tab.1.center" timestamp="1578451859894">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425326" />
-    <state width="1419" height="392" key="GridCell.Tab.1.left" timestamp="1578023425325">
+    <state width="1419" height="392" key="GridCell.Tab.1.center/0.23.1440.814@0.23.1440.814" timestamp="1578451859894" />
+    <state width="1419" height="392" key="GridCell.Tab.1.left" timestamp="1578451859894">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425325" />
-    <state width="1419" height="392" key="GridCell.Tab.1.right" timestamp="1578023425327">
+    <state width="1419" height="392" key="GridCell.Tab.1.left/0.23.1440.814@0.23.1440.814" timestamp="1578451859894" />
+    <state width="1419" height="392" key="GridCell.Tab.1.right" timestamp="1578451859894">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425327" />
+    <state width="1419" height="392" key="GridCell.Tab.1.right/0.23.1440.814@0.23.1440.814" timestamp="1578451859894" />
     <state x="303" y="84" key="SettingsEditor" timestamp="1577957467768">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="303" y="84" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577957467768" />
-    <state x="320" y="170" key="Vcs.Push.Dialog.v2" timestamp="1578025858166">
+    <state x="320" y="170" key="Vcs.Push.Dialog.v2" timestamp="1578044993588">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025858166" />
+    <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1578044993588" />
     <state x="393" y="228" key="git4idea.merge.GitPullDialog" timestamp="1578034987732">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="393" y="228" key="git4idea.merge.GitPullDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578034987732" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
