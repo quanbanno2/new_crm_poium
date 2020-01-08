@@ -1,7 +1,6 @@
 # coding=utf-8
 import os
 import time
-# import shutil
 import pytest
 import click
 import smtplib
@@ -29,20 +28,23 @@ def init_env(now_time):
     # os.mkdir(REPORT_DIR + now_time + "/image")
 
 
-def send_mail(filename):
+def send_mail(filename, now_time):
     """
     发送邮件
+    @param now_time:
     @param filename:
     @return:
     """
-    content = MIMEText("\n\n邮件自动发送，不需要回复！", 'plain', 'utf-8')
+    content = MIMEText("\nhello all："
+                       "\n本邮件为系统自动发送，请勿回复。"
+                       "\n谢谢！", 'plain', 'utf-8')
     att = MIMEText(open(filename, 'rb').read(), 'base64', 'utf-8')
     att["Content-Type"] = 'application/octet-stream'
     # 解决文件名乱码
-    att.add_header('Content-Disposition', 'attachment', filename=('gbk', '', "测试报告.zip"))
+    att.add_header('Content-Disposition', 'attachment', filename=('gbk', '', "%s测试报告.zip" % now_time))
     # 附件实例
     msgRoot = MIMEMultipart()
-    msgRoot['From'] = Header("fengjiahui@quanlangedu.com", 'utf-8')
+    msgRoot['From'] = Header(sender, 'utf-8')
     msgRoot['To'] = receivers
     msgRoot['Subject'] = "%s 的UI自动化测试报告！" % todayDate
     # 添加内容
@@ -65,15 +67,15 @@ def zip_file(src_dir):
     """
     压缩文件
     @param src_dir:
-    @return:
+    @return:返回压缩文件的路径
     """
     zip_name = src_dir + '.zip'
     z = zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED)
-    for dirpath, dirnames, filenames in os.walk(src_dir):
-        fpath = dirpath.replace(src_dir, '')
+    for dir_path, dir_names, file_names in os.walk(src_dir):
+        fpath = dir_path.replace(src_dir, '')
         fpath = fpath and fpath + os.sep or ''
-        for filename in filenames:
-            z.write(os.path.join(dirpath, filename), fpath + filename)
+        for filename in file_names:
+            z.write(os.path.join(dir_path, filename), fpath + filename)
             # print('==压缩成功==')
     z.close()
     return zip_name
@@ -88,16 +90,16 @@ def run(m):
         init_env(now_time)
         html_report = os.path.join(REPORT_DIR, now_time, "report.html")
         xml_report = os.path.join(REPORT_DIR, now_time, "junit-xml.xml")
-        report_file_dirpath = os.path.join(REPORT_DIR, now_time)
+        report_file_dir_path = os.path.join(REPORT_DIR, now_time)
         pytest.main(["-s", "-v", cases_path,
                      "--html=" + html_report,
                      "--junit-xml=" + xml_report,
                      "--self-contained-html",
                      "--reruns", rerun])
         # 压缩生成完的报告
-        report_zip = zip_file(report_file_dirpath)
+        report_zip = zip_file(report_file_dir_path)
         # 发送压缩后的报告
-        send_mail(report_zip)
+        send_mail(report_zip, now_time)
     elif m == "debug":
         print("debug模式运行测试用例：")
         pytest.main(["-v", "-s", cases_path])

@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作&#10;3、员工入职 完成10%">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-08:&#10;1、增加压缩文件功能&#10;2、增加发送邮件&#10;3、完成调试发送测试报告">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_add_new_order.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_pay_new_order.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_cust_manger.py_TestCustomerAddOrder_test_student_refund.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/image/test_crm_personnel_manage.py_TestStaffInfo_test_add_staff.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_03_09_17_02/report.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -426,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578044992348</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="2020-01-08:&#10;1、增加压缩文件功能&#10;2、增加发送邮件&#10;3、完成调试发送测试报告">
+      <created>1578464951919</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1578464951919</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,14 +524,15 @@
     <MESSAGE value="2020-01-03:增加test_func包，分离db操作" />
     <MESSAGE value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作" />
     <MESSAGE value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作&#10;3、员工入职 完成10%" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作&#10;3、员工入职 完成10%" />
+    <MESSAGE value="2020-01-08:&#10;1、增加压缩文件功能&#10;2、增加发送邮件&#10;3、完成调试发送测试报告" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020-01-08:&#10;1、增加压缩文件功能&#10;2、增加发送邮件&#10;3、完成调试发送测试报告" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1578044992097">
+    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1578464951306">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025856035" />
-    <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1578044992097" />
+    <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1578464951306" />
     <state x="100" y="123" width="1240" height="614" key="DiffContextDialog" timestamp="1578025893075">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
@@ -587,11 +585,11 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="303" y="84" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1577957467768" />
-    <state x="320" y="170" key="Vcs.Push.Dialog.v2" timestamp="1578044993588">
+    <state x="320" y="170" key="Vcs.Push.Dialog.v2" timestamp="1578464953279">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025858166" />
-    <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1578044993588" />
+    <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1578464953279" />
     <state x="393" y="228" key="git4idea.merge.GitPullDialog" timestamp="1578034987732">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
