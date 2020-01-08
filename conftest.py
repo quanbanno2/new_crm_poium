@@ -105,7 +105,7 @@ mail_host = "smtp.quanlangedu.com"
 mail_user = "fengjiahui@quanlangedu.com"
 mail_pass = "Fjh011310"
 sender = "fengjiahui@quanlangedu.com"
-receivers = "fengjiahui@quanlangedu.com,wanglun@quanlangedu.com"
+receivers = "fengjiahui@quanlangedu.com"
 
 
 ############################
