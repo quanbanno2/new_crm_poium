@@ -1,0 +1,5 @@
+{
+  "test_crm_cust_manger.py::TestCustomerManagement::test_customer_recovery": true,
+  "test_crm_cust_manger.py::TestLogin::test_login": true,
+  "test_crm_cust_manger.py::TestStudentOrderManagement::test_student_refund": true
+}

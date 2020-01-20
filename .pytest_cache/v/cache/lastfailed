@@ -1,4 +1,5 @@
 {
+  "test_case/test_crm_cust_manger.py::TestLogin::test_login": true,
   "test_db_connect.py": true,
   "test_dir/test_baidu.py::TestSearch::test_baidu_search[case1]": true,
   "test_dir/test_baidu.py::TestSearch::test_baidu_search_case": true,

@@ -31,8 +31,8 @@ class GfyCrmCustomerManagement(Page):
     pub_school_choice = PageElement(
         link_text='选定学校',
         describe='新建客户-公校名称-公校列表-选择学校')
-    grade = PageElement(
-        xpath="//select[@ng-change=\"custInfoDialog.className=''\"]",
+    grade = PageElements(
+        xpath="//select[@name='grade']",
         describe="年级选择框")
     customer_activity = PageElement(
         xpath="//button[@ng-disabled=\"custInfoDialogType==='detail'\"]",

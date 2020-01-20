@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="1" name="pytest" skipped="0" tests="1" time="60.359"><testcase classname="test_case.test_crm_cust_manger.TestLogin" file="/Users/huishow/PycharmProjects/new_crm_poium/test_dir/test_crm_cust_manger.py" line="21" name="test_login" time="22.648"><failure message="AssertionError: assert &apos;高分云指导督导1&apos; == &apos;高分云指导督导2&apos;
+  - 高分云指导督导1
+  ?        ^
+  + 高分云指导督导2
+  ?        ^">self = &lt;test_case.test_crm_cust_manger.TestLogin object at 0x10c88c190&gt;
+crm_url = &apos;http://gaofenyun.com:8073/crm-web/login.html&apos;
+browser1 = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;0a4ddb6dc11ba014df0d93c64c73002e&quot;)&gt;
+pass_word = &apos;123456&apos;, supervisor_account = &apos;高分云指导督导1&apos;
+
+&gt;   ???
+E   AssertionError: assert &apos;高分云指导督导1&apos; == &apos;高分云指导督导2&apos;
+E     - 高分云指导督导1
+E     ?        ^
+E     + 高分云指导督导2
+E     ?        ^
+
+/Users/huishow/PycharmProjects/new_crm_poium/test_dir/test_crm_cust_manger.py:34: AssertionError</failure></testcase></testsuite>

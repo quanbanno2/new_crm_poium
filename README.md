@@ -29,7 +29,7 @@ url = "https://www.baidu.com"
 rerun = "3"
 
 # 运行测试用例的目录或文件
-cases_path = "./test_dir/"
+cases_path = "test_case/"
 ```
 
 #### 运行：

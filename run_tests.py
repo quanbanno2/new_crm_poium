@@ -3,13 +3,10 @@ import os
 import time
 import pytest
 import click
-import smtplib
-import zipfile
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.header import Header
+from func.sendMail import send_mail
+from func.zipFile import zip_file
 from conftest import REPORT_DIR
-from conftest import cases_path, rerun, todayDate, mail_host, mail_pass, mail_user, sender, receivers
+from conftest import cases_path, rerun
 
 '''
 说明：
@@ -26,59 +23,6 @@ def init_env(now_time):
     """
     os.mkdir(REPORT_DIR + now_time)
     # os.mkdir(REPORT_DIR + now_time + "/image")
-
-
-def send_mail(filename, now_time):
-    """
-    发送邮件
-    @param now_time:
-    @param filename:
-    @return:
-    """
-    content = MIMEText("\nhello all："
-                       "\n本邮件为系统自动发送，请勿回复。"
-                       "\n谢谢！", 'plain', 'utf-8')
-    att = MIMEText(open(filename, 'rb').read(), 'base64', 'utf-8')
-    att["Content-Type"] = 'application/octet-stream'
-    # 解决文件名乱码
-    att.add_header('Content-Disposition', 'attachment', filename=('gbk', '', "%s测试报告.zip" % now_time))
-    # 附件实例
-    msgRoot = MIMEMultipart()
-    msgRoot['From'] = Header(sender, 'utf-8')
-    msgRoot['To'] = receivers
-    msgRoot['Subject'] = "%s 的UI自动化测试报告！" % todayDate
-    # 添加内容
-    msgRoot.attach(content)
-    # 添加附件
-    msgRoot.attach(att)
-    smtp = smtplib.SMTP()
-    smtp.connect(mail_host)
-    smtp.login(mail_user, mail_pass)
-    try:
-        # 支持多个人接收
-        smtp.sendmail(sender, receivers.split(","), msgRoot.as_string())
-        print("测试报告发送成功")
-    except smtplib.SMTPException:
-        print("测试报告发送失败")
-    smtp.quit()
-
-
-def zip_file(src_dir):
-    """
-    压缩文件
-    @param src_dir:
-    @return:返回压缩文件的路径
-    """
-    zip_name = src_dir + '.zip'
-    z = zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED)
-    for dir_path, dir_names, file_names in os.walk(src_dir):
-        fpath = dir_path.replace(src_dir, '')
-        fpath = fpath and fpath + os.sep or ''
-        for filename in file_names:
-            z.write(os.path.join(dir_path, filename), fpath + filename)
-            # print('==压缩成功==')
-    z.close()
-    return zip_name
 
 
 @click.command()

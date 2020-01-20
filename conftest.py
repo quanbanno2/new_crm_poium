@@ -17,13 +17,14 @@ REPORT_DIR = BASE_DIR + "/test_report/"
 
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
 driver_type = "chrome"
+# driver_type = "safari"
 # driver_type = "grid"
 
 # 失败重跑次数
 rerun = "1"
 
 # 运行测试用例的目录或文件
-cases_path = "./test_dir/"
+cases_path = "test_case/"
 
 # 配置运行的 URL
 crmUrl = "http://gaofenyun.com:8073/crm-web/login.html"
@@ -79,7 +80,7 @@ className = "测试自动化专用班级"
 makeUpClass = "自动化测试补课班"
 
 # 高分云校区
-schoolName = "高分云"
+xiaoqu_schoolName = "高分云"
 
 # 客户生日
 customerBirthday = "1991/10/25"
@@ -103,7 +104,7 @@ humanResourceName = "人事1"
 # 登录和服务器信息、发送人、接收人
 mail_host = "smtp.quanlangedu.com"
 mail_user = "fengjiahui@quanlangedu.com"
-mail_pass = "Fjh011310"
+mail_pass = "011310Fjh"
 sender = "fengjiahui@quanlangedu.com"
 receivers = "fengjiahui@quanlangedu.com"
 
@@ -276,9 +277,9 @@ def educational_account():
 
 # 高分云校区
 @pytest.fixture(scope='function')
-def school_name():
-    global schoolName
-    return schoolName
+def jigou_school_name():
+    global xiaoqu_schoolName
+    return xiaoqu_schoolName
 
 
 # 客户生日
@@ -442,7 +443,6 @@ def capture_screenshot(case_name):
     if new_report_dir is None:
         raise RuntimeError('没有初始化测试目录')
     image_dir = os.path.join(REPORT_DIR, new_report_dir, file_name)
-    print(image_dir)
     driver.save_screenshot(image_dir)
 
 
@@ -477,7 +477,12 @@ def browser1():
     elif driver_type == "firefox":
         # 本地firefox浏览器
         driver = webdriver.Firefox()
-        driver.set_window_size(1920, 1080)
+        # driver.set_window_size(1920, 1080)
+        driver.maximize_window()
+
+    elif driver_type == "safari":
+        driver = webdriver.Safari()
+        driver.maximize_window()
 
     elif driver_type == "chrome-headless":
         # chrome headless模式
@@ -516,4 +521,4 @@ def browser_close():
 
 
 if __name__ == "__main__":
-    capture_screenshot("test_dir/test_baidu_search.test_search_python.png")
+    capture_screenshot("test_case/test_baidu_search.test_search_python.png")
