@@ -10,6 +10,7 @@ from selenium.webdriver.firefox.options import Options as FF_Options
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
+DATA_DIR = BASE_DIR + "/test_case/data/"
 
 # conftest配置文件每次启动初始化一次
 
@@ -371,6 +372,9 @@ def pytest_runtest_makereport(item):
     outcome = yield
     report = outcome.get_result()
     report.description = description_html(item.function.__doc__)
+    # 参数中的汉字转码
+    nodeID = report.nodeid
+    report.nodeid = nodeID.encode('utf-8').decode('unicode_escape')
     extra = getattr(report, 'extra', [])
     if report.when == 'call' or report.when == "setup":
         xfail = hasattr(report, 'wasxfail')

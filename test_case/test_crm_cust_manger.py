@@ -7,6 +7,8 @@ from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
+base_path = dirname(dirname(abspath(__file__)))
+
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
 from page.crm_home_page import GfyHomePage
 from page.crm_menu_page import GfyMenu
@@ -15,23 +17,83 @@ from page.crm_login_page import GfyLogin
 from func.db_func import eliminate_account_by_sql, new_customer_name_by_sql
 from func.customer_management_func import operate_delete_customer, login, add_customer, split_customer, \
     convert_student, create_account, add_new_order, customer_recovery, pay_new_order, refund_apply
+from func.get_data import get_json_data
+from conftest import DATA_DIR
+
+
+# class TestLogin:
+#     @pytest.mark.parametrize(
+#         "name, password",
+#         get_json_data(base_path + "/test_case/data/data.json")
+#
+#     )
+#     def test_login(self, crm_url, browser1, pass_word, supervisor_account):
+#         """
+#         测试登录
+#         @param crm_url:
+#         @param browser1:
+#         @param pass_word:
+#         @param supervisor_account:
+#         @return:
+#         """
+#         page = GfyLogin(browser1)
+#         login(crm_url, browser1, supervisor_account, pass_word)
+#         PageWait(page.account_name)
+#         assert page.account_name.text == "高分云指导督导2"
 
 
 class TestLogin:
+    # 参数化
+    @pytest.mark.parametrize(
+        "name,password,case,msg",
+        get_json_data(DATA_DIR + "login_success.json")
 
-    def test_login(self, crm_url, browser1, pass_word, supervisor_account):
+    )
+    def test_login_success(self, crm_url, browser1, password, name, case, msg):
         """
-        测试登录
+        测试登录成功
         @param crm_url:
         @param browser1:
-        @param pass_word:
-        @param supervisor_account:
+        @param password:
+        @param name:
+        @param case:
+        @param msg:
         @return:
         """
         page = GfyLogin(browser1)
-        login(crm_url, browser1, supervisor_account, pass_word)
-        PageWait(page.account_name)
-        assert page.account_name.text == "高分云指导督导2"
+        if case == "登陆成功":
+            login(crm_url, browser1, name, password)
+            PageWait(page.account_name)
+            assert page.account_name.text == msg
+
+    @pytest.mark.parametrize(
+        "name,password,case,msg",
+        get_json_data(DATA_DIR + "login_fail.json")
+
+    )
+    def test_login_fail(self, crm_url, browser1, password, name, case, msg):
+        """
+        测试登录失败
+        @param crm_url:
+        @param browser1:
+        @param password:
+        @param name:
+        @param case:
+        @param msg:
+        @return:
+        """
+        page = GfyLogin(browser1)
+        if case == "账号错误":
+            login(crm_url, browser1, name, password)
+            assert page.get_alert_text == msg
+            page.dismiss_alert()
+        elif case == "密码错误":
+            login(crm_url, browser1, name, password)
+            assert page.get_alert_text == msg
+            page.dismiss_alert()
+        elif case == "账号为空":
+            page.get(crm_url)
+            assert page.enter.get_attribute("disabled") == msg
 
 
 class TestCustomerManagement:
@@ -371,10 +433,10 @@ if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_create_account"])

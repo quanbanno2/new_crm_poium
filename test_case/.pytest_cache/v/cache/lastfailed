@@ -1,5 +1,9 @@
 {
   "test_crm_cust_manger.py::TestCustomerManagement::test_customer_recovery": true,
+  "test_crm_cust_manger.py::TestLogin": true,
   "test_crm_cust_manger.py::TestLogin::test_login": true,
+  "test_crm_cust_manger.py::TestLogin::test_login[-123456-\\u8d26\\u53f7\\u4e3a\\u7a7a-]": true,
+  "test_crm_cust_manger.py::TestLogin::test_login[\\u9ad8\\u5206\\u4e91\\u6307\\u5bfc\\u7763\\u5bfcr-123456]": true,
+  "test_crm_cust_manger.py::TestLogin::test_login_success[-123456-\\u8d26\\u53f7\\u4e3a\\u7a7a]": true,
   "test_crm_cust_manger.py::TestStudentOrderManagement::test_student_refund": true
 }
