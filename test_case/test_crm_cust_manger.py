@@ -14,39 +14,18 @@ from page.crm_home_page import GfyHomePage
 from page.crm_menu_page import GfyMenu
 from page.crm_finance_page import GfyRefundInfo
 from page.crm_login_page import GfyLogin
-from func.db_func import eliminate_account_by_sql, new_customer_name_by_sql
+from func.db_func import DB
 from func.customer_management_func import operate_delete_customer, login, add_customer, split_customer, \
     convert_student, create_account, add_new_order, customer_recovery, pay_new_order, refund_apply
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 
 
-# class TestLogin:
-#     @pytest.mark.parametrize(
-#         "name, password",
-#         get_json_data(base_path + "/test_case/data/data.json")
-#
-#     )
-#     def test_login(self, crm_url, browser1, pass_word, supervisor_account):
-#         """
-#         测试登录
-#         @param crm_url:
-#         @param browser1:
-#         @param pass_word:
-#         @param supervisor_account:
-#         @return:
-#         """
-#         page = GfyLogin(browser1)
-#         login(crm_url, browser1, supervisor_account, pass_word)
-#         PageWait(page.account_name)
-#         assert page.account_name.text == "高分云指导督导2"
-
-
 class TestLogin:
     # 参数化
     @pytest.mark.parametrize(
         "name,password,case,msg",
-        get_json_data(DATA_DIR + "login_success.json")
+        get_json_data(DATA_DIR + "login_fail.json")
 
     )
     def test_login_success(self, crm_url, browser1, password, name, case, msg):
@@ -114,7 +93,7 @@ class TestCustomerManagement:
         @return:
         """
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        student_name = new_customer_name_by_sql()
+        student_name = DB().new_customer_name_by_sql()
         add_customer(browser1, student_name, phone_number)
         page = GfyCrmCustomerManagement(browser1)
         PageSelect(page.customer_list_school_list, text=jigou_school_name)
@@ -139,7 +118,7 @@ class TestCustomerManagement:
         """
         page = GfyCrmCustomerManagement(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_customer_name_by_sql(), phone_number)
+        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
         sleep(1)
         split_customer(browser1, adviser_account)
         sleep(2)
@@ -151,6 +130,7 @@ class TestCustomerManagement:
         assert page.split_customer.text == adviser_name
         operate_delete_customer(browser1)
 
+    #
     def test_convert_student(self, crm_url, browser1, counseling_supervision_account, pass_word, jigou_school_name,
                              phone_number):
         """
@@ -165,7 +145,7 @@ class TestCustomerManagement:
         """
         page = GfyCrmCustomerManagement(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_customer_name_by_sql(), phone_number)
+        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
         sleep(1)
         split_customer(browser1, counseling_supervision_account)
         sleep(1)
@@ -189,7 +169,7 @@ class TestCustomerManagement:
         @return:
         """
         page = GfyCrmCustomerManagement(browser1)
-        account_name = new_customer_name_by_sql()
+        account_name = DB().new_customer_name_by_sql()
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         add_customer(browser1, account_name, phone_number)
         sleep(1)
@@ -210,7 +190,7 @@ class TestCustomerManagement:
         # 我的客户-删除客户
         operate_delete_customer(browser1)
         # 清理账号
-        eliminate_account_by_sql(account_name)
+        DB().eliminate_account_by_sql(account_name)
         sleep(2)
 
     def test_customer_recovery(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
@@ -231,7 +211,7 @@ class TestCustomerManagement:
         """
         page = GfyCrmCustomerManagement(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_customer_name_by_sql(), phone_number)
+        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
         sleep(1)
         # 分单
         split_customer(browser1, counseling_supervision_account)
@@ -287,7 +267,7 @@ class TestCustomerAddOrder:
         order_page = GfyCustomerAddOrder(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
         sleep(1)
-        add_customer(browser1, new_customer_name_by_sql(), phone_number)
+        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
         sleep(1)
         split_customer(browser1, counseling_supervision_account)
         sleep(1)
@@ -320,7 +300,7 @@ class TestCustomerAddOrder:
         """
         order_page = GfyCustomerAddOrder(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_customer_name_by_sql(), phone_number)
+        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
         sleep(1)
         split_customer(browser1, counseling_supervision_account)
         sleep(1)
@@ -360,7 +340,7 @@ class TestCustomerAddOrder:
         """
         order_page = GfyCustomerAddOrder(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_customer_name_by_sql(), phone_number)
+        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
         sleep(1)
         split_customer(browser1, counseling_supervision_account)
         sleep(1)
@@ -433,10 +413,10 @@ if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_create_account"])

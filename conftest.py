@@ -372,7 +372,7 @@ def pytest_runtest_makereport(item):
     outcome = yield
     report = outcome.get_result()
     report.description = description_html(item.function.__doc__)
-    # 参数中的汉字转码
+    # 测试报告的test中的汉字转码
     nodeID = report.nodeid
     report.nodeid = nodeID.encode('utf-8').decode('unicode_escape')
     extra = getattr(report, 'extra', [])

@@ -6,7 +6,7 @@ from os.path import dirname, abspath
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 from page.crm_personnel_page import GfyPersonnel
 from page.crm_menu_page import GfyMenu
-from func.db_func import new_staff_name_by_sql
+from func.db_func import DB
 from func.customer_management_func import login
 
 
@@ -19,7 +19,7 @@ def add_staff_base_info(driver):
     staff_info_page = GfyPersonnel(driver)
     staff_info_page.add_staff_base_info.click()
     sleep(1)
-    staff_info_page.add_staff_name[1].send_keys(new_staff_name_by_sql())
+    staff_info_page.add_staff_name[1].send_keys(DB().new_staff_name_by_sql())
     staff_info_page.staff_job_number[1].send_keys()
     # 员工账号
 

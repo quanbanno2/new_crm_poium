@@ -9,7 +9,7 @@ sys.path.insert(0, dirname(dirname(abspath(__file__))))
 from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
 from page.crm_menu_page import GfyMenu
-from func.db_func import new_customer_name_by_sql, eliminate_account_by_sql
+from func.db_func import DB
 from func.customer_management_func import login, add_customer, split_customer, convert_student, create_account, \
     add_new_order, pay_new_order
 from func.student_management_func import student_select_class, add_in_class_record, in_class, leave, make_up
@@ -39,7 +39,7 @@ class TestStuCourseManagement:
         order_page = GfyCustomerAddOrder(browser1)
         student_page = GfyCrmStudentCourseManagement(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_customer_name_by_sql(), phone_number)
+        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
         sleep(1)
         split_customer(browser1, counseling_supervision_account)
         sleep(1)
@@ -125,7 +125,7 @@ class TestStudentClassManagement:
         order_page = GfyCustomerAddOrder(browser1)
         in_class_page = GfyCrmStudentInClassManagement(browser1)
         login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, new_customer_name_by_sql(), phone_number)
+        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
         sleep(1)
         split_customer(browser1, counseling_supervision_account)
         sleep(1)
@@ -289,8 +289,8 @@ class TestStudentClassManagement:
 
 
 if __name__ == '__main__':
-    pytest.main()
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"])
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
-                 "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
+    # pytest.main()
+    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_in_class"])
+    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
+    #              "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
