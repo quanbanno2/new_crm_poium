@@ -9,7 +9,7 @@ class DB:
     def __init__(self):
 
         """
-        集成数据库链接
+        初始化集成数据库链接
         :return:
         """
         try:

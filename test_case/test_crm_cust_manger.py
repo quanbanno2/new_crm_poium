@@ -25,8 +25,7 @@ class TestLogin:
     # 参数化
     @pytest.mark.parametrize(
         "name,password,case,msg",
-        get_json_data(DATA_DIR + "login_fail.json")
-
+        get_json_data(DATA_DIR + "login_success.json")
     )
     def test_login_success(self, crm_url, browser1, password, name, case, msg):
         """
@@ -46,9 +45,8 @@ class TestLogin:
             assert page.account_name.text == msg
 
     @pytest.mark.parametrize(
-        "name,password,case,msg",
+        "case,name,password,msg",
         get_json_data(DATA_DIR + "login_fail.json")
-
     )
     def test_login_fail(self, crm_url, browser1, password, name, case, msg):
         """
@@ -70,7 +68,7 @@ class TestLogin:
             login(crm_url, browser1, name, password)
             assert page.get_alert_text == msg
             page.dismiss_alert()
-        elif case == "账号为空":
+        elif case == "账号或密码为空":
             page.get(crm_url)
             assert page.enter.get_attribute("disabled") == msg
 
@@ -80,10 +78,15 @@ class TestCustomerManagement:
     客户管理模块测试
     """
 
-    def test_add_customer(self, crm_url, browser1, phone_number, pass_word, counseling_supervision_account,
+    # @pytest.mark.parametrize(
+    #     "case,businessType,loginAccount,password,activityName,msg",
+    #     get_json_data(DATA_DIR + "add_customer_success.json")
+    # )
+    def test_add_customer(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
                           jigou_school_name):
         """
-        测试新增客户：新招生
+        测试新增客户
+        新增流程：进入客户管理界面-
         @param crm_url:
         @param browser1:
         @param phone_number:
@@ -101,6 +104,29 @@ class TestCustomerManagement:
         assert page.customer_name.text == student_name
         # 数据清除
         operate_delete_customer(browser1)
+
+    # def test_add_customer(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
+    #                       jigou_school_name):
+    #     """
+    #     测试新增客户
+    #     新增流程：进入客户管理界面-
+    #     @param crm_url:
+    #     @param browser1:
+    #     @param phone_number:
+    #     @param pass_word:
+    #     @param counseling_supervision_account:
+    #     @param jigou_school_name:
+    #     @return:
+    #     """
+    #     login(crm_url, browser1, counseling_supervision_account, pass_word)
+    #     student_name = DB().new_customer_name_by_sql()
+    #     add_customer(browser1, student_name, phone_number)
+    #     page = GfyCrmCustomerManagement(browser1)
+    #     PageSelect(page.customer_list_school_list, text=jigou_school_name)
+    #     sleep(2)
+    #     assert page.customer_name.text == student_name
+    #     # 数据清除
+    #     operate_delete_customer(browser1)
 
     def test_split_customer(self, crm_url, browser1, adviser_account, counseling_supervision_account, jigou_school_name,
                             phone_number, pass_word, adviser_name):

@@ -70,7 +70,7 @@ def login(url, driver, account, password):
     page.pwd_input.send_keys(password)
     code = page.verification_code.text
     page.code_input.send_keys(code)
-    flag = page.enter.click()
+    # flag = page.enter.click()
     sleep(1)
 
 
