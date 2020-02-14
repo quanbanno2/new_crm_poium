@@ -200,25 +200,51 @@ def split_customer(driver, adviser_account):
     """
     单个学员分单
     :param driver:
-    :param adviser_account:分单目标账号
+    :param adviser_account:分单账号
     :return:
     """
     page = GfyCrmCustomerManagement(driver)
-    sleep(1)
-    # 勾选第一个客户
-    page.customer_check[0].click()
-    sleep(1)
-    page.customer_split.click()
-    sleep(1)
-    page.teacher_list_login_name.clear()
-    sleep(1)
-    page.teacher_list_login_name.send_keys(adviser_account)
-    sleep(1)
-    page.teacher_list_query.click()
-    PageWait(page.teacher_select)
-    page.teacher_select.click()
-    PageWait(page.confirm_split)
-    page.confirm_split.click()
+    if page.split_customer.text == "--":
+        # 勾选客户
+        page.customer_check[0].click()
+        # sleep(1)
+        # 分单按钮
+        page.customer_split.click()
+        sleep(1)
+        # 输入账号查询
+        page.teacher_list_login_name.clear()
+        sleep(1)
+        page.teacher_list_login_name.send_keys(adviser_account)
+        sleep(1)
+        page.teacher_list_query.click()
+        PageWait(page.teacher_select)
+        page.teacher_select.click()
+        PageWait(page.confirm_split)
+        page.confirm_split.click()
+
+
+# def split_customer(driver, adviser_account):
+#     """
+#     单个学员分单
+#     :param driver:
+#     :param adviser_account:分单目标账号
+#     :return:
+#     """
+#     page = GfyCrmCustomerManagement(driver)
+#     # 勾选第一个客户
+#     page.customer_check[0].click()
+#     # sleep(1)
+#     page.customer_split.click()
+#     sleep(1)
+#     page.teacher_list_login_name.clear()
+#     sleep(1)
+#     page.teacher_list_login_name.send_keys(adviser_account)
+#     sleep(1)
+#     page.teacher_list_query.click()
+#     PageWait(page.teacher_select)
+#     page.teacher_select.click()
+#     PageWait(page.confirm_split)
+#     page.confirm_split.click()
 
 
 def convert_student(driver, school_name):

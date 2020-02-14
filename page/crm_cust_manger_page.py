@@ -81,7 +81,7 @@ class GfyCrmCustomerManagement(Page):
         # xpath="//button[@ng-show=\"custInfoDialogType==='edit'||custInfoDialogType==='add'\"]",
         xpath="//button[@ng-click='saveCustInfo()']",
         describe='客户创建保存按钮')
-    add_customer_status = PageElement(
+    save_status = PageElement(
         xpath="//strong[text()='保存成功']",
         describe="添加客户保存成功状态")
     customer_name = PageElement(
@@ -122,7 +122,7 @@ class GfyCrmCustomerManagement(Page):
         css=".bg-active > td:nth-child(7)",
         describe="列表-分单次数")
     split_customer = PageElement(
-        css=".bg-active > td:nth-child(10)",
+        css=".bg-active > td:nth-child(9)",
         describe="列表-主跟进人")
     convert_to_student = PageElement(
         xpath="//button[@ng-click='changeToStu(item)']",

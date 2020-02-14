@@ -1,5 +1,6 @@
 import sys
 import pytest
+import logging
 from time import sleep
 from poium import PageWait, PageSelect
 # 定义搜索模块顺序，优先搜索new_crm_poium文件夹
@@ -20,56 +21,59 @@ from func.customer_management_func import operate_delete_customer, login, add_cu
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
-class TestLogin:
-    @pytest.mark.parametrize(
-        "name,password,case,msg",
-        get_json_data(DATA_DIR + "login_success.json")
-    )
-    def test_login_success(self, crm_url, browser1, password, name, case, msg):
-        """
-        测试登录成功
-        @param crm_url:
-        @param browser1:
-        @param password:
-        @param name:
-        @param case:
-        @param msg:
-        @return:
-        """
-        page = GfyLogin(browser1)
-        if case == "登陆成功":
-            login(crm_url, browser1, name, password)
-            PageWait(page.account_name)
-            assert page.account_name.text == msg
 
-    @pytest.mark.parametrize(
-        "case,name,password,msg",
-        get_json_data(DATA_DIR + "login_fail.json")
-    )
-    def test_login_fail(self, crm_url, browser1, password, name, case, msg):
-        """
-        测试登录失败
-        @param crm_url:
-        @param browser1:
-        @param password:
-        @param name:
-        @param case:
-        @param msg:
-        @return:
-        """
-        page = GfyLogin(browser1)
-        if case == "账号错误":
-            login(crm_url, browser1, name, password)
-            assert page.get_alert_text == msg
-            page.dismiss_alert()
-        elif case == "密码错误":
-            login(crm_url, browser1, name, password)
-            assert page.get_alert_text == msg
-            page.dismiss_alert()
-        elif case == "账号或密码为空":
-            page.get(crm_url)
-            assert page.enter.get_attribute("disabled") == msg
+# class TestLogin:
+#     @pytest.mark.parametrize(
+#         "name,password,case,msg",
+#         get_json_data(DATA_DIR + "login_success.json")
+#     )
+#     def test_login_success(self, crm_url, browser1, password, name, case, msg):
+#         """
+#         测试登录成功
+#         @param crm_url:
+#         @param browser1:
+#         @param password:
+#         @param name:
+#         @param case:
+#         @param msg:
+#         @return:
+#         """
+#         page = GfyLogin(browser1)
+#         if case == "登陆成功":
+#             login(crm_url, browser1, name, password)
+#             PageWait(page.account_name)
+#             assert page.account_name.text == msg
+#
+#     @pytest.mark.parametrize(
+#         "case,name,password,msg",
+#         get_json_data(DATA_DIR + "login_fail.json")
+#     )
+#     def test_login_fail(self, crm_url, browser1, password, name, case, msg):
+#         """
+#         测试登录失败
+#         @param crm_url:
+#         @param browser1:
+#         @param password:
+#         @param name:
+#         @param case:
+#         @param msg:
+#         @return:
+#         """
+#         page = GfyLogin(browser1)
+#         if case == "账号错误":
+#             login(crm_url, browser1, name, password)
+#             assert page.get_alert_text == msg
+#             page.dismiss_alert()
+#         elif case == "密码错误":
+#             login(crm_url, browser1, name, password)
+#             assert page.get_alert_text == msg
+#             page.dismiss_alert()
+#         elif case == "账号或密码为空":
+#             page.get(crm_url)
+#             assert page.enter.get_attribute("disabled") == msg
 
 
 class TestCustomerManagement:
@@ -102,13 +106,13 @@ class TestCustomerManagement:
         if case == "新招生-创建客户成功":
             login(crm_url, browser1, loginAccount, password)
             add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
-            PageWait(page.add_customer_status)
-            assert page.add_customer_status.text == msg
+            PageWait(page.save_status)
+            assert page.save_status.text == msg
         elif case == "顾问转介绍-创建客户成功":
             login(crm_url, browser1, loginAccount, password)
             add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
-            PageWait(page.add_customer_status)
-            assert page.add_customer_status.text == msg
+            PageWait(page.save_status)
+            assert page.save_status.text == msg
 
     # @pytest.mark.parametrize(
     #     "case,businessType,loginAccount,password,activityName,phoneNumber,msg",
@@ -154,36 +158,63 @@ class TestCustomerManagement:
     #     assert page.customer_name.text == student_name
     #     # 数据清除
     #     operate_delete_customer(browser1)
-
-    def test_split_customer(self, crm_url, browser1, adviser_account, counseling_supervision_account, jigou_school_name,
-                            phone_number, pass_word, adviser_name):
+    @pytest.mark.parametrize(
+        "case,schoolName,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg",
+        get_json_data(DATA_DIR + "split_customer_success.json")
+    )
+    def test_split_customer_success(self, crm_url, browser1, case, schoolName, businessType, activityName, phoneNumber,
+                                    teacherName, loginAccount, password, msg, ):
         """
         测试单个客户分单
         @param crm_url:
         @param browser1:
-        @param adviser_account:
-        @param counseling_supervision_account:
-        @param jigou_school_name:
-        @param phone_number:
-        @param pass_word:
-        @param adviser_name:
         @return:
         """
         page = GfyCrmCustomerManagement(browser1)
-        login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-        sleep(1)
-        split_customer(browser1, adviser_account)
-        sleep(2)
-        page.checkbox_split_count.click()
-        sleep(1)
-        # 断言分单次数
-        # 断言分单跟进人
-        assert page.split_count.text == "1"
-        assert page.split_customer.text == adviser_name
-        operate_delete_customer(browser1)
+        if case == "未分单学员-分单成功":
+            login(crm_url, browser1, loginAccount, password)
+            add_customer(browser1, DB().new_customer_name_by_sql(), phoneNumber)
+            sleep(2)
+            split_customer(browser1, teacherName)
+            # 是否保存分单成功
+            PageWait(page.save_status)
+            assert page.save_status.text == msg
 
-    #
+    # page.checkbox_split_count.click()
+    # 断言分单次数
+    # 断言分单跟进人
+    # assert page.split_count.text == "1"
+    # assert page.split_customer.text == adviser_name
+    # operate_delete_customer(browser1)
+
+    # def test_split_customer(self, crm_url, browser1, adviser_account, counseling_supervision_account, jigou_school_name,
+    #                         phone_number, pass_word, adviser_name):
+    #     """
+    #     测试单个客户分单
+    #     @param crm_url:
+    #     @param browser1:
+    #     @param adviser_account:
+    #     @param counseling_supervision_account:
+    #     @param jigou_school_name:
+    #     @param phone_number:
+    #     @param pass_word:
+    #     @param adviser_name:
+    #     @return:
+    #     """
+    #     page = GfyCrmCustomerManagement(browser1)
+    #     login(crm_url, browser1, counseling_supervision_account, pass_word)
+    #     add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
+    #     sleep(1)
+    #     split_customer(browser1, adviser_account)
+    #     sleep(2)
+    #     page.checkbox_split_count.click()
+    #     sleep(1)
+    #     # 断言分单次数
+    #     # 断言分单跟进人
+    #     assert page.split_count.text == "1"
+    #     assert page.split_customer.text == adviser_name
+    #     operate_delete_customer(browser1)
+
     def test_convert_student(self, crm_url, browser1, counseling_supervision_account, pass_word, jigou_school_name,
                              phone_number):
         """
@@ -466,7 +497,7 @@ if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer_success"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_split_customer_success"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
