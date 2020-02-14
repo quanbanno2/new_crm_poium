@@ -37,6 +37,9 @@ class GfyCrmCustomerManagement(Page):
     customer_activity = PageElement(
         xpath="//button[@ng-disabled=\"custInfoDialogType==='detail'\"]",
         describe='客户来源按钮')
+    customer_business_type = PageElement(
+        xpath="//select[@name='businessType']",
+        describe="客户业务类型选择框")
 
     # 编辑客户
     customer_edit_button = PageElements(
@@ -78,6 +81,9 @@ class GfyCrmCustomerManagement(Page):
         # xpath="//button[@ng-show=\"custInfoDialogType==='edit'||custInfoDialogType==='add'\"]",
         xpath="//button[@ng-click='saveCustInfo()']",
         describe='客户创建保存按钮')
+    add_customer_status = PageElement(
+        xpath="//strong[text()='保存成功']",
+        describe="添加客户保存成功状态")
     customer_name = PageElement(
         xpath="//a[@ng-click='selectCust(item)'][1]",
         describe='我的客户-客户管理列表排第一的客户名称')

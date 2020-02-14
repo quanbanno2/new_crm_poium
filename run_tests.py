@@ -3,6 +3,7 @@ import os
 import time
 import pytest
 import click
+import logging
 from func.sendMail import send_mail
 from func.zipFile import zip_file
 from conftest import REPORT_DIR
@@ -15,6 +16,9 @@ from conftest import cases_path, rerun
   > python3 run_tests.py  (回归模式，生成HTML报告)
   > python3 run_tests.py -m debug  (调试模式)
 '''
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(levelname)s-%(message)s')
+logger = logging.getLogger(__name__)
 
 
 def init_env(now_time):
@@ -40,6 +44,7 @@ def run(m):
                      "--junit-xml=" + xml_report,
                      "--self-contained-html",
                      "--reruns", rerun])
+        logger.info("运行完成，生成测试报告，正在发送邮件！")
         # 压缩生成完的报告
         report_zip = zip_file(report_file_dir_path)
         # 发送压缩后的报告

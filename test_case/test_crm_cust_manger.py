@@ -16,13 +16,12 @@ from page.crm_finance_page import GfyRefundInfo
 from page.crm_login_page import GfyLogin
 from func.db_func import DB
 from func.customer_management_func import operate_delete_customer, login, add_customer, split_customer, \
-    convert_student, create_account, add_new_order, customer_recovery, pay_new_order, refund_apply
+    convert_student, create_account, add_new_order, customer_recovery, pay_new_order, refund_apply, add_customer_new
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 
 
 class TestLogin:
-    # 参数化
     @pytest.mark.parametrize(
         "name,password,case,msg",
         get_json_data(DATA_DIR + "login_success.json")
@@ -78,32 +77,60 @@ class TestCustomerManagement:
     客户管理模块测试
     """
 
-    # @pytest.mark.parametrize(
-    #     "case,businessType,loginAccount,password,activityName,msg",
-    #     get_json_data(DATA_DIR + "add_customer_success.json")
-    # )
-    def test_add_customer(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
-                          jigou_school_name):
+    @pytest.mark.parametrize(
+        "case,schoolName,businessType,loginAccount,password,activityName,phoneNumber,msg",
+        get_json_data(DATA_DIR + "add_customer_success.json")
+    )
+    def test_add_customer_success(self, crm_url, browser1, phone_number, case, schoolName, businessType, loginAccount,
+                                  password, activityName, phoneNumber, msg):
         """
-        测试新增客户
-        新增流程：进入客户管理界面-
+        测试新增客户成功情况
         @param crm_url:
         @param browser1:
         @param phone_number:
-        @param pass_word:
-        @param counseling_supervision_account:
-        @param jigou_school_name:
+        @param case:
+        @param businessType:
+        @param loginAccount:
+        @param password:
+        @param activityName:
+        @param msg:
         @return:
         """
-        login(crm_url, browser1, counseling_supervision_account, pass_word)
-        student_name = DB().new_customer_name_by_sql()
-        add_customer(browser1, student_name, phone_number)
         page = GfyCrmCustomerManagement(browser1)
-        PageSelect(page.customer_list_school_list, text=jigou_school_name)
-        sleep(2)
-        assert page.customer_name.text == student_name
-        # 数据清除
-        operate_delete_customer(browser1)
+        # 客户名称自动生成
+        customer_name = DB().new_customer_name_by_sql()
+        if case == "新招生-创建客户成功":
+            login(crm_url, browser1, loginAccount, password)
+            add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
+            PageWait(page.add_customer_status)
+            assert page.add_customer_status.text == msg
+        elif case == "顾问转介绍-创建客户成功":
+            login(crm_url, browser1, loginAccount, password)
+            add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
+            PageWait(page.add_customer_status)
+            assert page.add_customer_status.text == msg
+
+    # @pytest.mark.parametrize(
+    #     "case,businessType,loginAccount,password,activityName,phoneNumber,msg",
+    #     get_json_data(DATA_DIR + "add_customer_fail.json")
+    # )
+    # 失败情况待施工
+    # def test_add_customer_fail(self, crm_url, browser1, phone_number, case, businessType, loginAccount, password,
+    #                            activityName, phoneNumber, msg):
+    #     """
+    #     新增客户失败的情况
+    #     @param crm_url:
+    #     @param browser1:
+    #     @param phone_number:
+    #     @param case:
+    #     @param businessType:
+    #     @param loginAccount:
+    #     @param password:
+    #     @param activityName:
+    #     @param phoneNumber:
+    #     @param msg:
+    #     @return:
+    #     """
 
     # def test_add_customer(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
     #                       jigou_school_name):
@@ -439,7 +466,7 @@ if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer_success"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])

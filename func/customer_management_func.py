@@ -109,6 +109,53 @@ def add_customer(driver, customer_name, phone_number):
     page.add_customer_save[0].click()
 
 
+def add_customer_new(driver, customer_name, business_type, activity_name, phone_number, school_name):
+    """
+    创建客户
+    @param driver:
+    @param customer_name:
+    @param business_type:
+    @param activity_name:
+    @param phone_number:
+    @param school_name:
+    @return:
+    """
+    page = GfyCrmCustomerManagement(driver)
+    menu_page = GfyMenu(driver)
+    menu_page.customer_management.click()
+    menu_page.my_customer.click()
+    page.add_customer.click()
+    sleep(2)
+    # 输入客户名称
+    page.add_customer_name.send_keys(customer_name)
+    sleep(1)
+    # 输入公校名称
+    if school_name != "":
+        page.school_name.click()
+        PageWait(page.pub_school_list)
+        page.pub_school_list.send_keys(school_name)
+        page.pub_school_query.click()
+        PageWait(page.pub_school_choice)
+        page.pub_school_choice.click()
+    # 选择年级
+    PageWait(page.grade[0])
+    PageSelect(page.grade[0], value='string:G09')
+    # 选择业务类型
+    if business_type != "":
+        PageSelect(page.customer_business_type, text=business_type)
+    # 选择活动来源
+    if activity_name != "":
+        page.customer_activity.click()
+        sleep(1)
+        page.activity_name.send_keys(activity_name)
+        page.activity_query.click()
+        sleep(1)
+        page.activity_selected.click()
+        sleep(1)
+    page.customer_phone.send_keys(phone_number)
+    page.add_customer_save[0].click()
+
+
 def add_educational(driver, educational_effect_time, educational_account):
     """
     添加教务老师
