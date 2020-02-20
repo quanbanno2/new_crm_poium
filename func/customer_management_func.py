@@ -196,31 +196,39 @@ def add_educational(driver, educational_effect_time, educational_account):
     page.student_educational_save.click()
 
 
-def split_customer(driver, adviser_account):
+def split_customer(driver, adviser_account, student_num):
     """
-    单个学员分单
-    :param driver:
-    :param adviser_account:分单账号
-    :return:
+    学员分单功能
+    @param driver:
+    @param adviser_account:
+    @param student_num:
+    @return:
     """
     page = GfyCrmCustomerManagement(driver)
-    if page.split_customer.text == "--":
-        # 勾选客户
+    if student_num == 1:
+        # 勾选列表第一个客户
         page.customer_check[0].click()
-        # sleep(1)
-        # 分单按钮
-        page.customer_split.click()
-        sleep(1)
-        # 输入账号查询
-        page.teacher_list_login_name.clear()
-        sleep(1)
-        page.teacher_list_login_name.send_keys(adviser_account)
-        sleep(1)
-        page.teacher_list_query.click()
-        PageWait(page.teacher_select)
-        page.teacher_select.click()
-        PageWait(page.confirm_split)
-        page.confirm_split.click()
+    else:
+        i = 0
+        while i < student_num:
+            page.customer_check[i].click()
+            i += 1
+    # 分单按钮
+    page.customer_split.click()
+    sleep(1)
+    # 输入账号查询
+    page.teacher_list_login_name.clear()
+    sleep(1)
+    page.teacher_list_login_name.send_keys(adviser_account)
+    sleep(1)
+    # 机构老师列表查询
+    page.teacher_list_query.click()
+    PageWait(page.teacher_select)
+    # 选择老师
+    page.teacher_select.click()
+    PageWait(page.confirm_split)
+    # 确认分班
+    page.confirm_split.click()
 
 
 # def split_customer(driver, adviser_account):

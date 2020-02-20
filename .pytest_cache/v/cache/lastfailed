@@ -1,6 +1,9 @@
 {
   "test_case/test_crm_cust_manger.py::TestLogin::test_login": true,
   "test_case/test_crm_cust_manger.py::TestLogin::test_login[-123456-\\u8d26\\u53f7\\u4e3a\\u7a7a-true]": true,
+  "test_case/test_crm_cust_manger.py::test_convert_student": true,
+  "test_case/test_crm_cust_manger.py::test_create_account": true,
+  "test_case/test_crm_cust_manger.py::test_customer_recovery": true,
   "test_db_connect.py": true,
   "test_dir/test_baidu.py::TestSearch::test_baidu_search[case1]": true,
   "test_dir/test_baidu.py::TestSearch::test_baidu_search_case": true,

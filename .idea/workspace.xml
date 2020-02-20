@@ -1,44 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-20:&#10;调整登录测试传参方式，通过">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-22:&#10;db操作转为类">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/db_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/db_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/get_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/get_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/zipFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/zipFile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/func/customer_management_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/customer_management_func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/lastfailed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/nodeids" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/data/split_customer_success.json" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/data/split_customer_success.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/test_crm_personnel_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_crm_personnel_manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_crm_student_management.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_connect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_22_46/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_22_46/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_23_23/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_23_23/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_23_48.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_23_48/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_23_48/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_23_48/test_crm_cust_manger.py_TestLogin_test_login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_25_18/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_25_18/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_09_11_25_18/test_crm_cust_manger.py_TestLogin_test_login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_15_16_28_58.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_15_16_28_58/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_15_16_28_58/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_47_10.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_47_10/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_47_10/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_47_10/test_crm_cust_manger.py_TestLogin_test_login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_49_16.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_49_16/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_49_16/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_49_16/test_crm_cust_manger.py_TestLogin_test_login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_50_25.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_50_25/junit-xml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_50_25/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2020_01_20_16_50_25/test_crm_cust_manger.py_TestLogin_test_login.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +67,7 @@
       <recent name="$PROJECT_DIR$/page" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for test_crm_student_management.TestStudentClassManagement.test_make_up">
+  <component name="RunManager" selected="Python.test_crm_cust_manger">
     <configuration name="conftest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -230,9 +202,9 @@
       <item itemvalue="Python.test_crm_student_management" />
       <item itemvalue="Python.conftest" />
       <item itemvalue="Python.run_tests" />
-      <item itemvalue="Python tests.pytest in test_crm_personnel_manage.py" />
-      <item itemvalue="Python tests.pytest in test_crm_cust_manger.py" />
       <item itemvalue="Python tests.pytest for test_crm_student_management.TestStudentClassManagement.test_make_up" />
+      <item itemvalue="Python tests.pytest in test_crm_cust_manger.py" />
+      <item itemvalue="Python tests.pytest in test_crm_personnel_manage.py" />
     </list>
     <recent_temporary>
       <list>
@@ -480,7 +452,42 @@
       <option name="project" value="LOCAL" />
       <updated>1579511661669</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="2020-01-22:&#10;db操作转为类">
+      <created>1579681964595</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1579681964595</updated>
+    </task>
+    <task id="LOCAL-00032" summary="2020-02-13:2020 V1.0">
+      <created>1581585627904</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1581585627904</updated>
+    </task>
+    <task id="LOCAL-00033" summary="2020-01-22:&#10;db操作转为类">
+      <created>1581586031847</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1581586031847</updated>
+    </task>
+    <task id="LOCAL-00034" summary="2020-0214：创建客户成功情况支持新招生、转介绍和小学部等">
+      <created>1581663080827</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1581663080827</updated>
+    </task>
+    <task id="LOCAL-00035" summary="2020-02-14：学员分单流程支持数据参数化">
+      <created>1581675710798</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1581675710798</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,10 +564,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20190809 增加未上课退费" />
-    <MESSAGE value="20190820 退费审批完成" />
-    <MESSAGE value="20190820 退费（建单、支付、退费申请、审批、确认退费）" />
-    <MESSAGE value="20190828 : 优化创建客户的xpath定位、将创建客户流程模块化" />
     <MESSAGE value="20190901 : 优化订单退费退费申请、退费审批元素定位" />
     <MESSAGE value="20190906: 优化订单退费退费申请、退费审批元素定位 完成" />
     <MESSAGE value="20190906: 优化新增上课记录元素定位 完成" />
@@ -582,19 +585,24 @@
     <MESSAGE value="2020-01-08:&#10;1、增加压缩文件功能&#10;2、增加发送邮件&#10;3、完成调试发送测试报告" />
     <MESSAGE value="无" />
     <MESSAGE value="2020-01-20:&#10;发送邮件和压缩功能调整为单独文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020-01-20:&#10;发送邮件和压缩功能调整为单独文件" />
+    <MESSAGE value="2020-02-13:2020 V1.0" />
+    <MESSAGE value="2020-01-22:&#10;db操作转为类" />
+    <MESSAGE value="2020-0214：创建客户成功情况支持新招生、转介绍和小学部等" />
+    <MESSAGE value="2020-02-14：学员分单流程支持数据参数化" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020-02-14：学员分单流程支持数据参数化" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579574459722">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579574459722" />
-    <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2" timestamp="1579599710288">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2" timestamp="1581675811871">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025856035" />
     <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1578474758274" />
-    <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579599710288" />
+    <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579681963991" />
+    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2/0.23.1440.828@0.23.1440.828" timestamp="1581675811871" />
     <state width="1252" height="466" key="DebuggerActiveHint" timestamp="1579594486877">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
@@ -603,80 +611,96 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="100" y="123" width="1240" height="614" key="DiffContextDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025893075" />
-    <state x="589" y="207" key="FileChooserDialogImpl" timestamp="1578570876135">
-      <screen x="0" y="23" width="1440" height="814" />
+    <state x="589" y="210" key="FileChooserDialogImpl" timestamp="1581647818194">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="589" y="207" key="FileChooserDialogImpl/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578570876135" />
-    <state width="1419" height="583" key="GridCell.Tab.0.bottom" timestamp="1579679816207">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state x="589" y="210" key="FileChooserDialogImpl/0.23.1440.828@0.23.1440.828" timestamp="1581647818194" />
+    <state width="1419" height="57" key="GridCell.Tab.0.bottom" timestamp="1582186534307">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
     <state width="1419" height="224" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715778" />
     <state width="1419" height="175" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578467701353" />
-    <state width="1419" height="583" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579679816207" />
+    <state width="1419" height="253" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
     <state width="1419" height="271" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
-    <state width="1419" height="583" key="GridCell.Tab.0.center" timestamp="1579679816206">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1419" height="57" key="GridCell.Tab.0.bottom/0.23.1440.828@0.23.1440.828" timestamp="1582186534307" />
+    <state width="1419" height="583" key="GridCell.Tab.0.bottom/0.23.1440.829@0.23.1440.829" timestamp="1581588363365" />
+    <state width="1419" height="57" key="GridCell.Tab.0.center" timestamp="1582186534307">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
     <state width="1419" height="224" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715777" />
     <state width="1419" height="175" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1578467701352" />
-    <state width="1419" height="583" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579679816206" />
+    <state width="1419" height="253" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697070" />
     <state width="1419" height="271" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
-    <state width="1419" height="583" key="GridCell.Tab.0.left" timestamp="1579679816205">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1419" height="57" key="GridCell.Tab.0.center/0.23.1440.828@0.23.1440.828" timestamp="1582186534307" />
+    <state width="1419" height="583" key="GridCell.Tab.0.center/0.23.1440.829@0.23.1440.829" timestamp="1581588363364" />
+    <state width="1419" height="57" key="GridCell.Tab.0.left" timestamp="1582186534306">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
     <state width="1419" height="224" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715776" />
     <state width="1419" height="175" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1578467701352" />
-    <state width="1419" height="583" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579679816205" />
+    <state width="1419" height="253" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697070" />
     <state width="1419" height="271" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1579515487998" />
-    <state width="1419" height="583" key="GridCell.Tab.0.right" timestamp="1579679816207">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1419" height="57" key="GridCell.Tab.0.left/0.23.1440.828@0.23.1440.828" timestamp="1582186534306" />
+    <state width="1419" height="583" key="GridCell.Tab.0.left/0.23.1440.829@0.23.1440.829" timestamp="1581588363364" />
+    <state width="1419" height="57" key="GridCell.Tab.0.right" timestamp="1582186534307">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
     <state width="1419" height="224" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715778" />
     <state width="1419" height="175" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1578467701353" />
-    <state width="1419" height="583" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579679816207" />
+    <state width="1419" height="253" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
     <state width="1419" height="271" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
-    <state width="1419" height="253" key="GridCell.Tab.1.bottom" timestamp="1579673619136">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1419" height="57" key="GridCell.Tab.0.right/0.23.1440.828@0.23.1440.828" timestamp="1582186534307" />
+    <state width="1419" height="583" key="GridCell.Tab.0.right/0.23.1440.829@0.23.1440.829" timestamp="1581588363365" />
+    <state width="1419" height="399" key="GridCell.Tab.1.bottom" timestamp="1581675817683">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425327" />
     <state width="1419" height="392" key="GridCell.Tab.1.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578467701347" />
-    <state width="1419" height="253" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579673619136" />
-    <state width="1419" height="253" key="GridCell.Tab.1.center" timestamp="1579673619135">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1419" height="253" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697072" />
+    <state width="1419" height="399" key="GridCell.Tab.1.bottom/0.23.1440.828@0.23.1440.828" timestamp="1581675817683" />
+    <state width="1419" height="399" key="GridCell.Tab.1.center" timestamp="1581675817683">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425326" />
     <state width="1419" height="392" key="GridCell.Tab.1.center/0.23.1440.814@0.23.1440.814" timestamp="1578467701347" />
-    <state width="1419" height="253" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579673619135" />
-    <state width="1419" height="253" key="GridCell.Tab.1.left" timestamp="1579673619134">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1419" height="253" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697072" />
+    <state width="1419" height="399" key="GridCell.Tab.1.center/0.23.1440.828@0.23.1440.828" timestamp="1581675817683" />
+    <state width="1419" height="399" key="GridCell.Tab.1.left" timestamp="1581675817683">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425325" />
     <state width="1419" height="392" key="GridCell.Tab.1.left/0.23.1440.814@0.23.1440.814" timestamp="1578467701346" />
-    <state width="1419" height="253" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579673619134" />
-    <state width="1419" height="253" key="GridCell.Tab.1.right" timestamp="1579673619135">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1419" height="253" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
+    <state width="1419" height="399" key="GridCell.Tab.1.left/0.23.1440.828@0.23.1440.828" timestamp="1581675817683" />
+    <state width="1419" height="399" key="GridCell.Tab.1.right" timestamp="1581675817683">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425327" />
     <state width="1419" height="392" key="GridCell.Tab.1.right/0.23.1440.814@0.23.1440.814" timestamp="1578467701347" />
-    <state width="1419" height="253" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579673619135" />
-    <state x="296" y="82" key="SettingsEditor" timestamp="1578573998949">
-      <screen x="0" y="23" width="1440" height="814" />
+    <state width="1419" height="253" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697072" />
+    <state width="1419" height="399" key="GridCell.Tab.1.right/0.23.1440.828@0.23.1440.828" timestamp="1581675817683" />
+    <state x="182" y="121" key="SettingsEditor" timestamp="1581649073072">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="296" y="82" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578573998949" />
-    <state x="320" y="172" key="Vcs.Push.Dialog.v2" timestamp="1579511663004">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state x="182" y="121" key="SettingsEditor/0.23.1440.828@0.23.1440.828" timestamp="1581649073072" />
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2" timestamp="1581675712691">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025858166" />
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1578474760492" />
-    <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579511663004" />
-    <state width="720" height="413" key="XDebugger.FullValuePopup" timestamp="1579673602492">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579681966367" />
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.828@0.23.1440.828" timestamp="1581675712691" />
+    <state width="720" height="414" key="XDebugger.FullValuePopup" timestamp="1581672211920">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state width="720" height="413" key="XDebugger.FullValuePopup/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579673602492" />
+    <state width="720" height="414" key="XDebugger.FullValuePopup/0.23.1440.828@0.23.1440.828" timestamp="1581672211920" />
     <state x="393" y="228" key="git4idea.merge.GitPullDialog" timestamp="1578034987732">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
@@ -684,13 +708,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/conftest.py</url>
-          <line>360</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

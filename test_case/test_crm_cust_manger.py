@@ -25,55 +25,55 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logger = logging.getLogger(__name__)
 
 
-# class TestLogin:
-#     @pytest.mark.parametrize(
-#         "name,password,case,msg",
-#         get_json_data(DATA_DIR + "login_success.json")
-#     )
-#     def test_login_success(self, crm_url, browser1, password, name, case, msg):
-#         """
-#         测试登录成功
-#         @param crm_url:
-#         @param browser1:
-#         @param password:
-#         @param name:
-#         @param case:
-#         @param msg:
-#         @return:
-#         """
-#         page = GfyLogin(browser1)
-#         if case == "登陆成功":
-#             login(crm_url, browser1, name, password)
-#             PageWait(page.account_name)
-#             assert page.account_name.text == msg
-#
-#     @pytest.mark.parametrize(
-#         "case,name,password,msg",
-#         get_json_data(DATA_DIR + "login_fail.json")
-#     )
-#     def test_login_fail(self, crm_url, browser1, password, name, case, msg):
-#         """
-#         测试登录失败
-#         @param crm_url:
-#         @param browser1:
-#         @param password:
-#         @param name:
-#         @param case:
-#         @param msg:
-#         @return:
-#         """
-#         page = GfyLogin(browser1)
-#         if case == "账号错误":
-#             login(crm_url, browser1, name, password)
-#             assert page.get_alert_text == msg
-#             page.dismiss_alert()
-#         elif case == "密码错误":
-#             login(crm_url, browser1, name, password)
-#             assert page.get_alert_text == msg
-#             page.dismiss_alert()
-#         elif case == "账号或密码为空":
-#             page.get(crm_url)
-#             assert page.enter.get_attribute("disabled") == msg
+class TestLogin:
+    @pytest.mark.parametrize(
+        "name,password,case,msg",
+        get_json_data(DATA_DIR + "login_success.json")
+    )
+    def test_login_success(self, crm_url, browser1, password, name, case, msg):
+        """
+        测试登录成功
+        @param crm_url:
+        @param browser1:
+        @param password:
+        @param name:
+        @param case:
+        @param msg:
+        @return:
+        """
+        page = GfyLogin(browser1)
+        if case == "登陆成功":
+            login(crm_url, browser1, name, password)
+            PageWait(page.account_name)
+            assert page.account_name.text == msg
+
+    @pytest.mark.parametrize(
+        "case,name,password,msg",
+        get_json_data(DATA_DIR + "login_fail.json")
+    )
+    def test_login_fail(self, crm_url, browser1, password, name, case, msg):
+        """
+        测试登录失败
+        @param crm_url:
+        @param browser1:
+        @param password:
+        @param name:
+        @param case:
+        @param msg:
+        @return:
+        """
+        page = GfyLogin(browser1)
+        if case == "账号错误":
+            login(crm_url, browser1, name, password)
+            assert page.get_alert_text == msg
+            page.dismiss_alert()
+        elif case == "密码错误":
+            login(crm_url, browser1, name, password)
+            assert page.get_alert_text == msg
+            page.dismiss_alert()
+        elif case == "账号或密码为空":
+            page.get(crm_url)
+            assert page.enter.get_attribute("disabled") == msg
 
 
 class TestCustomerManagement:
@@ -159,26 +159,39 @@ class TestCustomerManagement:
     #     # 数据清除
     #     operate_delete_customer(browser1)
     @pytest.mark.parametrize(
-        "case,schoolName,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg",
+        "case,schoolName,studentNum,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg",
         get_json_data(DATA_DIR + "split_customer_success.json")
     )
-    def test_split_customer_success(self, crm_url, browser1, case, schoolName, businessType, activityName, phoneNumber,
-                                    teacherName, loginAccount, password, msg, ):
+    def test_split_customer_success(self, crm_url, browser1, case, schoolName, studentNum, businessType, activityName,
+                                    phoneNumber,
+                                    teacherName, loginAccount, password, msg):
         """
         测试单个客户分单
         @param crm_url:
         @param browser1:
         @return:
         """
+        # page = GfyCrmCustomerManagement(browser1)
+        # if case == "一个学员分单":
+        #     login(crm_url, browser1, loginAccount, password)
+        #     add_customer(browser1, DB().new_customer_name_by_sql(), phoneNumber)
+        #     sleep(2)
+        #     split_customer(browser1, teacherName)
+        #     # 是否保存分单成功
+        #     PageWait(page.save_status)
+        #     assert page.save_status.text == msg
         page = GfyCrmCustomerManagement(browser1)
-        if case == "未分单学员-分单成功":
+        i = 0
+        studentNum = int(studentNum)
+        while i < studentNum:
             login(crm_url, browser1, loginAccount, password)
             add_customer(browser1, DB().new_customer_name_by_sql(), phoneNumber)
-            sleep(2)
-            split_customer(browser1, teacherName)
-            # 是否保存分单成功
-            PageWait(page.save_status)
-            assert page.save_status.text == msg
+            sleep(1)
+            i += 1
+        split_customer(browser1, teacherName, studentNum)
+        # 是否保存分单成功
+        PageWait(page.save_status)
+        assert page.save_status.text == msg
 
     # page.checkbox_split_count.click()
     # 断言分单次数

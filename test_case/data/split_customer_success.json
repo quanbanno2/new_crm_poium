@@ -1,7 +1,20 @@
 [
   {
-    "case": "未分单学员-分单成功",
+    "case": "单个学员分单",
     "schoolName": "四基",
+    "studentNum": "1",
+    "businessType": "新招生",
+    "activityName": "高分云信息单",
+    "phoneNumber": "13800138000",
+    "teacherName": "高分云辅导1",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "msg": "保存成功"
+  },
+  {
+    "case": "批量学员分单",
+    "schoolName": "四基",
+    "studentNum": "2",
     "businessType": "新招生",
     "activityName": "高分云信息单",
     "phoneNumber": "13800138000",
