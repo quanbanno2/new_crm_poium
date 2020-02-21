@@ -12,6 +12,9 @@ class GfyCrmCustomerManagement(Page):
     customer_list = PageElement(
         xpath="//b[text()='客户列表']",
         describe="我的客户-客户列表")
+    customer_list_load_button = PageElement(
+        xpath="//button[@ng-click='loadCustInfoList(1,pageInfo.pageSize)']",
+        describe="我的客户-客户列表-查询按钮")
     # 新增客户
     add_customer = PageElement(
         xpath="//button[@ng-click=\"toEditCustInfo('newCust')\"]",
@@ -124,12 +127,21 @@ class GfyCrmCustomerManagement(Page):
     split_customer = PageElement(
         css=".bg-active > td:nth-child(9)",
         describe="列表-主跟进人")
+    batch_convert_student = PageElement(
+        xpath="//button[text()='转为学员']",
+        describe="批量转为学员按钮")
     convert_to_student = PageElement(
         xpath="//button[@ng-click='changeToStu(item)']",
         describe="客户管理列表-第一名客户转为学员按钮")
     convert_confirm = PageElement(
         xpath="//button[@ng-disabled='!messageJson.inputValue']",
         describe="我的客户-转为学员确定")
+    convert_success_text = PageElement(
+        xpath="//h3[text()='转为学员保存成功']",
+        describe="转换成功文字提示")
+    convert_success_tips = PageElement(
+        xpath="//span[text()='该客户已经是学员！']",
+        describe="转为学员失败提示")
     confirm_btn = PageElement(
         xpath="//button[@data-bb-handler='confirm']",
         describe="确认按钮")
@@ -139,9 +151,7 @@ class GfyCrmCustomerManagement(Page):
     customer_ok_button = PageElement(
         xpath="//button[@data-bb-handler='ok']",
         describe="转换成功确认按钮")
-    convert_success_text = PageElement(
-        xpath="//span[@class='text-green']",
-        describe="转为学员-转换成功提示文字")
+
     student_or_not = PageElement(
         css='.bg-active > td:nth-child(12) > span:nth-child(1)',
         describe="列表-是否学员")

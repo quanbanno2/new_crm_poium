@@ -2,13 +2,84 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-22:&#10;db操作转为类">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_case/data/convert_student_success.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_46_09.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_46_09/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_46_09/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_49_35.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_49_35/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_49_35/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_51_35.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_51_35/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_51_35/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_53_04.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_53_04/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_53_04/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_24_11.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_24_11/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_24_11/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_29_37.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_29_37/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_29_37/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_49_39.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_49_39/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_49_39/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_58_26.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_58_26/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_58_26/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_23.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_23/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_23/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_56_28.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_56_28/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_56_28/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_56_28/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/junit-xml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/func/customer_management_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/customer_management_func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/lastfailed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/nodeids" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/data/add_customer_success.json" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/data/add_customer_success.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_case/data/split_customer_success.json" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/data/split_customer_success.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" afterDir="false" />
     </list>
@@ -487,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581675710798</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="2020-02-20: 支持批量学员分单操作的测试">
+      <created>1582187302286</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1582187302287</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +642,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20190901 : 优化订单退费退费申请、退费审批元素定位" />
     <MESSAGE value="20190906: 优化订单退费退费申请、退费审批元素定位 完成" />
     <MESSAGE value="20190906: 优化新增上课记录元素定位 完成" />
     <MESSAGE value="20190906: 优化上课点名元素定位 完成" />
@@ -589,20 +666,21 @@
     <MESSAGE value="2020-01-22:&#10;db操作转为类" />
     <MESSAGE value="2020-0214：创建客户成功情况支持新招生、转介绍和小学部等" />
     <MESSAGE value="2020-02-14：学员分单流程支持数据参数化" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020-02-14：学员分单流程支持数据参数化" />
+    <MESSAGE value="2020-02-20: 支持批量学员分单操作的测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020-02-20: 支持批量学员分单操作的测试" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579574459722">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579574459722" />
-    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2" timestamp="1581675811871">
+    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2" timestamp="1582187302015">
       <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025856035" />
     <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1578474758274" />
     <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579681963991" />
-    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2/0.23.1440.828@0.23.1440.828" timestamp="1581675811871" />
+    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2/0.23.1440.828@0.23.1440.828" timestamp="1582187302015" />
     <state width="1252" height="466" key="DebuggerActiveHint" timestamp="1579594486877">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
@@ -616,86 +694,98 @@
     </state>
     <state x="589" y="207" key="FileChooserDialogImpl/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578570876135" />
     <state x="589" y="210" key="FileChooserDialogImpl/0.23.1440.828@0.23.1440.828" timestamp="1581647818194" />
-    <state width="1419" height="57" key="GridCell.Tab.0.bottom" timestamp="1582186534307">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state width="1419" height="389" key="GridCell.Tab.0.bottom" timestamp="1582251115808">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
     <state width="1419" height="224" key="GridCell.Tab.0.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715778" />
     <state width="1419" height="175" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578467701353" />
     <state width="1419" height="253" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
     <state width="1419" height="271" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
-    <state width="1419" height="57" key="GridCell.Tab.0.bottom/0.23.1440.828@0.23.1440.828" timestamp="1582186534307" />
+    <state width="1419" height="389" key="GridCell.Tab.0.bottom/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251115808" />
+    <state width="1419" height="610" key="GridCell.Tab.0.bottom/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1582190022823" />
+    <state width="1419" height="352" key="GridCell.Tab.0.bottom/0.23.1440.828@0.23.1440.828" timestamp="1582201853743" />
     <state width="1419" height="583" key="GridCell.Tab.0.bottom/0.23.1440.829@0.23.1440.829" timestamp="1581588363365" />
-    <state width="1419" height="57" key="GridCell.Tab.0.center" timestamp="1582186534307">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state width="1419" height="389" key="GridCell.Tab.0.center" timestamp="1582251115808">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
     <state width="1419" height="224" key="GridCell.Tab.0.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715777" />
     <state width="1419" height="175" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1578467701352" />
     <state width="1419" height="253" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697070" />
     <state width="1419" height="271" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
-    <state width="1419" height="57" key="GridCell.Tab.0.center/0.23.1440.828@0.23.1440.828" timestamp="1582186534307" />
+    <state width="1419" height="389" key="GridCell.Tab.0.center/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251115808" />
+    <state width="1419" height="610" key="GridCell.Tab.0.center/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1582190022822" />
+    <state width="1419" height="352" key="GridCell.Tab.0.center/0.23.1440.828@0.23.1440.828" timestamp="1582201853742" />
     <state width="1419" height="583" key="GridCell.Tab.0.center/0.23.1440.829@0.23.1440.829" timestamp="1581588363364" />
-    <state width="1419" height="57" key="GridCell.Tab.0.left" timestamp="1582186534306">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state width="1419" height="389" key="GridCell.Tab.0.left" timestamp="1582251115807">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
     <state width="1419" height="224" key="GridCell.Tab.0.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715776" />
     <state width="1419" height="175" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1578467701352" />
     <state width="1419" height="253" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697070" />
     <state width="1419" height="271" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1579515487998" />
-    <state width="1419" height="57" key="GridCell.Tab.0.left/0.23.1440.828@0.23.1440.828" timestamp="1582186534306" />
+    <state width="1419" height="389" key="GridCell.Tab.0.left/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251115807" />
+    <state width="1419" height="610" key="GridCell.Tab.0.left/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1582190022822" />
+    <state width="1419" height="352" key="GridCell.Tab.0.left/0.23.1440.828@0.23.1440.828" timestamp="1582201853742" />
     <state width="1419" height="583" key="GridCell.Tab.0.left/0.23.1440.829@0.23.1440.829" timestamp="1581588363364" />
-    <state width="1419" height="57" key="GridCell.Tab.0.right" timestamp="1582186534307">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state width="1419" height="389" key="GridCell.Tab.0.right" timestamp="1582251115808">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
     <state width="1419" height="224" key="GridCell.Tab.0.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578041715778" />
     <state width="1419" height="175" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1578467701353" />
     <state width="1419" height="253" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
     <state width="1419" height="271" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
-    <state width="1419" height="57" key="GridCell.Tab.0.right/0.23.1440.828@0.23.1440.828" timestamp="1582186534307" />
+    <state width="1419" height="389" key="GridCell.Tab.0.right/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251115808" />
+    <state width="1419" height="610" key="GridCell.Tab.0.right/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1582190022823" />
+    <state width="1419" height="352" key="GridCell.Tab.0.right/0.23.1440.828@0.23.1440.828" timestamp="1582201853742" />
     <state width="1419" height="583" key="GridCell.Tab.0.right/0.23.1440.829@0.23.1440.829" timestamp="1581588363365" />
-    <state width="1419" height="399" key="GridCell.Tab.1.bottom" timestamp="1581675817683">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state width="1419" height="507" key="GridCell.Tab.1.bottom" timestamp="1582250364943">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.bottom/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425327" />
     <state width="1419" height="392" key="GridCell.Tab.1.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578467701347" />
     <state width="1419" height="253" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697072" />
+    <state width="1419" height="507" key="GridCell.Tab.1.bottom/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582250364943" />
     <state width="1419" height="399" key="GridCell.Tab.1.bottom/0.23.1440.828@0.23.1440.828" timestamp="1581675817683" />
-    <state width="1419" height="399" key="GridCell.Tab.1.center" timestamp="1581675817683">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state width="1419" height="507" key="GridCell.Tab.1.center" timestamp="1582250364942">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.center/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425326" />
     <state width="1419" height="392" key="GridCell.Tab.1.center/0.23.1440.814@0.23.1440.814" timestamp="1578467701347" />
     <state width="1419" height="253" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697072" />
+    <state width="1419" height="507" key="GridCell.Tab.1.center/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582250364942" />
     <state width="1419" height="399" key="GridCell.Tab.1.center/0.23.1440.828@0.23.1440.828" timestamp="1581675817683" />
-    <state width="1419" height="399" key="GridCell.Tab.1.left" timestamp="1581675817683">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state width="1419" height="507" key="GridCell.Tab.1.left" timestamp="1582250364942">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.left/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425325" />
     <state width="1419" height="392" key="GridCell.Tab.1.left/0.23.1440.814@0.23.1440.814" timestamp="1578467701346" />
     <state width="1419" height="253" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
+    <state width="1419" height="507" key="GridCell.Tab.1.left/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582250364942" />
     <state width="1419" height="399" key="GridCell.Tab.1.left/0.23.1440.828@0.23.1440.828" timestamp="1581675817683" />
-    <state width="1419" height="399" key="GridCell.Tab.1.right" timestamp="1581675817683">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state width="1419" height="507" key="GridCell.Tab.1.right" timestamp="1582250364943">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state width="1419" height="392" key="GridCell.Tab.1.right/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578023425327" />
     <state width="1419" height="392" key="GridCell.Tab.1.right/0.23.1440.814@0.23.1440.814" timestamp="1578467701347" />
     <state width="1419" height="253" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697072" />
+    <state width="1419" height="507" key="GridCell.Tab.1.right/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582250364943" />
     <state width="1419" height="399" key="GridCell.Tab.1.right/0.23.1440.828@0.23.1440.828" timestamp="1581675817683" />
     <state x="182" y="121" key="SettingsEditor" timestamp="1581649073072">
       <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="296" y="82" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578573998949" />
     <state x="182" y="121" key="SettingsEditor/0.23.1440.828@0.23.1440.828" timestamp="1581649073072" />
-    <state x="320" y="172" key="Vcs.Push.Dialog.v2" timestamp="1581675712691">
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2" timestamp="1582187304239">
       <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025858166" />
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1578474760492" />
     <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579681966367" />
-    <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.828@0.23.1440.828" timestamp="1581675712691" />
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.828@0.23.1440.828" timestamp="1582187304239" />
     <state width="720" height="414" key="XDebugger.FullValuePopup" timestamp="1581672211920">
       <screen x="0" y="23" width="1440" height="828" />
     </state>
@@ -705,6 +795,10 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="393" y="228" key="git4idea.merge.GitPullDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578034987732" />
+    <state x="385" y="175" width="670" height="676" key="search.everywhere.popup" timestamp="1582188422320">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state x="385" y="175" width="670" height="676" key="search.everywhere.popup/0.23.1440.828@0.23.1440.828" timestamp="1582188422320" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -721,6 +815,7 @@
         <watch expression="i['name']" />
         <watch expression="__py_debug_temp_var_2063939530" />
         <watch expression="report" />
+        <watch expression="menu_page" />
       </configuration>
     </watches-manager>
   </component>

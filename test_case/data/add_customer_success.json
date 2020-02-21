@@ -1,7 +1,7 @@
 [
   {
-    "case": "新招生-创建客户成功",
-    "schoolName": "四基",
+    "case": "新招生创建客户成功",
+    "pubSchoolName": "四基",
     "businessType": "新招生",
     "loginAccount": "高分云辅导督导1",
     "password": "123456",
@@ -10,8 +10,8 @@
     "msg": "保存成功"
   },
   {
-    "case": "顾问转介绍-创建客户成功",
-    "schoolName": "四基",
+    "case": "顾问转介绍创建客户成功",
+    "pubSchoolName": "四基",
     "businessType": "转介绍",
     "loginAccount": "高分云辅导督导1",
     "password": "123456",

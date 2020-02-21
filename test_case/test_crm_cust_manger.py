@@ -16,7 +16,7 @@ from page.crm_menu_page import GfyMenu
 from page.crm_finance_page import GfyRefundInfo
 from page.crm_login_page import GfyLogin
 from func.db_func import DB
-from func.customer_management_func import operate_delete_customer, login, add_customer, split_customer, \
+from func.customer_management_func import operate_delete_customer, login, split_customer, \
     convert_student, create_account, add_new_order, customer_recovery, pay_new_order, refund_apply, add_customer_new
 from func.get_data import get_json_data
 from conftest import DATA_DIR
@@ -93,10 +93,12 @@ class TestCustomerManagement:
         @param browser1:
         @param phone_number:
         @param case:
+        @param schoolName:
         @param businessType:
         @param loginAccount:
         @param password:
         @param activityName:
+        @param phoneNumber:
         @param msg:
         @return:
         """
@@ -163,42 +165,37 @@ class TestCustomerManagement:
         get_json_data(DATA_DIR + "split_customer_success.json")
     )
     def test_split_customer_success(self, crm_url, browser1, case, schoolName, studentNum, businessType, activityName,
-                                    phoneNumber,
-                                    teacherName, loginAccount, password, msg):
+                                    phoneNumber, teacherName, loginAccount, password, msg):
         """
-        测试单个客户分单
+        测试学员分单成功情况
         @param crm_url:
         @param browser1:
+        @param case:
+        @param schoolName:
+        @param studentNum:
+        @param businessType:
+        @param activityName:
+        @param phoneNumber:
+        @param teacherName:
+        @param loginAccount:
+        @param password:
+        @param msg:
         @return:
         """
-        # page = GfyCrmCustomerManagement(browser1)
-        # if case == "一个学员分单":
-        #     login(crm_url, browser1, loginAccount, password)
-        #     add_customer(browser1, DB().new_customer_name_by_sql(), phoneNumber)
-        #     sleep(2)
-        #     split_customer(browser1, teacherName)
-        #     # 是否保存分单成功
-        #     PageWait(page.save_status)
-        #     assert page.save_status.text == msg
         page = GfyCrmCustomerManagement(browser1)
         i = 0
         studentNum = int(studentNum)
         while i < studentNum:
             login(crm_url, browser1, loginAccount, password)
-            add_customer(browser1, DB().new_customer_name_by_sql(), phoneNumber)
+            add_customer_new(browser1, DB().new_customer_name_by_sql(), businessType, activityName, phoneNumber,
+                             schoolName)
             sleep(1)
             i += 1
+        sleep(1)
         split_customer(browser1, teacherName, studentNum)
         # 是否保存分单成功
         PageWait(page.save_status)
         assert page.save_status.text == msg
-
-    # page.checkbox_split_count.click()
-    # 断言分单次数
-    # 断言分单跟进人
-    # assert page.split_count.text == "1"
-    # assert page.split_customer.text == adviser_name
-    # operate_delete_customer(browser1)
 
     # def test_split_customer(self, crm_url, browser1, adviser_account, counseling_supervision_account, jigou_school_name,
     #                         phone_number, pass_word, adviser_name):
@@ -227,31 +224,53 @@ class TestCustomerManagement:
     #     assert page.split_count.text == "1"
     #     assert page.split_customer.text == adviser_name
     #     operate_delete_customer(browser1)
-
-    def test_convert_student(self, crm_url, browser1, counseling_supervision_account, pass_word, jigou_school_name,
-                             phone_number):
+    @pytest.mark.parametrize(
+        "case,pubSchoolName,studentNum,businessType,activityName,phoneNumber,"
+        "teacherName,schoolName,loginAccount,password,msg",
+        get_json_data(DATA_DIR + "convert_student_success.json")
+    )
+    def test_convert_student_success(self, crm_url, browser1, case, pubSchoolName, studentNum, businessType,
+                                     activityName, phoneNumber, teacherName, schoolName, loginAccount, password, msg):
         """
         测试单个客户转为学员
-        @param crm_url:
-        @param browser1:
-        @param counseling_supervision_account:
-        @param pass_word:
-        @param jigou_school_name:
-        @param phone_number:
-        @return:
         """
         page = GfyCrmCustomerManagement(browser1)
-        login(crm_url, browser1, counseling_supervision_account, pass_word)
-        add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
+        menu_page = GfyMenu(browser1)
+        i = 0
+        studentNum = int(studentNum)
+        while i < studentNum:
+            login(crm_url, browser1, loginAccount, password)
+            add_customer_new(browser1, DB().new_customer_name_by_sql(), businessType, activityName, phoneNumber,
+                             pubSchoolName)
+            sleep(1)
+            i += 1
         sleep(1)
-        split_customer(browser1, counseling_supervision_account)
+        split_customer(browser1, teacherName, studentNum)
+        login(crm_url, browser1, teacherName, password)
+        menu_page.customer_management.click()
+        menu_page.my_customer.click()
+        sleep(2)
+        convert_student(browser1, schoolName, studentNum)
         sleep(1)
-        convert_student(browser1, jigou_school_name)
-        sleep(1)
-        assert page.convert_success_text.text == "成功转为学员"
-        page.customer_ok_button.click()
-        sleep(1)
-        operate_delete_customer(browser1)
+        if case == "单个客户转学员-成功" or case == "客户批量学员-全部成功":
+            # 断言提示框标题和提示内容
+            assert page.convert_success_text.text == msg and page.convert_success_tips is None
+        elif case == "客户批量学员-部分成功":
+            # 部分成功即存在已转学员的
+            assert page.convert_success_text.text == msg and page.convert_success_tips.text is not None
+
+        # page = GfyCrmCustomerManagement(browser1)
+        # login(crm_url, browser1, counseling_supervision_account, pass_word)
+        # add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
+        # sleep(1)
+        # split_customer(browser1, counseling_supervision_account)
+        # sleep(1)
+        # convert_student(browser1, jigou_school_name)
+        # sleep(1)
+        # assert page.convert_success_text.text == "成功转为学员"
+        # page.customer_ok_button.click()
+        # sleep(1)
+        # operate_delete_customer(browser1)
 
     def test_create_account(self, browser1, pass_word, jigou_school_name, crm_url, counseling_supervision_account,
                             phone_number):
@@ -510,7 +529,7 @@ if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_split_customer_success"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_convert_student_success"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])

@@ -1,0 +1,41 @@
+[
+  {
+    "case": "单个客户转学员成功",
+    "pubSchoolName": "四基",
+    "studentNum": "1",
+    "businessType": "新招生",
+    "activityName": "高分云信息单",
+    "phoneNumber": "13800138000",
+    "teacherName": "高分云辅导1",
+    "schoolName": "高分云",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "msg": "转为学员保存成功"
+  },
+  {
+    "case": "客户批量学员全部成功",
+    "pubSchoolName": "四基",
+    "studentNum": "2",
+    "businessType": "新招生",
+    "activityName": "高分云信息单",
+    "phoneNumber": "13800138000",
+    "teacherName": "高分云辅导1",
+    "schoolName": "高分云",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "msg": "转为学员保存成功"
+  },
+  {
+    "case": "客户批量学员部分成功",
+    "pubSchoolName": "四基",
+    "studentNum": "3",
+    "businessType": "新招生",
+    "activityName": "高分云信息单",
+    "phoneNumber": "13800138000",
+    "teacherName": "高分云辅导1",
+    "schoolName": "高分云",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "msg": "转为学员保存成功"
+  }
+]

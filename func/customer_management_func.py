@@ -74,39 +74,39 @@ def login(url, driver, account, password):
     sleep(1)
 
 
-def add_customer(driver, customer_name, phone_number):
-    """
-    创建客户：新招生类型
-    :param driver:
-    :param customer_name:
-    :param phone_number:
-    :return:
-    """
-    page = GfyCrmCustomerManagement(driver)
-    menu_page = GfyMenu(driver)
-    menu_page.customer_management.click()
-    menu_page.my_customer.click()
-    page.add_customer.click()
-    sleep(2)
-    page.add_customer_name.send_keys(customer_name)
-    sleep(1)
-    page.school_name.click()
-    PageWait(page.pub_school_list)
-    page.pub_school_list.send_keys("四基初级中学")
-    page.pub_school_query.click()
-    PageWait(page.pub_school_choice)
-    page.pub_school_choice.click()
-    PageWait(page.grade[0])
-    PageSelect(page.grade[0], value='string:G09')
-    page.customer_activity.click()
-    sleep(1)
-    page.activity_name.send_keys('高分云信息单')
-    page.activity_query.click()
-    sleep(1)
-    page.activity_selected.click()
-    sleep(1)
-    page.customer_phone.send_keys(phone_number)
-    page.add_customer_save[0].click()
+# def add_customer(driver, customer_name, phone_number):
+#     """
+#     创建客户：新招生类型
+#     :param driver:
+#     :param customer_name:
+#     :param phone_number:
+#     :return:
+#     """
+#     page = GfyCrmCustomerManagement(driver)
+#     menu_page = GfyMenu(driver)
+#     menu_page.customer_management.click()
+#     menu_page.my_customer.click()
+#     page.add_customer.click()
+#     sleep(2)
+#     page.add_customer_name.send_keys(customer_name)
+#     sleep(1)
+#     page.school_name.click()
+#     PageWait(page.pub_school_list)
+#     page.pub_school_list.send_keys("四基初级中学")
+#     page.pub_school_query.click()
+#     PageWait(page.pub_school_choice)
+#     page.pub_school_choice.click()
+#     PageWait(page.grade[0])
+#     PageSelect(page.grade[0], value='string:G09')
+#     page.customer_activity.click()
+#     sleep(1)
+#     page.activity_name.send_keys('高分云信息单')
+#     page.activity_query.click()
+#     sleep(1)
+#     page.activity_selected.click()
+#     sleep(1)
+#     page.customer_phone.send_keys(phone_number)
+#     page.add_customer_save[0].click()
 
 
 def add_customer_new(driver, customer_name, business_type, activity_name, phone_number, school_name):
@@ -254,20 +254,58 @@ def split_customer(driver, adviser_account, student_num):
 #     PageWait(page.confirm_split)
 #     page.confirm_split.click()
 
-
-def convert_student(driver, school_name):
+def convert_student(driver, school_name, student_num):
     """
-    单个客户转为学员
-    :param driver:
-    :param school_name:
-    :return:
+    客户转为学员操作
+    @param driver:
+    @param school_name:
+    @param student_num:
+    @return:
     """
     page = GfyCrmCustomerManagement(driver)
     PageSelect(page.customer_list_school_list, text=school_name)
-    sleep(1)
-    page.convert_to_student.click()
-    sleep(1)
+    page.customer_list_load_button.click()
+    sleep(2)
+    # 单个成功
+    if student_num == 1:
+        page.customer_check[0].click()
+    # 全部成功
+    elif student_num == 2:
+        i = 0
+        while i < student_num:
+            page.customer_check[i].click()
+            i += 1
+    # 部分成功
+    else:
+        page.customer_check[0].click()
+        page.batch_convert_student.click()
+        PageWait(page.convert_confirm)
+        page.convert_confirm.click()
+        PageWait(page.customer_ok_button)
+        page.customer_ok_button.click()
+        sleep(1)
+        i = 0
+        while i < student_num:
+            page.customer_check[i].click()
+            i += 1
+    page.batch_convert_student.click()
+    PageWait(page.convert_confirm)
     page.convert_confirm.click()
+
+
+# def convert_student(driver, school_name):
+#     """
+#     单个客户转为学员
+#     :param driver:
+#     :param school_name:
+#     :return:
+#     """
+#     page = GfyCrmCustomerManagement(driver)
+#     PageSelect(page.customer_list_school_list, text=school_name)
+#     sleep(1)
+#     page.convert_to_student.click()
+#     sleep(1)
+#     page.convert_confirm.click()
 
 
 def create_account(driver, password, school_name):

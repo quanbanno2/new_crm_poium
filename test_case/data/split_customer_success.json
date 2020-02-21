@@ -1,7 +1,7 @@
 [
   {
-    "case": "单个学员分单",
-    "schoolName": "四基",
+    "case": "单个客户分单",
+    "pubSchoolName": "四基",
     "studentNum": "1",
     "businessType": "新招生",
     "activityName": "高分云信息单",
@@ -12,8 +12,8 @@
     "msg": "保存成功"
   },
   {
-    "case": "批量学员分单",
-    "schoolName": "四基",
+    "case": "客户批量分单",
+    "pubSchoolName": "四基",
     "studentNum": "2",
     "businessType": "新招生",
     "activityName": "高分云信息单",

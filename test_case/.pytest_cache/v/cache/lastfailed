@@ -1,7 +1,10 @@
 {
   "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer_success[\u65b0\u62db\u751f-\u521b\u5efa\u5ba2\u6237\u6210\u529f-\u65b0\u62db\u751f-\u9ad8\u5206\u4e91\u8f85\u5bfc1-123456-\u9ad8\u5206\u4e91\u4fe1\u606f\u5355-\u4fdd\u5b58\u6210\u529f]": true,
   "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer_success[\u987e\u95ee\u8f6c\u4ecb\u7ecd-\u521b\u5efa\u5ba2\u6237\u6210\u529f-\u8f6c\u4ecb\u7ecd-\u9ad8\u5206\u4e91\u8f85\u5bfc1-123456-\u987e\u95ee\u8f6c\u4ecb\u7ecd-\u4fdd\u5b58\u6210\u529f]": true,
+  "test_crm_cust_manger.py::TestCustomerManagement::test_convert_student_success[\u5ba2\u6237\u6279\u91cf\u5b66\u5458-\u5168\u90e8\u6210\u529f-\u56db\u57fa-2-\u65b0\u62db\u751f-\u9ad8\u5206\u4e91\u4fe1\u606f\u5355-13800138000-\u9ad8\u5206\u4e91\u8f85\u5bfc1-\u9ad8\u5206\u4e91-\u9ad8\u5206\u4e91\u8f85\u5bfc\u7763\u5bfc1-123456-\u4fdd\u5b58\u6210\u529f]": true,
   "test_crm_cust_manger.py::TestCustomerManagement::test_customer_recovery": true,
+  "test_crm_cust_manger.py::TestCustomerManagement::test_split_customer_success[\u5355\u4e2a\u5b66\u5458\u5206\u5355-\u56db\u57fa-1-\u65b0\u62db\u751f-\u9ad8\u5206\u4e91\u4fe1\u606f\u5355-13800138000-\u9ad8\u5206\u4e91\u8f85\u5bfc1-\u9ad8\u5206\u4e91\u8f85\u5bfc\u7763\u5bfc1-123456-\u4fdd\u5b58\u6210\u529f]": true,
+  "test_crm_cust_manger.py::TestCustomerManagement::test_split_customer_success[\u6279\u91cf\u5b66\u5458\u5206\u5355-\u56db\u57fa-2-\u65b0\u62db\u751f-\u9ad8\u5206\u4e91\u4fe1\u606f\u5355-13800138000-\u9ad8\u5206\u4e91\u8f85\u5bfc1-\u9ad8\u5206\u4e91\u8f85\u5bfc\u7763\u5bfc1-123456-\u4fdd\u5b58\u6210\u529f]": true,
   "test_crm_cust_manger.py::TestLogin::test_login": true,
   "test_crm_cust_manger.py::TestLogin::test_login[-123456-\\u8d26\\u53f7\\u4e3a\\u7a7a-]": true,
   "test_crm_cust_manger.py::TestLogin::test_login[\\u9ad8\\u5206\\u4e91\\u6307\\u5bfc\\u7763\\u5bfcr-123456]": true,
