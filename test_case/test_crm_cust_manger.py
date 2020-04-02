@@ -83,7 +83,7 @@ class TestCustomerManagement:
 
     @pytest.mark.parametrize(
         "case,schoolName,businessType,loginAccount,password,activityName,phoneNumber,msg",
-        get_json_data(DATA_DIR + "add_customer_success.json")
+        get_json_data(DATA_DIR + "customer_management/" + "add_customer_success.json")
     )
     def test_add_customer_success(self, crm_url, browser1, phone_number, case, schoolName, businessType, loginAccount,
                                   password, activityName, phoneNumber, msg):
@@ -162,7 +162,7 @@ class TestCustomerManagement:
     #     operate_delete_customer(browser1)
     @pytest.mark.parametrize(
         "case,schoolName,studentNum,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg",
-        get_json_data(DATA_DIR + "split_customer_success.json")
+        get_json_data(DATA_DIR + "customer_management/" + "split_customer_success.json")
     )
     def test_split_customer_success(self, crm_url, browser1, case, schoolName, studentNum, businessType, activityName,
                                     phoneNumber, teacherName, loginAccount, password, msg):
@@ -226,7 +226,7 @@ class TestCustomerManagement:
     @pytest.mark.parametrize(
         "case,pubSchoolName,studentNum,businessType,activityName,phoneNumber,"
         "teacherName,schoolName,loginAccount,password,msg",
-        get_json_data(DATA_DIR + "convert_student_success.json")
+        get_json_data(DATA_DIR + "customer_management/" + "convert_student_success.json")
     )
     def test_convert_student_success(self, crm_url, browser1, case, pubSchoolName, studentNum, businessType,
                                      activityName, phoneNumber, teacherName, schoolName, loginAccount, password, msg):
@@ -288,7 +288,7 @@ class TestCustomerManagement:
     @pytest.mark.parametrize(
         "case,pubSchoolName,businessType,accountExist,activityName,phoneNumber,"
         "teacherName,schoolName,loginAccount,password,existAccountName",
-        get_json_data(DATA_DIR + "create_account.json")
+        get_json_data(DATA_DIR + "customer_management/" + "create_account.json")
     )
     def test_create_account(self, crm_url, browser1, case, pubSchoolName, businessType, accountExist, activityName,
                             phoneNumber, teacherName, schoolName, loginAccount, password, existAccountName):
