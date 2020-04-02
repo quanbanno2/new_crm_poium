@@ -28,16 +28,16 @@ class DB:
         my_cursor = self.my_con.cursor()
         sql = 'SELECT cust_name FROM test_customer.cust_info ' \
               'WHERE cust_id = (SELECT MAX(cust_id) ' \
-              'FROM test_customer.cust_info WHERE cust_name LIKE "客户%" AND cust_status="S01")'
+              'FROM test_customer.cust_info WHERE cust_name LIKE "高分云客户%" AND cust_status="S01")'
         my_cursor.execute(sql)
         result = my_cursor.fetchall()
         for re in result:
             customer_name = re[0]
         # 读取客户名称后的数字
-        a = customer_name[2:]
+        a = customer_name[5:]
         client_num = int(a)
         client_num += 1
-        client_name = "客户" + str(client_num)
+        client_name = "高分云客户" + str(client_num)
         self.my_con.close()
         return client_name
 
@@ -75,3 +75,18 @@ class DB:
         new_name = "高分云员工" + str(staff_num)
         self.my_con.close()
         return new_name
+
+    def update_account(self, exist_account):
+        """
+        更新账号信息
+        @return:
+        """
+        my_cursor = self.my_con.cursor()
+        # 查出已存在的账号
+        sql = "UPDATE `test_student`.`stu_info` SET `account_no`=NULL " \
+              "WHERE `account_no` = (SELECT account_no FROM `test_user`.`usr_account_info` " \
+              "WHERE `login_name` = '%s');" % exist_account
+        my_cursor.execute(sql)
+        self.my_con.commit()
+        my_cursor.close()
+        self.my_con.close()

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="3" failures="1" name="pytest" skipped="0" tests="4" time="9.429"><testcase classname="test_case.test_crm_cust_manger.TestCustomerManagement" file="test_case/test_crm_cust_manger.py" line="160" name="test_split_customer_success[未分单学员-分单成功-四基-新招生-高分云信息单-13800138000-高分云辅导1-高分云辅导督导1-123456-保存成功]" time="2.798"><failure message="assert False">self = &lt;test_case.test_crm_cust_manger.TestCustomerManagement object at 0x1093b7310&gt;
+crm_url = &apos;http://gaofenyun.com:8073/crm-web/login.html&apos;
+browser1 = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;358dc58f2097f71670a6379a2aecdfe1&quot;)&gt;
+case = &apos;未分单学员-分单成功&apos;, schoolName = &apos;四基&apos;, businessType = &apos;新招生&apos;
+activityName = &apos;高分云信息单&apos;, phoneNumber = &apos;13800138000&apos;, teacherName = &apos;高分云辅导1&apos;
+loginAccount = &apos;高分云辅导督导1&apos;, password = &apos;123456&apos;, msg = &apos;保存成功&apos;
+
+    @pytest.mark.parametrize(
+        &quot;case,schoolName,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg&quot;,
+        get_json_data(DATA_DIR + &quot;split_customer_success.json&quot;)
+    )
+    def test_split_customer_success(self, crm_url, browser1, case, schoolName, businessType, activityName, phoneNumber,
+                                    teacherName, loginAccount, password, msg, ):
+        &quot;&quot;&quot;
+        测试单个客户分单
+        @param crm_url:
+        @param browser1:
+        @return:
+        &quot;&quot;&quot;
+        page = GfyCrmCustomerManagement(browser1)
+    
+        if case == &quot;未分单123学员-分单成功&quot;:
+            login(crm_url, browser1, loginAccount, password)
+            add_customer(browser1, DB().new_customer_name_by_sql(), phoneNumber)
+            sleep(2)
+            split_customer(browser1, teacherName)
+            # 是否保存分单成功
+            PageWait(page.save_status)
+            assert page.save_status.text != msg
+        else:
+            # print(&quot;\n没找到用例，请检查测试数据！&quot;)
+            logger.info(&quot;没找到用例，请检查测试数据！&quot;)
+&gt;           assert False
+E           assert False
+
+test_case/test_crm_cust_manger.py:186: AssertionError</failure></testcase><testcase classname="test_case.test_crm_cust_manger" file="test_case/test_crm_cust_manger.py" line="223" name="test_convert_student" time="0.001"><error message="test setup failure">file /Users/huishow/PycharmProjects/new_crm_poium/test_case/test_crm_cust_manger.py, line 224
+  def test_convert_student(self, crm_url, browser1, counseling_supervision_account, pass_word, jigou_school_name,
+E       fixture &apos;self&apos; not found
+&gt;       available fixtures: adviser_account, adviser_account2, adviser_name, adviser_name2, browser1, browser_close, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cases_pathh, class_name, comm_content, counseling_supervision_account, counseling_supervision_name, course, crm_url, customer_birthday, date_today, doctest_namespace, education_account, education_name, educational_account, educational_name, human_resource_account, in_class_time, jigou_school_name, make_up_class, make_up_time, metadata, monkeypatch, pass_word, phone_number, pytestconfig, questions, record_property, record_testsuite_property, record_xml_attribute, recwarn, remarks, student_name, supervisor_account, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, today_date
+&gt;       use &apos;pytest --fixtures [testpath]&apos; for help on them.
+
+/Users/huishow/PycharmProjects/new_crm_poium/test_case/test_crm_cust_manger.py:224</error></testcase><testcase classname="test_case.test_crm_cust_manger" file="test_case/test_crm_cust_manger.py" line="249" name="test_create_account" time="0.001"><error message="test setup failure">file /Users/huishow/PycharmProjects/new_crm_poium/test_case/test_crm_cust_manger.py, line 250
+  def test_create_account(self, browser1, pass_word, jigou_school_name, crm_url, counseling_supervision_account,
+E       fixture &apos;self&apos; not found
+&gt;       available fixtures: adviser_account, adviser_account2, adviser_name, adviser_name2, browser1, browser_close, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cases_pathh, class_name, comm_content, counseling_supervision_account, counseling_supervision_name, course, crm_url, customer_birthday, date_today, doctest_namespace, education_account, education_name, educational_account, educational_name, human_resource_account, in_class_time, jigou_school_name, make_up_class, make_up_time, metadata, monkeypatch, pass_word, phone_number, pytestconfig, questions, record_property, record_testsuite_property, record_xml_attribute, recwarn, remarks, student_name, supervisor_account, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, today_date
+&gt;       use &apos;pytest --fixtures [testpath]&apos; for help on them.
+
+/Users/huishow/PycharmProjects/new_crm_poium/test_case/test_crm_cust_manger.py:250</error></testcase><testcase classname="test_case.test_crm_cust_manger" file="test_case/test_crm_cust_manger.py" line="287" name="test_customer_recovery" time="0.001"><error message="test setup failure">file /Users/huishow/PycharmProjects/new_crm_poium/test_case/test_crm_cust_manger.py, line 288
+  def test_customer_recovery(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
+E       fixture &apos;self&apos; not found
+&gt;       available fixtures: adviser_account, adviser_account2, adviser_name, adviser_name2, browser1, browser_close, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cases_pathh, class_name, comm_content, counseling_supervision_account, counseling_supervision_name, course, crm_url, customer_birthday, date_today, doctest_namespace, education_account, education_name, educational_account, educational_name, human_resource_account, in_class_time, jigou_school_name, make_up_class, make_up_time, metadata, monkeypatch, pass_word, phone_number, pytestconfig, questions, record_property, record_testsuite_property, record_xml_attribute, recwarn, remarks, student_name, supervisor_account, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, today_date
+&gt;       use &apos;pytest --fixtures [testpath]&apos; for help on them.
+
+/Users/huishow/PycharmProjects/new_crm_poium/test_case/test_crm_cust_manger.py:288</error></testcase></testsuite>

@@ -196,21 +196,21 @@ def add_educational(driver, educational_effect_time, educational_account):
     page.student_educational_save.click()
 
 
-def split_customer(driver, adviser_account, student_num):
+def split_customer(driver, adviser_account, customer_num):
     """
     学员分单功能
     @param driver:
-    @param adviser_account:
-    @param student_num:
+    @param adviser_account:跟进人
+    @param customer_num:客户数量
     @return:
     """
     page = GfyCrmCustomerManagement(driver)
-    if student_num == 1:
+    if customer_num == 1 or customer_num == "":
         # 勾选列表第一个客户
         page.customer_check[0].click()
     else:
         i = 0
-        while i < student_num:
+        while i < customer_num:
             page.customer_check[i].click()
             i += 1
     # 分单按钮
@@ -254,12 +254,12 @@ def split_customer(driver, adviser_account, student_num):
 #     PageWait(page.confirm_split)
 #     page.confirm_split.click()
 
-def convert_student(driver, school_name, student_num):
+def convert_student(driver, school_name, customer_num):
     """
     客户转为学员操作
     @param driver:
     @param school_name:
-    @param student_num:
+    @param customer_num:
     @return:
     """
     page = GfyCrmCustomerManagement(driver)
@@ -267,12 +267,12 @@ def convert_student(driver, school_name, student_num):
     page.customer_list_load_button.click()
     sleep(2)
     # 单个成功
-    if student_num == 1:
+    if customer_num == 1 or customer_num == "":
         page.customer_check[0].click()
     # 全部成功
-    elif student_num == 2:
+    elif customer_num == 2:
         i = 0
-        while i < student_num:
+        while i < customer_num:
             page.customer_check[i].click()
             i += 1
     # 部分成功
@@ -285,7 +285,7 @@ def convert_student(driver, school_name, student_num):
         page.customer_ok_button.click()
         sleep(1)
         i = 0
-        while i < student_num:
+        while i < customer_num:
             page.customer_check[i].click()
             i += 1
     page.batch_convert_student.click()
@@ -308,35 +308,47 @@ def convert_student(driver, school_name, student_num):
 #     page.convert_confirm.click()
 
 
-def create_account(driver, password, school_name):
+def create_account(driver, school_name, exist_account, exist_account_name):
     """
-    客户详情创建教学帐号绑定
-    :param driver:
-    :param password:
-    :param school_name:
-    :return:
+    客户账号创建和绑定
+    @param driver:
+    @param school_name:
+    @param exist_account:
+    @param exist_account_name:
+    @return:
     """
     page = GfyCrmCustomerManagement(driver)
     PageSelect(page.customer_list_school_list, text=school_name)
     sleep(1)
+    # 打开第一个客户名称
     account_name = page.first_student_name.text
     page.first_student_name.click()
     sleep(1)
+    # 同步教学帐号按钮
     page.customer_create_account.click()
     sleep(1)
-    page.customer_create_account_btn.click()
-    sleep(1)
-    page.customer_create_account_name.send_keys(account_name)
-    sleep(1)
-    page.customer_create_account_password.send_keys(password)
-    sleep(1)
-    page.customer_create_account_repeat_password.send_keys(password)
-    sleep(1)
-    page.customer_create_account_birthday.click()
-    sleep(1)
-    page.customer_create_account_birthday_today.click()
-    sleep(1)
-    page.customer_create_account_save.click()
+    # 绑定已有客户账户
+    if exist_account == "是":
+        page.customer_create_account_like.send_keys(exist_account_name)
+        page.customer_create_account_query.click()
+        PageWait(page.customer_create_account_select)
+        page.customer_create_account_select.click()
+    # 创建和绑定账户
+    if exist_account == "否":
+        # 创建教学平台按钮
+        page.customer_create_account_btn.click()
+        sleep(1)
+        page.customer_create_account_name.send_keys(account_name)
+        sleep(1)
+        page.customer_create_account_password.send_keys("123456")
+        sleep(1)
+        page.customer_create_account_repeat_password.send_keys("123456")
+        sleep(1)
+        page.customer_create_account_birthday.click()
+        sleep(1)
+        page.customer_create_account_birthday_today.click()
+        sleep(1)
+        page.customer_create_account_save.click()
 
 
 def customer_edit():

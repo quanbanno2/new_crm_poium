@@ -194,6 +194,15 @@ class GfyCrmCustomerManagement(Page):
     customer_create_account_save_status = PageElement(
         xpath="//span[@ng-show='integrationStuInfo.accountNo']",
         describe="我的客户-客户信息-同步教学帐号-教学帐号")
+    customer_create_account_like = PageElement(
+        xpath="//input[@ng-model='stuBaseUserInfoParam.loginNameLike']",
+        describe="我的客户-客户信息-同步教学帐号-输入教学帐号")
+    customer_create_account_query = PageElement(
+        xpath="//button[@ng-click='loadStuBaseUserInfoList()']",
+        describe="我的客户-客户信息-同步教学帐号-查询")
+    customer_create_account_select = PageElement(
+        xpath="//button[@ng-click='selectStuBaseUserInfo(item)']",
+        describe="我的客户-客户信息-同步教学帐号-选择账号")
 
     # 客户回收
     customer_recovery = PageElement(

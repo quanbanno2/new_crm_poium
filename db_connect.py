@@ -100,7 +100,23 @@ def eliminate_account(account_name):
     my_con.close()
 
 
+def update_account(exist_account):
+    my_con = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
+                             'edu_test_user',
+                             'Quanlang_edu_test')
+    my_cursor = my_con.cursor()
+    sql1 = "UPDATE `test_student`.`stu_info` SET `account_no`=NULL " \
+           "WHERE `account_no` = (SELECT account_no FROM `test_user`.`usr_account_info` " \
+           "WHERE `login_name` = '%s');" % exist_account
+    my_cursor.execute(sql1)
+    my_con.commit()
+    my_cursor.close()
+    my_con.close()
+
+
 # name = "客户577"
 # eliminate_account(name)
 
-new_staff_name_by_sql()
+# new_staff_name_by_sql()
+
+update_account("已存在客户001")
