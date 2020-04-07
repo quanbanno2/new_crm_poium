@@ -1,88 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-01-22:&#10;db操作转为类">
-      <change afterPath="$PROJECT_DIR$/test_case/data/create_account.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_46_09.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_46_09/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_46_09/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_49_35.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_49_35/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_49_35/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_51_35.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_51_35/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_51_35/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_53_04.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_53_04/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_15_53_04/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_24_11.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_24_11/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_24_11/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_29_37.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_29_37/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_13_17_29_37/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_49_39.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_49_39/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_49_39/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_58_26.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_58_26/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_10_58_26/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_20_35/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_23.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_23/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_23/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_44_39/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_50_15/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_52_37/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_53_22/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_56_28.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_56_28/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_56_28/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_17_56_28/test_crm_cust_manger.py_TestCustomerManagement_test_split_customer_success[未分单学员].png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/junit-xml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/test_crm_cust_manger.py_test_convert_student.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/test_crm_cust_manger.py_test_create_account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2020_02_14_18_01_24/test_crm_cust_manger.py_test_customer_recovery.png" afterDir="false" />
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-0402:客户账号绑定与创建流程增加数据驱动支持">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_connect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/customer_management_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/customer_management_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/db_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/db_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/crm_cust_manger_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page/crm_cust_manger_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/lastfailed" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/nodeids" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/data/split_customer_success.json" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/data/split_customer_success.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +59,10 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test_case/data" />
+      <recent name="$PROJECT_DIR$/test_case/data/customer_management" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test_case/data" />
       <recent name="$PROJECT_DIR$/test_dir" />
@@ -293,9 +217,9 @@
       <item itemvalue="Python.test_crm_student_management" />
       <item itemvalue="Python.conftest" />
       <item itemvalue="Python.run_tests" />
+      <item itemvalue="Python.db_connect" />
       <item itemvalue="Python tests.pytest for test_crm_student_management.TestStudentClassManagement.test_make_up" />
       <item itemvalue="Python tests.pytest in test_crm_cust_manger.py" />
-      <item itemvalue="Python.db_connect" />
     </list>
     <recent_temporary>
       <list>
@@ -340,7 +264,8 @@
       <workItem from="1585392176826" duration="747000" />
       <workItem from="1585531342283" duration="354000" />
       <workItem from="1585723996170" duration="4000" />
-      <workItem from="1585792412087" duration="15179000" />
+      <workItem from="1585792412087" duration="16314000" />
+      <workItem from="1586159636689" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="更新poium框架">
       <created>1563957464502</created>
@@ -601,7 +526,21 @@
       <option name="project" value="LOCAL" />
       <updated>1582251165270</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="2020-0402:客户账号绑定与创建流程增加数据驱动支持">
+      <created>1585815986139</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1585815986139</updated>
+    </task>
+    <task id="LOCAL-00039" summary="2020-0402:客户账号绑定与创建流程增加数据驱动支持">
+      <created>1585816436580</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1585816436580</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,7 +617,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20190906: 优化新增上课记录元素定位 完成" />
     <MESSAGE value="20190906: 优化上课点名元素定位 完成" />
     <MESSAGE value="20190909: 优化上课点名元素定位 完成" />
     <MESSAGE value="20190910:" />
@@ -703,7 +641,8 @@
     <MESSAGE value="2020-02-14：学员分单流程支持数据参数化" />
     <MESSAGE value="2020-02-20: 支持批量学员分单操作的测试" />
     <MESSAGE value="2020-02-21：客户转学员成功情况支持参数化" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020-02-21：客户转学员成功情况支持参数化" />
+    <MESSAGE value="2020-0402:客户账号绑定与创建流程增加数据驱动支持" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020-0402:客户账号绑定与创建流程增加数据驱动支持" />
   </component>
   <component name="WindowStateProjectService">
     <state x="521" y="179" key="#SQL_Dialects" timestamp="1585811225867">
@@ -715,12 +654,13 @@
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579574459722" />
-    <state x="-1449" y="-157" width="982" height="815" key="CommitChangelistDialog2" timestamp="1582251164984">
-      <screen x="-1920" y="-157" width="1920" height="1057" />
+    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2" timestamp="1585816436255">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025856035" />
     <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1578474758274" />
     <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579681963991" />
+    <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585816436255" />
     <state x="-1449" y="-157" key="CommitChangelistDialog2/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251164984" />
     <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2/0.23.1440.828@0.23.1440.828" timestamp="1582187302015" />
     <state width="1252" height="466" key="DebuggerActiveHint" timestamp="1579594486877">
@@ -736,7 +676,7 @@
     </state>
     <state x="589" y="207" key="FileChooserDialogImpl/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578570876135" />
     <state x="589" y="210" key="FileChooserDialogImpl/0.23.1440.828@0.23.1440.828" timestamp="1581647818194" />
-    <state width="1398" height="191" key="GridCell.Tab.0.bottom" timestamp="1585815831767">
+    <state width="1398" height="191" key="GridCell.Tab.0.bottom" timestamp="1585817439506">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
@@ -744,13 +684,13 @@
     <state width="1419" height="175" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578467701353" />
     <state width="1419" height="253" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
     <state width="1735" height="191" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1585815682828" />
-    <state width="1398" height="191" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585815831767" />
+    <state width="1398" height="191" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585817439506" />
     <state width="1419" height="271" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
     <state width="1419" height="507" key="GridCell.Tab.0.bottom/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251566060" />
     <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1583485182757" />
     <state width="1419" height="352" key="GridCell.Tab.0.bottom/0.23.1440.828@0.23.1440.828" timestamp="1582201853743" />
     <state width="1419" height="583" key="GridCell.Tab.0.bottom/0.23.1440.829@0.23.1440.829" timestamp="1581588363365" />
-    <state width="1398" height="191" key="GridCell.Tab.0.center" timestamp="1585815831766">
+    <state width="1398" height="191" key="GridCell.Tab.0.center" timestamp="1585817439505">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
@@ -758,13 +698,13 @@
     <state width="1419" height="175" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1578467701352" />
     <state width="1419" height="253" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697070" />
     <state width="1735" height="191" key="GridCell.Tab.0.center/0.23.1440.827/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1585815682827" />
-    <state width="1398" height="191" key="GridCell.Tab.0.center/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585815831766" />
+    <state width="1398" height="191" key="GridCell.Tab.0.center/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585817439505" />
     <state width="1419" height="271" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
     <state width="1419" height="507" key="GridCell.Tab.0.center/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251566060" />
     <state width="1398" height="206" key="GridCell.Tab.0.center/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1583485182756" />
     <state width="1419" height="352" key="GridCell.Tab.0.center/0.23.1440.828@0.23.1440.828" timestamp="1582201853742" />
     <state width="1419" height="583" key="GridCell.Tab.0.center/0.23.1440.829@0.23.1440.829" timestamp="1581588363364" />
-    <state width="1398" height="191" key="GridCell.Tab.0.left" timestamp="1585815831765">
+    <state width="1398" height="191" key="GridCell.Tab.0.left" timestamp="1585817439504">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
@@ -772,13 +712,13 @@
     <state width="1419" height="175" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1578467701352" />
     <state width="1419" height="253" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697070" />
     <state width="1735" height="191" key="GridCell.Tab.0.left/0.23.1440.827/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1585815682827" />
-    <state width="1398" height="191" key="GridCell.Tab.0.left/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585815831765" />
+    <state width="1398" height="191" key="GridCell.Tab.0.left/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585817439504" />
     <state width="1419" height="271" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1579515487998" />
     <state width="1419" height="507" key="GridCell.Tab.0.left/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251566059" />
     <state width="1398" height="206" key="GridCell.Tab.0.left/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1583485182756" />
     <state width="1419" height="352" key="GridCell.Tab.0.left/0.23.1440.828@0.23.1440.828" timestamp="1582201853742" />
     <state width="1419" height="583" key="GridCell.Tab.0.left/0.23.1440.829@0.23.1440.829" timestamp="1581588363364" />
-    <state width="1398" height="191" key="GridCell.Tab.0.right" timestamp="1585815831767">
+    <state width="1398" height="191" key="GridCell.Tab.0.right" timestamp="1585817439505">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
@@ -786,7 +726,7 @@
     <state width="1419" height="175" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1578467701353" />
     <state width="1419" height="253" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
     <state width="1735" height="191" key="GridCell.Tab.0.right/0.23.1440.827/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1585815682828" />
-    <state width="1398" height="191" key="GridCell.Tab.0.right/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585815831767" />
+    <state width="1398" height="191" key="GridCell.Tab.0.right/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585817439505" />
     <state width="1419" height="271" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
     <state width="1419" height="507" key="GridCell.Tab.0.right/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251566060" />
     <state width="1398" height="206" key="GridCell.Tab.0.right/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1583485182757" />
@@ -829,12 +769,13 @@
     </state>
     <state x="296" y="82" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578573998949" />
     <state x="182" y="121" key="SettingsEditor/0.23.1440.828@0.23.1440.828" timestamp="1581649073072" />
-    <state x="-1493" y="33" key="Vcs.Push.Dialog.v2" timestamp="1582251166873">
-      <screen x="-1920" y="-157" width="1920" height="1057" />
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2" timestamp="1585816438266">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025858166" />
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1578474760492" />
     <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579681966367" />
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585816438266" />
     <state x="-1493" y="33" key="Vcs.Push.Dialog.v2/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251166873" />
     <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.828@0.23.1440.828" timestamp="1582187304239" />
     <state width="720" height="414" key="XDebugger.FullValuePopup" timestamp="1581672211920">
