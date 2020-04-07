@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="2020-0402:客户账号绑定与创建流程增加数据驱动支持">
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="无">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/test_crm_personnel_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_crm_personnel_manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/test_crm_student_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_crm_student_management.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +72,7 @@
       <recent name="$PROJECT_DIR$/page" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_crm_cust_manger">
+  <component name="RunManager" selected="Python.run_tests">
     <configuration name="conftest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -223,10 +226,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.run_tests" />
         <item itemvalue="Python.db_connect" />
         <item itemvalue="Python tests.pytest in test_crm_cust_manger.py" />
         <item itemvalue="Python tests.pytest for test_crm_student_management.TestStudentClassManagement.test_make_up" />
-        <item itemvalue="Python.run_tests" />
         <item itemvalue="Python.conftest" />
       </list>
     </recent_temporary>
@@ -266,6 +269,8 @@
       <workItem from="1585723996170" duration="4000" />
       <workItem from="1585792412087" duration="16314000" />
       <workItem from="1586159636689" duration="11000" />
+      <workItem from="1586255663648" duration="291000" />
+      <workItem from="1586257738934" duration="240000" />
     </task>
     <task id="LOCAL-00001" summary="更新poium框架">
       <created>1563957464502</created>
@@ -540,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585816436580</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="无">
+      <created>1586255891656</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1586255891656</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +645,6 @@
     <MESSAGE value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作" />
     <MESSAGE value="2020-01-03:&#10;1、增加test_func包&#10;2、分离db操作&#10;3、员工入职 完成10%" />
     <MESSAGE value="2020-01-08:&#10;1、增加压缩文件功能&#10;2、增加发送邮件&#10;3、完成调试发送测试报告" />
-    <MESSAGE value="无" />
     <MESSAGE value="2020-01-20:&#10;发送邮件和压缩功能调整为单独文件" />
     <MESSAGE value="2020-02-13:2020 V1.0" />
     <MESSAGE value="2020-01-22:&#10;db操作转为类" />
@@ -642,7 +653,8 @@
     <MESSAGE value="2020-02-20: 支持批量学员分单操作的测试" />
     <MESSAGE value="2020-02-21：客户转学员成功情况支持参数化" />
     <MESSAGE value="2020-0402:客户账号绑定与创建流程增加数据驱动支持" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020-0402:客户账号绑定与创建流程增加数据驱动支持" />
+    <MESSAGE value="无" />
+    <option name="LAST_COMMIT_MESSAGE" value="无" />
   </component>
   <component name="WindowStateProjectService">
     <state x="521" y="179" key="#SQL_Dialects" timestamp="1585811225867">
@@ -654,13 +666,13 @@
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579574459722" />
-    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2" timestamp="1585816436255">
+    <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2" timestamp="1586258037774">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="353" y="23" width="733" height="814" key="CommitChangelistDialog2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025856035" />
     <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1578474758274" />
     <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579681963991" />
-    <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585816436255" />
+    <state x="353" y="23" key="CommitChangelistDialog2/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1586258037774" />
     <state x="-1449" y="-157" key="CommitChangelistDialog2/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251164984" />
     <state x="353" y="23" width="982" height="815" key="CommitChangelistDialog2/0.23.1440.828@0.23.1440.828" timestamp="1582187302015" />
     <state width="1252" height="466" key="DebuggerActiveHint" timestamp="1579594486877">
@@ -676,7 +688,7 @@
     </state>
     <state x="589" y="207" key="FileChooserDialogImpl/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578570876135" />
     <state x="589" y="210" key="FileChooserDialogImpl/0.23.1440.828@0.23.1440.828" timestamp="1581647818194" />
-    <state width="1398" height="191" key="GridCell.Tab.0.bottom" timestamp="1585817439506">
+    <state width="1398" height="554" key="GridCell.Tab.0.bottom" timestamp="1586257993699">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.bottom/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
@@ -684,13 +696,13 @@
     <state width="1419" height="175" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1578467701353" />
     <state width="1419" height="253" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
     <state width="1735" height="191" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1585815682828" />
-    <state width="1398" height="191" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585817439506" />
+    <state width="1398" height="554" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1586257993699" />
     <state width="1419" height="271" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
     <state width="1419" height="507" key="GridCell.Tab.0.bottom/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251566060" />
     <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1583485182757" />
     <state width="1419" height="352" key="GridCell.Tab.0.bottom/0.23.1440.828@0.23.1440.828" timestamp="1582201853743" />
     <state width="1419" height="583" key="GridCell.Tab.0.bottom/0.23.1440.829@0.23.1440.829" timestamp="1581588363365" />
-    <state width="1398" height="191" key="GridCell.Tab.0.center" timestamp="1585817439505">
+    <state width="1398" height="554" key="GridCell.Tab.0.center" timestamp="1586257993698">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.center/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
@@ -698,13 +710,13 @@
     <state width="1419" height="175" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1578467701352" />
     <state width="1419" height="253" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697070" />
     <state width="1735" height="191" key="GridCell.Tab.0.center/0.23.1440.827/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1585815682827" />
-    <state width="1398" height="191" key="GridCell.Tab.0.center/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585817439505" />
+    <state width="1398" height="554" key="GridCell.Tab.0.center/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1586257993698" />
     <state width="1419" height="271" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
     <state width="1419" height="507" key="GridCell.Tab.0.center/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251566060" />
     <state width="1398" height="206" key="GridCell.Tab.0.center/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1583485182756" />
     <state width="1419" height="352" key="GridCell.Tab.0.center/0.23.1440.828@0.23.1440.828" timestamp="1582201853742" />
     <state width="1419" height="583" key="GridCell.Tab.0.center/0.23.1440.829@0.23.1440.829" timestamp="1581588363364" />
-    <state width="1398" height="191" key="GridCell.Tab.0.left" timestamp="1585817439504">
+    <state width="1398" height="554" key="GridCell.Tab.0.left" timestamp="1586257993698">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.left/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055395" />
@@ -712,13 +724,13 @@
     <state width="1419" height="175" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1578467701352" />
     <state width="1419" height="253" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697070" />
     <state width="1735" height="191" key="GridCell.Tab.0.left/0.23.1440.827/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1585815682827" />
-    <state width="1398" height="191" key="GridCell.Tab.0.left/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585817439504" />
+    <state width="1398" height="554" key="GridCell.Tab.0.left/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1586257993698" />
     <state width="1419" height="271" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1579515487998" />
     <state width="1419" height="507" key="GridCell.Tab.0.left/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251566059" />
     <state width="1398" height="206" key="GridCell.Tab.0.left/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1583485182756" />
     <state width="1419" height="352" key="GridCell.Tab.0.left/0.23.1440.828@0.23.1440.828" timestamp="1582201853742" />
     <state width="1419" height="583" key="GridCell.Tab.0.left/0.23.1440.829@0.23.1440.829" timestamp="1581588363364" />
-    <state width="1398" height="191" key="GridCell.Tab.0.right" timestamp="1585817439505">
+    <state width="1398" height="554" key="GridCell.Tab.0.right" timestamp="1586257993699">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1398" height="229" key="GridCell.Tab.0.right/0.23.1440.812/-1920.-157.1920.1057@0.23.1440.812" timestamp="1577955055396" />
@@ -726,7 +738,7 @@
     <state width="1419" height="175" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1578467701353" />
     <state width="1419" height="253" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579685697071" />
     <state width="1735" height="191" key="GridCell.Tab.0.right/0.23.1440.827/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1585815682828" />
-    <state width="1398" height="191" key="GridCell.Tab.0.right/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585817439505" />
+    <state width="1398" height="554" key="GridCell.Tab.0.right/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1586257993699" />
     <state width="1419" height="271" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1579515487999" />
     <state width="1419" height="507" key="GridCell.Tab.0.right/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251566060" />
     <state width="1398" height="206" key="GridCell.Tab.0.right/0.23.1440.828/-1920.-157.1920.1057@0.23.1440.828" timestamp="1583485182757" />
@@ -769,13 +781,13 @@
     </state>
     <state x="296" y="82" key="SettingsEditor/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578573998949" />
     <state x="182" y="121" key="SettingsEditor/0.23.1440.828@0.23.1440.828" timestamp="1581649073072" />
-    <state x="320" y="172" key="Vcs.Push.Dialog.v2" timestamp="1585816438266">
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2" timestamp="1586255893340">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578025858166" />
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1578474760492" />
     <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1579681966367" />
-    <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585816438266" />
+    <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1586255893340" />
     <state x="-1493" y="33" key="Vcs.Push.Dialog.v2/0.23.1440.828/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1582251166873" />
     <state x="320" y="172" key="Vcs.Push.Dialog.v2/0.23.1440.828@0.23.1440.828" timestamp="1582187304239" />
     <state width="720" height="414" key="XDebugger.FullValuePopup" timestamp="1581672211920">
@@ -787,10 +799,10 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="393" y="228" key="git4idea.merge.GitPullDialog/0.23.1440.814/-1920.-157.1920.1057@0.23.1440.814" timestamp="1578034987732" />
-    <state x="385" y="175" width="670" height="676" key="search.everywhere.popup" timestamp="1585809207622">
+    <state x="385" y="175" width="670" height="676" key="search.everywhere.popup" timestamp="1586257759160">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state x="385" y="175" width="670" height="676" key="search.everywhere.popup/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1585809207622" />
+    <state x="385" y="175" width="670" height="676" key="search.everywhere.popup/0.23.1440.827/-1920.76.1920.1057@0.23.1440.827" timestamp="1586257759160" />
     <state x="385" y="175" width="670" height="676" key="search.everywhere.popup/0.23.1440.828@0.23.1440.828" timestamp="1582188422320" />
   </component>
   <component name="XDebuggerManager">
@@ -814,6 +826,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/new_crm_poium$pytest_in_test_crm_cust_manger_py.coverage" NAME="pytest in test_crm_cust_manger.py Coverage Results" MODIFIED="1585796443751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/new_crm_poium$run_tests.coverage" NAME="run_tests Coverage Results" MODIFIED="1586257964809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/new_crm_poium$db_connect.coverage" NAME="db_connect Coverage Results" MODIFIED="1585813581132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/new_crm_poium$test_crm_cust_manger.coverage" NAME="test_crm_cust_manger Coverage Results" MODIFIED="1585815682813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
   </component>
