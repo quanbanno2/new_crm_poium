@@ -506,7 +506,7 @@ def browser1():
 
     elif driver_type == "grid":
         # 通过远程节点运行  command_executor远程节点地址
-        driver = Remote(command_executor='http://192.168.0.177:5555/wd/hub',
+        driver = Remote(command_executor='http://192.168.0.51:5555/wd/hub',
                         desired_capabilities={
                             "browserName": "chrome",
                         })
