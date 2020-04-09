@@ -2,7 +2,7 @@ import sys
 import pytest
 import logging
 from time import sleep
-from poium import PageWait, PageSelect
+from poium import PageWait
 # 定义搜索模块顺序，优先搜索new_crm_poium文件夹
 from os.path import dirname, abspath
 
@@ -10,14 +10,14 @@ sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 base_path = dirname(dirname(abspath(__file__)))
 
-from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerAddOrder
-from page.crm_home_page import GfyHomePage
+from page.crm_cust_manger_page import GfyCrmCustomerManagement
+# from page.crm_home_page import GfyHomePage
 from page.crm_menu_page import GfyMenu
-from page.crm_finance_page import GfyRefundInfo
+# from page.crm_finance_page import GfyRefundInfo
 from page.crm_login_page import GfyLogin
 from func.db_func import DB
 from func.customer_management_func import operate_delete_customer, login, split_customer, \
-    convert_student, create_account, add_new_order, customer_recovery, pay_new_order, refund_apply, add_customer_new
+    convert_student, create_account, customer_recovery, refund_apply, add_customer_new
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 
@@ -137,29 +137,6 @@ class TestCustomerManagement:
     #     @param msg:
     #     @return:
     #     """
-
-    # def test_add_customer(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
-    #                       jigou_school_name):
-    #     """
-    #     测试新增客户
-    #     新增流程：进入客户管理界面-
-    #     @param crm_url:
-    #     @param browser1:
-    #     @param phone_number:
-    #     @param pass_word:
-    #     @param counseling_supervision_account:
-    #     @param jigou_school_name:
-    #     @return:
-    #     """
-    #     login(crm_url, browser1, counseling_supervision_account, pass_word)
-    #     student_name = DB().new_customer_name_by_sql()
-    #     add_customer(browser1, student_name, phone_number)
-    #     page = GfyCrmCustomerManagement(browser1)
-    #     PageSelect(page.customer_list_school_list, text=jigou_school_name)
-    #     sleep(2)
-    #     assert page.customer_name.text == student_name
-    #     # 数据清除
-    #     operate_delete_customer(browser1)
     @pytest.mark.parametrize(
         "case,schoolName,studentNum,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg",
         get_json_data(DATA_DIR + "customer_management/" + "split_customer_success.json")
@@ -196,33 +173,6 @@ class TestCustomerManagement:
         PageWait(page.save_status)
         assert page.save_status.text == msg
 
-    # def test_split_customer(self, crm_url, browser1, adviser_account, counseling_supervision_account, jigou_school_name,
-    #                         phone_number, pass_word, adviser_name):
-    #     """
-    #     测试单个客户分单
-    #     @param crm_url:
-    #     @param browser1:
-    #     @param adviser_account:
-    #     @param counseling_supervision_account:
-    #     @param jigou_school_name:
-    #     @param phone_number:
-    #     @param pass_word:
-    #     @param adviser_name:
-    #     @return:
-    #     """
-    #     page = GfyCrmCustomerManagement(browser1)
-    #     login(crm_url, browser1, counseling_supervision_account, pass_word)
-    #     add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-    #     sleep(1)
-    #     split_customer(browser1, adviser_account)
-    #     sleep(2)
-    #     page.checkbox_split_count.click()
-    #     sleep(1)
-    #     # 断言分单次数
-    #     # 断言分单跟进人
-    #     assert page.split_count.text == "1"
-    #     assert page.split_customer.text == adviser_name
-    #     operate_delete_customer(browser1)
     @pytest.mark.parametrize(
         "case,pubSchoolName,studentNum,businessType,activityName,phoneNumber,"
         "teacherName,schoolName,loginAccount,password,msg",
@@ -271,19 +221,6 @@ class TestCustomerManagement:
         elif case == "客户批量学员-部分成功":
             # 部分成功即存在已转学员的
             assert page.convert_success_text.text == msg and page.convert_success_tips.text is not None
-
-        # page = GfyCrmCustomerManagement(browser1)
-        # login(crm_url, browser1, counseling_supervision_account, pass_word)
-        # add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-        # sleep(1)
-        # split_customer(browser1, counseling_supervision_account)
-        # sleep(1)
-        # convert_student(browser1, jigou_school_name)
-        # sleep(1)
-        # assert page.convert_success_text.text == "成功转为学员"
-        # page.customer_ok_button.click()
-        # sleep(1)
-        # operate_delete_customer(browser1)
 
     @pytest.mark.parametrize(
         "case,pubSchoolName,businessType,accountExist,activityName,phoneNumber,"
@@ -396,170 +333,6 @@ class TestCustomerManagement:
     #     sleep(1)
     #     assert page.split_count.text == "2"
     #     operate_delete_customer(browser1)
-
-
-# class TestCustomerAddOrder:
-#     """
-#     客户新建订单和支付订单、未上课退费
-#     """
-#
-#     def test_add_new_order(self, crm_url, browser1, course, pass_word, counseling_supervision_account,
-#                            jigou_school_name, phone_number, counseling_supervision_name):
-#         """
-#         测试创建订单-新单招生
-#         @param crm_url:
-#         @param browser1:
-#         @param course:
-#         @param pass_word:
-#         @param counseling_supervision_account:
-#         @param jigou_school_name:
-#         @param phone_number:
-#         @param counseling_supervision_name:
-#         @return:
-#         """
-#         order_page = GfyCustomerAddOrder(browser1)
-#         login(crm_url, browser1, counseling_supervision_account, pass_word)
-#         sleep(1)
-#         add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-#         sleep(1)
-#         split_customer(browser1, counseling_supervision_account)
-#         sleep(1)
-#         convert_student(browser1, jigou_school_name)
-#         sleep(1)
-#         order_page.ok_button.click()
-#         sleep(1)
-#         add_new_order(browser1, counseling_supervision_name, course, jigou_school_name)
-#         sleep(1)
-#         order_page.order_status_confirm.click()
-#         sleep(1)
-#         order_page.order_info_loadStuOrderList.click()
-#         sleep(1)
-#         # 订单数量断言
-#         assert order_page.order_info_totalNum[3].text == "1"
-#
-#     def test_pay_new_order(self, crm_url, browser1, jigou_school_name, pass_word, phone_number, course,
-#                            counseling_supervision_name, counseling_supervision_account):
-#         """
-#         测试支付订单：添加优惠-添加支付-添加其他费用-添加分成对象
-#         @param crm_url:
-#         @param browser1:
-#         @param jigou_school_name:
-#         @param pass_word:
-#         @param phone_number:
-#         @param course:
-#         @param counseling_supervision_name:
-#         @param counseling_supervision_account:
-#         @return:
-#         """
-#         order_page = GfyCustomerAddOrder(browser1)
-#         login(crm_url, browser1, counseling_supervision_account, pass_word)
-#         add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-#         sleep(1)
-#         split_customer(browser1, counseling_supervision_account)
-#         sleep(1)
-#         convert_student(browser1, jigou_school_name)
-#         sleep(1)
-#         order_page.ok_button.click()
-#         sleep(1)
-#         add_new_order(browser1, counseling_supervision_name, course, jigou_school_name)
-#         sleep(1)
-#         order_page.order_status_confirm.click()
-#         sleep(1)
-#         pay_new_order(browser1)
-#         # 断言是否支付成功
-#         sleep(3)
-#         assert order_page.pay_order_status.text == "成功"
-#         assert order_page.pay_order_calculation_status.text == "成功"
-#
-#     def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks,
-#                             phone_number, course, jigou_school_name, today_date, educational_account,
-#                             counseling_supervision_account, counseling_supervision_name):
-#         """
-#         测试客户退费
-#         活动：新招生
-#         @param browser1:
-#         @param crm_url:
-#         @param supervisor_account:
-#         @param pass_word:
-#         @param remarks:
-#         @param phone_number:
-#         @param course:
-#         @param jigou_school_name:
-#         @param today_date:
-#         @param educational_account:
-#         @param counseling_supervision_account:
-#         @param counseling_supervision_name:
-#         @return:
-#         """
-#         order_page = GfyCustomerAddOrder(browser1)
-#         login(crm_url, browser1, counseling_supervision_account, pass_word)
-#         add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-#         sleep(1)
-#         split_customer(browser1, counseling_supervision_account)
-#         sleep(1)
-#         convert_student(browser1, jigou_school_name)
-#         sleep(1)
-#         order_page.ok_button.click()
-#         sleep(1)
-#         add_new_order(browser1, counseling_supervision_name, course, jigou_school_name)
-#         sleep(1)
-#         order_page.order_status_confirm.click()
-#         sleep(1)
-#         pay_new_order(browser1)
-#         sleep(1)
-#         order_page.OK_button.click()
-#         sleep(1)
-#         refund_apply_list = refund_apply(browser1, remarks)
-#         refund_fee_text = refund_apply_list[2]
-#         order_id_text = refund_apply_list[1]
-#         customer_name = refund_apply_list[0]
-#         assert refund_fee_text == order_page.application_for_refund.get_attribute("value")
-#         assert order_page.approval_matter_status.text == "审批保存成功"
-#         sleep(1)
-#         order_page.order_status_confirm.click()
-#         sleep(1)
-#         # 首页审批退费
-#         home_page = GfyHomePage(browser1)
-#         menu_page = GfyMenu(browser1)
-#         menu_page.dashboard.click()
-#         sleep(1)
-#         home_page.more_home_remind.click()
-#         sleep(1)
-#         home_page.search_object_name_input.send_keys("退费申请:待审批")
-#         sleep(1)
-#         home_page.remind_content_search_input.send_keys(customer_name)
-#         sleep(1)
-#         home_page.remind_center_approve_btn.click()
-#         sleep(1)
-#         PageSelect(home_page.approval_matter_type, value="A05")
-#         sleep(1)
-#         home_page.approval_matter_approval_detail.click()
-#         sleep(1)
-#         home_page.approval_result_input.click()
-#         sleep(1)
-#         home_page.save_approval_result.click()
-#         sleep(1)
-#         assert home_page.status.text == "保存成功"
-#         # 财务管理进行确认退费
-#         home_page.ok_button.click()
-#         sleep(1)
-#         menu_page = GfyMenu(browser1)
-#         refund_page = GfyRefundInfo(browser1)
-#         menu_page.finance_menu.click()
-#         sleep(1)
-#         menu_page.finance_fee_info.click()
-#         sleep(1)
-#         menu_page.finance_refund_info.click()
-#         sleep(1)
-#         refund_page.refund_order_id_input.send_keys(order_id_text)
-#         sleep(1)
-#         refund_page.query_refund_info_btn.click()
-#         sleep(1)
-#         refund_page.refund_check_confirm_btn.click()
-#         sleep(1)
-#         refund_page.refund_confirm_btn.click()
-#         sleep(2)
-#         assert refund_page.refund_status.text == "已退费"
 
 
 if __name__ == '__main__':

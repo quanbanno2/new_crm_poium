@@ -118,35 +118,6 @@ def date_today():
     return in_class_time
 
 
-    # @pytest.fixture(scope='session')
-    # def new_student_name():
-    #     """
-    #     连接集成数据库得出客户***,返回集成数据库最新"客户"***+1的名称
-    #     :return:
-    #     """
-    #     # db = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
-    #     #                      'edu_test_user',
-    #     #                      'Quanlang_edu_test')
-    #     db = pymysql.connect('192.168.0.195',
-    #                          'root',
-    #                          '123456')
-    #     cursor = db.cursor()
-    #     sql = 'SELECT cust_name FROM test_customer.cust_info ' \
-    #           'WHERE cust_id = (SELECT MAX(cust_id) ' \
-    #           'FROM test_customer.cust_info WHERE cust_name LIKE "KH%" AND cust_status="S01")'
-    #     cursor.execute(sql)
-    #     result = cursor.fetchall()
-    #     for re in result:
-    #         cust_name = re[0]
-    #     # 读取客户名称后的数字
-    #     a = cust_name[2:]
-    #     clinetnum = int(a)
-    #     clinetnum = clinetnum + 1
-    #     clinetname = "KH" + str(clinetnum)
-    #     return clinetname
-    #     db.close()
-
-
 # 定义基本测试环境
 
 

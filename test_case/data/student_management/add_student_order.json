@@ -1,0 +1,53 @@
+[
+  {
+    "case": "新招生",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "activityType": "新单招生",
+    "schoolName": "高分云",
+    "activityName": "高分云信息单",
+    "responsibleName": "高分云辅导1",
+    "responsibleDepartment": "高分云顾问部",
+    "teacherName": "",
+    "teacherDepartment": "",
+    "courseName": "自动化专用语文培优次课",
+    "studentName": "测试新建订单学员",
+    "subjectGroupType": "",
+    "subjectGroup": "",
+    "msg": "成功"
+  },
+  {
+    "case": "辅导续费",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "activityType": "教学中心续费(顾问)",
+    "schoolName": "高分云",
+    "activityName": "高分云辅导续费",
+    "responsibleName": "高分云辅导1",
+    "responsibleDepartment": "高分云顾问部",
+    "teacherName": "高分云指导1",
+    "teacherDepartment": "高分云指导部",
+    "courseName": "自动化专用语文培优次课",
+    "studentName": "测试新建订单学员",
+    "subjectGroupType": "语文培优",
+    "subjectGroup": "初中语文培优科组",
+    "msg": "成功"
+  },
+  {
+    "case": "顾问转介绍",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "activityType": "顾问转介绍",
+    "schoolName": "高分云",
+    "activityName": "顾问转介绍",
+    "responsibleName": "高分云辅导1",
+    "responsibleDepartment": "高分云顾问部",
+    "teacherName": "高分云指导1",
+    "teacherDepartment": "高分云指导部",
+    "courseName": "自动化专用语文培优次课",
+    "studentName": "测试新建订单学员",
+    "subjectGroupType": "",
+    "subjectGroup": "",
+    "msg": "成功"
+  }
+]

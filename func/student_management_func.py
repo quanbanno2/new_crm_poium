@@ -1,7 +1,61 @@
 from time import sleep
 from poium import PageWait, PageSelect
-from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement
+from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement, \
+    GfyStudentOrderManagement
+from page.crm_cust_manger_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
+
+
+def add_new_order(driver, school_name, course_name, case, subject_group_type,
+                  subject_group):
+    """
+    学员创建订单
+    @param driver:
+    @param school_name:
+    @param course_name:
+    @param case:
+    @param subject_group_type:
+    @param subject_group:
+    @return:
+    """
+    order_page = GfyStudentOrderManagement(driver)
+    order_page.customer_order_info.click()
+    sleep(1)
+    order_page.customer_order_add.click()
+    sleep(1)
+    # 顾问老师非空，执行新招生流程
+    if case == "新招生":
+        # 选择分成对象
+        PageSelect(order_page.order_sharing_object_select[0], text="辅导1")
+        sleep(1)
+        order_page.order_sharing_object_select_btn.click()
+    if case == "辅导续费":
+        # 选择分成对象
+        PageSelect(order_page.order_sharing_object_select[0], text="指导1")
+        PageSelect(order_page.order_sharing_object_select[1], text="辅导1")
+        PageSelect(order_page.order_subject_group, text=subject_group_type)
+        sleep(1)
+        PageSelect(order_page.order_sharing_object_select[3], text=subject_group)
+        while order_page.order_sharing_object_select_btn:
+            order_page.order_sharing_object_select_btn.click()
+    if case == "顾问转介绍":
+        PageSelect(order_page.order_sharing_object_select[0], text="辅导1")
+        PageSelect(order_page.order_sharing_object_select[1], text="辅导1")
+        PageSelect(order_page.order_sharing_object_select[2], text="指导1")
+        while order_page.order_sharing_object_select_btn:
+            order_page.order_sharing_object_select_btn.click()
+
+    sleep(1)
+    order_page.order_select_course.click()
+    sleep(1)
+    PageSelect(order_page.order_school_list, text=school_name)
+    order_page.order_select_course_name.send_keys(course_name)
+    sleep(1)
+    order_page.order_select_course_name_query.click()
+    sleep(1)
+    order_page.order_select_course_btn.click()
+    sleep(1)
+    order_page.order_save_stu_order.click()
 
 
 def student_select_class(driver, class_name):
