@@ -356,7 +356,7 @@ def add_customer_responsible(driver, responsible_name, department_name, school_n
     添加客户跟进人
     起点：新增客户跟进人界面
     @param driver:
-    @param responsible_name:
+    @param responsible_name:跟进人登录名
     @param department_name:
     @param school_name:
     @return:
@@ -366,6 +366,7 @@ def add_customer_responsible(driver, responsible_name, department_name, school_n
     PageSelect(responsible_page.teacher_list_school, text=school_name)
     PageSelect(responsible_page.teacher_attribution_department, text=department_name)
     responsible_page.teacher_list_login_name.clear()
+    sleep(1)
     responsible_page.teacher_list_login_name.send_keys(responsible_name)
     responsible_page.teacher_list_query.click()
     sleep(1)

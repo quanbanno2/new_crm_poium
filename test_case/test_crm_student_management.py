@@ -58,7 +58,8 @@ class TestCustomerAddOrder:
                             case, teacherName, teacherDepartment)
         sleep(2)
         # 新增订单
-        add_new_order(browser1, schoolName, courseName, case, subjectGroupType, subjectGroup)
+        add_new_order(browser1, schoolName, courseName, case, subjectGroupType, subjectGroup, responsibleName,
+                      teacherName)
         PageWait(order_page.order_status)
         assert order_page.order_status.text == msg
 
@@ -245,8 +246,8 @@ class TestCustomerAddOrder:
     #     学员上课管理
     #     """
     #
-    #     def test_add_in_class_record(self, browser1, crm_url, education_account, pass_word, class_name, jigou_school_name,
-    #                                  in_class_time):
+    #     def test_add_in_class_record(self, browser1, crm_url, education_account, pass_word, class_name,
+    #     jigou_school_name,in_class_time):
     #         """
     #         测试指导老师新增上课记录
     #         :param browser1:

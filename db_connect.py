@@ -114,9 +114,24 @@ def update_account(exist_account):
     my_con.close()
 
 
+def get_account_info(login_name):
+    my_con = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
+                             'edu_test_user',
+                             'Quanlang_edu_test')
+    my_cursor = my_con.cursor()
+    sql = "SELECT b.`name` FROM `test_user`.`usr_account_info` AS a,`test_user`.`usr_staff_base_info` AS b " \
+          "WHERE a.login_name='%s' AND a.account_no=b.account_no" % login_name
+    my_cursor.execute(sql)
+    result = my_cursor.fetchall()
+    for re in result:
+        account_name = re[0]
+    return account_name
+
+
 # name = "客户577"
 # eliminate_account(name)
 
 # new_staff_name_by_sql()
 
-update_account("已存在客户001")
+lis = get_account_info("高分云指导督导1")
+print(lis)

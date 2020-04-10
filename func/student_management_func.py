@@ -4,10 +4,11 @@ from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyC
     GfyStudentOrderManagement
 from page.crm_cust_manger_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
+from func.db_func import DB
 
 
-def add_new_order(driver, school_name, course_name, case, subject_group_type,
-                  subject_group):
+def add_new_order(driver, school_name, course_name, case, subject_group_type, subject_group, responsible_name,
+                  teacher_name):
     """
     学员创建订单
     @param driver:
@@ -16,6 +17,8 @@ def add_new_order(driver, school_name, course_name, case, subject_group_type,
     @param case:
     @param subject_group_type:
     @param subject_group:
+    @param responsible_name:
+    @param teacher_name:
     @return:
     """
     order_page = GfyStudentOrderManagement(driver)
@@ -26,22 +29,22 @@ def add_new_order(driver, school_name, course_name, case, subject_group_type,
     # 顾问老师非空，执行新招生流程
     if case == "新招生":
         # 选择分成对象
-        PageSelect(order_page.order_sharing_object_select[0], text="辅导1")
+        PageSelect(order_page.order_sharing_object_select[0], text=DB().get_account_info(responsible_name))
         sleep(1)
         order_page.order_sharing_object_select_btn.click()
     if case == "辅导续费":
         # 选择分成对象
-        PageSelect(order_page.order_sharing_object_select[0], text="指导1")
-        PageSelect(order_page.order_sharing_object_select[1], text="辅导1")
+        PageSelect(order_page.order_sharing_object_select[0], text=DB().get_account_info(teacher_name))
+        PageSelect(order_page.order_sharing_object_select[1], text=DB().get_account_info(responsible_name))
         PageSelect(order_page.order_subject_group, text=subject_group_type)
         sleep(1)
         PageSelect(order_page.order_sharing_object_select[3], text=subject_group)
         while order_page.order_sharing_object_select_btn:
             order_page.order_sharing_object_select_btn.click()
     if case == "顾问转介绍":
-        PageSelect(order_page.order_sharing_object_select[0], text="辅导1")
-        PageSelect(order_page.order_sharing_object_select[1], text="辅导1")
-        PageSelect(order_page.order_sharing_object_select[2], text="指导1")
+        PageSelect(order_page.order_sharing_object_select[0], text=DB().get_account_info(responsible_name))
+        PageSelect(order_page.order_sharing_object_select[1], text=DB().get_account_info(responsible_name))
+        PageSelect(order_page.order_sharing_object_select[2], text=DB().get_account_info(teacher_name))
         while order_page.order_sharing_object_select_btn:
             order_page.order_sharing_object_select_btn.click()
 

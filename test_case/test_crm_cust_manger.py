@@ -249,6 +249,7 @@ class TestCustomerManagement:
         page = GfyCrmCustomerManagement(browser1)
         menu_page = GfyMenu(browser1)
         customer_name = DB().new_customer_name_by_sql()
+        # 清除已存在账号的绑定信息
         DB().update_account(existAccountName)
         login(crm_url, browser1, loginAccount, password)
         add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, pubSchoolName)
