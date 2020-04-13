@@ -17,7 +17,7 @@ from page.crm_menu_page import GfyMenu
 from page.crm_login_page import GfyLogin
 from func.db_func import DB
 from func.customer_management_func import operate_delete_customer, login, split_customer, \
-    convert_student, create_account, customer_recovery, refund_apply, add_customer_new
+    convert_student, create_account, add_customer_new
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 
