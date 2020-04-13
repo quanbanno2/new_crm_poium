@@ -50,7 +50,6 @@ class TestCustomerAddOrder:
         customer_page.customer_list_load_button.click()
         # 进入综合信息管理
         sleep(1)
-        # customer_page.customer_name.click()
         browser1.find_element_by_xpath("//a[contains(.,'%s')]" % studentName).click()
         sleep(1)
         # 添加跟进人和业务意向
