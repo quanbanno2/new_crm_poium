@@ -74,42 +74,7 @@ def login(url, driver, account, password):
     sleep(1)
 
 
-# def add_customer(driver, customer_name, phone_number):
-#     """
-#     创建客户：新招生类型
-#     :param driver:
-#     :param customer_name:
-#     :param phone_number:
-#     :return:
-#     """
-#     page = GfyCrmCustomerManagement(driver)
-#     menu_page = GfyMenu(driver)
-#     menu_page.customer_management.click()
-#     menu_page.my_customer.click()
-#     page.add_customer.click()
-#     sleep(2)
-#     page.add_customer_name.send_keys(customer_name)
-#     sleep(1)
-#     page.school_name.click()
-#     PageWait(page.pub_school_list)
-#     page.pub_school_list.send_keys("四基初级中学")
-#     page.pub_school_query.click()
-#     PageWait(page.pub_school_choice)
-#     page.pub_school_choice.click()
-#     PageWait(page.grade[0])
-#     PageSelect(page.grade[0], value='string:G09')
-#     page.customer_activity.click()
-#     sleep(1)
-#     page.activity_name.send_keys('高分云信息单')
-#     page.activity_query.click()
-#     sleep(1)
-#     page.activity_selected.click()
-#     sleep(1)
-#     page.customer_phone.send_keys(phone_number)
-#     page.add_customer_save[0].click()
-
-
-def add_customer_new(driver, customer_name, business_type, activity_name, phone_number, school_name):
+def add_customer(driver, customer_name, business_type, activity_name, phone_number, school_name):
     """
     创建客户
     @param driver:
@@ -204,12 +169,13 @@ def split_customer(driver, adviser_account, customer_num):
     @param customer_num:客户数量
     @return:
     """
+    i = 0
     page = GfyCrmCustomerManagement(driver)
     if customer_num == 1 or customer_num == "":
         # 勾选列表第一个客户
         page.customer_check[0].click()
     else:
-        i = 0
+        # 勾选多个客户
         while i < customer_num:
             page.customer_check[i].click()
             i += 1
@@ -230,29 +196,6 @@ def split_customer(driver, adviser_account, customer_num):
     # 确认分班
     page.confirm_split.click()
 
-
-# def split_customer(driver, adviser_account):
-#     """
-#     单个学员分单
-#     :param driver:
-#     :param adviser_account:分单目标账号
-#     :return:
-#     """
-#     page = GfyCrmCustomerManagement(driver)
-#     # 勾选第一个客户
-#     page.customer_check[0].click()
-#     # sleep(1)
-#     page.customer_split.click()
-#     sleep(1)
-#     page.teacher_list_login_name.clear()
-#     sleep(1)
-#     page.teacher_list_login_name.send_keys(adviser_account)
-#     sleep(1)
-#     page.teacher_list_query.click()
-#     PageWait(page.teacher_select)
-#     page.teacher_select.click()
-#     PageWait(page.confirm_split)
-#     page.confirm_split.click()
 
 def convert_student(driver, school_name, customer_num):
     """
@@ -291,21 +234,6 @@ def convert_student(driver, school_name, customer_num):
     page.batch_convert_student.click()
     PageWait(page.convert_confirm)
     page.convert_confirm.click()
-
-
-# def convert_student(driver, school_name):
-#     """
-#     单个客户转为学员
-#     :param driver:
-#     :param school_name:
-#     :return:
-#     """
-#     page = GfyCrmCustomerManagement(driver)
-#     PageSelect(page.customer_list_school_list, text=school_name)
-#     sleep(1)
-#     page.convert_to_student.click()
-#     sleep(1)
-#     page.convert_confirm.click()
 
 
 def create_account(driver, school_name, exist_account, exist_account_name):
@@ -462,23 +390,31 @@ def add_customer_intent(driver, school_name, activity_type, activity_name, respo
 #     order_page.order_save_stu_order.click()
 
 
-# def customer_recovery(driver):
-#     """
-#     新单招生的客户回收
-#     :param driver:
-#     :return: 返回第一位跟进人名称
-#     """
-#     customer_page = GfyCrmCustomerManagement(driver)
-#     sleep(1)
-#     # 获取第一位跟进人名称
-#     customer_teacher_name = customer_page.customer_teacher[3].text
-#     sleep(1)
-#     # 回收
-#     customer_page.customer_recovery.click()
-#     sleep(1)
-#     customer_page.confirm_btn.click()
-#     return customer_teacher_name
-
+def customer_recovery(driver, student_num):
+    """
+    回收未成交客户
+    @param driver:
+    @param student_num:
+    @return:
+    """
+    i = 0
+    customer_page = GfyCrmCustomerManagement(driver)
+    PageSelect(customer_page.customer_is_deal, text="未成交")
+    PageSelect(customer_page.customer_is_order, text="是")
+    customer_page.customer_list_load_button.click()
+    if customer_page.customer_loading:
+        if student_num == 1:
+            # 回收
+            customer_page.customer_recovery[0].click()
+            sleep(1)
+            customer_page.confirm_btn.click()
+        if student_num > 1:
+            while i < student_num:
+                customer_page.customer_check[i].click()
+                i += 1
+            customer_page.customer_multi_recovery.click()
+            PageWait(customer_page.confirm_btn)
+            customer_page.confirm_btn.click()
 
 # def pay_new_order(driver):
 #     """
@@ -585,25 +521,25 @@ def add_customer_intent(driver, school_name, activity_type, activity_name, respo
 #         os.system(cmd)
 
 
-def set_content_by_id(driver, content_id, text):
-    """
-    文本框输入
-    :param driver:
-    :param content_id:
-    :param text:
-    :return:
-    """
-    js = 'document.getElementById("%s").innerHTML = "%s" ' % (content_id, text)
-    driver.execute_script(js)
-
-
-def set_content_by_name(driver, content_name, text):
-    """
-    文本框输入
-    :param driver:
-    :param content_name:
-    :param text:
-    :return:
-    """
-    js = 'document.getElementsByName("%s").innerHTML = "%s" ' % (content_name, text)
-    driver.execute_script(js)
+# def set_content_by_id(driver, content_id, text):
+#     """
+#     文本框输入
+#     :param driver:
+#     :param content_id:
+#     :param text:
+#     :return:
+#     """
+#     js = 'document.getElementById("%s").innerHTML = "%s" ' % (content_id, text)
+#     driver.execute_script(js)
+#
+#
+# def set_content_by_name(driver, content_name, text):
+#     """
+#     文本框输入
+#     :param driver:
+#     :param content_name:
+#     :param text:
+#     :return:
+#     """
+#     js = 'document.getElementsByName("%s").innerHTML = "%s" ' % (content_name, text)
+#     driver.execute_script(js)

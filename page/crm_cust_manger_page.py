@@ -19,6 +19,10 @@ class GfyCrmCustomerManagement(Page):
     customer_list_load_button = PageElement(
         xpath="//button[@ng-click='loadCustInfoList(1,pageInfo.pageSize)']",
         describe="我的客户-客户列表-查询按钮")
+    customer_loading = PageElement(
+        xpath="//div[@ng-show='custInfoLoading' and @class='overlay ng-hide']",
+        describe="我的客户列表查询完结")
+
     # 新增客户
     add_customer = PageElement(
         xpath="//button[@ng-click=\"toEditCustInfo('newCust')\"]",
@@ -239,12 +243,21 @@ class GfyCrmCustomerManagement(Page):
         describe="我的客户-客户信息-同步教学帐号-选择账号")
 
     # 客户回收
-    customer_recovery = PageElement(
+    customer_recovery = PageElements(
         xpath="//button[@ng-click='allotRecovery(item)']",
         describe="我的客户-回收按钮")
+    customer_multi_recovery = PageElement(
+        xpath="//button[text()='批量回收']",
+        describe="我的客户-批量回收按钮")
     customer_recovery_status = PageElement(
         xpath="//strong[text()='保存成功']",
         describe="回收成功状态")
+    customer_is_deal = PageElement(
+        xpath="//select[@ng-model='custInfoParam.isDeal']",
+        describe="我的客户-是否成交选择框")
+    customer_is_order = PageElement(
+        xpath="//select[@ng-model='custInfoParam.isOrder']",
+        describe="我的客户-是否分单选择框")
     customer_teacher = PageElements(
         # xpath="//*[@id=\"custIndex\"]/section[2]/div[1]/div/div/div[1]"
         #       "/div/div[2]/div/div[1]/table/tbody/tr[1]/td[9]",
@@ -256,10 +269,10 @@ class GfyCrmCustomerManagement(Page):
     customer_recovery_teacher_button = PageElement(
         xpath="//span[text()='回收跟进人']",
         describe="回收跟进人勾选按钮")
-    customer_recovery_date = PageElement(
+    customer_recovery_date = PageElements(
         xpath="//td[@ng-if=\"customerColShow['回收时间']\"]",
         describe="我的客户-回收时间")
-    customer_recovery_teacher = PageElement(
+    customer_recovery_teacher = PageElements(
         xpath="//td[@ng-if=\"customerColShow['回收跟进人']\"]",
         describe="我的客户-第一位客户回收跟进人")
 

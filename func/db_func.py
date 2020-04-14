@@ -97,6 +97,7 @@ class DB:
         @param login_name:
         @return:
         """
+        teacher_name = ""
         my_cursor = self.my_con.cursor()
         sql = "SELECT b.teacher_name FROM `test_user`.`usr_account_info` AS a,`test_user`.`usr_teacher_info` AS b " \
               "WHERE a.login_name='%s' AND a.object_id=b.teacher_id" % login_name
