@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20191012:调试新增教务老师后退费完成">
-      <change afterPath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestLogin_test_time.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestLogin_test_time2.png" afterDir="false" />
+    <list default="true" id="10a26bae-d4e8-4d0d-abd5-2a531d13051c" name="Default" comment="20200414：1、客户回收支持数据驱动 2、增加一条用例多个断言支持">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_customer_recovery.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_report/2019_09_01_10_53_39/image/test_crm_cust_manger.py_TestCustomerAdd_test_customer_recovery.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/.pytest_cache/v/cache/lastfailed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/data/customer_management/customer_recovery.json" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/data/customer_management/customer_recovery.json" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,24 +26,20 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
   <component name="ProjectId" id="1QttnuY5lHPyu3QgmaiqDXVrBqo" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/func" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -56,23 +47,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/func" />
+      <recent name="$PROJECT_DIR$/test_case/data/customer_management" />
       <recent name="$PROJECT_DIR$/test_dir" />
       <recent name="$PROJECT_DIR$/page" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.db">
+  <component name="RunManager" selected="Python.test_crm_cust_manger">
     <configuration name="123" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyautoTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -190,13 +171,13 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/venv/bin/python3.7" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_dir" />
+      <option name="SDK_HOME" value="/usr/local/bin/python3.7" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_case" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_dir/test_crm_cust_manger.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_case/test_crm_cust_manger.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -259,6 +240,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542626944898</updated>
+      <workItem from="1586832239283" duration="19487000" />
     </task>
     <task id="LOCAL-00001" summary="更新poium框架">
       <created>1563957464502</created>
@@ -407,7 +389,28 @@
       <option name="project" value="LOCAL" />
       <updated>1570876740238</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="20200414：1、客户回收支持数据驱动 2、增加一条用例多个断言支持">
+      <created>1586861420146</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1586861420146</updated>
+    </task>
+    <task id="LOCAL-00023" summary="20200414：1、客户回收支持数据驱动 2、增加一条用例多个断言支持">
+      <created>1586861477758</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1586861477758</updated>
+    </task>
+    <task id="LOCAL-00024" summary="20200414：1、客户回收支持数据驱动 2、增加一条用例多个断言支持">
+      <created>1586861582496</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1586861582496</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -520,12 +523,68 @@
     <MESSAGE value="20191009:增加教务老师的元素定位" />
     <MESSAGE value="20191011:调试新增教务老师后退费" />
     <MESSAGE value="20191012:调试新增教务老师后退费完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="20191012:调试新增教务老师后退费完成" />
+    <MESSAGE value="20200414：1、客户回收支持数据驱动 2、增加一条用例多个断言支持" />
+    <option name="LAST_COMMIT_MESSAGE" value="20200414：1、客户回收支持数据驱动 2、增加一条用例多个断言支持" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="318" y="38" key="CommitChangelistDialog2" timestamp="1586771983514">
+    <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586848810743">
       <screen x="0" y="23" width="1440" height="828" />
     </state>
-    <state x="318" y="38" key="CommitChangelistDialog2/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586771983514" />
+    <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586848810743" />
+    <state x="318" y="38" key="CommitChangelistDialog2" timestamp="1586861582352">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state x="318" y="38" key="CommitChangelistDialog2/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861582352" />
+    <state x="100" y="123" width="1240" height="628" key="DiffContextDialog" timestamp="1586861692201">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state x="100" y="123" width="1240" height="628" key="DiffContextDialog/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861692201" />
+    <state width="1398" height="487" key="GridCell.Tab.0.bottom" timestamp="1586861239944">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state width="1878" height="221" key="GridCell.Tab.0.bottom/0.23.1440.828/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1586858602633" />
+    <state width="1398" height="487" key="GridCell.Tab.0.bottom/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861239944" />
+    <state width="1398" height="487" key="GridCell.Tab.0.center" timestamp="1586861239943">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state width="1878" height="221" key="GridCell.Tab.0.center/0.23.1440.828/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1586858602632" />
+    <state width="1398" height="487" key="GridCell.Tab.0.center/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861239943" />
+    <state width="1398" height="487" key="GridCell.Tab.0.left" timestamp="1586861239942">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state width="1878" height="221" key="GridCell.Tab.0.left/0.23.1440.828/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1586858602631" />
+    <state width="1398" height="487" key="GridCell.Tab.0.left/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861239942" />
+    <state width="1398" height="487" key="GridCell.Tab.0.right" timestamp="1586861239943">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state width="1878" height="221" key="GridCell.Tab.0.right/0.23.1440.828/-1920.76.1920.1057@-1920.76.1920.1057" timestamp="1586858602632" />
+    <state width="1398" height="487" key="GridCell.Tab.0.right/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861239943" />
+    <state width="1398" height="487" key="GridCell.Tab.1.bottom" timestamp="1586861239947">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state width="1398" height="487" key="GridCell.Tab.1.bottom/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861239947" />
+    <state width="1398" height="487" key="GridCell.Tab.1.center" timestamp="1586861239945">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state width="1398" height="487" key="GridCell.Tab.1.center/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861239945" />
+    <state width="1398" height="487" key="GridCell.Tab.1.left" timestamp="1586861239944">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state width="1398" height="487" key="GridCell.Tab.1.left/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861239944" />
+    <state width="1398" height="487" key="GridCell.Tab.1.right" timestamp="1586861239946">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state width="1398" height="487" key="GridCell.Tab.1.right/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861239946" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1586861584226">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586861584226" />
+    <state x="385" y="175" width="670" height="676" key="search.everywhere.popup" timestamp="1586846767765">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state x="385" y="175" width="670" height="676" key="search.everywhere.popup/0.23.1440.828/-1920.76.1920.1057@0.23.1440.828" timestamp="1586846767765" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/new_crm_poium$test_crm_cust_manger.coverage" NAME="test_crm_cust_manger Coverage Results" MODIFIED="1586861163574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
   </component>
 </project>
