@@ -12,3 +12,5 @@ __pycache__
 /.idea/vcs.xml
 /.idea/new_crm_poium.iml
 /.idea/inspectionProfiles/profiles_settings.xml
+/.pytest_cache/
+/test_case/.pytest_cache/
