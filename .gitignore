@@ -1,4 +1,12 @@
 *.pyc
 *.log
 __pycache__
-.idea/workspace.xml
+/.idea/workspace.xml
+/.idea/encodings.xml
+/.idea/markdown-navigator.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/markdown-navigator/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/pyautoTest.iml
+/.idea/vcs.xml
