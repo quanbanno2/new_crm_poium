@@ -12,7 +12,7 @@ from page.crm_cust_manger_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
 from func.db_func import DB
 from func.get_data import get_json_data
-from func.customer_management_func import login, add_customer_new, split_customer, convert_student, create_account, \
+from func.customer_management_func import login, add_customer, split_customer, convert_student, create_account, \
     add_customer_intent
 from func.student_management_func import student_select_class, add_in_class_record, in_class, leave, make_up, \
     add_new_order

@@ -2,7 +2,7 @@ import sys
 import pytest
 import logging
 from time import sleep
-from poium import PageWait
+from poium import PageWait, PageSelect
 # 定义搜索模块顺序，优先搜索new_crm_poium文件夹
 from os.path import dirname, abspath
 
@@ -11,13 +11,12 @@ sys.path.insert(0, dirname(dirname(abspath(__file__))))
 base_path = dirname(dirname(abspath(__file__)))
 
 from page.crm_cust_manger_page import GfyCrmCustomerManagement
-# from page.crm_home_page import GfyHomePage
 from page.crm_menu_page import GfyMenu
-# from page.crm_finance_page import GfyRefundInfo
+
 from page.crm_login_page import GfyLogin
 from func.db_func import DB
-from func.customer_management_func import operate_delete_customer, login, split_customer, \
-    convert_student, create_account, add_customer_new
+from func.customer_management_func import login, split_customer, convert_student, create_account, add_customer, \
+    customer_recovery
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 
@@ -107,12 +106,12 @@ class TestCustomerManagement:
         customer_name = DB().new_customer_name_by_sql()
         if case == "新招生-创建客户成功":
             login(crm_url, browser1, loginAccount, password)
-            add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
+            add_customer(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
             PageWait(page.save_status)
             assert page.save_status.text == msg
         elif case == "顾问转介绍-创建客户成功":
             login(crm_url, browser1, loginAccount, password)
-            add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
+            add_customer(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
             PageWait(page.save_status)
             assert page.save_status.text == msg
 
@@ -163,8 +162,7 @@ class TestCustomerManagement:
         i = 0
         login(crm_url, browser1, loginAccount, password)
         while i < studentNum:
-            add_customer_new(browser1, DB().new_customer_name_by_sql(), businessType, activityName, phoneNumber,
-                             schoolName)
+            add_customer(browser1, DB().new_customer_name_by_sql(), businessType, activityName, phoneNumber, schoolName)
             sleep(1)
             i += 1
         sleep(1)
@@ -205,7 +203,7 @@ class TestCustomerManagement:
         login(crm_url, browser1, loginAccount, password)
         while i < studentNum:
             i += 1
-            add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, pubSchoolName)
+            add_customer(browser1, customer_name, businessType, activityName, phoneNumber, pubSchoolName)
             sleep(1)
         sleep(1)
         split_customer(browser1, teacherName, studentNum)
@@ -252,7 +250,7 @@ class TestCustomerManagement:
         # 清除已存在账号的绑定信息
         DB().update_account(existAccountName)
         login(crm_url, browser1, loginAccount, password)
-        add_customer_new(browser1, customer_name, businessType, activityName, phoneNumber, pubSchoolName)
+        add_customer(browser1, customer_name, businessType, activityName, phoneNumber, pubSchoolName)
         sleep(2)
         # 分单
         split_customer(browser1, teacherName, customer_num="")
@@ -276,71 +274,89 @@ class TestCustomerManagement:
         if case == "新建的账号名称":
             assert page.customer_create_account_save_status.text == customer_name
 
-            # page.customer_list.click()
-            # sleep(1)
-            # # 我的客户-删除客户
-            # operate_delete_customer(browser1)
-            # 清理账号
-            # DB().eliminate_account_by_sql(account_name)
-            # sleep(2)
+    @pytest.mark.parametrize(
+        "case,schoolName,studentNum,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg",
+        get_json_data(DATA_DIR + "customer_management/" + "customer_recovery.json")
+    )
+    def test_customer_recovery(self, crm_url, browser1, case, schoolName, studentNum, businessType, activityName,
+                               phoneNumber, teacherName, loginAccount, password, msg):
+        """
+        测试二手单回收再分单
+        数据清理：客户信息
+        @param crm_url:
+        @param browser1:
+        @return:
+        """
+        i = 0
+        j = 0
+        page = GfyCrmCustomerManagement(browser1)
+        login(crm_url, browser1, loginAccount, password)
+        # 新增客户
+        while i < studentNum:
+            add_customer(browser1, DB().new_customer_name_by_sql(), businessType, activityName, phoneNumber, schoolName)
+            sleep(1)
+            i += 1
+        sleep(1)
+        # 分单
+        split_customer(browser1, teacherName, studentNum)
+        sleep(2)
+        # 回收客户
+        customer_recovery(browser1, studentNum)
+        # 等待"保存成功"提示
+        PageWait(page.customer_recovery_status)
+        # 多个断言使用try-finall，断言失败不跳出
+        #     # 断言是否回收成功
+        try:
+            assert page.customer_recovery_status.text == msg
+        finally:
+            sleep(1)
+            PageSelect(page.customer_is_order, text="否")
+            # 回收时间显示
+            page.customer_recovery_date_button.click()
+            # 显示回收跟进人
+            page.customer_recovery_teacher_button.click()
+            page.customer_list_load_button.click()
+            print("123")
+            if page.customer_loading:
+                if case == "单个客户回收":
+                    # 断言是否有回收时间
+                    try:
+                        assert page.customer_recovery_date[0].text != "--"
+                    finally:
+                        try:
+                            assert page.customer_recovery_teacher[0].text == DB().get_account_info(teacherName)
+                        finally:
+                            pass
+                elif case == "客户批量回收":
+                    while j < studentNum:
+                        # 批量回收断言
+                        try:
+                            assert page.customer_recovery_date[j].text != "--"
+                        finally:
+                            try:
+                                assert page.customer_recovery_teacher[j].text == DB().get_account_info(teacherName)
+                            finally:
+                                pass
+                        j += 1
 
-    # def test_customer_recovery(self, crm_url, browser1, counseling_supervision_account, pass_word, phone_number,
-    #                            jigou_school_name, adviser_account2, adviser_name2, adviser_name):
-    #     """
-    #     测试二手单回收再分单
-    #     数据清理：客户信息
-    #     @param crm_url:
-    #     @param browser1:
-    #     @param counseling_supervision_account:
-    #     @param pass_word:
-    #     @param phone_number:
-    #     @param jigou_school_name:
-    #     @param adviser_account2:
-    #     @param adviser_name2:
-    #     @param adviser_name:
-    #     @return:
-    #     """
-    #     page = GfyCrmCustomerManagement(browser1)
-    #     login(crm_url, browser1, counseling_supervision_account, pass_word)
-    #     add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-    #     sleep(1)
-    #     # 分单
-    #     split_customer(browser1, counseling_supervision_account)
-    #     sleep(1)
-    #     first_customer_teacher_name = customer_recovery(browser1)
-    #     # 等待"保存成功"提示
-    #     PageWait(page.customer_recovery_status)
-    #     # 断言是否回收成功
-    #     assert page.customer_recovery_status.text == "保存成功"
-    #     sleep(1)
-    #     page.customer_recovery_date_button.click()
-    #     sleep(1)
-    #     page.customer_recovery_teacher_button.click()
-    #     sleep(1)
-    #     # 断言是否有回收时间
-    #     assert page.customer_recovery_date.text != "--"
-    #     sleep(1)
-    #     # 断言回收人是否正确
-    #     assert page.customer_recovery_teacher.text == first_customer_teacher_name
-    #     sleep(1)
-    #     # 二手单分单
-    #     split_customer(browser1, adviser_account2)
-    #     sleep(2)
-    #     page.checkbox_split_count.click()
-    #     sleep(1)
-    #     # 二手单分单次数为2
-    #     # 断言主跟进人
-    #     assert page.customer_teacher[3].text == adviser_name2
-    #     sleep(1)
-    #     assert page.split_count.text == "2"
-    #     operate_delete_customer(browser1)
+        # sleep(1)
+        # # 二手单分单
+        # split_customer(browser1, adviser_account2)
+        # sleep(2)
+        # page.checkbox_split_count.click()
+        # sleep(1)
+        # # 二手单分单次数为2
+        # # 断言主跟进人
+        # assert page.customer_teacher[3].text == adviser_name2
+        # sleep(1)
+        # assert page.split_count.text == "2"
 
 
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_create_account"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_recovery"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
