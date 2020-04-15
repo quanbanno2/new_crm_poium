@@ -4,6 +4,7 @@ from _pydecimal import Context, ROUND_HALF_UP
 from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerDataEliminate
 from page.crm_menu_page import GfyMenu
 from page.crm_login_page import GfyLogin
+from func.find_element_demo import by_xpath_contains
 
 
 def cal_preferential_amount(charge):
@@ -89,36 +90,37 @@ def add_customer(driver, customer_name, business_type, activity_name, phone_numb
     menu_page = GfyMenu(driver)
     menu_page.customer_management.click()
     menu_page.my_customer.click()
-    page.add_customer.click()
-    sleep(2)
-    # 输入客户名称
-    page.add_customer_name.send_keys(customer_name)
-    sleep(1)
-    # 输入公校名称
-    if school_name != "":
-        page.school_name.click()
-        PageWait(page.pub_school_list)
-        page.pub_school_list.send_keys(school_name)
-        page.pub_school_query.click()
-        PageWait(page.pub_school_choice)
-        page.pub_school_choice.click()
-    # 选择年级
-    PageWait(page.grade[0])
-    PageSelect(page.grade[0], value='string:G09')
-    # 选择业务类型
-    if business_type != "":
-        PageSelect(page.customer_business_type, text=business_type)
-    # 选择活动来源
-    if activity_name != "":
-        page.customer_activity.click()
+    if page.customer_loading:
+        page.add_customer.click()
+        sleep(2)
+        # 输入客户名称
+        page.add_customer_name.send_keys(customer_name)
         sleep(1)
-        page.activity_name.send_keys(activity_name)
-        page.activity_query.click()
-        sleep(1)
-        page.activity_selected.click()
-        sleep(1)
-    page.customer_phone.send_keys(phone_number)
-    page.add_customer_save[0].click()
+        # 输入公校名称
+        if school_name != "":
+            page.school_name.click()
+            PageWait(page.pub_school_list)
+            page.pub_school_list.send_keys(school_name)
+            page.pub_school_query.click()
+            PageWait(page.pub_school_choice)
+            page.pub_school_choice.click()
+        # 选择年级
+        PageWait(page.grade[0])
+        PageSelect(page.grade[0], value='string:G09')
+        # 选择业务类型
+        if business_type != "":
+            PageSelect(page.customer_business_type, text=business_type)
+        # 选择活动来源
+        if activity_name != "":
+            page.customer_activity.click()
+            sleep(1)
+            page.activity_name.send_keys(activity_name)
+            page.activity_query.click()
+            sleep(1)
+            page.activity_selected.click()
+            sleep(1)
+        page.customer_phone.send_keys(phone_number)
+        page.add_customer_save[0].click()
 
 
 def add_educational(driver, educational_effect_time, educational_account):
@@ -184,17 +186,15 @@ def split_customer(driver, adviser_account, customer_num):
     sleep(1)
     # 输入账号查询
     page.teacher_list_login_name.clear()
-    sleep(1)
     page.teacher_list_login_name.send_keys(adviser_account)
-    sleep(1)
     # 机构老师列表查询
     page.teacher_list_query.click()
-    PageWait(page.choose_a_teacher)
-    # 选择老师
-    page.choose_a_teacher.click()
-    PageWait(page.confirm_split)
-    # 确认分班
-    page.confirm_split.click()
+    if page.teacher_list_loading:
+        # 选择老师
+        page.choose_a_teacher.click()
+        PageWait(page.confirm_split)
+        # 确认分班
+        page.confirm_split.click()
 
 
 def convert_student(driver, school_name, customer_num):
@@ -297,10 +297,10 @@ def add_customer_responsible(driver, responsible_name, department_name, school_n
     sleep(1)
     responsible_page.teacher_list_login_name.send_keys(responsible_name)
     responsible_page.teacher_list_query.click()
-    sleep(1)
-    responsible_page.choose_a_teacher.click()
-    sleep(1)
-    responsible_page.responsible_save.click()
+    if responsible_page.teacher_list_loading:
+        responsible_page.choose_a_teacher.click()
+        sleep(1)
+        responsible_page.responsible_save.click()
 
 
 def add_customer_intent(driver, school_name, activity_type, activity_name, responsible_department, responsible_Name,
@@ -334,7 +334,8 @@ def add_customer_intent(driver, school_name, activity_type, activity_name, respo
     intent_page.activity_type_touched.send_keys(activity_type)
     sleep(1)
     # 选择活动类型
-    driver.find_element_by_xpath("//button[contains(.,'%s') and @title]" % activity_type).click()
+    # driver.find_element_by_xpath("//button[contains(.,'%s') and @title]" % activity_type).click()
+    by_xpath_contains(driver, "button", activity_type, "@title").click()
     sleep(1)
     # 输入活动名称
     intent_page.activity_name.send_keys(activity_name)

@@ -47,7 +47,6 @@ def add_new_order(driver, school_name, course_name, case, subject_group_type, su
         PageSelect(order_page.order_sharing_object_select[2], text=DB().get_account_info(teacher_name))
         while order_page.order_sharing_object_select_btn:
             order_page.order_sharing_object_select_btn.click()
-
     sleep(1)
     order_page.order_select_course.click()
     sleep(1)

@@ -104,12 +104,12 @@ class TestCustomerManagement:
         page = GfyCrmCustomerManagement(browser1)
         # 客户名称自动生成
         customer_name = DB().new_customer_name_by_sql()
-        if case == "新招生-创建客户成功":
+        if case == "新招生创建客户成功":
             login(crm_url, browser1, loginAccount, password)
             add_customer(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
             PageWait(page.save_status)
             assert page.save_status.text == msg
-        elif case == "顾问转介绍-创建客户成功":
+        elif case == "顾问转介绍创建客户成功":
             login(crm_url, browser1, loginAccount, password)
             add_customer(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
             PageWait(page.save_status)
@@ -304,7 +304,7 @@ class TestCustomerManagement:
         customer_recovery(browser1, studentNum)
         # 等待"保存成功"提示
         PageWait(page.customer_recovery_status)
-        # 多个断言使用try-finall，断言失败不跳出
+        # 多个断言使用try-finally，断言失败不跳出
         #     # 断言是否回收成功
         try:
             assert page.customer_recovery_status.text == msg
@@ -316,7 +316,6 @@ class TestCustomerManagement:
             # 显示回收跟进人
             page.customer_recovery_teacher_button.click()
             page.customer_list_load_button.click()
-            print("123")
             if page.customer_loading:
                 if case == "单个客户回收":
                     # 断言是否有回收时间
@@ -331,7 +330,7 @@ class TestCustomerManagement:
                     while j < studentNum:
                         # 批量回收断言
                         try:
-                            assert page.customer_recovery_date[j].text != "--"
+                            assert page.customer_recovery_date[j].text == "--"
                         finally:
                             try:
                                 assert page.customer_recovery_teacher[j].text == DB().get_account_info(teacherName)
@@ -339,24 +338,14 @@ class TestCustomerManagement:
                                 pass
                         j += 1
 
-        # sleep(1)
-        # # 二手单分单
-        # split_customer(browser1, adviser_account2)
-        # sleep(2)
-        # page.checkbox_split_count.click()
-        # sleep(1)
-        # # 二手单分单次数为2
-        # # 断言主跟进人
-        # assert page.customer_teacher[3].text == adviser_name2
-        # sleep(1)
-        # assert page.split_count.text == "2"
-
 
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_recovery"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer_success"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
+
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
     #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
