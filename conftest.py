@@ -105,7 +105,7 @@ humanResourceName = "人事1"
 # 登录和服务器信息、发送人、接收人
 mail_host = "smtp.quanlangedu.com"
 mail_user = "fengjiahui@quanlangedu.com"
-mail_pass = ""
+mail_pass = "FJh011310"
 sender = "fengjiahui@quanlangedu.com"
 receivers = "fengjiahui@quanlangedu.com"
 
