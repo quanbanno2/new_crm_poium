@@ -151,6 +151,9 @@ class GfyCrmCustomerManagement(Page):
     teacher_list_school = PageElement(
         xpath="//select[@ng-model='teacherInfoParam.schoolId']",
         describe="机构老师列表-归属校区")
+    teacher_list_loading = PageElement(
+        xpath="//div[@ng-show='teacherInfoLoading' and @class='overlay ng-hide']",
+        describe="机构老师列表查询完结")
 
     confirm_split = PageElement(
         xpath="//button[@ng-click='allotOrder()']",

@@ -11,6 +11,7 @@ from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyC
 from page.crm_cust_manger_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
 from func.db_func import DB
+from func.find_element_demo import by_xpath_contains
 from func.get_data import get_json_data
 from func.customer_management_func import login, add_customer, split_customer, convert_student, create_account, \
     add_customer_intent
@@ -44,23 +45,27 @@ class TestCustomerAddOrder:
         # 进入客户管理-我的客户
         menu_page.customer_management.click()
         menu_page.my_customer.click()
-        # 找到指定测试学员
-        PageSelect(customer_page.customer_list_school_list, text=schoolName)
-        customer_page.customer_name_input.send_keys(studentName)
-        customer_page.customer_list_load_button.click()
-        # 进入综合信息管理
-        sleep(1)
-        browser1.find_element_by_xpath("//a[contains(.,'%s')]" % studentName).click()
-        sleep(1)
-        # 添加跟进人和业务意向
-        add_customer_intent(browser1, schoolName, activityType, activityName, responsibleDepartment, responsibleName,
-                            case, teacherName, teacherDepartment)
-        sleep(2)
-        # 新增订单
-        add_new_order(browser1, schoolName, courseName, case, subjectGroupType, subjectGroup, responsibleName,
-                      teacherName)
-        PageWait(order_page.order_status)
-        assert order_page.order_status.text == msg
+        # 我的客户列表loading不执行操作
+        if customer_page.customer_loading:
+            # 找到指定测试学员
+            PageSelect(customer_page.customer_list_school_list, text=schoolName)
+            customer_page.customer_name_input.send_keys(studentName)
+            customer_page.customer_list_load_button.click()
+            # 进入综合信息管理
+            sleep(1)
+            # browser1.find_element_by_xpath("//a[contains(.,'%s')]" % studentName).click()
+            by_xpath_contains(browser1, "a", studentName).click()
+            sleep(1)
+            # 添加跟进人和业务意向
+            add_customer_intent(browser1, schoolName, activityType, activityName, responsibleDepartment,
+                                responsibleName,
+                                case, teacherName, teacherDepartment)
+            sleep(2)
+            # 新增订单
+            add_new_order(browser1, schoolName, courseName, case, subjectGroupType, subjectGroup, responsibleName,
+                          teacherName)
+            PageWait(order_page.order_status)
+            assert order_page.order_status.text == msg
 
     #
     #     def test_pay_new_order(self, crm_url, browser1, jigou_school_name, pass_word, phone_number, course,

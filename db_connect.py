@@ -1,4 +1,6 @@
 import pymysql
+from selenium import webdriver
+from time import sleep
 
 
 def database_connect():
@@ -133,5 +135,19 @@ def get_account_info(login_name):
 
 # new_staff_name_by_sql()
 
-lis = get_account_info("高分云指导督导1")
-print(lis)
+# lis = get_account_info("高分云指导督导1")
+# print(lis)
+
+
+def by_xpath(driver, context):
+    # wd = webdriver.Chrome()
+    # wd.get("https://www.baidu.com")
+
+    return driver.find_element_by_xpath("//a[contains(.,'%s')]" % context)
+
+
+wd = webdriver.Chrome()
+wd.get("https://www.baidu.com")
+
+xt = by_xpath(wd, "抗击肺炎").click()
+sleep(5)
