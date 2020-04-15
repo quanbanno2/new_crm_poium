@@ -14,3 +14,4 @@ __pycache__
 /.idea/inspectionProfiles/profiles_settings.xml
 /.pytest_cache/
 /test_case/.pytest_cache/
+/test_report
