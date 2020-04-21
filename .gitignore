@@ -16,3 +16,4 @@ __pycache__
 /test_case/.pytest_cache/
 /test_report
 /.vscode
+/db_connect.py
