@@ -1,7 +1,3 @@
-# from selenium import webdriver
-# from time import sleep
-
-
 def by_xpath_contains(driver, tag, context, context_2=None):
     """
     根据元素包含文字进行定位
@@ -16,10 +12,12 @@ def by_xpath_contains(driver, tag, context, context_2=None):
     else:
         return driver.find_element_by_xpath("//%s[contains(.,'%s') and %s]" % (tag, context, context_2))
 
-#
-# wd = webdriver.Chrome()
-# wd.get("https://www.baidu.com")
-#
-# by_xpath_contains(wd, "抗击肺炎", "@id=\"virus-2020\"").click()
-# sleep(5)
-# wd.close()
+
+def find_order_pay_info(driver, context):
+    """
+    订单详情-缴费信息（缴费编号、应收、预收、已缴、未交等）
+    @param driver:
+    @param context:
+    @return:
+    """
+    return driver.find_element_by_xpath("//th[text()='%s']/following-sibling::td/span" % context)
