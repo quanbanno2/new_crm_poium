@@ -2,6 +2,9 @@ from poium import Page, PageElement
 
 
 class GfyMenu(Page):
+    menu_acitve = PageElement(
+        xpath="//li[@class='treeview ng-scope active']",
+        describe="目录展开")
     dashboard = PageElement(
         link_text="首页",
         describe="首页按钮")
