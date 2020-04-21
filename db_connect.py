@@ -1,6 +1,7 @@
 import pymysql
 from selenium import webdriver
 from time import sleep
+import re
 
 
 def database_connect():
@@ -146,8 +147,14 @@ def by_xpath(driver, context):
     return driver.find_element_by_xpath("//a[contains(.,'%s')]" % context)
 
 
-wd = webdriver.Chrome()
-wd.get("https://www.baidu.com")
+# wd = webdriver.Chrome()
+# wd.get("https://www.baidu.com")
+#
+# xt = by_xpath(wd, "抗击肺炎").click()
+# sleep(5)
 
-xt = by_xpath(wd, "抗击肺炎").click()
-sleep(5)
+tezt = filter(str.isdigit, "￥24.4")
+print(''.join(list(tezt)))
+
+tezt1 = re.search("\d+(\.\d+)?", "$123")
+print(type(tezt1.group()))

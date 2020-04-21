@@ -48,7 +48,7 @@ def run(m):
         # 压缩生成完的报告
         report_zip = zip_file(report_file_dir_path)
         # 发送压缩后的报告
-        send_mail(report_zip, now_time)
+        # send_mail(report_zip, now_time)
     elif m == "debug":
         print("debug模式运行测试用例：")
         pytest.main(["-v", "-s", cases_path])

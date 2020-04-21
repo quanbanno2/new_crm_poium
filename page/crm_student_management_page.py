@@ -215,14 +215,23 @@ class GfyStudentOrderManagement(Page):
     order_subject_group = PageElement(
         xpath="//select[@ng-model='item.sharingObjectType']",
         describe="订单详情-分成对象类型-科组选择")
+    student_order_loading = PageElement(
+        xpath="//div[@ng-show='stuOrderLoading' and @class='overlay ng-hide']",
+        describe="学员订单列表查询完结")
     """
     支付
     """
+    student_order_id = PageElement(
+        xpath="//input[@name='orderId']",
+        describe="学员订单管理-订单编号")
+    student_order_schoole_id = PageElement(
+        xpath="//select[@ng-model='stuOrderParam.schoolId']",
+        describe="学员订单管理-归属校区下拉框")
     student_order_pay_btn = PageElement(
         xpath="//button[@title='订单支付']",
         describe="学员订单管理-列表第一个学员订单支付按钮")
     add_order_discount_btn = PageElement(
-        xpath="//button[@ng-disabled='financeDiscountDetailEditingItem']",
+        xpath="//button[text()='添加优惠']",
         describe='学员订单管理-课程优惠列表-添加优惠按钮')
     add_order_discount_fee = PageElement(
         xpath="//input[@placeholder='优惠金额']",
@@ -230,16 +239,14 @@ class GfyStudentOrderManagement(Page):
     add_order_discount_save = PageElement(
         xpath="//button[@ng-click=\"toEditFinanceDiscountDetail(item,'discountAdd')\"]",
         describe='学员订单管理-课程优惠列表-添加优惠-保存按钮')
-    order_pre_fee = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[4]/div[1]/div/h2/span[1]/span",
-        # xpath="//span[@class='ng-binding']",
-        describe="支付列表-预收账款")
-    order_accounts_receivable = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/section[2]/div[1]/form/div[1]/div[3]/table/tbody/tr[2]/td/span",
-        # xpath="//span[@class='ng-binding']",
-        describe='缴费信息-应收账款')
+    order_unpaid = PageElement(
+        xpath="//span[text()='未缴：￥']/span",
+        describe="订单详情-支付列表-未缴费用")
+    order_paid = PageElement(
+        xpath="//span[text()='已缴']/span",
+        describe="订单详情-支付列表-未缴费用")
     add_order_pay_btn = PageElement(
-        xpath="//button[@ng-disabled='financePayDetailEditingItem']",
+        xpath="//button[text()='添加支付项']",
         describe='学员订单管理-课程优惠列表-添加支付项')
     add_order_pay_fee = PageElement(
         xpath="//input[@ng-model='financePayDetailDialog.payFee']",
@@ -248,7 +255,7 @@ class GfyStudentOrderManagement(Page):
         xpath="//button[@ng-click=\"toEditFinancePayDetail('','payAdd')\"]",
         describe='学员订单管理-支付列表 -添加支付项-保存按钮')
     add_order_other_btn = PageElement(
-        xpath="//button[@ng-click=\"toEditFinanceOtherFeeDetail('','otherFeeNew')\"]",
+        xpath="//button[text()='添加其他费用']",
         describe='学员订单管理-其他费用-添加其他费用')
     add_order_other_fee = PageElement(
         xpath="//input[@ng-model='financeOtherFeeDetailDialog.fee']",
@@ -257,7 +264,7 @@ class GfyStudentOrderManagement(Page):
         xpath="//button[@ng-click=\"toEditFinanceOtherFeeDetail('','otherFeeAdd')\"]",
         describe='学员订单管理-其他费用-添加其他费用-保存')
     pay_stu_order = PageElement(
-        xpath="//button[@ng-click='payStuOrder()']",
+        xpath="//button[text()='提交支付']",
         describe='学员订单管理-提交支付')
     pay_order_status = PageElement(
         xpath="//span[@class='text-green'][1]",
@@ -271,9 +278,6 @@ class GfyStudentOrderManagement(Page):
     ok_button = PageElement(
         xpath="//button[@data-bb-handler='ok']",
         describe="确认按钮")
-    pay_order_stay = PageElement(
-        xpath="/html/body/div[19]/div/div/div[3]/button[1]",
-        describe="支付成功后留在当前页面按钮")
     pay_cancel_button = PageElement(
         xpath="//button[@data-bb-handler='Cancel']",
         describe="取消按钮")

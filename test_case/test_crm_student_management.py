@@ -1,3 +1,15 @@
+from conftest import DATA_DIR
+from func.student_management_func import add_new_order, pay_new_order
+from func.customer_management_func import login, add_customer, split_customer, convert_student, create_account, \
+    add_customer_intent
+from func.get_data import get_json_data
+from func.find_element_demo import by_xpath_contains, find_order_pay_info
+from func.re_demo import re_demo
+from func.db_func import DB
+from page.crm_menu_page import GfyMenu
+from page.crm_cust_manger_page import GfyCrmCustomerManagement
+from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement, \
+    GfyStudentOrderManagement
 import pytest
 import sys
 from time import sleep
@@ -6,18 +18,6 @@ from poium import PageWait, PageSelect
 from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
-from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement, \
-    GfyStudentOrderManagement
-from page.crm_cust_manger_page import GfyCrmCustomerManagement
-from page.crm_menu_page import GfyMenu
-from func.db_func import DB
-from func.find_element_demo import by_xpath_contains
-from func.get_data import get_json_data
-from func.customer_management_func import login, add_customer, split_customer, convert_student, create_account, \
-    add_customer_intent
-from func.student_management_func import student_select_class, add_in_class_record, in_class, leave, make_up, \
-    add_new_order
-from conftest import DATA_DIR
 
 
 class TestCustomerAddOrder:
@@ -28,7 +28,8 @@ class TestCustomerAddOrder:
     @pytest.mark.parametrize(
         "case,loginAccount,password,activityType,schoolName,activityName,responsibleName,responsibleDepartment,"
         "teacherName,teacherDepartment,courseName,studentName,subjectGroupType,subjectGroup,msg",
-        get_json_data(DATA_DIR + "student_management" + "/add_student_order.json")
+        get_json_data(DATA_DIR + "student_management" +
+                      "/add_student_order.json")
     )
     def test_add_new_order(self, crm_url, browser1, case, loginAccount, password, activityType, schoolName,
                            activityName, responsibleName, responsibleDepartment, teacherName, teacherDepartment,
@@ -48,12 +49,12 @@ class TestCustomerAddOrder:
         # 我的客户列表loading不执行操作
         if customer_page.customer_loading:
             # 找到指定测试学员
-            PageSelect(customer_page.customer_list_school_list, text=schoolName)
+            PageSelect(customer_page.customer_list_school_list,
+                       text=schoolName)
             customer_page.customer_name_input.send_keys(studentName)
             customer_page.customer_list_load_button.click()
             # 进入综合信息管理
             sleep(1)
-            # browser1.find_element_by_xpath("//a[contains(.,'%s')]" % studentName).click()
             by_xpath_contains(browser1, "a", studentName).click()
             sleep(1)
             # 添加跟进人和业务意向
@@ -67,41 +68,63 @@ class TestCustomerAddOrder:
             PageWait(order_page.order_status)
             assert order_page.order_status.text == msg
 
-    #
-    #     def test_pay_new_order(self, crm_url, browser1, jigou_school_name, pass_word, phone_number, course,
-    #                            counseling_supervision_name, counseling_supervision_account):
-    #         """
-    #         测试支付订单：添加优惠-添加支付-添加其他费用-添加分成对象
-    #         @param crm_url:
-    #         @param browser1:
-    #         @param jigou_school_name:
-    #         @param pass_word:
-    #         @param phone_number:
-    #         @param course:
-    #         @param counseling_supervision_name:
-    #         @param counseling_supervision_account:
-    #         @return:
-    #         """
-    #         order_page = GfyCustomerAddOrder(browser1)
-    #         login(crm_url, browser1, counseling_supervision_account, pass_word)
-    #         add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-    #         sleep(1)
-    #         split_customer(browser1, counseling_supervision_account)
-    #         sleep(1)
-    #         convert_student(browser1, jigou_school_name)
-    #         sleep(1)
-    #         order_page.ok_button.click()
-    #         sleep(1)
-    #         add_new_order(browser1, counseling_supervision_name, course, jigou_school_name)
-    #         sleep(1)
-    #         order_page.order_status_confirm.click()
-    #         sleep(1)
-    #         pay_new_order(browser1)
-    #         # 断言是否支付成功
-    #         sleep(3)
-    #         assert order_page.pay_order_status.text == "成功"
-    #         assert order_page.pay_order_calculation_status.text == "成功"
-    #
+    @pytest.mark.parametrize(
+        "case,status,loginAccount,password,schoolName,orderId,discount,otherFee,msg",
+        get_json_data(DATA_DIR + "student_management" + "/pay_order.json")
+    )
+    def test_pay_new_order(self, crm_url, browser1, case, status, loginAccount, password, schoolName, orderId, discount,
+                           otherFee, msg):
+        """
+        未缴费订单支付流程：已有订单订编号搜索订单-》添加优惠列表-》添加支付列表-》添加其他费用-》支付
+        已缴部分：已有订单订编号搜索订单-》添加支付列表（计算未交部分进行缴费）-》支付
+
+        """
+        order_page = GfyStudentOrderManagement(browser1)
+        menu_page = GfyMenu(browser1)
+        login(crm_url, browser1, loginAccount, password)
+        sleep(1)
+        menu_page.student_management.click()
+        if menu_page.menu_acitve:
+            menu_page.student_order_management.click()
+            # 判断学员订单界面是否查询完成
+            if order_page.student_order_loading:
+                PageSelect(order_page.student_order_schoole_id, text=schoolName)
+                order_page.student_order_id.send_keys(orderId)
+                order_page.order_info_loadStuOrderList.click()
+                # 等待订单列表loading
+                if order_page.student_order_loading:
+                    paid_list = pay_new_order(browser1, case, status, orderId, discount, otherFee)
+                    PageWait(order_page.pay_order_status)
+                    try:
+                        # 断言支付状态
+                        assert order_page.pay_order_status.text == msg
+                    finally:
+                        try:
+                            # 断言业绩计算状态
+                            assert order_page.pay_order_calculation_status.text == msg
+                        finally:
+                            # 留在订单详情
+                            order_page.pay_cancel_button.click()
+                            if case == "未缴费支付":
+                                try:
+                                    # 断言缴费信息
+                                    assert find_order_pay_info(browser1, "预收账款").text == paid_list[0]
+                                finally:
+                                    try:
+                                        assert int(re_demo(find_order_pay_info(browser1, "优惠金额").text)) == discount
+                                    finally:
+                                        try:
+                                            assert int(re_demo(find_order_pay_info(browser1, "其他费用").text)) == otherFee
+                                        finally:
+                                            DB().reset_order_status(status, orderId)
+                            if case == "已缴部分支付":
+                                try:
+                                    assert int(re_demo(find_order_pay_info(browser1, "预收账款").text)) == int(
+                                        paid_list[0]) + int(paid_list[1])
+                                finally:
+                                    DB().reset_order_status(status, orderId)
+
+                                #
     #     def test_student_refund(self, browser1, crm_url, supervisor_account, pass_word, remarks,
     #                             phone_number, course, jigou_school_name, today_date, educational_account,
     #                             counseling_supervision_account, counseling_supervision_name):
@@ -471,7 +494,8 @@ class TestCustomerAddOrder:
 
 if __name__ == '__main__':
     #     pytest.main()
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_add_new_order"])
+    pytest.main(
+        ["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_pay_new_order"])
 #     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"])
 #         pytest.main(["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_add_new_order"])
 #     pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_in_class"])

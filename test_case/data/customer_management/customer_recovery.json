@@ -1,6 +1,7 @@
 [
-  {
-    "case": "单个客户回收",
+
+    {
+    "case": "客户单个回收",
     "pubSchoolName": "四基",
     "studentNum": 1,
     "businessType": "新招生",
@@ -11,6 +12,7 @@
     "password": "123456",
     "msg": "保存成功"
   },
+
   {
     "case": "客户批量回收",
     "pubSchoolName": "四基",

@@ -288,7 +288,7 @@ class TestCustomerManagement:
         @return:
         """
         i = 0
-        j = 0
+        # j = 0
         page = GfyCrmCustomerManagement(browser1)
         login(crm_url, browser1, loginAccount, password)
         # 新增客户
@@ -305,7 +305,7 @@ class TestCustomerManagement:
         # 等待"保存成功"提示
         PageWait(page.customer_recovery_status)
         # 多个断言使用try-finally，断言失败不跳出
-        #     # 断言是否回收成功
+        # 断言是否回收成功
         try:
             assert page.customer_recovery_status.text == msg
         finally:
@@ -317,33 +317,41 @@ class TestCustomerManagement:
             page.customer_recovery_teacher_button.click()
             page.customer_list_load_button.click()
             if page.customer_loading:
-                if case == "单个客户回收":
-                    # 断言是否有回收时间
-                    try:
-                        assert page.customer_recovery_date[0].text != "--"
-                    finally:
-                        try:
-                            assert page.customer_recovery_teacher[0].text == DB().get_account_info(teacherName)
-                        finally:
-                            pass
-                elif case == "客户批量回收":
-                    while j < studentNum:
-                        # 批量回收断言
-                        try:
-                            assert page.customer_recovery_date[j].text == "--"
-                        finally:
-                            try:
-                                assert page.customer_recovery_teacher[j].text == DB().get_account_info(teacherName)
-                            finally:
-                                pass
-                        j += 1
+                # if case == "单个客户回收":
+                # 断言是否有回收时间&回收跟进人
+                try:
+                    assert page.customer_recovery_date[0].text == "--"
+                finally:
+                    assert page.customer_recovery_teacher[0].text == DB().get_account_info(teacherName)
+            # elif case == "客户批量回收":
+            # 问题：循环会在第二次失败断言后跳出，无法进入第二次循环进行断言
+            #     try:
+            #         while j < studentNum:
+            #             try:
+            #                 print("hello%s" % j)
+            #                 assert page.customer_recovery_date[j].text == "--"
+            #             finally:
+            #                 try:
+            #                     assert page.customer_recovery_teacher[j].text != DB().get_account_info(teacherName)
+            #                 finally:
+            #                     j += 1
+            #     finally:
+            #         while j < studentNum:
+            #             try:
+            #                 print("hello%s" % j)
+            #                 assert page.customer_recovery_date[j].text == "--"
+            #             finally:
+            #                 try:
+            #                     assert page.customer_recovery_teacher[j].text != DB().get_account_info(teacherName)
+            #                 finally:
+            #                     j += 1
 
 
 if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer_success"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_recovery"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
 
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",

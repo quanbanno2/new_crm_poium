@@ -1,0 +1,24 @@
+[
+  {
+    "case": "未缴费支付",
+    "status": "未缴费",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "schoolName": "高分云",
+    "orderId": "11419",
+    "discount": 500,
+    "otherFee": 20,
+    "msg": "成功"
+  },
+  {
+    "case": "已缴部分支付",
+    "status": "已缴部分",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "schoolName": "高分云",
+    "orderId": "11416",
+    "discount": "",
+    "otherFee": "",
+    "msg": "成功"
+  }
+]

@@ -107,3 +107,39 @@ class DB:
             teacher_name = re[0]
         self.my_con.close()
         return teacher_name
+
+    def reset_order_status(self, status, order_id):
+        """
+        充值订单状态
+        @param status:
+        @param order_id:
+        @return:
+        """
+        my_cursor = self.my_con.cursor()
+        if status == "未缴费":
+            sql = [
+                "UPDATE test_student.stu_order_info SET order_status='S01' WHERE order_id='%s' " % order_id,
+                "UPDATE test_student.stu_order_course SET course_status='S05',paid_in=receivable,discount='0.00' "
+                "WHERE order_id='%s'" % order_id,
+                "UPDATE test_finance.finance_payment_info "
+                "SET payment_status='S01',bank_paid_in='0.00',discount='0.00',paid_in=receivable,other_fee='0.00' "
+                "WHERE order_id='%s'" % order_id,
+                "DELETE FROM test_finance.finance_pay_detail WHERE order_id='%s'" % order_id,
+                "DELETE FROM test_finance.finance_discount_detail WHERE order_id='%s'" % order_id,
+                "DELETE FROM test_finance.finance_other_fee_detail WHERE order_id='%s'" % order_id
+            ]
+            for ex in sql:
+                my_cursor.execute(ex)
+        elif status == "已缴部分":
+            sql = [
+                "UPDATE test_student.stu_order_info SET order_status='S05' WHERE order_id='%s'" % order_id,
+                "UPDATE test_student.stu_order_course SET course_status='S05' WHERE order_id='%s'" % order_id,
+                "UPDATE test_finance.finance_payment_info SET payment_status='S05',bank_paid_in='500.00' "
+                "WHERE order_id='%s'" % order_id,
+                "DELETE FROM test_finance.finance_pay_detail WHERE order_id='%s' AND pay_fee = '7000.00'" % order_id
+            ]
+            for ex in sql:
+                my_cursor.execute(ex)
+        self.my_con.commit()
+        my_cursor.close()
+        self.my_con.close()
