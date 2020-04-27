@@ -16,8 +16,22 @@ class DB:
             self.my_con = pymysql.connect('rm-wz9ex1m8zw6c8ui55o.mysql.rds.aliyuncs.com',
                                           'edu_test_user',
                                           'Quanlang_edu_test')
-        except Exception as dbex:
-            print(dbex)
+            self.my_cursor = self.my_con.cursor()
+        except Exception as db_ex:
+            print(db_ex)
+
+    def exe_update(self, sql):  # 更新,删除或插入操作
+        sta = self.my_cursor.execute(sql)
+        self.my_con.commit()
+        return sta
+
+    def exe_query(self, sql):  # 查找操作
+        self.my_cursor.execute(sql)
+        return self.my_cursor
+
+    def conn_close(self):  # 关闭连接，释放资源
+        self.my_cursor.close()
+        self.my_con.close()
 
     def new_customer_name_by_sql(self):
         """
@@ -25,12 +39,10 @@ class DB:
         :return:
         """
         customer_name = []
-        my_cursor = self.my_con.cursor()
         sql = 'SELECT cust_name FROM test_customer.cust_info ' \
               'WHERE cust_id = (SELECT MAX(cust_id) ' \
               'FROM test_customer.cust_info WHERE cust_name LIKE "高分云客户%" AND cust_status="S01")'
-        my_cursor.execute(sql)
-        result = my_cursor.fetchall()
+        result = self.exe_query(sql).fetchall()
         for re in result:
             customer_name = re[0]
         # 读取客户名称后的数字
@@ -38,8 +50,30 @@ class DB:
         client_num = int(a)
         client_num += 1
         client_name = "高分云客户" + str(client_num)
-        self.my_con.close()
+        self.conn_close()
         return client_name
+
+    # def new_customer_name_by_sql(self):
+    #     """
+    #     连接集成数据库得出客户***,返回集成数据库最新"客户"***+1的名称
+    #     :return:
+    #     """
+    #     customer_name = []
+    #     my_cursor = self.my_con.cursor()
+    #     sql = 'SELECT cust_name FROM test_customer.cust_info ' \
+    #           'WHERE cust_id = (SELECT MAX(cust_id) ' \
+    #           'FROM test_customer.cust_info WHERE cust_name LIKE "高分云客户%" AND cust_status="S01")'
+    #     my_cursor.execute(sql)
+    #     result = my_cursor.fetchall()
+    #     for re in result:
+    #         customer_name = re[0]
+    #     # 读取客户名称后的数字
+    #     a = customer_name[5:]
+    #     client_num = int(a)
+    #     client_num += 1
+    #     client_name = "高分云客户" + str(client_num)
+    #     self.my_con.close()
+    #     return client_name
 
     def eliminate_account_by_sql(self, account_name):
         """
@@ -48,12 +82,9 @@ class DB:
         :param account_name:
         :return:
         """
-        my_cursor = self.my_con.cursor()
         sql = 'DELETE FROM test_user.usr_account_info WHERE login_name="%s"' % account_name
-        my_cursor.execute(sql)
-        self.my_con.commit()
-        my_cursor.close()
-        self.my_con.close()
+        self.exe_update(sql)
+        self.conn_close()
 
     def new_staff_name_by_sql(self):
         """
@@ -61,35 +92,67 @@ class DB:
         @return: 返回生成的员工名称
         """
         staff_name = []
-        my_cursor = self.my_con.cursor()
         sql = 'SELECT name FROM test_user.usr_staff_base_info ' \
               'WHERE staff_base_id = (SELECT MAX(staff_base_id) ' \
               'FROM test_user.usr_staff_base_info WHERE name LIKE "高分云员工%")'
-        my_cursor.execute(sql)
-        result = my_cursor.fetchall()
+        self.exe_query(sql)
+        result = self.my_cursor.fetchall()
         for re in result:
             staff_name = re[0]
         a = staff_name[5:]
         staff_num = int(a)
         staff_num += 1
         new_name = "高分云员工" + str(staff_num)
-        self.my_con.close()
+        self.conn_close()
         return new_name
+
+    # def new_staff_name_by_sql(self):
+    #     """
+    #     新增员工名称
+    #     @return: 返回生成的员工名称
+    #     """
+    #     staff_name = []
+    #     my_cursor = self.my_con.cursor()
+    #     sql = 'SELECT name FROM test_user.usr_staff_base_info ' \
+    #           'WHERE staff_base_id = (SELECT MAX(staff_base_id) ' \
+    #           'FROM test_user.usr_staff_base_info WHERE name LIKE "高分云员工%")'
+    #     my_cursor.execute(sql)
+    #     result = my_cursor.fetchall()
+    #     for re in result:
+    #         staff_name = re[0]
+    #     a = staff_name[5:]
+    #     staff_num = int(a)
+    #     staff_num += 1
+    #     new_name = "高分云员工" + str(staff_num)
+    #     self.my_con.close()
+    #     return new_name
 
     def update_account(self, exist_account):
         """
         更新账号信息
         @return:
         """
-        my_cursor = self.my_con.cursor()
         # 查出已存在的账号
         sql = "UPDATE `test_student`.`stu_info` SET `account_no`=NULL " \
               "WHERE `account_no` = (SELECT account_no FROM `test_user`.`usr_account_info` " \
               "WHERE `login_name` = '%s');" % exist_account
-        my_cursor.execute(sql)
-        self.my_con.commit()
-        my_cursor.close()
-        self.my_con.close()
+        self.exe_update(sql)
+        self.conn_close()
+
+    # def update_account(self, exist_account):
+    #     """
+    #     更新账号信息
+    #     @return:
+    #     """
+    #     my_cursor = self.my_con.cursor()
+    #     # 查出已存在的账号
+    #     sql = "UPDATE `test_student`.`stu_info` SET `account_no`=NULL " \
+    #           "WHERE `account_no` = (SELECT account_no FROM `test_user`.`usr_account_info` " \
+    #           "WHERE `login_name` = '%s');" % exist_account
+    #     my_cursor.execute(sql)
+    #     self.my_con.commit()
+    #     my_cursor.close()
+    #     self.my_con.close()
 
     def get_account_name(self, login_name):
         """
@@ -104,31 +167,28 @@ class DB:
         result = my_cursor.fetchall()
         for res in result:
             object_type = res[0]
-        try:
-            # 运营人员
-            if object_type == "A01":
-                sql_2 = "SELECT b.staff_name FROM `test_user`.`usr_account_info` AS a" \
-                        ",`test_user`.`usr_staff_info` AS b " \
-                        "WHERE a.login_name='%s' AND a.object_id=b.staff_id" % login_name
-                my_cursor.execute(sql_2)
-                result = my_cursor.fetchall()
-                for res in result:
-                    teacher_name = res[0]
-                self.my_con.close()
-                return teacher_name
-            # 老师
-            elif object_type == "A02":
-                sql_2 = "SELECT b.teacher_name FROM `test_user`.`usr_account_info` AS a" \
-                        ",`test_user`.`usr_teacher_info` AS b " \
-                        "WHERE a.login_name='%s' AND a.object_id=b.teacher_id" % login_name
-                my_cursor.execute(sql_2)
-                result = my_cursor.fetchall()
-                for res in result:
-                    teacher_name = res[0]
-                self.my_con.close()
-                return teacher_name
-        except:
-            print("账号名称错误")
+        # 运营人员
+        if object_type == "A01":
+            sql_2 = "SELECT b.staff_name FROM `test_user`.`usr_account_info` AS a" \
+                    ",`test_user`.`usr_staff_info` AS b " \
+                    "WHERE a.login_name='%s' AND a.object_id=b.staff_id" % login_name
+            my_cursor.execute(sql_2)
+            result = my_cursor.fetchall()
+            for res in result:
+                teacher_name = res[0]
+            self.my_con.close()
+            return teacher_name
+        # 老师
+        elif object_type == "A02":
+            sql_2 = "SELECT b.teacher_name FROM `test_user`.`usr_account_info` AS a" \
+                    ",`test_user`.`usr_teacher_info` AS b " \
+                    "WHERE a.login_name='%s' AND a.object_id=b.teacher_id" % login_name
+            my_cursor.execute(sql_2)
+            result = my_cursor.fetchall()
+            for res in result:
+                teacher_name = res[0]
+            self.my_con.close()
+            return teacher_name
 
     def reset_order_status(self, status, order_id):
         """
@@ -165,3 +225,42 @@ class DB:
         self.my_con.commit()
         my_cursor.close()
         self.my_con.close()
+
+    def reset_order_class_status(self, status, order_id):
+        if status == "全部退费":
+            sql = [
+                "update test_student.stu_order_info set order_status='S02' where order_id='{}'".format(order_id),
+                "update test_student.stu_order_course set course_status='S01' where course_status='S03' "
+                "and order_id='{}'".format(order_id),
+                "update test_finance.finance_fee_detail set refund_status='R01' where refund_status='R02' "
+                "and order_id='[]'".format(order_id),
+                "update test_finance.finance_payment_info set payment_status='S02' where order_id='{}'".format(
+                    order_id),
+                "delete from test_finance.finance_refund_apply where order_id='{}'".format(order_id),
+                "delete from test_finance.finance_refund_detail where order_id='{}'".format(order_id),
+                "delete from test_finance.finance_department_achievement_detail "
+                "where achievement_type='A02' and order_id='{}'".format(order_id),
+                "delete from test_finance.finance_department_achievement_detail "
+                "where achievement_type='A02' and order_id='{}'".format(order_id),
+                "delete from test_finance.finance_staff_achievement_detail "
+                "where achievement_type='A02' and order_id='{}'".format(order_id)
+            ]
+            for exe in sql:
+                self.exe_update(exe)
+        elif status == "部分退费":
+            sql = [
+                "update test_student.stu_order_info set order_status='S02' where order_id='{}'".format(order_id),
+                "update test_student.stu_order_course set course_status='S01',cons_count='12.5' "
+                "where course_status='S03' and order_id='{}'".format(order_id),
+                "update test_finance.finance_fee_detail set refund_status='R01' "
+                "where refund_status='R02' and order_id='{}'".format(order_id),
+                "update test_finance.finance_payment_info set payment_status='S02' where order_id='{}'".format(
+                    order_id),
+                "delete from test_finance.finance_refund_apply where order_id='{}'".format(order_id),
+                "delete from test_finance.finance_refund_detail where order_id='{}'".format(order_id),
+                "delete from test_finance.finance_department_achievement_detail "
+                "where achievement_type='A02' and order_id='{}'".format(order_id)
+            ]
+            for exe in sql:
+                self.exe_update(exe)
+        self.conn_close()

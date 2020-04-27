@@ -177,7 +177,7 @@ class TestCustomerAddOrder:
                                     # 退费结果断言
                                     assert refund_result['refunds_status'] == msg
                                 finally:
-                                    pass
+                                    DB().reset_order_class_status(case, orderId)
 
 
 #
