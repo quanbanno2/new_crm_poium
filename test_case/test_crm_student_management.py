@@ -2,8 +2,7 @@ import pytest
 import sys
 from conftest import DATA_DIR
 from func.student_management_func import add_new_order, pay_new_order, order_refund, approval_matter, cal_refund_fee
-from func.customer_management_func import login, add_customer, split_customer, convert_student, create_account, \
-    add_customer_intent
+from func.customer_management_func import login, add_customer_intent
 from func.get_data import get_json_data
 from func.find_element_demo import by_xpath_contains, find_order_pay_info
 from func.re_demo import re_demo
@@ -128,8 +127,8 @@ class TestCustomerAddOrder:
                                     DB().reset_order_status(status, orderId)
 
     @pytest.mark.parametrize(
-        "case,loginAccount,messageObject,approvalType,remindEventType,password,schoolName,"
-        "orderId,shareObject,shareDepartment,msg",
+        "case,loginAccount,messageObject,approvalType,remindEventType,password,schoolName,orderId,shareObject,"
+        "shareDepartment,msg",
         get_json_data(DATA_DIR + "student_management" + "/order_refund.json")
     )
     def test_student_refund(self, browser1, crm_url, case, loginAccount, messageObject, approvalType, remindEventType,
@@ -149,7 +148,6 @@ class TestCustomerAddOrder:
                 if order_page.student_order_loading:
                     # 申请退费
                     fee_list = order_refund(browser1, schoolName, orderId, loginAccount)
-                    # print(fee_list)
                     try:
                         # 断言退费结算金额是否正确
                         assert cal_refund_fee(fee_list['refund_pre_fee'], fee_list['refund_course_count'],

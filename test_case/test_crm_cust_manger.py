@@ -1,6 +1,6 @@
 import sys
 import pytest
-import logging
+# import logging
 from time import sleep
 from poium import PageWait, PageSelect
 # 定义搜索模块顺序，优先搜索new_crm_poium文件夹
@@ -20,8 +20,9 @@ from func.customer_management_func import login, split_customer, convert_student
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+
+# logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# logger = logging.getLogger(__name__)
 
 
 class TestLogin:
