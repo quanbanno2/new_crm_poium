@@ -19,13 +19,11 @@ class finance_management:
         """
         refund_page = GfyRefundInfo(driver)
         # 等待加载界面
-        # PageWait(refund_page.refund_info_loading)
         if refund_page.refund_info_loading:
             # 输入订单号
             refund_page.refund_order_id_input.send_keys(order_id)
             # 查询
             refund_page.query_refund_info_btn.click()
-            # PageWait(refund_page.refund_info_loading)
             if refund_page.refund_info_loading:
                 # 确认退费
                 find_object = find_object_element(driver)
@@ -42,7 +40,6 @@ class finance_management:
                     if refund_page.refund_achievement_loading:
                         # 部门退费业绩
                         department_fee = re_demo(find_object.find_object_refund_fee(department).text)
-                        # print(department_fee)
                         personal_fee = re_demo(
                             find_object.find_object_refund_fee(DB().get_account_name(share_teacher)).text)
                         refund_result = {'refunds_status': refunds_status, 'department_fee': department_fee,
