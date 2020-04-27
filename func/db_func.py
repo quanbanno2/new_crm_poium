@@ -91,7 +91,7 @@ class DB:
         my_cursor.close()
         self.my_con.close()
 
-    def get_account_info(self, login_name):
+    def get_account_name(self, login_name):
         """
         根据登录名查询教师名称
         @param login_name:
@@ -99,14 +99,36 @@ class DB:
         """
         teacher_name = ""
         my_cursor = self.my_con.cursor()
-        sql = "SELECT b.teacher_name FROM `test_user`.`usr_account_info` AS a,`test_user`.`usr_teacher_info` AS b " \
-              "WHERE a.login_name='%s' AND a.object_id=b.teacher_id" % login_name
+        sql = "SELECT object_type_cd FROM `test_user`.`usr_account_info` WHERE login_name ='%s'" % login_name
         my_cursor.execute(sql)
         result = my_cursor.fetchall()
-        for re in result:
-            teacher_name = re[0]
-        self.my_con.close()
-        return teacher_name
+        for res in result:
+            object_type = res[0]
+        try:
+            # 运营人员
+            if object_type == "A01":
+                sql_2 = "SELECT b.staff_name FROM `test_user`.`usr_account_info` AS a" \
+                        ",`test_user`.`usr_staff_info` AS b " \
+                        "WHERE a.login_name='%s' AND a.object_id=b.staff_id" % login_name
+                my_cursor.execute(sql_2)
+                result = my_cursor.fetchall()
+                for res in result:
+                    teacher_name = res[0]
+                self.my_con.close()
+                return teacher_name
+            # 老师
+            elif object_type == "A02":
+                sql_2 = "SELECT b.teacher_name FROM `test_user`.`usr_account_info` AS a" \
+                        ",`test_user`.`usr_teacher_info` AS b " \
+                        "WHERE a.login_name='%s' AND a.object_id=b.teacher_id" % login_name
+                my_cursor.execute(sql_2)
+                result = my_cursor.fetchall()
+                for res in result:
+                    teacher_name = res[0]
+                self.my_con.close()
+                return teacher_name
+        except:
+            print("账号名称错误")
 
     def reset_order_status(self, status, order_id):
         """

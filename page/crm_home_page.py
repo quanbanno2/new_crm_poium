@@ -2,13 +2,19 @@ from poium import Page, PageElement
 
 
 class GfyHomePage(Page):
-    more_home_remind = PageElement(
-        xpath="//button[@ng-click=\"$parent.switchModule('homeRemind')\"]",
+    approval_matter_loading = PageElement(
+        xpath="//div[@ng-show='showLoading' and @class='overlay ng-hide']",
+        describe="等待审批事项界面加载完成")
+    more_remind = PageElement(
+        xpath="//button[text()='更多']",
         describe="待办消息信息-更多按钮")
-    search_object_name_input = PageElement(
+    remind_type = PageElement(
+        xpath="//select[@ng-model='homeRemindParams.eventType']",
+        describe="提醒消息-提醒类型")
+    message_object_input = PageElement(
         xpath="//input[@placeholder='消息对象']",
         describe="提醒消息-消息对象输入框")
-    remind_content_search_input = PageElement(
+    message_content = PageElement(
         xpath="//input[@placeholder='消息内容']",
         describe="提醒消息-消息内容输入框")
     remind_center_approve_btn = PageElement(
@@ -22,7 +28,7 @@ class GfyHomePage(Page):
         describe="审批事项-审批办理（审批明细）")
     approval_result_input = PageElement(
         xpath="//input[@ng-value=\"'R01'\"]",
-        describe="审批事项审核-选择审核结果为通过的按钮")
+        describe="审批事项审核-通过")
     save_approval_result = PageElement(
         xpath="//button[@ng-click='saveApprovalResult()']",
         describe="审批事项审核-保存审批结果按钮")
@@ -32,3 +38,6 @@ class GfyHomePage(Page):
     ok_button = PageElement(
         xpath="//button[@data-bb-handler='ok']",
         describe="审批状态确定按钮")
+    approval_matter = PageElement(
+        xpath="//div[@class='modal fade']",
+        describe="审批事项模态框")

@@ -21,3 +21,19 @@ def find_order_pay_info(driver, context):
     @return:
     """
     return driver.find_element_by_xpath("//th[text()='%s']/following-sibling::td/span" % context)
+
+
+class find_object_element:
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    # 根据id查找退费按钮
+    def find_confirm_refund_button(self, order_id):
+        return self.driver.find_element_by_xpath("//a[text()='{}']/following::td[10]/button[4]".format(order_id))
+
+    def find_object_refund_fee(self, objects):
+        return self.driver.find_element_by_xpath("//span[text()='%s']/following::td[4]/span" % objects)
+    #
+    # def find_order_refund_teacher(self, teacher):
+    #     return self.driver.find_element_by_xpath("//span[text()='%s']/following::td[4]/span" % teacher)

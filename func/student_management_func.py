@@ -1,10 +1,10 @@
 from time import sleep
 from poium import PageWait, PageSelect
+from func.db_func import DB
 from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement, \
     GfyStudentOrderManagement
 from page.crm_cust_manger_page import GfyCrmCustomerManagement
-from page.crm_menu_page import GfyMenu
-from func.db_func import DB
+from page.crm_home_page import GfyHomePage
 
 
 def add_new_order(driver, school_name, course_name, case, subject_group_type, subject_group, responsible_name,
@@ -30,15 +30,15 @@ def add_new_order(driver, school_name, course_name, case, subject_group_type, su
     if case == "新招生":
         # 选择分成对象
         PageSelect(order_page.order_sharing_object_select[0], text=DB(
-        ).get_account_info(responsible_name))
+        ).get_account_name(responsible_name))
         sleep(1)
         order_page.order_sharing_object_select_btn.click()
     if case == "辅导续费":
         # 选择分成对象
         PageSelect(order_page.order_sharing_object_select[0], text=DB(
-        ).get_account_info(teacher_name))
+        ).get_account_name(teacher_name))
         PageSelect(order_page.order_sharing_object_select[1], text=DB(
-        ).get_account_info(responsible_name))
+        ).get_account_name(responsible_name))
         PageSelect(order_page.order_subject_group, text=subject_group_type)
         sleep(1)
         PageSelect(
@@ -47,11 +47,11 @@ def add_new_order(driver, school_name, course_name, case, subject_group_type, su
             order_page.order_sharing_object_select_btn.click()
     if case == "顾问转介绍":
         PageSelect(order_page.order_sharing_object_select[0], text=DB(
-        ).get_account_info(responsible_name))
+        ).get_account_name(responsible_name))
         PageSelect(order_page.order_sharing_object_select[1], text=DB(
-        ).get_account_info(responsible_name))
+        ).get_account_name(responsible_name))
         PageSelect(order_page.order_sharing_object_select[2], text=DB(
-        ).get_account_info(teacher_name))
+        ).get_account_name(teacher_name))
         while order_page.order_sharing_object_select_btn:
             order_page.order_sharing_object_select_btn.click()
     sleep(1)
@@ -67,13 +67,11 @@ def add_new_order(driver, school_name, course_name, case, subject_group_type, su
     order_page.order_save_stu_order.click()
 
 
-def pay_new_order(driver, case, status, order_id, discount, other_fee):
+def pay_new_order(driver, case, discount, other_fee):
     """
     未缴费、已缴部分订单的支付
-    @param order_id:
     @param driver:
     @param case:
-    @param status:
     @param discount:
     @param other_fee:
     @return:
@@ -114,6 +112,110 @@ def pay_new_order(driver, case, status, order_id, discount, other_fee):
     # 返回未交金额
     return unpaid, paid
 
+
+def order_refund(driver, school_name, order_id, teacher_account):
+    """
+    课程退费
+    @param teacher_account:
+    @param order_id:
+    @param driver:
+    @param school_name:
+    @return 退费学员姓名、预收款、课程总数、课程消耗、结算框的退费金额
+    """
+    order_page = GfyStudentOrderManagement(driver)
+    # 选择校区
+    PageSelect(order_page.student_order_school_id, text=school_name)
+    # 输入订单号
+    order_page.student_order_id.send_keys(order_id)
+    # 查询
+    order_page.order_info_loadStuOrderList.click()
+    # 等待订单管理loading完成
+    if order_page.student_order_loading:
+        order_page.order_detail[0].click()
+        # 等待订单详情loading完成
+        if order_page.order_detail_loading:
+            order_page.order_info_refund.click()
+            if order_page.order_refund_application:
+                refund_name = order_page.refund_name.text
+                refund_pre_fee = order_page.refund_pre_fee.text
+                refund_course_count = order_page.refund_course_count.text
+                refund_course_consume = order_page.refund_course_consume.text
+                refund_fee = order_page.refund_fee.get_attribute("value")
+                order_page.save_order_refund.click()
+                sleep(3)
+                # 等待审批事项确认界面loading完成
+                if order_page.order_confirm_loading:
+                    # 选择审批流程，只支持一个审批人
+                    approvalList = "%s-->通知发起人" % DB().get_account_name(teacher_account)
+                    PageSelect(order_page.approval_matter_setting, text=approvalList)
+                    # 审批发起确认
+                    order_page.save_approval_matter.click()
+                    PageWait(order_page.ok_button)
+                    order_page.ok_button.click()
+
+                fee_list = {'refund_name': refund_name, 'refund_pre_fee': refund_pre_fee,
+                            'refund_course_count': refund_course_count, 'refund_course_consume': refund_course_consume,
+                            'refund_fee': refund_fee}
+                # return refund_name, refund_pre_fee, refund_course_count, refund_course_consume, refund_fee
+                return fee_list
+
+
+def approval_matter(driver, message_object, refund_student, approval_type, remind_event_type):
+    """
+    审批事项
+    @param remind_event_type:
+    @param driver:
+    @param message_object:
+    @param refund_student:
+    @param approval_type:
+    @return:
+    """
+    home_page = GfyHomePage(driver)
+    home_page.more_remind.click()
+    PageWait(home_page.remind_center_approve_btn)
+    PageSelect(home_page.remind_type, value=remind_event_type)
+    home_page.message_object_input.send_keys(message_object)
+    home_page.message_content.send_keys(refund_student)
+    home_page.remind_center_approve_btn.click()
+    # 等待审批事项界面loading完成
+    if home_page.approval_matter_loading:
+        PageSelect(home_page.approval_matter_type, value=approval_type)
+        if home_page.approval_matter_loading:
+            # 进入审批流程界面
+            home_page.approval_matter_approval_detail.click()
+            sleep(1)
+            # 勾选审批通过
+            home_page.approval_result_input.click()
+            # 保存审批结果
+            home_page.save_approval_result.click()
+            PageWait(home_page.ok_button)
+            home_page.ok_button.click()
+
+
+# driver.execute_script("arguments[0].click();", order_page.order_info_refund)
+# sleep(1)
+# # 获取预收款、订购数量、消耗数量、学员名称、订单编号
+# refund_pre_fee_text = order_page.refund_pre_fee.text
+# refund_course_count_text = order_page.refund_course_count.text
+# refund_course_consume_text = order_page.refund_course_consume.text
+# # 获取客户名称
+# customer_name = order_page.order_customer_name.text
+# # 获取订单编号
+# order_id_text = order_page.order_id.text
+# sleep(1)
+# order_page.refund_remark.send_keys(remarks)
+# sleep(1)
+# order_page.save_order_refund.click()
+# PageWait(order_page.approval_matter_setting)
+# PageSelect(order_page.approval_matter_setting, text="辅导督导1-->通知发起人")
+# sleep(1)
+# order_page.save_approval_matter.click()
+# sleep(1)
+# # 计算退费结算金额
+# refund_fee_text = cal_refund_fee(refund_pre_fee_text, refund_course_count_text, refund_course_consume_text)
+# return customer_name, order_id_text, refund_fee_text
+
+
 # def refund_apply(driver, remarks):
 #     """
 #      订单退费
@@ -147,6 +249,25 @@ def pay_new_order(driver, case, status, order_id, discount, other_fee):
 #     # 计算退费结算金额
 #     refund_fee_text = cal_refund_fee(refund_pre_fee_text, refund_course_count_text, refund_course_consume_text)
 #     return customer_name, order_id_text, refund_fee_text
+
+
+def cal_refund_fee(pre_fee, course_count, course_consume):
+    """
+    计算退费结算金额 = 预收 - （预收/课程总量*消耗课程数量）
+    :param pre_fee:预收金额
+    :param course_count:课程总数量
+    :param course_consume:已消耗课程
+    :return:退费结果
+    """
+    pre_fee = float(pre_fee)
+    course_count = float(course_count)
+    course_consume = float(course_consume)
+    refund_fee = pre_fee - (pre_fee / course_count * course_consume)
+    # 保留两位、四舍五入,以字符串格式返回
+    # return str(Context(prec=6, rounding=ROUND_HALF_UP).create_decimal(refund_fee))
+    refund_fee = "%.2f" % refund_fee
+    refund_fee = float(refund_fee)
+    return refund_fee
 #
 #
 # def audio_upload(driver, audio_dir):

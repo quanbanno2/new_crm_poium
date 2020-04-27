@@ -2,9 +2,12 @@ from poium import Page, PageElement
 
 
 class GfyMenu(Page):
-    menu_acitve = PageElement(
+    menu_loading = PageElement(
+        xpath="//div[@ng-show='$root.somethingLoading' and @class='overlay ng-hide']",
+        describe="登录后loading目录")
+    menu_active = PageElement(
         xpath="//li[@class='treeview ng-scope active']",
-        describe="目录展开")
+        describe="1级目录展开")
     dashboard = PageElement(
         link_text="首页",
         describe="首页按钮")
@@ -33,17 +36,21 @@ class GfyMenu(Page):
         xpath="//span[text()='财务管理']",
         describe="菜单-财务管理按钮")
     finance_fee_info = PageElement(
+        # xpath="//span[text()='缴费退费信息']",
         link_text="缴费退费信息",
         describe="菜单-财务管理-缴费退费信息按钮")
     finance_refund_info = PageElement(
         xpath="//a[text()='退费信息']",
-        describe="菜单-财务管理-缴费退费信息-退费信息按钮")
+        describe="菜单-财务管理-缴费退费信息-退费信息")
     personnel_manage = PageElement(
         link_text="人事管理",
         describe="人事管理")
     staff_info = PageElement(
         xpath="//span[text()='员工信息']",
         describe="人事管理-员工信息")
+    menu_active_2 = PageElement(
+        xpath="//li[@class='treeview active']",
+        describe="2级目录展开")
     staff_base_info = PageElement(
         xpath="//a[text()='基础信息']",
         describe="人事管理-员工信息-基础信息")

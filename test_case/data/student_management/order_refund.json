@@ -1,0 +1,28 @@
+[
+  {
+    "case": "全部退费",
+    "loginAccount": "高分云辅导督导1",
+    "messageObject": "退费申请:待审批",
+    "approvalType": "A05",
+    "remindEventType": "R01",
+    "password": "123456",
+    "schoolName": "高分云",
+    "orderId": "11426",
+    "shareObject": "高分云教务1",
+    "shareDepartment": "高分云教务部",
+    "msg": "保存成功"
+  },
+  {
+    "case": "部分退费",
+    "loginAccount": "高分云辅导督导1",
+    "messageObject": "退费申请:待审批",
+    "approvalType": "A05",
+    "remindEventType": "R01",
+    "password": "123456",
+    "schoolName": "高分云",
+    "orderId": "11421",
+    "shareObject": "高分云教务1",
+    "shareDepartment": "高分云教务部",
+    "msg": "保存成功"
+  }
+]

@@ -2,6 +2,7 @@ import pymysql
 from selenium import webdriver
 from time import sleep
 import re
+from _pydecimal import Context, ROUND_HALF_UP
 
 
 def database_connect():
@@ -122,13 +123,33 @@ def get_account_info(login_name):
                              'edu_test_user',
                              'Quanlang_edu_test')
     my_cursor = my_con.cursor()
-    sql = "SELECT b.`name` FROM `test_user`.`usr_account_info` AS a,`test_user`.`usr_staff_base_info` AS b " \
-          "WHERE a.login_name='%s' AND a.account_no=b.account_no" % login_name
+    sql = "SELECT object_type_cd FROM `test_user`.`usr_account_info` WHERE login_name ='%s'" % login_name
     my_cursor.execute(sql)
     result = my_cursor.fetchall()
-    for re in result:
-        account_name = re[0]
-    return account_name
+    for res in result:
+        object_type = res[0]
+    try:
+        if object_type == "A01":
+            sql_2 = "SELECT b.staff_name FROM `test_user`.`usr_account_info` AS a,`test_user`.`usr_staff_info` AS b " \
+                    "WHERE a.login_name='%s' AND a.object_id=b.staff_id" % login_name
+            my_cursor.execute(sql_2)
+            result = my_cursor.fetchall()
+            for res in result:
+                teacher_name = res[0]
+            my_con.close()
+            return teacher_name
+        elif object_type == "A02":
+            sql_2 = "SELECT b.teacher_name FROM `test_user`.`usr_account_info` AS a" \
+                    ",`test_user`.`usr_teacher_info` AS b " \
+                    "WHERE a.login_name='%s' AND a.object_id=b.teacher_id" % login_name
+            my_cursor.execute(sql_2)
+            result = my_cursor.fetchall()
+            for res in result:
+                teacher_name = res[0]
+            my_con.close()
+            return teacher_name
+    except:
+        print("账号名称错误")
 
 
 # name = "客户577"
@@ -136,7 +157,7 @@ def get_account_info(login_name):
 
 # new_staff_name_by_sql()
 
-# lis = get_account_info("高分云指导督导1")
+# lis = get_account_info("高分云辅导哈")
 # print(lis)
 
 
@@ -152,9 +173,37 @@ def by_xpath(driver, context):
 #
 # xt = by_xpath(wd, "抗击肺炎").click()
 # sleep(5)
+#
+# tezt = filter(str.isdigit, "￥24.4")
+# print(''.join(list(tezt)))
+#
+# tezt1 = re.search("\d+(\.\d+)?", "-550")
+# print(tezt1.group())
 
-tezt = filter(str.isdigit, "￥24.4")
-print(''.join(list(tezt)))
 
-tezt1 = re.search("\d+(\.\d+)?", "$123")
-print(type(tezt1.group()))
+def cal_refund_fee(pre_fee, course_count, course_consume):
+    """
+    计算退费结算金额 = 预收 - （预收/课程总量*消耗课程数量）
+    :param pre_fee:预收金额
+    :param course_count:课程总数量
+    :param course_consume:已消耗课程
+    :return:退费结果
+    """
+    pre_fee = float(pre_fee)
+    course_count = float(course_count)
+    course_consume = float(course_consume)
+    refund_fee = pre_fee - (pre_fee / course_count * course_consume)
+    # 保留两位、四舍五入,以字符串格式返回
+    # return str(Context(prec=7, rounding=ROUND_HALF_UP).create_decimal(refund_fee))
+    refund_fee = "%.2f" % refund_fee
+    refund_fee = float(refund_fee)
+    print(type(refund_fee))
+
+    return refund_fee
+
+
+p = cal_refund_fee("55", "3", "0")
+
+print(p)
+
+print(float("55"))
