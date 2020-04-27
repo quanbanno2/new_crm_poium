@@ -224,7 +224,7 @@ class GfyStudentOrderManagement(Page):
     student_order_id = PageElement(
         xpath="//input[@name='orderId']",
         describe="学员订单管理-订单编号")
-    student_order_schoole_id = PageElement(
+    student_order_school_id = PageElement(
         xpath="//select[@ng-model='stuOrderParam.schoolId']",
         describe="学员订单管理-归属校区下拉框")
     student_order_pay_btn = PageElement(
@@ -285,46 +285,49 @@ class GfyStudentOrderManagement(Page):
     """
     退费
     """
-    order_detail = PageElement(
-        xpath="//i[@class='fa fa-fw fa-search']",
-        describe="学员订单管理-第一名学员的订单详情按钮")
+    order_detail = PageElements(
+        xpath="//button[@title='订单详情']",
+        describe="学员订单管理-学员的订单详情按钮")
+    order_detail_loading = PageElement(
+        xpath="//div[@ng-show='$root.somethingLoading' and @class='overlay ng-hide']",
+        describe="订单详情已经loading完成")
     order_customer_name = PageElement(
         xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[1]/td[2]",
         describe="订单详情-退费申请-学员名称")
-    order_id = PageElement(
-        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[1]/td[1]",
-        describe="订单详情-退费申请-订单编号")
+    order_refund_application = PageElement(
+        xpath="//div[@class='modal fade in']",
+        describe="等待退费申请模态框出现")
     order_info_refund = PageElement(
-        xpath="//button[@ng-click=\"stuToRefund(item,'refund')\"]",
+        # xpath="//button[@ng-click=\"stuToRefund(item,'refund')\"]",
+        xpath="//button[text()='退费']",
         describe="订单详情-退费按钮")
-    application_for_refund = PageElement(
+    refund_fee = PageElement(
         xpath="//input[@name='refundFee']",
-        describe="退费申请-结算金额")
+        describe="退费申请-退费金额")
+    refund_name = PageElement(
+        xpath="//th[text()='学员姓名']/following-sibling::td[@class='ng-binding']",
+        describe="退费申请-学员姓名")
     refund_pre_fee = PageElement(
-        xpath="/html/body/div[1]/div[1]/div[1]/div[2]/div/div/div[2]/form/div/table/tbody/tr[2]/td[2]",
+        xpath="//th[text()='预收金额']/following-sibling::td",
         describe="退费申请-预收金额")
     refund_course_count = PageElement(
-        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[5]/td[1]/span",
-        describe="退费申请-订购数量")
-
+        xpath="//th[text()='订购数量']/following-sibling::td[1]/span",
+        describe="退费申请-订购总数量")
     refund_course_consume = PageElement(
-        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[5]/td[2]/span",
+        xpath="//th[text()='消耗数量']/following-sibling::td[1]/span",
         describe="退费申请-消耗数量")
-    refund_remark = PageElement(
-        xpath="//textarea[@name='remark']",
-        describe="退费申请-备注")
     save_order_refund = PageElement(
         xpath="//button[@ng-click='stuOrderSaveFinanceRefundApply()']",
-        describe="退费申请-保存退费按钮")
-    approval_confirm_account = PageElement(
-        xpath="//*[@id=\"approvalMatterDialog\"]/div/div/div[2]/table/tbody/tr[5]/td/span",
-        describe="审批事项确认-审批流程账号")
+        describe="退费申请-确定退费按钮")
+    order_confirm_loading = PageElement(
+        xpath="//div[@ng-show='stuOrderSaveFinanceRefundApplyLoading' and @class='overlay ng-hide']",
+        describe="等待审批事项确认界面")
     approval_matter_setting = PageElement(
         xpath="//select[@title='选择审批流程']",
         describe="审批事项确认-审批流程选择框")
     save_approval_matter = PageElement(
         xpath="//button[@ng-click='saveApprovalMatter(approvalMatter)']",
         describe="审批事项确认按钮")
-    approval_matter_status = PageElement(
-        xpath="//div[@class='bootbox-body']",
-        describe="断言审批申请")
+    # approval_matter_status = PageElement(
+    #     xpath="//div[@class='bootbox-body']",
+    #     describe="断言审批申请")

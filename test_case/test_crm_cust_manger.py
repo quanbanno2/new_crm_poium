@@ -104,16 +104,11 @@ class TestCustomerManagement:
         page = GfyCrmCustomerManagement(browser1)
         # 客户名称自动生成
         customer_name = DB().new_customer_name_by_sql()
-        if case == "新招生创建客户成功":
-            login(crm_url, browser1, loginAccount, password)
-            add_customer(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
-            PageWait(page.save_status)
-            assert page.save_status.text == msg
-        elif case == "顾问转介绍创建客户成功":
-            login(crm_url, browser1, loginAccount, password)
-            add_customer(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
-            PageWait(page.save_status)
-            assert page.save_status.text == msg
+        login(crm_url, browser1, loginAccount, password)
+        add_customer(browser1, customer_name, businessType, activityName, phoneNumber, schoolName)
+        PageWait(page.save_status)
+        save_text = page.save_status.text
+        assert save_text == msg
 
     # @pytest.mark.parametrize(
     #     "case,businessType,loginAccount,password,activityName,phoneNumber,msg",
@@ -322,7 +317,7 @@ class TestCustomerManagement:
                 try:
                     assert page.customer_recovery_date[0].text == "--"
                 finally:
-                    assert page.customer_recovery_teacher[0].text == DB().get_account_info(teacherName)
+                    assert page.customer_recovery_teacher[0].text == DB().get_account_name(teacherName)
             # elif case == "客户批量回收":
             # 问题：循环会在第二次失败断言后跳出，无法进入第二次循环进行断言
             #     try:
@@ -351,7 +346,7 @@ if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_recovery"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer_success"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
 
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",

@@ -28,22 +28,6 @@ def cal_service_charge(charge):
     return service_charge
 
 
-def cal_refund_fee(pre_fee, course_count, course_consume):
-    """
-    计算退费结算金额 = 预收 - （预收/课程单价*消耗课程数量）
-    :param pre_fee:预收金额
-    :param course_count:课程总数量
-    :param course_consume:已消耗课程
-    :return:
-    """
-    pre_fee = float(pre_fee)
-    course_count = float(course_count)
-    course_consume = float(course_consume)
-    refund_fee = pre_fee - (pre_fee / course_count * course_consume)
-    # 保留两位、四舍五入,以字符串格式返回
-    return str(Context(prec=6, rounding=ROUND_HALF_UP).create_decimal(refund_fee))
-
-
 def operate_delete_customer(driver):
     """
     我的客户-删除客户信息操作
