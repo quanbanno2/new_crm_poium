@@ -319,7 +319,6 @@ def add_customer_intent(driver, school_name, activity_type, activity_name, respo
     intent_page.activity_type_touched.send_keys(activity_type)
     sleep(1)
     # 选择活动类型
-    # driver.find_element_by_xpath("//button[contains(.,'%s') and @title]" % activity_type).click()
     by_xpath_contains(driver, "button", activity_type, "@title").click()
     sleep(1)
     # 输入活动名称

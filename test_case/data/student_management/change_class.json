@@ -1,0 +1,28 @@
+[
+  {
+    "case": "单个学员换班",
+    "operateAccount": "高分云辅导督导1",
+    "password": "123456",
+    "studentCount": 1,
+    "schoolName": "高分云",
+    "courseParamsStatus": "在校",
+    "studentName": "高分云王大陆",
+    "orderCourseId": "11368",
+    "objectClass": "测试自动化专用班级",
+    "originClassId": "468",
+    "msg": "成功"
+  },
+  {
+    "case": "批量学员换班",
+    "operateAccount": "高分云辅导督导1",
+    "password": "123456",
+    "studentCount": 2,
+    "schoolName": "高分云",
+    "courseParamsStatus": "在校",
+    "studentName": "高分云王大陆",
+    "orderCourseId": "11368,11367",
+    "objectClass": "测试自动化专用班级",
+    "originClassId": "468",
+    "msg": "成功"
+  }
+]

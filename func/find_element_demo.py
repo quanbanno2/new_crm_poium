@@ -20,7 +20,7 @@ def find_order_pay_info(driver, context):
     @param context:
     @return:
     """
-    return driver.find_element_by_xpath("//th[text()='%s']/following-sibling::td/span" % context)
+    return driver.find_element_by_xpath("//th[text()='{}']/following-sibling::td/span".format(context))
 
 
 class find_object_element:
@@ -33,7 +33,13 @@ class find_object_element:
         return self.driver.find_element_by_xpath("//a[text()='{}']/following::td[10]/button[4]".format(order_id))
 
     def find_object_refund_fee(self, objects):
-        return self.driver.find_element_by_xpath("//span[text()='%s']/following::td[4]/span" % objects)
-    #
-    # def find_order_refund_teacher(self, teacher):
-    #     return self.driver.find_element_by_xpath("//span[text()='%s']/following::td[4]/span" % teacher)
+        return self.driver.find_element_by_xpath("//span[text()='{}']/following::td[4]/span".format(objects))
+
+    # 根据订单课程id找到换课按钮
+    def find_course_change_class(self, order_course_id):
+        return self.driver.find_element_by_xpath(
+            "//td[text()='{}']/following::td[14]/button[5]".format(order_course_id))
+
+    # 根据订单id找到当前班级
+    def find_course_class(self, order_course_id):
+        return self.driver.find_element_by_xpath("//td[text()='{}']/following::td[4]".format(order_course_id))

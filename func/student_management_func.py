@@ -1,10 +1,10 @@
 from time import sleep
 from poium import PageWait, PageSelect
 from func.db_func import DB
-from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement, \
-    GfyStudentOrderManagement
+from page.crm_student_management_page import GfyCrmStudentInClassManagement, GfyStudentOrderManagement
 from page.crm_cust_manger_page import GfyCrmCustomerManagement
 from page.crm_home_page import GfyHomePage
+from func.find_element_demo import find_object_element
 
 
 def add_new_order(driver, school_name, course_name, case, subject_group_type, subject_group, responsible_name,
@@ -156,7 +156,6 @@ def order_refund(driver, school_name, order_id, teacher_account):
                 fee_list = {'refund_name': refund_name, 'refund_pre_fee': refund_pre_fee,
                             'refund_course_count': refund_course_count, 'refund_course_consume': refund_course_consume,
                             'refund_fee': refund_fee}
-                # return refund_name, refund_pre_fee, refund_course_count, refund_course_consume, refund_fee
                 return fee_list
 
 
@@ -192,65 +191,6 @@ def approval_matter(driver, message_object, refund_student, approval_type, remin
             home_page.ok_button.click()
 
 
-# driver.execute_script("arguments[0].click();", order_page.order_info_refund)
-# sleep(1)
-# # 获取预收款、订购数量、消耗数量、学员名称、订单编号
-# refund_pre_fee_text = order_page.refund_pre_fee.text
-# refund_course_count_text = order_page.refund_course_count.text
-# refund_course_consume_text = order_page.refund_course_consume.text
-# # 获取客户名称
-# customer_name = order_page.order_customer_name.text
-# # 获取订单编号
-# order_id_text = order_page.order_id.text
-# sleep(1)
-# order_page.refund_remark.send_keys(remarks)
-# sleep(1)
-# order_page.save_order_refund.click()
-# PageWait(order_page.approval_matter_setting)
-# PageSelect(order_page.approval_matter_setting, text="辅导督导1-->通知发起人")
-# sleep(1)
-# order_page.save_approval_matter.click()
-# sleep(1)
-# # 计算退费结算金额
-# refund_fee_text = cal_refund_fee(refund_pre_fee_text, refund_course_count_text, refund_course_consume_text)
-# return customer_name, order_id_text, refund_fee_text
-
-
-# def refund_apply(driver, remarks):
-#     """
-#      订单退费
-#     :param driver:
-#     :param remarks:
-#     :return: customer_name 客户名称、order_id_text 订单编号、refund_fee_text 应退费值
-#     """
-#     order_page = GfyCustomerAddOrder(driver)
-#     sleep(1)
-#     order_page.order_detail.click()
-#     sleep(1)
-#     driver.execute_script("arguments[0].click();", order_page.order_info_refund)
-#     sleep(1)
-#     # 获取预收款、订购数量、消耗数量、学员名称、订单编号
-#     refund_pre_fee_text = order_page.refund_pre_fee.text
-#     refund_course_count_text = order_page.refund_course_count.text
-#     refund_course_consume_text = order_page.refund_course_consume.text
-#     # 获取客户名称
-#     customer_name = order_page.order_customer_name.text
-#     # 获取订单编号
-#     order_id_text = order_page.order_id.text
-#     sleep(1)
-#     order_page.refund_remark.send_keys(remarks)
-#     sleep(1)
-#     order_page.save_order_refund.click()
-#     PageWait(order_page.approval_matter_setting)
-#     PageSelect(order_page.approval_matter_setting, text="辅导督导1-->通知发起人")
-#     sleep(1)
-#     order_page.save_approval_matter.click()
-#     sleep(1)
-#     # 计算退费结算金额
-#     refund_fee_text = cal_refund_fee(refund_pre_fee_text, refund_course_count_text, refund_course_consume_text)
-#     return customer_name, order_id_text, refund_fee_text
-
-
 def cal_refund_fee(pre_fee, course_count, course_consume):
     """
     计算退费结算金额 = 预收 - （预收/课程总量*消耗课程数量）
@@ -268,8 +208,68 @@ def cal_refund_fee(pre_fee, course_count, course_consume):
     refund_fee = "%.2f" % refund_fee
     refund_fee = float(refund_fee)
     return refund_fee
-#
-#
+
+
+class studentCourseManagement:
+
+    @staticmethod
+    def student_change_class(driver, school_id, course_params_status, student_name, class_name, student_count,
+                             order_course_id):
+        """
+
+        @param order_course_id:
+        @param driver:
+        @param school_id:
+        @param course_params_status:
+        @param student_name:
+        @param class_name:
+        @param student_count:
+        @return: 学员分班保存状态
+        """
+        i = 0
+        className = []
+        # order_course_id = order_course_id.split(",")
+        course_page = GfyStudentOrderManagement(driver)
+        # 已分班界面
+        course_page.course_management_Divided.click()
+        # 选择校区
+        PageSelect(course_page.course_school_id, text=school_id)
+        # 选择在校状态
+        PageSelect(course_page.course_params_status, text=course_params_status)
+        # 输入学院名称
+        course_page.course_student_name.send_keys(student_name)
+        # 移除教学老师
+        course_page.course_set_teacher_close.click()
+        # 查询
+        course_page.course_management_query.click()
+        find_object = find_object_element(driver)
+        if course_page.course_loading:
+            # 勾选学员
+            while i < len(order_course_id):
+                course_page.course_checkbox[i].click()
+                i += 1
+            # 批量换班按钮
+            course_page.batch_change_class.click()
+            # 等待班级列表loading完成
+            if course_page.class_loading:
+                # 输入目标班级名称
+                course_page.class_name.send_keys(class_name)
+                # 选择目标班级
+                course_page.class_choice.click()
+                # 等待分班确认模态框loading完成
+                if course_page.confirm_dialog_loading:
+                    # 确定保存
+                    course_page.save_change_class.click()
+                    PageWait(driver.find_element_by_xpath("//p[contains(.,'学员分班保存')]/b"))
+                    changeStatus = driver.find_element_by_xpath("//p[contains(.,'学员分班保存')]/b").text
+                    sleep(1)
+                    # 获取换班后的班级名称
+                    for re in order_course_id:
+                        className.append(find_object.find_course_class(re).text)
+                    course_page.ok_button.click()
+                    assert_dict = {"changeStatus": changeStatus, "className": className}
+                    return assert_dict
+
 # def audio_upload(driver, audio_dir):
 #     """
 #     上传沟通音频

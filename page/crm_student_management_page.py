@@ -1,37 +1,6 @@
 from poium import Page, PageElement, PageElements
 
 
-class GfyCrmStudentCourseManagement(Page):
-    """
-    学员课程管理
-    """
-    # 分班
-    undivided_student = PageElement(
-        link_text="未分班学员",
-        describe="学员课程管理-未分班学员")
-    student_select_class = PageElements(
-        xpath="//button[text()='分配班级']",
-        describe="学员课程管理-未分班学员-分配班级按钮")
-    sch_course_class_search_class_name = PageElement(
-        xpath="//input[@ng-model='schCourseClassRelationSearch.className']",
-        describe="上课班级-班级名称输入框")
-    sch_course_class_search_class_name_button = PageElements(
-        xpath="//button[text()='选定班级']",
-        describe="上课班级-选定班级")
-    sch_order_course_class_save = PageElement(
-        xpath="//button[@ng-click='stuOrderCourseChangClassSave()']",
-        describe="上课班级-分班确认")
-    # sch_course_class_search_class_name_confirm = PageElement(
-    #     xpath="//button[@data-bb-handler='confirm']",
-    #     describe="上课班级-确认分配")
-    student_select_class_status = PageElement(
-        xpath="//h3[text()='保存成功']",
-        describe="学员分配班级结果（成功）")
-    student_select_class_ok = PageElement(
-        xpath="//button[@data-bb-handler='ok']",
-        describe="分班成功确认按钮")
-
-
 class GfyCrmStudentInClassManagement(Page):
     """
     学员上课管理
@@ -291,9 +260,6 @@ class GfyStudentOrderManagement(Page):
     order_detail_loading = PageElement(
         xpath="//div[@ng-show='$root.somethingLoading' and @class='overlay ng-hide']",
         describe="订单详情已经loading完成")
-    order_customer_name = PageElement(
-        xpath="//*[@id=\"stuOrderRefundDialog\"]/div/div/div[2]/form/div/table/tbody/tr[1]/td[2]",
-        describe="订单详情-退费申请-学员名称")
     order_refund_application = PageElement(
         xpath="//div[@class='modal fade in']",
         describe="等待退费申请模态框出现")
@@ -331,3 +297,50 @@ class GfyStudentOrderManagement(Page):
     # approval_matter_status = PageElement(
     #     xpath="//div[@class='bootbox-body']",
     #     describe="断言审批申请")
+    # 学院课程管理
+    course_management_Divided = PageElement(
+        xpath="//b[text()='已分班学员']",
+        describe="学员课程管理-已分班学员页")
+    course_school_id = PageElement(
+        xpath="//select[@ng-model='stuOrderCourseParam.schoolId']",
+        describe="学员课程管理-已分班学员页-归属校区")
+    course_params_status = PageElement(
+        xpath="//select[@ng-model='stuOrderCourseParamStatus.curr']",
+        describe="学员课程管理-已分班学员页-在校状态")
+    course_student_name = PageElement(
+        xpath="//input[@ng-model='stuOrderCourseParam.studentNameLike']",
+        describe="学员课程管理-已分班学员页-学员姓名")
+    course_set_teacher_close = PageElement(
+        xpath="//button[@ng-click='stuOrderCourseSetParam({})']",
+        describe="学员课程管理-已分班学员页-移除教学老师")
+    course_management_query = PageElement(
+        xpath="//button[@ng-click='loadStuOrderCourseList()']",
+        describe="学员课程管理-已分班学员页-查询")
+    course_loading = PageElement(
+        xpath="//div[@ng-show='stuOrderCourseLoading' and @class='overlay ng-hide']",
+        describe="课程查询loading完成")
+    class_loading = PageElement(
+        xpath="//div[@ng-show='schCourseClassRelationLoading' and @class='overlay ng-hide']",
+        describe="等待班级列表loading完成")
+    class_name = PageElement(
+        xpath="//input[@ng-model='schCourseClassRelationSearch.className']",
+        describe="上课班级-班级名称输入框")
+
+    class_choice = PageElement(
+        xpath="//button[text()='选定班级']",
+        describe="班级列表-选定班级")
+    confirm_dialog_loading =PageElement(
+        xpath="//div[@class='modal fade in' and @id ='stuCourseDialogClassify']",
+        describe="等待分班确认模态框出现")
+    save_change_class = PageElement(
+        xpath="//button[@ng-click='stuOrderCourseChangClassSave()']",
+        describe="保存换班操作")
+    change_class_button = PageElement(
+        xpath="//button[@ng-click='openClassSelectDialog(item)']",
+        describe="学员课程管理-换班按钮")
+    course_checkbox = PageElements(
+        xpath="//input[@ng-model='item.selected']",
+        describe="学课程管理-复选框")
+    batch_change_class = PageElement(
+        xpath="//button[text()='批量换班']",
+        describe="学员课程管理-批量换班")

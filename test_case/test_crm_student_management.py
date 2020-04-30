@@ -1,26 +1,27 @@
 import pytest
 import sys
-from conftest import DATA_DIR
-from func.student_management_func import add_new_order, pay_new_order, order_refund, approval_matter, cal_refund_fee
+
+# 定义搜索模块顺序，优先搜索new_crm_poium文件夹
+from os.path import dirname, abspath
+
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
+from page.crm_menu_page import GfyMenu
+from page.crm_home_page import GfyHomePage
+from page.crm_cust_manger_page import GfyCrmCustomerManagement
+from page.crm_student_management_page import GfyStudentOrderManagement
+from func.student_management_func import studentCourseManagement, add_new_order, pay_new_order, order_refund, \
+    approval_matter, cal_refund_fee
 from func.customer_management_func import login, add_customer_intent
 from func.get_data import get_json_data
 from func.find_element_demo import by_xpath_contains, find_order_pay_info
 from func.re_demo import re_demo
 from func.db_func import DB
-from page.crm_menu_page import GfyMenu
-from page.crm_home_page import GfyHomePage
-from page.crm_cust_manger_page import GfyCrmCustomerManagement
-from page.crm_student_management_page import GfyCrmStudentCourseManagement, GfyCrmStudentInClassManagement, \
-    GfyStudentOrderManagement
-
 from func.finance_management_func import finance_management
 
 from time import sleep
 from poium import PageWait, PageSelect
-# 定义搜索模块顺序，优先搜索new_crm_poium文件夹
-from os.path import dirname, abspath
 
-sys.path.insert(0, dirname(dirname(abspath(__file__))))
+from conftest import DATA_DIR
 
 
 class TestCustomerAddOrder:
@@ -163,8 +164,7 @@ class TestCustomerAddOrder:
                         sleep(1)
                         menu_page.finance_fee_info.click()
                         menu_page.finance_refund_info.click()
-                        refund_result = finance_management.refund_info(browser1, orderId, shareDepartment,
-                                                                       shareObject)
+                        refund_result = finance_management.refund_info(browser1, orderId, shareDepartment, shareObject)
                         try:
                             # 部门业绩断言
                             assert float(fee_list['refund_fee']) == float(refund_result['department_fee'])
@@ -177,61 +177,60 @@ class TestCustomerAddOrder:
                                     # 退费结果断言
                                     assert refund_result['refunds_status'] == msg
                                 finally:
+                                    # 重置测试数据
                                     DB().reset_order_class_status(case, orderId)
 
 
 #
-# class TestStuCourseManagement:
-#     """
-#     学员课程管理
-#     """
-#
-#     def test_student_select_class(self, browser1, crm_url, counseling_supervision_account, pass_word, class_name,
-#                                   course, phone_number, jigou_school_name, counseling_supervision_name):
-#         """
-#         测试单个学员分班
-#         @param browser1:
-#         @param crm_url:
-#         @param counseling_supervision_account:
-#         @param pass_word:
-#         @param class_name:
-#         @param course:
-#         @param phone_number:
-#         @param jigou_school_name:
-#         @param counseling_supervision_name:
-#         @return:
-#         """
-#         customer_page = GfyCrmCustomerManagement(browser1)
-#         order_page = GfyCustomerAddOrder(browser1)
-#         student_page = GfyCrmStudentCourseManagement(browser1)
-#         login(crm_url, browser1, counseling_supervision_account, pass_word)
-#         add_customer(browser1, DB().new_customer_name_by_sql(), phone_number)
-#         sleep(1)
-#         split_customer(browser1, counseling_supervision_account)
-#         sleep(1)
-#         convert_student(browser1, jigou_school_name)
-#         sleep(1)
-#         customer_page.customer_ok_button.click()
-#         sleep(1)
-#         create_account(browser1, pass_word, jigou_school_name)
-#         sleep(1)
-#         customer_page.customer_ok_button.click()
-#         sleep(1)
-#         customer_page.customer_list.click()
-#         sleep(1)
-#         add_new_order(browser1, counseling_supervision_name, course, jigou_school_name)
-#         sleep(1)
-#         order_page.order_status_confirm.click()
-#         sleep(1)
-#         pay_new_order(browser1)
-#         PageWait(customer_page.cancel_btn)
-#         customer_page.cancel_btn.click()
-#         sleep(1)
-#         student_select_class(browser1, class_name)
-#         PageWait(student_page.student_select_class_status)
-#         assert student_page.student_select_class_status.text == "保存成功"
-#
-#
+class TestStuCourseManagement:
+    """
+    学员课程管理
+    """
+
+    @pytest.mark.parametrize(
+        "case,operateAccount,password,studentCount,schoolName,courseParamsStatus,studentName,orderCourseId,"
+        "objectClass,originClassId,msg", get_json_data(DATA_DIR + "student_management" + "/change_class.json"))
+    def test_student_change_class(self, browser1, crm_url, case, operateAccount, password, studentCount, schoolName,
+                                  courseParamsStatus, studentName, orderCourseId, objectClass, originClassId, msg):
+        """
+        测试学员换班流程
+        @param browser1:
+        @param crm_url:
+        @param case:
+        @param operateAccount:
+        @param password:
+        @param studentCount:
+        @param schoolName:
+        @param courseParamsStatus:
+        @param studentName:
+        @param objectClass:
+        @param msg:
+        @return:
+        """
+        course_page = GfyStudentOrderManagement(browser1)
+        menu_page = GfyMenu(browser1)
+        login(crm_url, browser1, operateAccount, password)
+        order_course_id = orderCourseId.split(",")
+        if menu_page.menu_loading:
+            menu_page.student_management.click()
+            if menu_page.menu_active:
+                menu_page.student_course_management.click()
+                if course_page.course_loading:
+                    # 执行换班流程
+                    assert_dict = studentCourseManagement.student_change_class(browser1, schoolName,
+                                                                               courseParamsStatus, studentName,
+                                                                               objectClass, studentCount,
+                                                                               order_course_id)
+                    try:
+                        assert assert_dict['changeStatus'] == msg
+                    finally:
+                        try:
+                            for re in assert_dict['className']:
+                                assert re == objectClass
+                        finally:
+                            DB().reset_order_course_status(order_course_id, originClassId)
+
+
 # class TestStudentClassManagement:
 #     """
 #     学员上课管理
@@ -458,9 +457,9 @@ class TestCustomerAddOrder:
 
 if __name__ == '__main__':
     #     pytest.main()
-    pytest.main(
-        ["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_student_refund"])
-#     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_select_class"])
+    # pytest.main(
+    # ["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_pay_new_order"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_change_class"])
 #         pytest.main(["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_add_new_order"])
 #     pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_in_class"])
 #     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",

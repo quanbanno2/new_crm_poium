@@ -54,3 +54,4 @@ class GfyMenu(Page):
     staff_base_info = PageElement(
         xpath="//a[text()='基础信息']",
         describe="人事管理-员工信息-基础信息")
+
