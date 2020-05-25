@@ -1,11 +1,129 @@
 from time import sleep
 from poium import PageWait, PageSelect
-from _pydecimal import Context, ROUND_HALF_UP
-from page.crm_cust_manger_page import GfyCrmCustomerManagement, GfyCustomerDataEliminate
+# from _pydecimal import Context, ROUND_HALF_UP
+from page.crm_customer_management_page import GfyCrmCustomerManagement, GfyCustomerDataEliminate
 from page.crm_menu_page import GfyMenu
 from page.crm_login_page import GfyLogin
-# from func.find_element_demo import by_xpath_contains
-from func.find_element_demo import by_xpath_contains
+from func.xpath_element import by_xpath_contains
+from func.find_element_by_js import find_js_element
+
+
+class customerManagementFunc:
+
+    def __init__(self, driver):
+        self.driver = driver
+        self.customer_page = GfyCrmCustomerManagement(driver)
+
+    def customer_communication(self, communication_info, communication_result, is_visit, next_day):
+        """
+        新增客户沟通邀约流程
+        @param next_day:
+        @param is_visit:
+        @param communication_result:
+        @param communication_info:
+        @return:
+        """
+        customer_page = self.customer_page
+        customer_page.communication_info.click()
+        # 等待沟通界面加载完成
+        sleep(1)
+        # 新增沟通信息
+        customer_page.communication_add.click()
+        # 等待新增沟通信息模态框
+        sleep(1)
+        # 点击添加跟进人
+        customer_page.communicate_liable.click()
+        # 等待跟进人列表加载完成
+        if customer_page.responsible_list_loading:
+            customer_page.choose_teacher.click()
+            # 输入沟通内容
+            customer_page.textarea.send_keys(communication_info)
+            # 勾选沟通结果
+            by_xpath_contains(self.driver, "label", communication_result).click()
+            # 勾选承诺到访
+            self.driver.find_element_by_xpath(
+                "//th[text()='承诺到访']/following::td/label[contains(.,'{}')]".format(is_visit))
+            if is_visit == "是":
+                visitDate = customer_page.visit_date
+                # 清除到会日期readonly
+                self.driver.execute_script(find_js_element.remove_attribute("readonly"), visitDate)
+                # 输入到会时间
+                visitDate.send_keys(next_day)
+                # 保存沟通记录
+            customer_page.save_communication.click()
+            PageWait(customer_page.save_status)
+            save_status = customer_page.save_status.text
+            # 得到沟通结果
+            communicationResult = customer_page.communicate_result.text
+            # 得到承诺到访结果
+            isVisit = customer_page.is_visit.text
+            # 返回保存状态、沟通结果、是否到访
+            assert_dict = {"save_status": save_status, "communication_result": communicationResult,
+                           "is_visit": isVisit}
+            return assert_dict
+
+    def customer_meeting(self, is_visit, parent):
+        """
+        客户到会确认
+        @param is_visit:
+        @param parent:
+        @return:
+        """
+        customer_page = self.customer_page
+        customer_page.meeting_info.click()
+        if customer_page.meeting_loading:
+            # 诺到会自动生成到会信息直接确认
+            if is_visit == "是":
+                customer_page.confirm_meeting.click()
+                # PageWait(customer_page.meeting_meeting_dialog)
+                PageSelect(customer_page.meeting_confirm_parent_name, text=parent)
+                # 确认到会
+                customer_page.save_meeting_confirm.click()
+                PageWait(customer_page.save_status)
+                save_status = customer_page.save_status.text
+                if customer_page.meeting_loading:
+                    meetingResult = customer_page.meeting_result.text
+                    # 返回到会保存状态、到会结果
+                    assert_dict = {"save_status": save_status, "meetingResult": meetingResult}
+                    return assert_dict
+        else:
+            print("暂不支持非诺到会流程")
+        # # 非诺到会需要手动新建到会信息再确认到会
+        # else:
+        #     customer_page.meeting_add.click()
+        #     customer_page.meeting_liable_name.click()
+        #     if customer_page.responsible_list_loading:
+        #         customer_page.choose_a_teacher.click()
+        #         # 新增到会信息，选择陪同人
+        #         PageSelect(customer_page.meeting_add_parent_name, text=parent)
+
+    def customer_interview(self):
+        """
+        接待客户
+        @return:
+        """
+        customer_page = self.customer_page
+        # 点击接待信息
+        customer_page.interview_info.click()
+        # 等待加接待信息loading
+        if customer_page.interview_loading != "None":
+            # 添加接待信息按钮
+            customer_page.interview_add.click()
+            customer_page.admit_liable_name.click()
+            if customer_page.responsible_list_loading != "None":
+                customer_page.choose_teacher.click()
+                customer_page.save_admit.click()
+                PageWait(customer_page.interview_loading)
+                customer_page.confirm_admit.click()
+                customer_page.confirm_btn.click()
+                PageWait(customer_page.save_status)
+                # 获取保存状态
+                save_status = customer_page.save_status.text
+                if customer_page.interview_loading != "None":
+                    # 获取接待结果
+                    admit_result = customer_page.admit_result.text
+                    assert_dict = {"save_status": save_status, "admit_result": admit_result}
+                    return assert_dict
 
 
 def cal_preferential_amount(charge):
@@ -138,7 +256,7 @@ def add_educational(driver, educational_effect_time, educational_account):
     sleep(1)
     page.teacher_list_query.click()
     sleep(1)
-    page.choose_a_teacher.click()
+    page.choose_teacher.click()
     sleep(1)
     js = 'document.getElementsByName("effDate")[0].removeAttribute("readonly");'
     driver.execute_script(js)
@@ -176,7 +294,7 @@ def split_customer(driver, adviser_account, customer_num):
     page.teacher_list_query.click()
     if page.teacher_list_loading:
         # 选择老师
-        page.choose_a_teacher.click()
+        page.choose_teacher.click()
         PageWait(page.confirm_split)
         # 确认分班
         page.confirm_split.click()
@@ -283,7 +401,7 @@ def add_customer_responsible(driver, responsible_name, department_name, school_n
     responsible_page.teacher_list_login_name.send_keys(responsible_name)
     responsible_page.teacher_list_query.click()
     if responsible_page.teacher_list_loading:
-        responsible_page.choose_a_teacher.click()
+        responsible_page.choose_teacher.click()
         sleep(1)
         responsible_page.responsible_save.click()
 
@@ -339,40 +457,6 @@ def add_customer_intent(driver, school_name, activity_type, activity_name, respo
         intent_page.responsible_add.click()
         sleep(2)
         add_customer_responsible(driver, responsible_Name, responsible_department, school_name)
-
-
-# def add_new_order(driver, consultant, course_name, school_name):
-#     """
-#     学员创建订单
-#     :param driver:
-#     :param consultant:分成对象
-#     :param course_name:
-#     :param school_name:
-#     :return:
-#     """
-#     customer_page = GfyCrmCustomerManagement(driver)
-#     order_page = GfyCustomerAddOrder(driver)
-#     PageSelect(customer_page.customer_list_school_list, text=school_name)
-#     sleep(1)
-#     customer_page.customer_name.click()
-#     sleep(1)
-#     order_page.customer_order_info.click()
-#     sleep(1)
-#     order_page.customer_order_add.click()
-#     sleep(1)
-#     PageSelect(order_page.order_sharing_object_select, text=consultant)
-#     sleep(1)
-#     order_page.order_sharing_object_select_btn.click()
-#     sleep(1)
-#     order_page.order_select_course.click()
-#     sleep(1)
-#     order_page.order_select_course_name.send_keys(course_name)
-#     sleep(1)
-#     order_page.order_select_course_name_query.click()
-#     sleep(1)
-#     order_page.order_select_course_btn.click()
-#     sleep(1)
-#     order_page.order_save_stu_order.click()
 
 
 def customer_recovery(driver, student_num):

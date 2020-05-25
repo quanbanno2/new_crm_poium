@@ -1,6 +1,6 @@
 from page.crm_finance_page import GfyRefundInfo
 from poium import PageWait, PageSelect
-from func.find_element_demo import find_object_element
+from func.xpath_element import find_object_element
 from time import sleep
 from func.re_demo import re_demo
 from func.db_func import DB

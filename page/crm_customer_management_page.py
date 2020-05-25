@@ -17,7 +17,7 @@ class GfyCrmCustomerManagement(Page):
         xpath="//b[text()='客户列表']",
         describe="我的客户-客户列表")
     customer_list_load_button = PageElement(
-        xpath="//button[@ng-click='loadCustInfoList(1,pageInfo.pageSize)']",
+        xpath="//button[contains(@ng-click,'loadCustInfoList')]",
         describe="我的客户-客户列表-查询按钮")
     customer_loading = PageElement(
         xpath="//div[@ng-show='custInfoLoading' and @class='overlay ng-hide']",
@@ -70,6 +70,107 @@ class GfyCrmCustomerManagement(Page):
     edit_customer_type = PageElement(
         xpath="//select[@name='custType']",
         describe="客户列表-编辑客户类型")
+
+    # 邀约、到会、接待
+    communication_info = PageElement(
+        xpath="//strong[text()='沟通信息(邀约)']",
+        describe="客户信息-沟通信息(邀约)")
+    meeting_info = PageElement(
+        xpath="//strong[text()='到会信息']",
+        describe="客户信息-到会信息")
+    interview_info = PageElement(
+        xpath="//strong[text()='接待信息']",
+        describe="客户信息-接待信息")
+    communication_loading = PageElement(
+        xpath="//div[@ng-show='custCommunicateLoading' and @class='overlay ng-hide']",
+        describe="沟通邀约loading")
+    meeting_loading = PageElement(
+        xpath="//div[@ng-show='custMeetingLoading' and @class='overlay ng-hide']",
+        describe="到会信息列表loading")
+    interview_loading = PageElement(
+        xpath="//div[@ng-show='custAdmitLoading' and @class='overlay ng-hide']",
+        describe="接待信息loading")
+    communication_add = PageElement(
+        xpath="//button[contains(@ng-click,'newCommunicate')]",
+        describe="客户信息-新增沟通信息按钮")
+    communicate_liable = PageElement(
+        xpath="//input[contains(@ng-click,'setCustCommunicateDialog')]",
+        describe="新增沟通信息-跟进人")
+    responsible_list_loading = PageElement(
+        xpath="//div[@ng-show='custResponsibleDialogLoading' and @class='overlay ng-hide']",
+        describe="跟进人列表loading")
+    textarea = PageElement(
+        xpath="//div[@contenteditable='true']",
+        describe="富文本框")
+    save_communication = PageElement(
+        xpath="//button[@ng-click='saveCustCommunication()']",
+        describe="保存沟通信息")
+    meeting_add = PageElement(
+        xpath="//button[contains(@ng-if,'crm_cust_meeting_add')]",
+        describe="到会信息-新增到会信息")
+    confirm_meeting = PageElement(
+        xpath="//button[@title='确认到会']",
+        describe="到会信息-确认到会")
+    meeting_liable_name = PageElement(
+        xpath="//input[@ng-model='custMeetingDialog.userName']",
+        describe="到会信息-选择跟进人")
+    meeting_time = PageElement(
+        xpath="//input[@ng-model='custMeetingDialog.meetingTime']",
+        describe="到会信息-到会时间")
+    save_meeting = PageElement(
+        xpath="//button[@ng-click='saveCustMeeting(custMeetingDialog)']",
+        describe="到会信息-保存到会信息")
+    meeting_meeting_dialog = PageElement(
+        xpath="//div[@class='modal fade in' and @id='model-comfirm-meeting']",
+        describe="到会信息-确认到会模态框")
+    meeting_confirm_parent_name = PageElement(
+        xpath="//select[@ng-model='modalEscortType']",
+        describe="确认到会信息-选择陪同人")
+    meeting_add_parent_name = PageElement(
+        xpath="//select[@ng-model='custMeetingDialog.escortType']",
+        describe="新增到会信息-选择陪同人")
+    save_meeting_confirm = PageElement(
+        xpath="//button[@ng-click='confirmCustMeeting()']",
+        describe="到会信息-保存确认到会")
+    interview_add = PageElement(
+        xpath="//button[contains(@ng-if,'crm_cust_admit_add')]",
+        describe="到会信息-新增接待信息")
+    admit_liable_name = PageElement(
+        xpath="//input[@ng-model='custAdmitDialog.userName']",
+        describe="接待信息-接待人")
+    save_admit = PageElement(
+        xpath="//button[contains(@ng-click,'custAdmitDialog')]",
+        describe="接待信息-保存接待信息按钮")
+    add_interview = PageElement(
+        xpath="//button[@title='新增面谈结果']",
+        describe="接待信息-新增面谈结果按钮")
+    save_interview = PageElement(
+        xpath="//button[@ng-click='saveCustInterviewResult()']",
+        describe="接待信息-保存面谈结果")
+    confirm_admit = PageElement(
+        xpath="//button[@title='确认接待']",
+        describe="接待信息-确认接待按钮")
+    visit_date = PageElement(
+        xpath="//input[@name='visitDate']",
+        describe="到访时间输入框")
+    communicate_dialog = PageElement(
+        xpath="//div[@class='modal fade in' and @id='custCommunicateDialog']",
+        describe="新增沟通信息模态框")
+    communicate_result = PageElement(
+        xpath="//span[contains(@ng-repeat,'dicCodeDomainIsEffectList')]",
+        describe="沟通结果")
+    is_visit = PageElement(
+        xpath="//span[contains(@ng-repeat,'dicCodeDomainIsPromiseVisitList')]",
+        describe="承诺到访结果")
+    meeting_result = PageElement(
+        xpath="//span[contains(@ng-repeat,'dicCodeDomainMeetingStatusList')]",
+        describe="到会结果")
+    responsible_list_dialog = PageElement(
+        xpath="//div[@class='modal fade in' and @id='custGuardianListDialog']",
+        describe="接待人列表选择模态框")
+    admit_result = PageElement(
+        xpath="//span[contains(@ng-repeat,'dicCodeDomainAdmitStatusList')]",
+        describe="接待结果")
 
     # 业务意向
     business_intent = PageElement(
@@ -145,8 +246,9 @@ class GfyCrmCustomerManagement(Page):
     teacher_list_query = PageElement(
         xpath="//button[@ng-click='loadTeacherInfoList()']",
         describe="机构老师列表-查询按钮")
-    choose_a_teacher = PageElement(
-        link_text="选中老师",
+    choose_teacher = PageElement(
+        xpath="//button[text()='选中老师']",
+        # link_text="选中老师",
         describe="选择老师")
     teacher_list_school = PageElement(
         xpath="//select[@ng-model='teacherInfoParam.schoolId']",

@@ -1,3 +1,5 @@
+import datetime
+
 import pymysql
 from selenium import webdriver
 from time import sleep
@@ -202,8 +204,14 @@ def cal_refund_fee(pre_fee, course_count, course_consume):
     return refund_fee
 
 
-p = cal_refund_fee("55", "3", "0")
+# p = cal_refund_fee("55", "3", "0")
+#
+# print(p)
+#
+# print(float("55"))
 
-print(p)
 
-print(float("55"))
+# 补课时间-当前时间加1小时
+makeUpTime = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime("%Y/%m/%d %H:%M:%S")
+print(makeUpTime)
+

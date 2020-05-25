@@ -7,13 +7,13 @@ from os.path import dirname, abspath
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 from page.crm_menu_page import GfyMenu
 from page.crm_home_page import GfyHomePage
-from page.crm_cust_manger_page import GfyCrmCustomerManagement
+from page.crm_customer_management_page import GfyCrmCustomerManagement
 from page.crm_student_management_page import GfyStudentOrderManagement
 from func.student_management_func import studentCourseManagement, add_new_order, pay_new_order, order_refund, \
     approval_matter, cal_refund_fee
 from func.customer_management_func import login, add_customer_intent
 from func.get_data import get_json_data
-from func.find_element_demo import by_xpath_contains, find_order_pay_info
+from func.xpath_element import by_xpath_contains, find_order_pay_info
 from func.re_demo import re_demo
 from func.db_func import DB
 from func.finance_management_func import finance_management
@@ -215,6 +215,7 @@ class TestStuCourseManagement:
             menu_page.student_management.click()
             if menu_page.menu_active:
                 menu_page.student_course_management.click()
+                # 等待课程查询loading
                 if course_page.course_loading:
                     # 执行换班流程
                     assert_dict = studentCourseManagement.student_change_class(browser1, schoolName,
@@ -222,10 +223,12 @@ class TestStuCourseManagement:
                                                                                objectClass, studentCount,
                                                                                order_course_id)
                     try:
+                        # 断言换班状态
                         assert assert_dict['changeStatus'] == msg
                     finally:
                         try:
                             for re in assert_dict['className']:
+                                # 断言换班后状态是否等于目标班级
                                 assert re == objectClass
                         finally:
                             DB().reset_order_course_status(order_course_id, originClassId)

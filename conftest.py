@@ -65,9 +65,6 @@ counselingSupervisorName = "辅导督导1"
 # 密码
 password = '123456'
 
-# 沟通信息内容
-communicate_content = "电话联系，以阅读解题技巧和数学解答题解题技巧约来，明天下午2点钟"
-
 # 备注内容
 remark = "这是备注内容。"
 
@@ -88,6 +85,9 @@ customerBirthday = "1991/10/25"
 
 # 补课时间-当前时间加1小时
 makeUpTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%Y/%m/%d %H:%M:%S")
+
+# 获取当前时间加一天的时间
+nextDate = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime("%Y/%m/%d %H:%M:%S")
 
 # 上课时间/请假时间-当前时间
 inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d %H:%M:%S")
@@ -186,13 +186,6 @@ def pass_word():
     return password
 
 
-# 沟通内容
-@pytest.fixture(scope='function')
-def comm_content():
-    global communicate_content
-    return communicate_content
-
-
 # 备注
 @pytest.fixture(scope='function')
 def remarks():
@@ -268,6 +261,12 @@ def customer_birthday():
 def make_up_time():
     global makeUpTime
     return makeUpTime
+
+
+@pytest.fixture(scope='function')
+def next_date():
+    global nextDate
+    return nextDate
 
 
 # 上课时间

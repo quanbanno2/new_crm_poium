@@ -1,0 +1,16 @@
+[
+  {
+    "case": "诺到会",
+    "loginAccount": "高分云辅导督导1",
+    "password": "123456",
+    "customerName": "高分云测试邀约",
+    "liablePersonAccount": "高分云顾问2",
+    "communicationInfo": "沟通内容：诺到会，到访时间明天",
+    "communicationResult": "有效",
+    "isVisit": "是",
+    "parent": "父亲",
+    "admitResult": "已接待",
+    "meetingResult": "已到会",
+    "msg": "保存成功"
+  }
+]

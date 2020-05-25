@@ -41,10 +41,11 @@ class DB:
         sql = 'SELECT cust_name FROM test_customer.cust_info ' \
               'WHERE cust_id = (SELECT MAX(cust_id) ' \
               'FROM test_customer.cust_info WHERE cust_name LIKE "高分云客户%" AND cust_status="S01")'
-        result = self.exe_query(sql).fetchall()
-        for re in result:
-            customer_name = re[0]
+        result = self.exe_query(sql).fetchone()
+        # for re in result:
+        #     customer_name = re[0]
         # 读取客户名称后的数字
+        customer_name = result[0]
         a = customer_name[5:]
         client_num = int(a)
         client_num += 1
@@ -138,7 +139,6 @@ class DB:
         @param order_id:
         @return:
         """
-
         if status == "未缴费":
             sql = [
                 "UPDATE test_student.stu_order_info SET order_status='S01' WHERE order_id='{}' ".format(order_id),
@@ -221,5 +221,56 @@ class DB:
         for re in order_course_id:
             sql = "UPDATE test_student.stu_order_course SET class_id='{}' WHERE order_course_id='{}';".format(
                 origin_class_id, re)
+            self.exe_update(sql)
+        self.conn_close()
+
+    def get_customer_id(self, customer_name):
+        """
+        根据客户名称获取客户id
+        @param customer_name:
+        @return:
+        """
+        sql = "SELECT cust_id FROM test_customer.cust_info WHERE cust_name = '{}'".format(customer_name)
+        result = self.exe_query(sql).fetchone()
+        result = result[0]
+        self.conn_close()
+        return result
+
+    def get_teacher_id(self, teacher_name):
+        """
+        根据老师登录名称查询对应account_no
+        @param teacher_name:
+        @return:
+        """
+        sql = "SELECT account_no FROM test_user.usr_account_info WHERE login_name = '{}'".format(teacher_name)
+        self.exe_query(sql)
+        result = self.my_cursor.fetchall()
+        for res in result:
+            teacher_name = res[0]
+        self.conn_close()
+        return teacher_name
+
+    def update_admin_status(self, user_id):
+        """
+        取消老师的在接待状态
+        @param user_id:
+        @return:
+        """
+        sql = "UPDATE test_customer.cust_admit_info SET status = 'S02' WHERE user_id = '{}'".format(user_id)
+        self.exe_update(sql)
+        self.conn_close()
+
+    def delete_customer_info(self, cust_id=None, cust_name=None):
+        """
+        删除客户信息
+        @param cust_id:
+        @param cust_name:
+        @return:
+        """
+        if cust_id:
+            sql = "DELETE FROM `test_customer`.`cust_info` WHERE `cust_id` = '{}'".format(cust_id)
+            self.exe_update(sql)
+        elif cust_name:
+            sql = "DELETE FROM `test_customer`.`cust_info` WHERE `cust_name` = '{}'".format(cust_name)
             self.exe_update(sql)
         self.conn_close()

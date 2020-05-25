@@ -2,9 +2,9 @@ from time import sleep
 from poium import PageWait, PageSelect
 from func.db_func import DB
 from page.crm_student_management_page import GfyCrmStudentInClassManagement, GfyStudentOrderManagement
-from page.crm_cust_manger_page import GfyCrmCustomerManagement
+from page.crm_customer_management_page import GfyCrmCustomerManagement
 from page.crm_home_page import GfyHomePage
-from func.find_element_demo import find_object_element
+from func.xpath_element import find_object_element
 
 
 def add_new_order(driver, school_name, course_name, case, subject_group_type, subject_group, responsible_name,
@@ -260,7 +260,9 @@ class studentCourseManagement:
                 if course_page.confirm_dialog_loading:
                     # 确定保存
                     course_page.save_change_class.click()
+                    # 等待换班状态弹出
                     PageWait(driver.find_element_by_xpath("//p[contains(.,'学员分班保存')]/b"))
+                    # 获得换班状态
                     changeStatus = driver.find_element_by_xpath("//p[contains(.,'学员分班保存')]/b").text
                     sleep(1)
                     # 获取换班后的班级名称

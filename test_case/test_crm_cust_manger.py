@@ -10,13 +10,15 @@ sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 base_path = dirname(dirname(abspath(__file__)))
 
-from page.crm_cust_manger_page import GfyCrmCustomerManagement
+from page.crm_customer_management_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
 
 from page.crm_login_page import GfyLogin
+from func.api_request import crmRequest
 from func.db_func import DB
+from func.xpath_element import by_xpath_contains
 from func.customer_management_func import login, split_customer, convert_student, create_account, add_customer, \
-    customer_recovery
+    customer_recovery, customerManagementFunc
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 
@@ -166,6 +168,67 @@ class TestCustomerManagement:
         # 是否保存分单成功
         PageWait(page.save_status)
         assert page.save_status.text == msg
+
+    @pytest.mark.parametrize(
+        "case,loginAccount,password,customerName,liablePersonAccount,communicationInfo,communicationResult,isVisit,"
+        "parent,admitResult,meetingResult,msg",
+        get_json_data(DATA_DIR + "customer_management/" + "customer_communication.json")
+    )
+    def test_customer_communication(self, crm_url, browser1, next_date, case, loginAccount, password, customerName,
+                                    liablePersonAccount, communicationInfo, communicationResult, isVisit, parent,
+                                    admitResult, meetingResult, msg):
+        menu_page = GfyMenu(browser1)
+        customer_page = GfyCrmCustomerManagement(browser1)
+        cmf = customerManagementFunc(browser1)
+        login(crm_url, browser1, loginAccount, password)
+        # 初始化测试客户信息（删除客户、新建客户、分单）
+        DB().delete_customer_info(cust_name=customerName)
+        crmRequest.save_customer_info(customerName)
+        customer_id = DB().get_customer_id(customerName)
+        crmRequest.allot_order(customer_id)
+        teacher_id = DB().get_teacher_id(liablePersonAccount)
+        DB().update_admin_status(teacher_id)
+        if menu_page.menu_loading:
+            menu_page.customer_management.click()
+            if menu_page.menu_active:
+                menu_page.my_customer.click()
+                if customer_page.customer_loading:
+                    customer_page.customer_name_input.send_keys(customerName)
+                    customer_page.customer_list_load_button.click()
+                    if customer_page.customer_loading:
+                        # 点击客户名称进入客户综合信息
+                        by_xpath_contains(browser1, "a", customerName).click()
+                        # 邀约
+                        com_dict = cmf.customer_communication(communicationInfo, communicationResult, isVisit,
+                                                              next_date)
+                        try:
+                            assert com_dict["save_status"] == msg
+                        finally:
+                            try:
+                                assert com_dict["communication_result"] == communicationResult
+                            finally:
+                                try:
+                                    assert com_dict["is_visit"] == isVisit
+                                finally:
+                                    # 到会确认
+                                    meet_dict = cmf.customer_meeting(isVisit, parent)
+                        try:
+                            assert meet_dict["save_status"] == msg
+                        finally:
+                            try:
+                                assert meet_dict["meetingResult"] == meetingResult
+                            finally:
+                                # 接待
+                                admit_dict = cmf.customer_interview()
+                        try:
+                            assert admit_dict["save_status"] == msg
+                        finally:
+                            try:
+                                assert admit_dict["admit_result"] == admitResult
+                            finally:
+                                DB().delete_customer_info(cust_id=customer_id)
+
+
 
     @pytest.mark.parametrize(
         "case,pubSchoolName,studentNum,businessType,activityName,phoneNumber,"
@@ -347,7 +410,7 @@ if __name__ == '__main__':
     # pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_add_customer_success"])
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_communication"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
 
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
