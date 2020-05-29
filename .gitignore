@@ -15,6 +15,6 @@ __pycache__
 /.pytest_cache/
 /test_case/.pytest_cache/
 /.vscode
-/demo_test.py
+/db_connect.py
 /.idea/workspace.xml~20200413：创建高分云分支
 /.idea/workspace.xml~20200414：1、客户回收支持数据驱动 2、增加一条用例多个断言支持
