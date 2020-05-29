@@ -30,58 +30,14 @@ cases_path = "test_case/"
 # 配置运行的 URL
 crmUrl = "http://gaofenyun.com:8073/crm-web/login.html"
 
-# 配置测试客户问题
-question = "测试问题1"
-
 # 测试课程名称
 course_name = "自动化专用语文培优次课"
-
-# 辅导老师
-adviserName = '辅导1'
-adviserAccount = '高分云辅导1'
-
-# 高分云辅导2
-adviserName2 = '辅导2'
-adviserAccount2 = '高分云辅导2'
-
-# 指导老师
-educationName = '指导1'
-educationAccount = '高分云指导1'
-
-# 教务老师
-educationalAccount = "高分云教务1"
-educationalName = "教务1"
-
-# 手机号
-phoneNumber = '13437829328'
-
-# 指导督导登录账号
-supervisorAccount = "高分云指导督导1"
-
-# 高分云辅导督导1账号
-counselingSupervisorAccount = "高分云辅导督导1"
-counselingSupervisorName = "辅导督导1"
-
-# 密码
-password = '123456'
-
-# 备注内容
-remark = "这是备注内容。"
-
-# # 新增订单学员名称
-# stu_name = "自动化测试专用学员"
 
 # 测试班级名称（班主任：高分云指导1，初一）
 className = "测试自动化专用班级"
 
 # 补课用班级名称（班主任：高分云指导1，初一）
 makeUpClass = "自动化测试补课班"
-
-# 高分云校区
-xiaoqu_schoolName = "高分云"
-
-# 客户生日
-customerBirthday = "1991/10/25"
 
 # 补课时间-当前时间加1小时
 makeUpTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%Y/%m/%d %H:%M:%S")
@@ -97,10 +53,6 @@ todayDate = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y
 
 # 学员姓名
 studentName = "自动化测试学生"
-
-# 人事助理账号&名称
-humanResourceAccount = "高分云人事1"
-humanResourceName = "人事1"
 
 # 登录和服务器信息、发送人、接收人
 mail_host = "smtp.quanlangedu.com"
@@ -119,8 +71,6 @@ def date_today():
 
 
 # 定义基本测试环境
-
-
 @pytest.fixture(scope='function')
 def crm_url():
     global crmUrl
@@ -134,77 +84,9 @@ def cases_pathh():
 
 
 @pytest.fixture(scope='function')
-def questions():
-    global question
-    return question
-
-
-@pytest.fixture(scope='function')
-def phone_number():
-    global phoneNumber
-    return phoneNumber
-
-
-@pytest.fixture(scope='function')
 def course():
     global course_name
     return course_name
-
-
-# 辅导1老师名称
-@pytest.fixture(scope='function')
-def adviser_name():
-    global adviserName
-    return adviserName
-
-
-# 辅导2老师名称
-@pytest.fixture(scope='function')
-def adviser_name2():
-    global adviserName2
-    return adviserName2
-
-
-# 辅导1老师账号
-@pytest.fixture(scope='function')
-def adviser_account():
-    global adviserAccount
-    return adviserAccount
-
-
-# 辅导2老师账号
-@pytest.fixture(scope='function')
-def adviser_account2():
-    global adviserAccount2
-    return adviserAccount2
-
-
-# 登录密码
-@pytest.fixture(scope='function')
-def pass_word():
-    global password
-    return password
-
-
-# 备注
-@pytest.fixture(scope='function')
-def remarks():
-    global remark
-    return remark
-
-
-# 督导登录账号
-@pytest.fixture(scope='function')
-def supervisor_account():
-    global supervisorAccount
-    return supervisorAccount
-
-
-# # 新增订单专用学员账号
-# @pytest.fixture(scope='function')
-# def student_name():
-#     global stu_name
-#     return stu_name
 
 
 # 测试用班级名称
@@ -212,48 +94,6 @@ def supervisor_account():
 def class_name():
     global className
     return className
-
-
-# 指导老师名称
-@pytest.fixture(scope='function')
-def education_name():
-    global educationName
-    return educationName
-
-
-# 指导老师账号
-@pytest.fixture(scope='function')
-def education_account():
-    global educationAccount
-    return educationAccount
-
-
-# 教务老师名称
-@pytest.fixture(scope='function')
-def educational_name():
-    global educationalName
-    return educationalName
-
-
-# 教务老师账号
-@pytest.fixture(scope='function')
-def educational_account():
-    global educationalAccount
-    return educationalAccount
-
-
-# 高分云校区
-@pytest.fixture(scope='function')
-def jigou_school_name():
-    global xiaoqu_schoolName
-    return xiaoqu_schoolName
-
-
-# 客户生日
-@pytest.fixture(scope='function')
-def customer_birthday():
-    global customerBirthday
-    return customerBirthday
 
 
 # 补课时间
@@ -295,27 +135,6 @@ def student_name():
 def make_up_class():
     global makeUpClass
     return makeUpClass
-
-
-# 高分云辅导督导1账号
-@pytest.fixture(scope='function')
-def counseling_supervision_account():
-    global counselingSupervisorAccount
-    return counselingSupervisorAccount
-
-
-# 高分云辅导督导1名称
-@pytest.fixture(scope='function')
-def counseling_supervision_name():
-    global counselingSupervisorName
-    return counselingSupervisorName
-
-
-# 高分云人事1账号
-@pytest.fixture(scope='function')
-def human_resource_account():
-    global humanResourceAccount
-    return humanResourceAccount
 
 
 #####################
