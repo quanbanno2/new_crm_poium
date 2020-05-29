@@ -256,7 +256,8 @@ class DB:
         @param user_id:
         @return:
         """
-        sql = "UPDATE test_customer.cust_admit_info SET status = 'S02' WHERE user_id = '{}'".format(user_id)
+        sql = "UPDATE test_customer.cust_admit_info SET status = 'S02' WHERE user_id = '{}' AND status='S01'".format(
+            user_id)
         self.exe_update(sql)
         self.conn_close()
 
@@ -267,10 +268,10 @@ class DB:
         @param cust_name:
         @return:
         """
-        if cust_id:
+        if cust_id is not None and cust_name is None:
             sql = "DELETE FROM `test_customer`.`cust_info` WHERE `cust_id` = '{}'".format(cust_id)
             self.exe_update(sql)
-        elif cust_name:
+        elif cust_name is not None and cust_id is None:
             sql = "DELETE FROM `test_customer`.`cust_info` WHERE `cust_name` = '{}'".format(cust_name)
             self.exe_update(sql)
         self.conn_close()

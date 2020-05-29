@@ -34,7 +34,7 @@ class customerManagementFunc:
         # 点击添加跟进人
         customer_page.communicate_liable.click()
         # 等待跟进人列表加载完成
-        if customer_page.responsible_list_loading:
+        if customer_page.responsible_list_loading != "None":
             customer_page.choose_teacher.click()
             # 输入沟通内容
             customer_page.textarea.send_keys(communication_info)
@@ -113,17 +113,17 @@ class customerManagementFunc:
             if customer_page.responsible_list_loading != "None":
                 customer_page.choose_teacher.click()
                 customer_page.save_admit.click()
-                PageWait(customer_page.interview_loading)
-                customer_page.confirm_admit.click()
-                customer_page.confirm_btn.click()
-                PageWait(customer_page.save_status)
-                # 获取保存状态
-                save_status = customer_page.save_status.text
                 if customer_page.interview_loading != "None":
-                    # 获取接待结果
-                    admit_result = customer_page.admit_result.text
-                    assert_dict = {"save_status": save_status, "admit_result": admit_result}
-                    return assert_dict
+                    customer_page.confirm_admit.click()
+                    customer_page.confirm_btn.click()
+                    PageWait(customer_page.save_status)
+                    # 获取保存状态
+                    save_status = customer_page.save_status.text
+                    if customer_page.interview_loading != "None":
+                        # 获取接待结果
+                        admit_result = customer_page.admit_result.text
+                        assert_dict = {"save_status": save_status, "admit_result": admit_result}
+                        return assert_dict
 
 
 def login(url, driver, account, password):

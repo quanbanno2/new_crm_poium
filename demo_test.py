@@ -212,11 +212,18 @@ def cal_refund_fee(pre_fee, course_count, course_consume):
 
 
 # 补课时间-当前时间加1小时
-makeUpTime = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime("%Y/%m/%d %H:%M:%S")
-print(makeUpTime)
+    # makeUpTime = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime("%Y/%m/%d %H:%M:%S")
+# print(makeUpTime)
 
-a = {'a': 1, 'b': 2, 'c': 3}
+a = {'a': 1, 'b': 2, 'c':3}
+print(a)
 str1 = a.values()
+
 str2 = ','.join('%s' % id for id in str1)
+
+# for id in a:
+#     a[id] = '%s' % a[id]
+
+# str2 = ','.join(a.values())
 
 print(str2)

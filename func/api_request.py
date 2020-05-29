@@ -18,7 +18,7 @@ class crmRequest:
 
     @staticmethod
     def allot_order(cust_id):
-        data = '{"accountNo":17288,"accountName":"辅导1","departmentId":4,"schoolId":24,"recruitTeacherType":"R03",' \
+        data = '{"accountNo":27034,"accountName":"高分云顾问2","departmentId":4,"schoolId":24,"recruitTeacherType":"R03",' \
                '"operateAccountId":17297,"status":"S01","issueDate":"2020/05/09 15:16:09",' \
                '"custIds":"%s"}' % cust_id
         request_data = {"requestJson": data}

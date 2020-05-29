@@ -13,7 +13,6 @@ base_path = dirname(dirname(abspath(__file__)))
 from page.crm_customer_management_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
 
-from page.crm_login_page import GfyLogin
 from func.api_request import crmRequest
 from func.db_func import DB
 from func.xpath_element import by_xpath_contains
@@ -27,57 +26,6 @@ from conftest import DATA_DIR
 # logger = logging.getLogger(__name__)
 
 
-class TestLogin:
-    @pytest.mark.parametrize(
-        "name,password,case,msg",
-        get_json_data(DATA_DIR + "login_success.json")
-    )
-    def test_login_success(self, crm_url, browser1, password, name, case, msg):
-        """
-        测试登录成功
-        @param crm_url:
-        @param browser1:
-        @param password:
-        @param name:
-        @param case:
-        @param msg:
-        @return:
-        """
-        page = GfyLogin(browser1)
-        if case == "登陆成功":
-            login(crm_url, browser1, name, password)
-            PageWait(page.account_name)
-            assert page.account_name.text == msg
-
-    @pytest.mark.parametrize(
-        "case,name,password,msg",
-        get_json_data(DATA_DIR + "login_fail.json")
-    )
-    def test_login_fail(self, crm_url, browser1, password, name, case, msg):
-        """
-        测试登录失败
-        @param crm_url:
-        @param browser1:
-        @param password:
-        @param name:
-        @param case:
-        @param msg:
-        @return:
-        """
-        page = GfyLogin(browser1)
-        if case == "账号错误":
-            login(crm_url, browser1, name, password)
-            assert page.get_alert_text == msg
-            page.dismiss_alert()
-        elif case == "密码错误":
-            login(crm_url, browser1, name, password)
-            assert page.get_alert_text == msg
-            page.dismiss_alert()
-        elif case == "账号或密码为空":
-            page.get(crm_url)
-            assert page.enter.get_attribute("disabled") == msg
-
-
 class TestCustomerManagement:
     """
     客户管理模块测试
@@ -87,13 +35,12 @@ class TestCustomerManagement:
         "case,schoolName,businessType,loginAccount,password,activityName,phoneNumber,msg",
         get_json_data(DATA_DIR + "customer_management/" + "add_customer_success.json")
     )
-    def test_add_customer_success(self, crm_url, browser1, phone_number, case, schoolName, businessType, loginAccount,
+    def test_add_customer_success(self, crm_url, browser1, case, schoolName, businessType, loginAccount,
                                   password, activityName, phoneNumber, msg):
         """
         测试新增客户成功情况
         @param crm_url:
         @param browser1:
-        @param phone_number:
         @param case:
         @param schoolName:
         @param businessType:
@@ -227,8 +174,6 @@ class TestCustomerManagement:
                                 assert admit_dict["admit_result"] == admitResult
                             finally:
                                 DB().delete_customer_info(cust_id=customer_id)
-
-
 
     @pytest.mark.parametrize(
         "case,pubSchoolName,studentNum,businessType,activityName,phoneNumber,"
