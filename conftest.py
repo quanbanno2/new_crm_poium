@@ -71,8 +71,6 @@ def date_today():
 
 
 # 定义基本测试环境
-
-
 @pytest.fixture(scope='function')
 def crm_url():
     global crmUrl
