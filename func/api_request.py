@@ -3,8 +3,6 @@ from config import CRM_REQ_URL
 
 
 class crmRequest:
-    # def __init__(self, customer_name):
-    #     self.customer_name = customer_name
     @staticmethod
     def save_customer_info(customer_name):
         data = '{"sex":"S01","isFather":"F04","attributeValue":"V00","grade":"G07","belongSchoolId":24,' \

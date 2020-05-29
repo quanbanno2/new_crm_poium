@@ -97,7 +97,7 @@ class customerManagementFunc:
         #         # 新增到会信息，选择陪同人
         #         PageSelect(customer_page.meeting_add_parent_name, text=parent)
 
-    def customer_interview(self):
+    def customer_admit(self):
         """
         接待客户
         @return:
@@ -124,39 +124,6 @@ class customerManagementFunc:
                     admit_result = customer_page.admit_result.text
                     assert_dict = {"save_status": save_status, "admit_result": admit_result}
                     return assert_dict
-
-
-def cal_preferential_amount(charge):
-    """
-    计算优惠
-    :param charge:
-    :return:
-    """
-    preferential_amount = int(int(charge) * 0.1)
-    return preferential_amount
-
-
-def cal_service_charge(charge):
-    """
-    计算手续费
-    :param charge:
-    :return:
-    """
-    service_charge = int(int(charge) * 5 / 1000)
-    return service_charge
-
-
-def operate_delete_customer(driver):
-    """
-    我的客户-删除客户信息操作
-    @param driver:
-    @return:
-    """
-    eliminate_page = GfyCustomerDataEliminate(driver)
-    eliminate_page.customer_eliminate[0].click()
-    PageWait(eliminate_page.eliminate_confirm)
-    eliminate_page.eliminate_confirm.click()
-    sleep(1)
 
 
 def login(url, driver, account, password):
@@ -484,88 +451,6 @@ def customer_recovery(driver, student_num):
             customer_page.customer_multi_recovery.click()
             PageWait(customer_page.confirm_btn)
             customer_page.confirm_btn.click()
-
-# def pay_new_order(driver):
-#     """
-#     新招生单单支付（优惠、支付项、手续费、支付）
-#     :param driver:
-#     :return:
-#     """
-#     order_page = GfyCustomerAddOrder(driver)
-#     menu_page = GfyMenu(driver)
-#     other_page = GfyCrmCustomerManagement(driver)
-#     sleep(1)
-#     menu_page.student_management.click()
-#     sleep(1)
-#     menu_page.student_order_management.click()
-#     sleep(1)
-#     order_page.student_order_pay_btn.click()
-#     sleep(1)
-#     # 优惠项
-#     preferential_amount = cal_preferential_amount(order_page.order_accounts_receivable.text)
-#     sleep(1)
-#     order_page.add_order_discount_btn.click()
-#     sleep(1)
-#     order_page.add_order_discount_fee.send_keys(preferential_amount)
-#     sleep(1)
-#     order_page.add_order_discount_save.click()
-#     # 支付项
-#     sleep(1)
-#     order_page.add_order_pay_btn.click()
-#     sleep(1)
-#     order_page.add_order_pay_fee.send_keys(order_page.order_pre_fee.text)
-#     sleep(1)
-#     order_page.add_order_pay_save_btn.click()
-#     # 计算其他费用
-#     sleep(1)
-#     service_charge = cal_service_charge(order_page.order_pre_fee.text)
-#     sleep(1)
-#     order_page.add_order_other_btn.click()
-#     sleep(1)
-#     order_page.add_order_other_fee.send_keys(service_charge)
-#     sleep(1)
-#     order_page.add_order_other_save.click()
-#     sleep(1)
-#     # 支付
-#     driver.execute_script("arguments[0].click();", order_page.pay_stu_order)
-#     sleep(1)
-#     other_page.confirm_btn.click()
-
-
-# def refund_apply(driver, remarks):
-#     """
-#      订单退费
-#     :param driver:
-#     :param remarks:
-#     :return: customer_name 客户名称、order_id_text 订单编号、refund_fee_text 应退费值
-#     """
-#     order_page = GfyCustomerAddOrder(driver)
-#     sleep(1)
-#     order_page.order_detail.click()
-#     sleep(1)
-#     driver.execute_script("arguments[0].click();", order_page.order_info_refund)
-#     sleep(1)
-#     # 获取预收款、订购数量、消耗数量、学员名称、订单编号
-#     refund_pre_fee_text = order_page.refund_pre_fee.text
-#     refund_course_count_text = order_page.refund_course_count.text
-#     refund_course_consume_text = order_page.refund_course_consume.text
-#     # 获取客户名称
-#     customer_name = order_page.order_customer_name.text
-#     # 获取订单编号
-#     order_id_text = order_page.order_id.text
-#     sleep(1)
-#     order_page.refund_remark.send_keys(remarks)
-#     sleep(1)
-#     order_page.save_order_refund.click()
-#     PageWait(order_page.approval_matter_setting)
-#     PageSelect(order_page.approval_matter_setting, text="辅导督导1-->通知发起人")
-#     sleep(1)
-#     order_page.save_approval_matter.click()
-#     sleep(1)
-#     # 计算退费结算金额
-#     refund_fee_text = cal_refund_fee(refund_pre_fee_text, refund_course_count_text, refund_course_consume_text)
-#     return customer_name, order_id_text, refund_fee_text
-
 
 # def audio_upload(driver, audio_dir):
 #     """

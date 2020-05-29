@@ -219,7 +219,7 @@ class TestCustomerManagement:
                                 assert meet_dict["meetingResult"] == meetingResult
                             finally:
                                 # 接待
-                                admit_dict = cmf.customer_interview()
+                                admit_dict = cmf.customer_admit()
                         try:
                             assert admit_dict["save_status"] == msg
                         finally:
