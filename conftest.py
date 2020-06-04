@@ -31,35 +31,28 @@ cases_path = "test_case/"
 crmUrl = "http://gaofenyun.com:8073/crm-web/login.html"
 
 # 测试课程名称
-course_name = "自动化专用语文培优次课"
+# course_name = "自动化专用语文培优次课"
 
-# 测试班级名称（班主任：高分云指导1，初一）
-className = "测试自动化专用班级"
-
-# 补课用班级名称（班主任：高分云指导1，初一）
-makeUpClass = "自动化测试补课班"
+# # 测试班级名称（班主任：高分云指导1，初一）
+# className = "测试自动化专用班级"
+#
+# # 补课用班级名称（班主任：高分云指导1，初一）
+# makeUpClass = "自动化测试补课班"
 
 # 补课时间-当前时间加1小时
-makeUpTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%Y/%m/%d %H:%M:%S")
-
-# 获取当前时间加一天的时间
-nextDate = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime("%Y/%m/%d %H:%M:%S")
+# makeUpTime = (datetime.datetime.now() + datetime.timedelta(hours=1)).strftime("%Y/%m/%d %H:%M:%S")
+#
+# # 获取当前时间加一天的时间
+# nextDate = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime("%Y/%m/%d %H:%M:%S")
 
 # 上课时间/请假时间-当前时间
-inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d %H:%M:%S")
+# inClassTime = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d %H:%M:%S")
 
-# 今天日期
-todayDate = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d")
+# # 今天日期
+# todayDate = (datetime.datetime.now() + datetime.timedelta(hours=0)).strftime("%Y/%m/%d")
 
 # 学员姓名
-studentName = "自动化测试学生"
-
-# 登录和服务器信息、发送人、接收人
-mail_host = "smtp.quanlangedu.com"
-mail_user = "fengjiahui@quanlangedu.com"
-mail_pass = "FJh011310"
-sender = "fengjiahui@quanlangedu.com"
-receivers = "fengjiahui@quanlangedu.com"
+# studentName = "自动化测试学生"
 
 
 ############################
@@ -96,45 +89,45 @@ def class_name():
     return className
 
 
-# 补课时间
-@pytest.fixture(scope='function')
-def make_up_time():
-    global makeUpTime
-    return makeUpTime
+# # 补课时间
+# @pytest.fixture(scope='function')
+# def make_up_time():
+#     global makeUpTime
+#     return makeUpTime
+#
+#
+# @pytest.fixture(scope='function')
+# def next_date():
+#     global nextDate
+#     return nextDate
 
 
-@pytest.fixture(scope='function')
-def next_date():
-    global nextDate
-    return nextDate
+# # 上课时间
+# @pytest.fixture(scope='function')
+# def in_class_time():
+#     global inClassTime
+#     return inClassTime
+
+#
+# # 返回今天日期
+# @pytest.fixture(scope='function')
+# def today_date():
+#     global todayDate
+#     return todayDate
 
 
-# 上课时间
-@pytest.fixture(scope='function')
-def in_class_time():
-    global inClassTime
-    return inClassTime
+# # 学员姓名
+# @pytest.fixture(scope='function')
+# def student_name():
+#     global studentName
+#     return studentName
 
 
-# 返回今天日期
-@pytest.fixture(scope='function')
-def today_date():
-    global todayDate
-    return todayDate
-
-
-# 学员姓名
-@pytest.fixture(scope='function')
-def student_name():
-    global studentName
-    return studentName
-
-
-# 补课班级名称
-@pytest.fixture(scope='function')
-def make_up_class():
-    global makeUpClass
-    return makeUpClass
+# # 补课班级名称
+# @pytest.fixture(scope='function')
+# def make_up_class():
+#     global makeUpClass
+#     return makeUpClass
 
 
 #####################

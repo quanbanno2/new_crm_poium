@@ -40,16 +40,16 @@ class DB:
         customer_name = []
         sql = 'SELECT cust_name FROM test_customer.cust_info ' \
               'WHERE cust_id = (SELECT MAX(cust_id) ' \
-              'FROM test_customer.cust_info WHERE cust_name LIKE "高分云客户%" AND cust_status="S01")'
+              'FROM test_customer.cust_info WHERE cust_name LIKE "高分客户%" AND cust_status="S01")'
         result = self.exe_query(sql).fetchone()
         # for re in result:
         #     customer_name = re[0]
         # 读取客户名称后的数字
         customer_name = result[0]
-        a = customer_name[5:]
+        a = customer_name[4:]
         client_num = int(a)
         client_num += 1
-        client_name = "高分云客户" + str(client_num)
+        client_name = "高分客户" + str(client_num)
         self.conn_close()
         return client_name
 

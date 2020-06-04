@@ -1,7 +1,6 @@
 from time import sleep
 from poium import PageWait, PageSelect
-# from _pydecimal import Context, ROUND_HALF_UP
-from page.crm_customer_management_page import GfyCrmCustomerManagement, GfyCustomerDataEliminate
+from page.crm_customer_management_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
 from page.crm_login_page import GfyLogin
 from func.xpath_element import by_xpath_contains
@@ -35,7 +34,7 @@ class customerManagementFunc:
         customer_page.communicate_liable.click()
         # 等待跟进人列表加载完成
         if customer_page.responsible_list_loading != "None":
-            customer_page.choose_teacher.click()
+            customer_page.choose_teacher_button.click()
             # 输入沟通内容
             customer_page.textarea.send_keys(communication_info)
             # 勾选沟通结果
@@ -111,7 +110,9 @@ class customerManagementFunc:
             customer_page.interview_add.click()
             customer_page.admit_liable_name.click()
             if customer_page.responsible_list_loading != "None":
-                customer_page.choose_teacher.click()
+                # 选中老师
+                sleep(1)
+                customer_page.choose_teacher_button.click()
                 customer_page.save_admit.click()
                 if customer_page.interview_loading != "None":
                     customer_page.confirm_admit.click()
@@ -223,7 +224,7 @@ def add_educational(driver, educational_effect_time, educational_account):
     sleep(1)
     page.teacher_list_query.click()
     sleep(1)
-    page.choose_teacher.click()
+    page.choose_teacher_a.click()
     sleep(1)
     js = 'document.getElementsByName("effDate")[0].removeAttribute("readonly");'
     driver.execute_script(js)
@@ -233,7 +234,7 @@ def add_educational(driver, educational_effect_time, educational_account):
     page.student_educational_save.click()
 
 
-def split_customer(driver, adviser_account, customer_num):
+def split_customer(driver, adviser_account, customer_num=None):
     """
     学员分单功能
     @param driver:
@@ -243,7 +244,7 @@ def split_customer(driver, adviser_account, customer_num):
     """
     i = 0
     page = GfyCrmCustomerManagement(driver)
-    if customer_num == 1 or customer_num == "":
+    if customer_num == 1 or customer_num is None:
         # 勾选列表第一个客户
         page.customer_check[0].click()
     else:
@@ -261,13 +262,13 @@ def split_customer(driver, adviser_account, customer_num):
     page.teacher_list_query.click()
     if page.teacher_list_loading:
         # 选择老师
-        page.choose_teacher.click()
+        page.choose_teacher_a.click()
         PageWait(page.confirm_split)
         # 确认分班
         page.confirm_split.click()
 
 
-def convert_student(driver, school_name, customer_num):
+def convert_student(driver, school_name, customer_num=None):
     """
     客户转为学员操作
     @param driver:
@@ -280,7 +281,7 @@ def convert_student(driver, school_name, customer_num):
     page.customer_list_load_button.click()
     sleep(2)
     # 单个勾选
-    if customer_num == 1 or customer_num == "":
+    if customer_num == 1 or customer_num is None:
         page.customer_check[0].click()
     # 多个勾选
     elif customer_num == 2:
@@ -306,9 +307,11 @@ def convert_student(driver, school_name, customer_num):
     page.convert_confirm.click()
 
 
-def create_account(driver, school_name, exist_account, exist_account_name):
+def create_account(driver, school_name, exist_account, exist_account_name, customer_name, password):
     """
     客户账号创建和绑定
+    @param password:
+    @param customer_name:
     @param driver:
     @param school_name:
     @param exist_account:
@@ -318,9 +321,8 @@ def create_account(driver, school_name, exist_account, exist_account_name):
     page = GfyCrmCustomerManagement(driver)
     PageSelect(page.customer_list_school_list, text=school_name)
     sleep(1)
-    # 打开第一个客户名称
-    account_name = page.first_student_name.text
-    page.first_student_name.click()
+    # 获得和打开第一个客户名称
+    by_xpath_contains(driver, "a", customer_name, tag_2="@title").click()
     sleep(1)
     # 同步教学帐号按钮
     page.customer_create_account.click()
@@ -336,11 +338,11 @@ def create_account(driver, school_name, exist_account, exist_account_name):
         # 创建教学平台按钮
         page.customer_create_account_btn.click()
         sleep(1)
-        page.customer_create_account_name.send_keys(account_name)
+        page.customer_create_account_name.send_keys(customer_name)
         sleep(1)
-        page.customer_create_account_password.send_keys("123456")
+        page.customer_create_account_password.send_keys(password)
         sleep(1)
-        page.customer_create_account_repeat_password.send_keys("123456")
+        page.customer_create_account_repeat_password.send_keys(password)
         sleep(1)
         page.customer_create_account_birthday.click()
         sleep(1)
@@ -368,7 +370,7 @@ def add_customer_responsible(driver, responsible_name, department_name, school_n
     responsible_page.teacher_list_login_name.send_keys(responsible_name)
     responsible_page.teacher_list_query.click()
     if responsible_page.teacher_list_loading:
-        responsible_page.choose_teacher.click()
+        responsible_page.choose_teacher_a.click()
         sleep(1)
         responsible_page.responsible_save.click()
 

@@ -20,6 +20,7 @@ from func.customer_management_func import login, split_customer, convert_student
     customer_recovery, customerManagementFunc
 from func.get_data import get_json_data
 from conftest import DATA_DIR
+from config import nextTime
 
 
 # logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -86,7 +87,7 @@ class TestCustomerManagement:
         get_json_data(DATA_DIR + "customer_management/" + "split_customer_success.json")
     )
     def test_split_customer_success(self, crm_url, browser1, case, schoolName, studentNum, businessType, activityName,
-                                    phoneNumber, teacherName, loginAccount, password, msg):
+                                    phoneNumber, teacherName, loginAccount, password, msg, i=0):
         """
         测试学员分单成功情况
         @param crm_url:
@@ -104,13 +105,13 @@ class TestCustomerManagement:
         @return:
         """
         page = GfyCrmCustomerManagement(browser1)
-        i = 0
+        menu_page = GfyMenu(browser1)
         login(crm_url, browser1, loginAccount, password)
         while i < studentNum:
-            add_customer(browser1, DB().new_customer_name_by_sql(), businessType, activityName, phoneNumber, schoolName)
-            sleep(1)
+            crmRequest.save_customer_info(DB().new_customer_name_by_sql())
             i += 1
-        sleep(1)
+        menu_page.customer_management.click()
+        menu_page.my_customer.click()
         split_customer(browser1, teacherName, studentNum)
         # 是否保存分单成功
         PageWait(page.save_status)
@@ -121,7 +122,7 @@ class TestCustomerManagement:
         "parent,admitResult,meetingResult,msg",
         get_json_data(DATA_DIR + "customer_management/" + "customer_communication.json")
     )
-    def test_customer_communication(self, crm_url, browser1, next_date, case, loginAccount, password, customerName,
+    def test_customer_communication(self, crm_url, browser1, case, loginAccount, password, customerName,
                                     liablePersonAccount, communicationInfo, communicationResult, isVisit, parent,
                                     admitResult, meetingResult, msg):
         menu_page = GfyMenu(browser1)
@@ -147,7 +148,7 @@ class TestCustomerManagement:
                         by_xpath_contains(browser1, "a", customerName).click()
                         # 邀约
                         com_dict = cmf.customer_communication(communicationInfo, communicationResult, isVisit,
-                                                              next_date)
+                                                              nextTime)
                         try:
                             assert com_dict["save_status"] == msg
                         finally:
@@ -176,22 +177,17 @@ class TestCustomerManagement:
                                 DB().delete_customer_info(cust_id=customer_id)
 
     @pytest.mark.parametrize(
-        "case,pubSchoolName,studentNum,businessType,activityName,phoneNumber,"
-        "teacherName,schoolName,loginAccount,password,msg",
+        "case,studentNum,teacherName,schoolName,loginAccount,password,msg",
         get_json_data(DATA_DIR + "customer_management/" + "convert_student_success.json")
     )
-    def test_convert_student_success(self, crm_url, browser1, case, pubSchoolName, studentNum, businessType,
-                                     activityName, phoneNumber, teacherName, schoolName, loginAccount, password, msg):
+    def test_convert_student_success(self, crm_url, browser1, case, studentNum, teacherName, schoolName, loginAccount,
+                                     password, msg, i=0):
         """
         测试单个客户转为学员
         @param crm_url:
         @param browser1:
         @param case: 用例名称
-        @param pubSchoolName:
         @param studentNum:
-        @param businessType:
-        @param activityName:
-        @param phoneNumber:
         @param teacherName:
         @param schoolName:
         @param loginAccount:
@@ -201,15 +197,14 @@ class TestCustomerManagement:
         """
         page = GfyCrmCustomerManagement(browser1)
         menu_page = GfyMenu(browser1)
-        i = 0
         studentNum = int(studentNum)
-        customer_name = DB().new_customer_name_by_sql()
         login(crm_url, browser1, loginAccount, password)
         while i < studentNum:
+            customer_name = DB().new_customer_name_by_sql()
+            crmRequest.save_customer_info(customer_name)
             i += 1
-            add_customer(browser1, customer_name, businessType, activityName, phoneNumber, pubSchoolName)
-            sleep(1)
-        sleep(1)
+        menu_page.customer_management.click()
+        menu_page.my_customer.click()
         split_customer(browser1, teacherName, studentNum)
         login(crm_url, browser1, teacherName, password)
         menu_page.customer_management.click()
@@ -225,22 +220,17 @@ class TestCustomerManagement:
             assert page.convert_success_text.text == msg and page.convert_success_tips.text is not None
 
     @pytest.mark.parametrize(
-        "case,pubSchoolName,businessType,accountExist,activityName,phoneNumber,"
-        "teacherName,schoolName,loginAccount,password,existAccountName",
+        "case,accountExist,teacherName,schoolName,loginAccount,password,existAccountName",
         get_json_data(DATA_DIR + "customer_management/" + "create_account.json")
     )
-    def test_create_account(self, crm_url, browser1, case, pubSchoolName, businessType, accountExist, activityName,
-                            phoneNumber, teacherName, schoolName, loginAccount, password, existAccountName):
+    def test_create_account(self, crm_url, browser1, case, accountExist, teacherName, schoolName, loginAccount,
+                            password, existAccountName):
         """
         测试客户绑定和创建账号
         @param crm_url:
         @param browser1:
         @param case:
-        @param pubSchoolName:
-        @param businessType:
         @param accountExist:
-        @param activityName:
-        @param phoneNumber:
         @param teacherName:
         @param schoolName:
         @param loginAccount:
@@ -254,21 +244,22 @@ class TestCustomerManagement:
         # 清除已存在账号的绑定信息
         DB().update_account(existAccountName)
         login(crm_url, browser1, loginAccount, password)
-        add_customer(browser1, customer_name, businessType, activityName, phoneNumber, pubSchoolName)
-        sleep(2)
+        crmRequest.save_customer_info(customer_name)
         # 分单
-        split_customer(browser1, teacherName, customer_num="")
+        menu_page.customer_management.click()
+        menu_page.my_customer.click()
+        split_customer(browser1, teacherName)
         sleep(1)
         login(crm_url, browser1, teacherName, password)
         menu_page.customer_management.click()
         menu_page.my_customer.click()
         sleep(2)
         # 转学员
-        convert_student(browser1, schoolName, customer_num="")
+        convert_student(browser1, schoolName)
         sleep(1)
         page.customer_ok_button.click()
         sleep(1)
-        create_account(browser1, schoolName, accountExist, existAccountName)
+        create_account(browser1, schoolName, accountExist, existAccountName, customer_name, password)
         sleep(2)
         if case == "已存在的账号名称":
             assert page.customer_create_account_save_status.text == existAccountName
@@ -279,28 +270,34 @@ class TestCustomerManagement:
             assert page.customer_create_account_save_status.text == customer_name
 
     @pytest.mark.parametrize(
-        "case,schoolName,studentNum,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg",
+        "case,studentNum,teacherName,loginAccount,password,msg",
         get_json_data(DATA_DIR + "customer_management/" + "customer_recovery.json")
     )
-    def test_customer_recovery(self, crm_url, browser1, case, schoolName, studentNum, businessType, activityName,
-                               phoneNumber, teacherName, loginAccount, password, msg):
+    def test_customer_recovery(self, crm_url, browser1, case, studentNum, teacherName, loginAccount, password, msg,
+                               i=0):
         """
         测试二手单回收再分单
         数据清理：客户信息
         @param crm_url:
         @param browser1:
+        @param case:
+        @param studentNum:
+        @param teacherName:
+        @param loginAccount:
+        @param password:
+        @param msg:
+        @param i:
         @return:
         """
-        i = 0
-        # j = 0
         page = GfyCrmCustomerManagement(browser1)
+        menu_page = GfyMenu(browser1)
         login(crm_url, browser1, loginAccount, password)
         # 新增客户
         while i < studentNum:
-            add_customer(browser1, DB().new_customer_name_by_sql(), businessType, activityName, phoneNumber, schoolName)
-            sleep(1)
+            crmRequest.save_customer_info(DB().new_customer_name_by_sql())
             i += 1
-        sleep(1)
+        menu_page.customer_management.click()
+        menu_page.my_customer.click()
         # 分单
         split_customer(browser1, teacherName, studentNum)
         sleep(2)
@@ -324,7 +321,7 @@ class TestCustomerManagement:
                 # if case == "单个客户回收":
                 # 断言是否有回收时间&回收跟进人
                 try:
-                    assert page.customer_recovery_date[0].text == "--"
+                    assert page.customer_recovery_date[0].text != "--"
                 finally:
                     assert page.customer_recovery_teacher[0].text == DB().get_account_name(teacherName)
             # elif case == "客户批量回收":
@@ -352,10 +349,10 @@ class TestCustomerManagement:
 
 
 if __name__ == '__main__':
-    # pytest.main()
+    pytest.main()
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustInfo::test_cust_invite"])
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_communication"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_convert_student_success"])
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_communication"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
 
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",

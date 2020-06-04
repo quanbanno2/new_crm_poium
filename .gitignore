@@ -18,3 +18,4 @@ __pycache__
 /demo_test.py
 /.idea/workspace.xml~20200413：创建高分云分支
 /.idea/workspace.xml~20200414：1、客户回收支持数据驱动 2、增加一条用例多个断言支持
+/test_report

@@ -1,11 +1,7 @@
 [
   {
     "case": "已存在的账号名称",
-    "pubSchoolName": "四基",
-    "businessType": "新招生",
     "accountExist": "是",
-    "activityName": "高分云信息单",
-    "phoneNumber": "13800138000",
     "teacherName": "高分云辅导1",
     "schoolName": "高分云",
     "loginAccount": "高分云辅导督导1",
@@ -14,11 +10,7 @@
   },
     {
     "case": "新建的账号名称",
-    "pubSchoolName": "四基",
-    "businessType": "新招生",
     "accountExist": "否",
-    "activityName": "高分云信息单",
-    "phoneNumber": "13800138000",
     "teacherName": "高分云辅导1",
     "schoolName": "高分云",
     "loginAccount": "高分云辅导督导1",

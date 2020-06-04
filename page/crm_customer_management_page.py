@@ -202,7 +202,8 @@ class GfyCrmCustomerManagement(Page):
         describe='活动列表-活动列表查询按钮')
     activity_selected = PageElement(
         # link_text="选中活动",
-        xpath='//*[@id="marActivityListDialog"]/div/div/div[2]/div[1]/div/div[1]/table/tbody/tr[1]/td[6]/a',
+        # xpath='//*[@id="marActivityListDialog"]/div/div/div[2]/div[1]/div/div[1]/table/tbody/tr[1]/td[6]/a',
+        xpath="//a[@ng-click='parentActivityDialogSelect(item)']",
         describe="选择活动")
     activity_save = PageElement(
         xpath="//button[@ng-click='saveCustBusinessIntent()']",
@@ -246,7 +247,11 @@ class GfyCrmCustomerManagement(Page):
     teacher_list_query = PageElement(
         xpath="//button[@ng-click='loadTeacherInfoList()']",
         describe="机构老师列表-查询按钮")
-    choose_teacher = PageElement(
+    choose_teacher_a = PageElement(
+        # xpath="//a[text()='选中老师']",
+        link_text="选中老师",
+        describe="选择老师")
+    choose_teacher_button = PageElement(
         xpath="//button[text()='选中老师']",
         # link_text="选中老师",
         describe="选择老师")
@@ -309,8 +314,11 @@ class GfyCrmCustomerManagement(Page):
         describe="查看客户综合信息-学员信息-客户新增订单按钮")
 
     # 同步教学帐号
+    customer_info = PageElement(
+        xpath="//li[@ng-class=\"{'integration':'active'}[customerType]\" and @class='active']",
+        describe="查看客户综合信息-选中")
     customer_create_account = PageElement(
-        xpath="//button[@class='btn btn-primary btn-xs']",
+        xpath="//button[contains(.,'同步教学账号')]",
         describe="我的客户-客户信息-同步教学帐号按钮")
     customer_create_account_btn = PageElement(
         xpath="//button[@ng-click='stuBaseCreateStudentAccount(stuBaseUserCallBack.param,"

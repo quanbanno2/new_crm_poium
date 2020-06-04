@@ -2,7 +2,8 @@ import smtplib
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from conftest import todayDate, mail_host, mail_pass, mail_user, sender, receivers
+from config import mail_config
+from config import todayDate
 
 
 def send_mail(filename, now_time):
@@ -21,19 +22,19 @@ def send_mail(filename, now_time):
     att.add_header('Content-Disposition', 'attachment', filename=('gbk', '', "%s测试报告.zip" % now_time))
     # 附件实例
     msgRoot = MIMEMultipart()
-    msgRoot['From'] = Header(sender, 'utf-8')
-    msgRoot['To'] = receivers
+    msgRoot['From'] = Header(mail_config.sender, 'utf-8')
+    msgRoot['To'] = mail_config.receivers
     msgRoot['Subject'] = "%s 的UI自动化测试报告！" % todayDate
     # 添加内容
     msgRoot.attach(content)
     # 添加附件
     msgRoot.attach(att)
     smtp = smtplib.SMTP()
-    smtp.connect(mail_host)
-    smtp.login(mail_user, mail_pass)
+    smtp.connect(mail_config.mail_host)
+    smtp.login(mail_config.mail_user, mail_config.mail_pass)
     try:
         # 支持多个人接收
-        smtp.sendmail(sender, receivers.split(","), msgRoot.as_string())
+        smtp.sendmail(mail_config.sender, mail_config.receivers.split(","), msgRoot.as_string())
         print("测试报告发送成功")
     except smtplib.SMTPException:
         print("测试报告发送失败")

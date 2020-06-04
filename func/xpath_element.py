@@ -1,6 +1,7 @@
-def by_xpath_contains(driver, tag, context, context_2=None):
+def by_xpath_contains(driver, tag, context, context_2=None, tag_2="."):
     """
     根据元素包含文字进行定位
+    @param tag_2:
     @param tag:
     @param driver:
     @param context:包含的文字
@@ -8,9 +9,9 @@ def by_xpath_contains(driver, tag, context, context_2=None):
     @return:
     """
     if context_2 is None:
-        return driver.find_element_by_xpath("//{}[contains(.,'{}')]".format(tag, context))
+        return driver.find_element_by_xpath("//{}[contains({},'{}')]".format(tag, tag_2, context))
     else:
-        return driver.find_element_by_xpath("//{}[contains(.,'{}') and {}]".format(tag, context, context_2))
+        return driver.find_element_by_xpath("//{}[contains({},'{}') and {}]".format(tag, tag_2, context, context_2))
 
 
 def find_order_pay_info(driver, context):
