@@ -8,8 +8,6 @@ from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
-base_path = dirname(dirname(abspath(__file__)))
-
 from page.crm_customer_management_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
 
@@ -349,8 +347,8 @@ class TestCustomerManagement:
 
 
 if __name__ == '__main__':
-    pytest.main()
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
+    # pytest.main()
+    pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_convert_student_success"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_communication"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])

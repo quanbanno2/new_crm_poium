@@ -7,9 +7,9 @@
     "remindEventType": "R01",
     "password": "123456",
     "schoolName": "高分云",
-    "orderId": "11426",
-    "shareObject": "高分云教务1",
-    "shareDepartment": "高分云教务部",
+    "orderId": "11453",
+    "shareTeacher": "高分云辅导1",
+    "shareDepartment": "高分云顾问部",
     "msg": "保存成功"
   },
   {
@@ -21,7 +21,7 @@
     "password": "123456",
     "schoolName": "高分云",
     "orderId": "11421",
-    "shareObject": "高分云教务1",
+    "shareTeacher": "高分云教务1",
     "shareDepartment": "高分云教务部",
     "msg": "保存成功"
   }

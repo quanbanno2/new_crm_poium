@@ -363,16 +363,17 @@ def add_customer_responsible(driver, responsible_name, department_name, school_n
     """
     responsible_page = GfyCrmCustomerManagement(driver)
     responsible_page.responsible_name_input.click()
-    PageSelect(responsible_page.teacher_list_school, text=school_name)
-    PageSelect(responsible_page.teacher_attribution_department, text=department_name)
-    responsible_page.teacher_list_login_name.clear()
-    sleep(1)
-    responsible_page.teacher_list_login_name.send_keys(responsible_name)
-    responsible_page.teacher_list_query.click()
-    if responsible_page.teacher_list_loading:
-        responsible_page.choose_teacher_a.click()
+    if responsible_page.user_list_dialog != "":
+        PageSelect(responsible_page.teacher_list_school, text=school_name)
+        PageSelect(responsible_page.teacher_attribution_department, text=department_name)
+        responsible_page.teacher_list_login_name.clear()
         sleep(1)
-        responsible_page.responsible_save.click()
+        responsible_page.teacher_list_login_name.send_keys(responsible_name)
+        responsible_page.teacher_list_query.click()
+        if responsible_page.teacher_list_loading:
+            responsible_page.choose_teacher_a.click()
+            sleep(1)
+            responsible_page.responsible_save.click()
 
 
 def add_customer_intent(driver, school_name, activity_type, activity_name, responsible_department, responsible_Name,
@@ -418,24 +419,25 @@ def add_customer_intent(driver, school_name, activity_type, activity_name, respo
     PageWait(intent_page.confirm_btn)
     intent_page.confirm_btn.click()
     sleep(1)
-    if case == "新招生":
-        add_customer_responsible(driver, responsible_Name, responsible_department, school_name)
-    if case == "辅导续费" or case == "顾问转介绍":
-        add_customer_responsible(driver, teacher_name, teacher_department, school_name)
-        sleep(1)
-        intent_page.responsible_add.click()
-        sleep(2)
-        add_customer_responsible(driver, responsible_Name, responsible_department, school_name)
+    if intent_page.responsible_dialog != "":
+        if case == "新招生":
+            add_customer_responsible(driver, responsible_Name, responsible_department, school_name)
+        if case == "辅导续费" or case == "顾问转介绍":
+            add_customer_responsible(driver, teacher_name, teacher_department, school_name)
+            sleep(1)
+            intent_page.responsible_add.click()
+            sleep(2)
+            add_customer_responsible(driver, responsible_Name, responsible_department, school_name)
 
 
-def customer_recovery(driver, student_num):
+def customer_recovery(driver, student_num, i=0):
     """
     回收未成交客户
+    @param i:
     @param driver:
     @param student_num:
     @return:
     """
-    i = 0
     customer_page = GfyCrmCustomerManagement(driver)
     PageSelect(customer_page.customer_is_deal, text="未成交")
     PageSelect(customer_page.customer_is_order, text="是")

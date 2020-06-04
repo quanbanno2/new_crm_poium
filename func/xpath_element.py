@@ -33,6 +33,7 @@ class find_object_element:
     def find_confirm_refund_button(self, order_id):
         return self.driver.find_element_by_xpath("//a[text()='{}']/following::td[10]/button[4]".format(order_id))
 
+    # 根据对象内容获取退费业绩
     def find_object_refund_fee(self, objects):
         return self.driver.find_element_by_xpath("//span[text()='{}']/following::td[4]/span".format(objects))
 

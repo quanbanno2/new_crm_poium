@@ -25,7 +25,7 @@ driver_type = "chrome"
 rerun = "1"
 
 # 运行测试用例的目录或文件
-cases_path = "test_case/"
+cases_path = "./test_case/"
 
 # 配置运行的 URL
 crmUrl = "http://gaofenyun.com:8073/crm-web/login.html"

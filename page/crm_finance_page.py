@@ -1,4 +1,4 @@
-from poium import Page, PageElement
+from poium import Page, PageElement, PageElements
 
 
 class GfyRefundInfo(Page):
@@ -32,3 +32,6 @@ class GfyRefundInfo(Page):
     refund_achievement_loading = PageElement(
         xpath="//div[@ng-show='refundAchievementLoading' and @class='overlay ng-hide']",
         describe="退费业绩loading完成")
+    refund_achievement_edit = PageElement(
+        xpath="//button[@ng-click=\"refundInfoAchievementEdit('edit',item)\"]",
+        describe="退费责任编辑")

@@ -99,6 +99,9 @@ class GfyCrmCustomerManagement(Page):
     responsible_list_loading = PageElement(
         xpath="//div[@ng-show='custResponsibleDialogLoading' and @class='overlay ng-hide']",
         describe="跟进人列表loading")
+    responsible_dialog = PageElement(
+        xpath="//div[@id='custResponsibleDialog' and @class='modal fade in']",
+        describe="跟进人弹窗dialog")
     textarea = PageElement(
         xpath="//div[@contenteditable='true']",
         describe="富文本框")
@@ -218,7 +221,9 @@ class GfyCrmCustomerManagement(Page):
     responsible_save = PageElement(
         xpath="//button[@ng-click='saveCustResponsible()']",
         describe="客户跟进人-新增-保存跟进人按钮")
-
+    user_list_dialog = PageElement(
+        xpath="//div[@id='userListDialog' and @class='modal fade in']",
+        describe="机构老师列表")
     customer_phone = PageElement(
         xpath="//input[@name='phone1']",
         describe='联系方式输入框1')

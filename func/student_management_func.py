@@ -98,16 +98,16 @@ def pay_new_order(driver, case, discount, other_fee):
         order_page.add_order_other_fee.send_keys(other_fee)
         order_page.add_order_other_save.click()
     elif case == "已缴部分支付":
-        PageWait(order_page.add_order_pay_btn)
-        sleep(1)
-        driver.execute_script("arguments[0].click();", order_page.add_order_pay_btn)
-        unpaid = order_page.order_unpaid.text
-        paid = order_page.order_paid.text
-        order_page.add_order_pay_fee.send_keys(unpaid)
-        order_page.add_order_pay_save_btn.click()
+        if order_page.order_detail_loading != "":
+            # 等待订单信息加载完成
+            unpaid = order_page.order_unpaid.text
+            paid = order_page.order_paid.text
+            driver.execute_script("arguments[0].click();", order_page.add_order_pay_btn)
+            order_page.add_order_pay_fee.send_keys(unpaid)
+            order_page.add_order_pay_save_btn.click()
     # 支付
     driver.execute_script("arguments[0].click();", order_page.pay_stu_order)
-    sleep(1)
+    PageWait(other_page.confirm_btn)
     other_page.confirm_btn.click()
     # 返回未交金额
     return unpaid, paid
@@ -144,9 +144,11 @@ def order_refund(driver, school_name, order_id, teacher_account):
                 order_page.save_order_refund.click()
                 sleep(3)
                 # 等待审批事项确认界面loading完成
-                if order_page.order_confirm_loading:
+                approvalList = "%s-->通知发起人" % DB().get_account_name(teacher_account)
+                if order_page.order_confirm_loading != "":
                     # 选择审批流程，只支持一个审批人
-                    approvalList = "%s-->通知发起人" % DB().get_account_name(teacher_account)
+                    # approvalList = "%s-->通知发起人" % DB().get_account_name(teacher_account)
+                    sleep(1)
                     PageSelect(order_page.approval_matter_setting, text=approvalList)
                     # 审批发起确认
                     order_page.save_approval_matter.click()
@@ -175,6 +177,7 @@ def approval_matter(driver, message_object, refund_student, approval_type, remin
     PageSelect(home_page.remind_type, value=remind_event_type)
     home_page.message_object_input.send_keys(message_object)
     home_page.message_content.send_keys(refund_student)
+    sleep(1)
     home_page.remind_center_approve_btn.click()
     # 等待审批事项界面loading完成
     if home_page.approval_matter_loading:

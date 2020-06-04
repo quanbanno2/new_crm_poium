@@ -176,10 +176,10 @@ class DB:
         if status == "全部退费":
             sql = [
                 "update test_student.stu_order_info set order_status='S02' where order_id='{}'".format(order_id),
-                "update test_student.stu_order_course set course_status='S01' where course_status='S03' "
+                "update test_student.stu_order_course set course_status='S01' where course_status!='S01' "
                 "and order_id='{}'".format(order_id),
                 "update test_finance.finance_fee_detail set refund_status='R01' where refund_status='R02' "
-                "and order_id='[]'".format(order_id),
+                "and order_id='{}'".format(order_id),
                 "update test_finance.finance_payment_info set payment_status='S02' where order_id='{}'".format(
                     order_id),
                 "delete from test_finance.finance_refund_apply where order_id='{}'".format(order_id),

@@ -2,13 +2,10 @@ import sys
 import pytest
 
 from poium import PageWait
-# 定义搜索模块顺序，优先搜索new_crm_poium文件夹
+# # 定义搜索模块顺序，优先搜索new_crm_poium文件夹
 from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
-
-base_path = dirname(dirname(abspath(__file__)))
-
 from page.crm_login_page import GfyLogin
 
 from func.customer_management_func import login
@@ -68,4 +65,4 @@ class TestLogin:
 
 
 if __name__ == '__main__':
-    pytest.main()
+    pytest.main(["-v", "-s", "test_crm_login.py"])

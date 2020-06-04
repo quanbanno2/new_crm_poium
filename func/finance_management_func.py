@@ -37,11 +37,10 @@ class finance_management:
                     sleep(1)
                     refund_page.refund_achievement.click()
                     # 退费业绩loading完成
-                    if refund_page.refund_achievement_loading:
-                        # 部门退费业绩
-                        department_fee = re_demo(find_object.find_object_refund_fee(department).text)
-                        personal_fee = re_demo(
-                            find_object.find_object_refund_fee(DB().get_account_name(share_teacher)).text)
-                        refund_result = {'refunds_status': refunds_status, 'department_fee': department_fee,
-                                         'personal_fee': personal_fee}
-                        return refund_result
+                    PageWait(refund_page.refund_achievement_edit)
+                    department_fee = re_demo(find_object.find_object_refund_fee(department).text)
+                    personal_fee = re_demo(
+                        find_object.find_object_refund_fee(DB().get_account_name(share_teacher)).text)
+                    refund_result = {'refunds_status': refunds_status, 'department_fee': department_fee,
+                                     'personal_fee': personal_fee}
+                    return refund_result

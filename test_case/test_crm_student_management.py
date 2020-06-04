@@ -128,18 +128,19 @@ class TestCustomerAddOrder:
                                     DB().reset_order_status(status, orderId)
 
     @pytest.mark.parametrize(
-        "case,loginAccount,messageObject,approvalType,remindEventType,password,schoolName,orderId,shareObject,"
+        "case,loginAccount,messageObject,approvalType,remindEventType,password,schoolName,orderId,shareTeacher,"
         "shareDepartment,msg",
         get_json_data(DATA_DIR + "student_management" + "/order_refund.json")
     )
     def test_student_refund(self, browser1, crm_url, case, loginAccount, messageObject, approvalType, remindEventType,
-                            password, schoolName, orderId, shareObject, shareDepartment, msg):
+                            password, schoolName, orderId, shareTeacher, shareDepartment, msg):
         """
         测试客户退费
         """
         order_page = GfyStudentOrderManagement(browser1)
         menu_page = GfyMenu(browser1)
         home_page = GfyHomePage(browser1)
+        DB().reset_order_class_status(case, orderId)
         login(crm_url, browser1, loginAccount, password)
         if menu_page.menu_loading:
             menu_page.student_management.click()
@@ -164,7 +165,7 @@ class TestCustomerAddOrder:
                         sleep(1)
                         menu_page.finance_fee_info.click()
                         menu_page.finance_refund_info.click()
-                        refund_result = finance_management.refund_info(browser1, orderId, shareDepartment, shareObject)
+                        refund_result = finance_management.refund_info(browser1, orderId, shareDepartment, shareTeacher)
                         try:
                             # 部门业绩断言
                             assert float(fee_list['refund_fee']) == float(refund_result['department_fee'])
@@ -459,10 +460,9 @@ class TestStuCourseManagement:
 
 
 if __name__ == '__main__':
-    #     pytest.main()
-    # pytest.main(
-    # ["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_pay_new_order"])
-    pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_change_class"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py"])
+    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_student_refund"])
+    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_change_class"])
 #         pytest.main(["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_add_new_order"])
 #     pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_in_class"])
 #     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
