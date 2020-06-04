@@ -139,11 +139,11 @@ def pytest_html_results_table_header(cells):
     cells.pop()
 
 
-# 设置用例描述表格
-@pytest.mark.optionalhook
-def pytest_html_results_table_row(report, cells):
-    cells.insert(2, html.td(report.description))
-    cells.pop()
+# # 设置用例描述表格
+# @pytest.mark.optionalhook
+# def pytest_html_results_table_row(report, cells):
+#     cells.insert(2, html.td(report.description))
+#     cells.pop()
 
 
 @pytest.mark.hookwrapper
