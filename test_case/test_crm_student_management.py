@@ -1,6 +1,5 @@
 import pytest
 import sys
-
 # 定义搜索模块顺序，优先搜索new_crm_poium文件夹
 from os.path import dirname, abspath
 
