@@ -2,7 +2,7 @@ import requests
 from config import CRM_REQ_URL
 
 
-class crmRequest:
+class CrmRequest:
     @staticmethod
     def save_customer_info(customer_name):
         """

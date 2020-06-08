@@ -1,14 +1,15 @@
 import sys
 import pytest
-# import logging
-from poium import PageWait, PageSelect
+# 定义搜索模块顺序，优先搜索new_crm_poium文件夹
 from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
+
 from time import sleep
+from poium import PageWait, PageSelect
 from page.crm_customer_management_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
-from func.api_request import crmRequest
+from func.api_request import CrmRequest
 from func.db_func import DB
 from func.xpath_element import by_xpath_contains
 from func.customer_management_func import login, split_customer, convert_student, create_account, add_customer, \
@@ -16,10 +17,6 @@ from func.customer_management_func import login, split_customer, convert_student
 from func.get_data import get_json_data
 from conftest import DATA_DIR
 from config import nextTime
-
-
-# logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-# logger = logging.getLogger(__name__)
 
 
 class TestCustomerManagement:
@@ -103,7 +100,7 @@ class TestCustomerManagement:
         menu_page = GfyMenu(browser1)
         login(crm_url, browser1, loginAccount, password)
         while i < studentNum:
-            crmRequest.save_customer_info(DB().new_customer_name_by_sql())
+            CrmRequest.save_customer_info(DB().new_customer_name_by_sql())
             i += 1
         menu_page.customer_management.click()
         menu_page.my_customer.click()
@@ -126,9 +123,9 @@ class TestCustomerManagement:
         login(crm_url, browser1, loginAccount, password)
         # 初始化测试客户信息（删除客户、新建客户、分单）
         DB().delete_customer_info(cust_name=customerName)
-        crmRequest.save_customer_info(customerName)
+        CrmRequest.save_customer_info(customerName)
         customer_id = DB().get_customer_id(customerName)
-        crmRequest.allot_order(customer_id)
+        CrmRequest.allot_order(customer_id)
         teacher_id = DB().get_teacher_id(liablePersonAccount)
         DB().update_admin_status(teacher_id)
         if menu_page.menu_loading:
@@ -196,7 +193,7 @@ class TestCustomerManagement:
         login(crm_url, browser1, loginAccount, password)
         while i < studentNum:
             customer_name = DB().new_customer_name_by_sql()
-            crmRequest.save_customer_info(customer_name)
+            CrmRequest.save_customer_info(customer_name)
             i += 1
         menu_page.customer_management.click()
         menu_page.my_customer.click()
@@ -239,7 +236,7 @@ class TestCustomerManagement:
         # 清除已存在账号的绑定信息
         DB().update_account(existAccountName)
         login(crm_url, browser1, loginAccount, password)
-        crmRequest.save_customer_info(customer_name)
+        CrmRequest.save_customer_info(customer_name)
         # 分单
         menu_page.customer_management.click()
         menu_page.my_customer.click()
@@ -289,7 +286,7 @@ class TestCustomerManagement:
         login(crm_url, browser1, loginAccount, password)
         # 新增客户
         while i < studentNum:
-            crmRequest.save_customer_info(DB().new_customer_name_by_sql())
+            CrmRequest.save_customer_info(DB().new_customer_name_by_sql())
             i += 1
         menu_page.customer_management.click()
         menu_page.my_customer.click()
@@ -344,16 +341,16 @@ class TestCustomerManagement:
 
 
 if __name__ == '__main__':
-    pytest.main()
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py"])
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py::TestCustomerManagement::test_convert_student_success"])
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py::TestCustomerManagement::test_customer_communication"])
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py::TestLogin::test_login_success"])
+    # pytest.main()
+    pytest.main(["-v", "-s", "test_crm_customer_management.py"])
+    # pytest.main(["-v", "-s", "test_crm_customer_management.py::TestCustomerManagement::test_convert_student_success"])
+    # pytest.main(["-v", "-s", "test_crm_customer_management.py::TestCustomerManagement::test_customer_communication"])
+    # pytest.main(["-v", "-s", "test_crm_customer_management.py::TestLogin::test_login_success"])
 
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py::TestCustomerAdd::test_login",
-    #              "1test_crm_customer_management.py::TestCustomerAdd::test_add_customer"])
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py::TestLogin::test_login_success"])
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py::TestCustomerAddOrder::test_student_refund"])
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py::TestCustomerAddOrder"])
-    # pytest.main(["-v", "-s", "1test_crm_customer_management.py::TestCustomerManagement::test_create_account"])
-    #              "-v", "-s", "1test_crm_customer_management.py::TestCustomerAdd::test_convert_student"])
+    # pytest.main(["-v", "-s", "test_crm_customer_management.py::TestCustomerAdd::test_login",
+    #              "test_crm_customer_management.py::TestCustomerAdd::test_add_customer"])
+    # pytest.main(["-v", "-s", "test_crm_customer_management.py::TestLogin::test_login_success"])
+    # pytest.main(["-v", "-s", "test_crm_customer_management.py::TestCustomerAddOrder::test_student_refund"])
+    # pytest.main(["-v", "-s", "test_crm_customer_management.py::TestCustomerAddOrder"])
+    # pytest.main(["-v", "-s", "test_crm_customer_management.py::TestCustomerManagement::test_create_account"])
+    #              "-v", "-s", "test_crm_customer_management.py::TestCustomerAdd::test_convert_student"])
