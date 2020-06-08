@@ -1,6 +1,7 @@
 import os
 import pytest
 import datetime
+import pdb
 from py.xml import html
 from selenium import webdriver
 from selenium.webdriver import Remote
@@ -17,9 +18,9 @@ DATA_DIR = BASE_DIR + "/test_case/data/"
 ############################
 
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
-# driver_type = "chrome"
+driver_type = "chrome"
 # driver_type = "safari"
-driver_type = "grid"
+# driver_type = "grid"
 
 # 失败重跑次数
 rerun = "1"
@@ -29,6 +30,7 @@ cases_path = "./test_case/"
 
 # 配置运行的 URL
 crmUrl = "http://gaofenyun.com:8073/crm-web/login.html"
+
 
 # 测试课程名称
 # course_name = "自动化专用语文培优次课"
@@ -288,7 +290,7 @@ def browser1():
 
     elif driver_type == "grid":
         # 通过远程节点运行  command_executor远程节点地址
-        driver = Remote(command_executor='http://192.168.0.51:5555/wd/hub',
+        driver = Remote(command_executor='http://192.168.0.188:5555/wd/hub',
                         desired_capabilities={
                             "browserName": "chrome",
                         })
