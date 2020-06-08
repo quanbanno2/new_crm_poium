@@ -15,8 +15,7 @@ from func.xpath_element import by_xpath_contains
 from func.customer_management_func import login, split_customer, convert_student, create_account, add_customer, \
     customer_recovery, customerManagementFunc
 from func.get_data import get_json_data
-from conftest import DATA_DIR
-from config import nextTime
+from config import DATA_DIR, nextTime
 
 
 class TestCustomerManagement:
@@ -26,10 +25,10 @@ class TestCustomerManagement:
 
     @pytest.mark.parametrize(
         "case,schoolName,businessType,loginAccount,password,activityName,phoneNumber,msg",
-        get_json_data(DATA_DIR + "customer_management/" + "add_customer_success.json")
+        get_json_data(DATA_DIR + "customer_management" + "/add_customer_success.json")
     )
-    def test_add_customer_success(self, crm_url, browser1, case, schoolName, businessType, loginAccount,
-                                  password, activityName, phoneNumber, msg):
+    def test_add_customer_success(self, crm_url, browser1, case, schoolName, businessType, loginAccount, password,
+                                  activityName, phoneNumber, msg):
         """
         测试新增客户成功情况
         @param crm_url:
@@ -76,7 +75,7 @@ class TestCustomerManagement:
     #     """
     @pytest.mark.parametrize(
         "case,schoolName,studentNum,businessType,activityName,phoneNumber,teacherName,loginAccount,password,msg",
-        get_json_data(DATA_DIR + "customer_management/" + "split_customer_success.json")
+        get_json_data(DATA_DIR + "customer_management" + "/split_customer_success.json")
     )
     def test_split_customer_success(self, crm_url, browser1, case, schoolName, studentNum, businessType, activityName,
                                     phoneNumber, teacherName, loginAccount, password, msg, i=0):
@@ -112,7 +111,7 @@ class TestCustomerManagement:
     @pytest.mark.parametrize(
         "case,loginAccount,password,customerName,liablePersonAccount,communicationInfo,communicationResult,isVisit,"
         "parent,admitResult,meetingResult,msg",
-        get_json_data(DATA_DIR + "customer_management/" + "customer_communication.json")
+        get_json_data(DATA_DIR + "customer_management" + "/customer_communication.json")
     )
     def test_customer_communication(self, crm_url, browser1, case, loginAccount, password, customerName,
                                     liablePersonAccount, communicationInfo, communicationResult, isVisit, parent,
@@ -170,7 +169,7 @@ class TestCustomerManagement:
 
     @pytest.mark.parametrize(
         "case,studentNum,teacherName,schoolName,loginAccount,password,msg",
-        get_json_data(DATA_DIR + "customer_management/" + "convert_student_success.json")
+        get_json_data(DATA_DIR + "customer_management" + "/convert_student_success.json")
     )
     def test_convert_student_success(self, crm_url, browser1, case, studentNum, teacherName, schoolName, loginAccount,
                                      password, msg, i=0):
@@ -263,7 +262,7 @@ class TestCustomerManagement:
 
     @pytest.mark.parametrize(
         "case,studentNum,teacherName,loginAccount,password,msg",
-        get_json_data(DATA_DIR + "customer_management/" + "customer_recovery.json")
+        get_json_data(DATA_DIR + "customer_management" + "/customer_recovery.json")
     )
     def test_customer_recovery(self, crm_url, browser1, case, studentNum, teacherName, loginAccount, password, msg,
                                i=0):

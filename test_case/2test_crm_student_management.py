@@ -20,7 +20,8 @@ from func.finance_management_func import finance_management
 from time import sleep
 from poium import PageWait, PageSelect
 
-from conftest import DATA_DIR
+# from conftest import DATA_DIR
+from config import DATA_DIR
 
 
 class TestCustomerAddOrder:
@@ -31,8 +32,7 @@ class TestCustomerAddOrder:
     @pytest.mark.parametrize(
         "case,loginAccount,password,activityType,schoolName,activityName,responsibleName,responsibleDepartment,"
         "teacherName,teacherDepartment,courseName,studentName,subjectGroupType,subjectGroup,msg",
-        get_json_data(DATA_DIR + "student_management" +
-                      "/add_student_order.json")
+        get_json_data(DATA_DIR + "student_management" + "/add_student_order.json")
     )
     def test_add_new_order(self, crm_url, browser1, case, loginAccount, password, activityType, schoolName,
                            activityName, responsibleName, responsibleDepartment, teacherName, teacherDepartment,

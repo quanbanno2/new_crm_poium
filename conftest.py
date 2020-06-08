@@ -11,7 +11,7 @@ from selenium.webdriver.firefox.options import Options as FF_Options
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
-DATA_DIR = BASE_DIR + "/test_case/data/"
+# DATA_DIR = BASE_DIR + "/test_case/data/"
 
 # conftest配置文件每次启动初始化一次
 

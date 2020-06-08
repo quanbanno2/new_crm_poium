@@ -10,7 +10,7 @@ from page.crm_login_page import GfyLogin
 
 from func.customer_management_func import login
 from func.get_data import get_json_data
-from conftest import DATA_DIR
+from config import DATA_DIR
 
 
 class TestLogin:
