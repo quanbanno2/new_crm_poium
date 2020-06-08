@@ -1,16 +1,13 @@
 import sys
 import pytest
 # import logging
-from time import sleep
-from poium import PageWait, PageSelect
-# 定义搜索模块顺序，优先搜索new_crm_poium文件夹
 from os.path import dirname, abspath
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
-
+from time import sleep
+from poium import PageWait, PageSelect
 from page.crm_customer_management_page import GfyCrmCustomerManagement
 from page.crm_menu_page import GfyMenu
-
 from func.api_request import crmRequest
 from func.db_func import DB
 from func.xpath_element import by_xpath_contains
@@ -347,8 +344,8 @@ class TestCustomerManagement:
 
 
 if __name__ == '__main__':
-    # pytest.main()
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
+    pytest.main()
+    # pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_convert_student_success"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_communication"])
     # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
