@@ -415,15 +415,3 @@ class GfyCrmCustomerManagement(Page):
     add_educational_status = PageElement(
         xpath="/html/body/div[21]/div/div/div/div/div/strong",
         describe="学员教务老师新增状态")
-
-
-class GfyCustomerDataEliminate(Page):
-    """
-    清理数据
-    """
-    customer_eliminate = PageElements(
-        xpath="//button[@title='删除']",
-        describe="我的客户-客户删除按钮")
-    eliminate_confirm = PageElement(
-        xpath="//button[@data-bb-handler='confirm']",
-        describe="确认删除按钮")
