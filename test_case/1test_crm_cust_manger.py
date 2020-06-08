@@ -348,15 +348,15 @@ class TestCustomerManagement:
 
 if __name__ == '__main__':
     # pytest.main()
-    pytest.main(["-v", "-s", "test_crm_cust_manger.py"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_convert_student_success"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_customer_communication"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
+    pytest.main(["-v", "-s", "1test_crm_cust_manger.py"])
+    # pytest.main(["-v", "-s", "1test_crm_cust_manger.py::TestCustomerManagement::test_convert_student_success"])
+    # pytest.main(["-v", "-s", "1test_crm_cust_manger.py::TestCustomerManagement::test_customer_communication"])
+    # pytest.main(["-v", "-s", "1test_crm_cust_manger.py::TestLogin::test_login_success"])
 
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_login",
-    #              "test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestLogin::test_login_success"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerAddOrder"])
-    # pytest.main(["-v", "-s", "test_crm_cust_manger.py::TestCustomerManagement::test_create_account"])
-    #              "-v", "-s", "test_crm_cust_manger.py::TestCustomerAdd::test_convert_student"])
+    # pytest.main(["-v", "-s", "1test_crm_cust_manger.py::TestCustomerAdd::test_login",
+    #              "1test_crm_cust_manger.py::TestCustomerAdd::test_add_customer"])
+    # pytest.main(["-v", "-s", "1test_crm_cust_manger.py::TestLogin::test_login_success"])
+    # pytest.main(["-v", "-s", "1test_crm_cust_manger.py::TestCustomerAddOrder::test_student_refund"])
+    # pytest.main(["-v", "-s", "1test_crm_cust_manger.py::TestCustomerAddOrder"])
+    # pytest.main(["-v", "-s", "1test_crm_cust_manger.py::TestCustomerManagement::test_create_account"])
+    #              "-v", "-s", "1test_crm_cust_manger.py::TestCustomerAdd::test_convert_student"])
