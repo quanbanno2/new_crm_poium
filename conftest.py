@@ -144,7 +144,7 @@ def pytest_html_results_table_header(cells):
 # 设置用例描述表格
 @pytest.mark.optionalhook
 def pytest_html_results_table_row(report, cells):
-    pdb.set_trace()
+    # pdb.set_trace()
     cells.insert(2, html.td(report.description))
     cells.pop()
 
