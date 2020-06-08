@@ -459,10 +459,10 @@ class TestStuCourseManagement:
 
 
 if __name__ == '__main__':
-    pytest.main(["-v", "-s", "2test_crm_student_management.py"])
-    # pytest.main(["-v", "-s", "2test_crm_student_management.py::TestCustomerAddOrder::test_student_refund"])
-    # pytest.main(["-v", "-s", "2test_crm_student_management.py::TestStuCourseManagement::test_student_change_class"])
-#         pytest.main(["-v", "-s", "2test_crm_student_management.py::TestCustomerAddOrder::test_add_new_order"])
-#     pytest.main(["-v", "-s", "2test_crm_student_management.py::TestStudentClassManagement::test_in_class"])
-#     # pytest.main(["-v", "-s", "2test_crm_student_management.py::TestStudentClassManagement::test_leave",
-#     #              "2test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
+    pytest.main(["-v", "-s", "test_crm_student_management.py"])
+    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_student_refund"])
+    # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStuCourseManagement::test_student_change_class"])
+#         pytest.main(["-v", "-s", "test_crm_student_management.py::TestCustomerAddOrder::test_add_new_order"])
+#     pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_in_class"])
+#     # pytest.main(["-v", "-s", "test_crm_student_management.py::TestStudentClassManagement::test_leave",
+#     #              "test_crm_student_management.py::TestStudentClassManagement::test_make_up"])
