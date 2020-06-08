@@ -18,9 +18,9 @@ DATA_DIR = BASE_DIR + "/test_case/data/"
 ############################
 
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
-driver_type = "chrome"
+# driver_type = "chrome"
 # driver_type = "safari"
-# driver_type = "grid"
+driver_type = "grid"
 
 # 失败重跑次数
 rerun = "1"
